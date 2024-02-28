@@ -1,0 +1,10 @@
+#+TITLE: Wed, 2023-02-15
+* 08:50 TODOLIST
+** TODO [#A] update remotecan to DOCKER
+DEADLINE: <2023-02-15 Wed 16:00>
+:LOGBOOK:
+CLOCK: [2023-02-15 Wed 08:55]--[2023-02-15 Wed 10:25] =>  1:30
+:END:
+** TODO [#B] ABC for eos rl agent
+DEADLINE: <2023-02-15 Wed 11:30>
+* 08:53

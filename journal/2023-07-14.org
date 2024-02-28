@@ -1,0 +1,12 @@
+#+TITLE: 周五, 2023-07-14
+* 16:00 ITS Staff Weeekly
+** 公司
+*** C 轮融资顺利
+*** iC1 价格比竞争对手明显偏高
+*** 营销压力大
+*** 技术路线
+
+#+attr_org: :width 300px
+[[download:公司/_20230714_161500technical_roadmap.png]]
+
+** 工作回顾

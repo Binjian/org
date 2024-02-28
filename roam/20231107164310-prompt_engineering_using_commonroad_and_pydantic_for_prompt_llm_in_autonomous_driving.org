@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       7f022692-3eb2-48e0-b108-45c8320acad6
+:END:
+#+title: Prompt Engineering Using CommonRoad and PyDantic for Prompt LLM in Autonomous Driving

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>veos-presenation</title>
+<meta name="author" content="Binjian Xin"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="/home/x/.emacs.d/.local/straight/build-28.2/revealjs/dist/reveal.css"/>
+
+<link rel="stylesheet" href="/home/x/.emacs.d/.local/straight/build-28.2/revealjs/dist/theme/black.css" id="theme"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">veos-presenation</h1><h2 class="author">Binjian Xin</h2><p class="date">Created: 2023-01-09 Mon 11:52</p>
+</section>
+<section id="table-of-contents-section">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-1">1. 标题，主题</a>
+<ul>
+<li><a href="#/slide-1-1">1.1. reward is enough</a></li>
+<li><a href="#/slide-1-2">1.2. 基于大数据和奖励驱动的能源优化系统</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2">2. 背景</a>
+<ul>
+<li><a href="#/slide-2-1">2.1. 车辆能源优化系统</a>
+<ul>
+<li><a href="#/slide-2-1-1">2.1.1. 基于专家系统</a></li>
+<li><a href="#/slide-2-1-2">2.1.2. 通常应用场景是混动车动力系统最优分配比</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-2">2.2. 强化学习</a>
+<ul>
+<li><a href="#/slide-2-2-1">2.2.1. 端到端，场景的切换是连续动态的</a></li>
+<li><a href="#/slide-2-2-2">2.2.2. 适用于带噪声的高维度非平稳随机过程</a></li>
+<li><a href="#/slide-2-2-3">2.2.3. 随机闭环控制：可利用随机采样的结果及时更新策略</a></li>
+<li><a href="#/slide-2-2-4">2.2.4. 挑战</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-3">2.3. 真实物理世界的强化学习应用（除游戏和仿真领域）</a>
+<ul>
+<li><a href="#/slide-2-3-1">2.3.1. 谷歌计算中心空调系统</a></li>
+<li><a href="#/slide-2-3-2">2.3.2. 神经网络架构搜索NAS</a></li>
+<li><a href="#/slide-2-3-3">2.3.3. 集成电路芯片设计</a></li>
+<li><a href="#/slide-2-3-4">2.3.4. OpenAI Rubik&rsquo;s Cube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-3">3. 方案</a>
+<ul>
+<li><a href="#/slide-3-1">3.1. 一型决策系统</a>
+<ul>
+<li><a href="#/slide-3-1-1">3.1.1. 几秒内的短期决策，不考虑长期策略</a></li>
+<li><a href="#/slide-3-1-2">3.1.2. 避免高复杂度的长效策略优化</a></li>
+<li><a href="#/slide-3-1-3">3.1.3. 避免复杂的功劳归属问题（Credit Assignment)</a></li>
+</ul>
+</li>
+<li><a href="#/slide-3-2">3.2. 场景段（方式）</a>
+<ul>
+<li><a href="#/slide-3-2-1">3.2.1. 无限时间地平线也可以，但是需要大量的时间和长期测试才可能收集到能耗和场景的分布</a></li>
+<li><a href="#/slide-3-2-2">3.2.2. 分成场景段（episodic）方式有利于验证方案，也可以扩展</a></li>
+</ul>
+</li>
+<li><a href="#/slide-3-3">3.3. 优点</a>
+<ul>
+<li><a href="#/slide-3-3-1">3.3.1. 非监督学习，不需要标注，唯一的监督信号是能耗</a></li>
+<li><a href="#/slide-3-3-2">3.3.2. 从大数据中学习</a></li>
+<li><a href="#/slide-3-3-3">3.3.3. 动态适应工况，持续更新模型</a></li>
+<li><a href="#/slide-3-3-4">3.3.4. 驾驶员是环境的一部分，不需要为驾驶员行为建模</a></li>
+<li><a href="#/slide-3-3-5">3.3.5. 可定义安全边界，不影响司机的安全驾驶</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-4">4. 数据要求</a>
+<ul>
+<li><a href="#/slide-4-1">4.1. 观测量需求</a>
+<ul>
+<li><a href="#/slide-4-1-1">4.1.1. 不需要导航数据，运动规划数据</a></li>
+<li><a href="#/slide-4-1-2">4.1.2. 可观测性</a></li>
+</ul>
+</li>
+<li><a href="#/slide-4-2">4.2. 决策空间</a>
+<ul>
+<li><a href="#/slide-4-2-1">4.2.1. 可控性:能有效影响能耗</a></li>
+<li><a href="#/slide-4-2-2">4.2.2. 电动力系统控制器参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-5">5. 机器学习框架</a>
+<ul>
+<li><a href="#/slide-5-1">5.1. 基于策略梯度方式</a></li>
+<li><a href="#/slide-5-2">5.2. 离线策略（Off Policy）:可提高样本利用效率</a></li>
+<li><a href="#/slide-5-3">5.3. 记忆池收集经验</a></li>
+</ul>
+</li>
+<li><a href="#/slide-6">6. 项目测试情况</a>
+<ul>
+<li><a href="#/slide-6-1">6.1. 封闭园区测试</a></li>
+<li><a href="#/slide-6-2">6.2. 开放道路测试</a></li>
+<li><a href="#/slide-6-3">6.3. 开放道路自由路况测试</a>
+<ul>
+<li><a href="#/slide-6-3-1">6.3.1. 预训练，冻结模型</a></li>
+</ul>
+</li>
+<li><a href="#/slide-6-4">6.4. 分析</a>
+<ul>
+<li><a href="#/slide-6-4-1">6.4.1. 利用能量回收</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-7">7. 展望和风险</a>
+<ul>
+<li><a href="#/slide-7-1">7.1. 量产</a></li>
+<li><a href="#/slide-7-2">7.2. 算法：</a>
+<ul>
+<li><a href="#/slide-7-2-1">7.2.1. 利用RNN进行时间序列编码</a></li>
+<li><a href="#/slide-7-2-2">7.2.2. 离线记忆数据的有效检索和利用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-1">
+<h2 id="1"><span class="section-number-2">1.</span> 标题，主题</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+</section>
+<section id="slide-1-1">
+<h3 id="1-1"><span class="section-number-3">1.1.</span> reward is enough</h3>
+</section>
+<section id="slide-1-2">
+<h3 id="1-2"><span class="section-number-3">1.2.</span> 基于大数据和奖励驱动的能源优化系统</h3>
+</section>
+</section>
+<section>
+<section id="slide-2">
+<h2 id="2"><span class="section-number-2">2.</span> 背景</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+</section>
+<section id="slide-2-1">
+<h3 id="2-1"><span class="section-number-3">2.1.</span> 车辆能源优化系统</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+</section>
+<section id="slide-2-1-1">
+<h4 id="2-1-1"><span class="section-number-4">2.1.1.</span> 基于专家系统</h4>
+<div class="outline-text-4" id="text-2-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="2-1-1-1"></a>基于规则<br /></li>
+<li><a id="2-1-1-2"></a>传统机器学习，需要划分场景<br /></li>
+<li><a id="2-1-1-3"></a>大数据应用效率低<br /></li>
+</ol>
+</section>
+<section id="slide-2-1-2">
+<h4 id="2-1-2"><span class="section-number-4">2.1.2.</span> 通常应用场景是混动车动力系统最优分配比</h4>
+</section>
+<section id="slide-2-2">
+<h3 id="2-2"><span class="section-number-3">2.2.</span> 强化学习</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+</section>
+<section id="slide-2-2-1">
+<h4 id="2-2-1"><span class="section-number-4">2.2.1.</span> 端到端，场景的切换是连续动态的</h4>
+</section>
+<section id="slide-2-2-2">
+<h4 id="2-2-2"><span class="section-number-4">2.2.2.</span> 适用于带噪声的高维度非平稳随机过程</h4>
+</section>
+<section id="slide-2-2-3">
+<h4 id="2-2-3"><span class="section-number-4">2.2.3.</span> 随机闭环控制：可利用随机采样的结果及时更新策略</h4>
+</section>
+<section id="slide-2-2-4">
+<h4 id="2-2-4"><span class="section-number-4">2.2.4.</span> 挑战</h4>
+<div class="outline-text-4" id="text-2-2-4">
+</div>
+<ol class="org-ol">
+<li><a id="2-2-4-1"></a>需要大量数据和规模化应用<br /></li>
+<li><a id="2-2-4-2"></a>不容易泛化<br /></li>
+<li><a id="2-2-4-3"></a>样本使用效率低 OpenAI Five for Dota， 45000年<br /></li>
+</ol>
+</section>
+<section id="slide-2-3">
+<h3 id="2-3"><span class="section-number-3">2.3.</span> 真实物理世界的强化学习应用（除游戏和仿真领域）</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+</section>
+<section id="slide-2-3-1">
+<h4 id="2-3-1"><span class="section-number-4">2.3.1.</span> 谷歌计算中心空调系统</h4>
+</section>
+<section id="slide-2-3-2">
+<h4 id="2-3-2"><span class="section-number-4">2.3.2.</span> 神经网络架构搜索NAS</h4>
+</section>
+<section id="slide-2-3-3">
+<h4 id="2-3-3"><span class="section-number-4">2.3.3.</span> 集成电路芯片设计</h4>
+</section>
+<section id="slide-2-3-4">
+<h4 id="2-3-4"><span class="section-number-4">2.3.4.</span> OpenAI Rubik&rsquo;s Cube</h4>
+</section>
+</section>
+<section>
+<section id="slide-3">
+<h2 id="3"><span class="section-number-2">3.</span> 方案</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+</section>
+<section id="slide-3-1">
+<h3 id="3-1"><span class="section-number-3">3.1.</span> 一型决策系统</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+</section>
+<section id="slide-3-1-1">
+<h4 id="3-1-1"><span class="section-number-4">3.1.1.</span> 几秒内的短期决策，不考虑长期策略</h4>
+</section>
+<section id="slide-3-1-2">
+<h4 id="3-1-2"><span class="section-number-4">3.1.2.</span> 避免高复杂度的长效策略优化</h4>
+</section>
+<section id="slide-3-1-3">
+<h4 id="3-1-3"><span class="section-number-4">3.1.3.</span> 避免复杂的功劳归属问题（Credit Assignment)</h4>
+</section>
+<section id="slide-3-2">
+<h3 id="3-2"><span class="section-number-3">3.2.</span> 场景段（方式）</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+</section>
+<section id="slide-3-2-1">
+<h4 id="3-2-1"><span class="section-number-4">3.2.1.</span> 无限时间地平线也可以，但是需要大量的时间和长期测试才可能收集到能耗和场景的分布</h4>
+</section>
+<section id="slide-3-2-2">
+<h4 id="3-2-2"><span class="section-number-4">3.2.2.</span> 分成场景段（episodic）方式有利于验证方案，也可以扩展</h4>
+</section>
+<section id="slide-3-3">
+<h3 id="3-3"><span class="section-number-3">3.3.</span> 优点</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+</section>
+<section id="slide-3-3-1">
+<h4 id="3-3-1"><span class="section-number-4">3.3.1.</span> 非监督学习，不需要标注，唯一的监督信号是能耗</h4>
+</section>
+<section id="slide-3-3-2">
+<h4 id="3-3-2"><span class="section-number-4">3.3.2.</span> 从大数据中学习</h4>
+</section>
+<section id="slide-3-3-3">
+<h4 id="3-3-3"><span class="section-number-4">3.3.3.</span> 动态适应工况，持续更新模型</h4>
+</section>
+<section id="slide-3-3-4">
+<h4 id="3-3-4"><span class="section-number-4">3.3.4.</span> 驾驶员是环境的一部分，不需要为驾驶员行为建模</h4>
+</section>
+<section id="slide-3-3-5">
+<h4 id="3-3-5"><span class="section-number-4">3.3.5.</span> 可定义安全边界，不影响司机的安全驾驶</h4>
+</section>
+</section>
+<section>
+<section id="slide-4">
+<h2 id="4"><span class="section-number-2">4.</span> 数据要求</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+</section>
+<section id="slide-4-1">
+<h3 id="4-1"><span class="section-number-3">4.1.</span> 观测量需求</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+</section>
+<section id="slide-4-1-1">
+<h4 id="4-1-1"><span class="section-number-4">4.1.1.</span> 不需要导航数据，运动规划数据</h4>
+</section>
+<section id="slide-4-1-2">
+<h4 id="4-1-2"><span class="section-number-4">4.1.2.</span> 可观测性</h4>
+</section>
+<section id="slide-4-2">
+<h3 id="4-2"><span class="section-number-3">4.2.</span> 决策空间</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+</section>
+<section id="slide-4-2-1">
+<h4 id="4-2-1"><span class="section-number-4">4.2.1.</span> 可控性:能有效影响能耗</h4>
+</section>
+<section id="slide-4-2-2">
+<h4 id="4-2-2"><span class="section-number-4">4.2.2.</span> 电动力系统控制器参数</h4>
+</section>
+</section>
+<section>
+<section id="slide-5">
+<h2 id="5"><span class="section-number-2">5.</span> 机器学习框架</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+</section>
+<section id="slide-5-1">
+<h3 id="5-1"><span class="section-number-3">5.1.</span> 基于策略梯度方式</h3>
+</section>
+<section id="slide-5-2">
+<h3 id="5-2"><span class="section-number-3">5.2.</span> 离线策略（Off Policy）:可提高样本利用效率</h3>
+</section>
+<section id="slide-5-3">
+<h3 id="5-3"><span class="section-number-3">5.3.</span> 记忆池收集经验</h3>
+</section>
+</section>
+<section>
+<section id="slide-6">
+<h2 id="6"><span class="section-number-2">6.</span> 项目测试情况</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+</section>
+<section id="slide-6-1">
+<h3 id="6-1"><span class="section-number-3">6.1.</span> 封闭园区测试</h3>
+</section>
+<section id="slide-6-2">
+<h3 id="6-2"><span class="section-number-3">6.2.</span> 开放道路测试</h3>
+</section>
+<section id="slide-6-3">
+<h3 id="6-3"><span class="section-number-3">6.3.</span> 开放道路自由路况测试</h3>
+<div class="outline-text-3" id="text-6-3">
+</div>
+</section>
+<section id="slide-6-3-1">
+<h4 id="6-3-1"><span class="section-number-4">6.3.1.</span> 预训练，冻结模型</h4>
+</section>
+<section id="slide-6-4">
+<h3 id="6-4"><span class="section-number-3">6.4.</span> 分析</h3>
+<div class="outline-text-3" id="text-6-4">
+</div>
+</section>
+<section id="slide-6-4-1">
+<h4 id="6-4-1"><span class="section-number-4">6.4.1.</span> 利用能量回收</h4>
+</section>
+</section>
+<section>
+<section id="slide-7">
+<h2 id="7"><span class="section-number-2">7.</span> 展望和风险</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+</section>
+<section id="slide-7-1">
+<h3 id="7-1"><span class="section-number-3">7.1.</span> 量产</h3>
+</section>
+<section id="slide-7-2">
+<h3 id="7-2"><span class="section-number-3">7.2.</span> 算法：</h3>
+<div class="outline-text-3" id="text-7-2">
+</div>
+</section>
+<section id="slide-7-2-1">
+<h4 id="7-2-1"><span class="section-number-4">7.2.1.</span> 利用RNN进行时间序列编码</h4>
+</section>
+<section id="slide-7-2-2">
+<h4 id="7-2-2"><span class="section-number-4">7.2.2.</span> 离线记忆数据的有效检索和利用</h4>
+</section>
+</section>
+</div>
+</div>
+<script src="/home/x/.emacs.d/.local/straight/build-28.2/revealjs/dist/reveal.js"></script>
+<script src="/home/x/.emacs.d/.local/straight/build-28.2/revealjs/plugin/markdown/markdown.js"></script>
+<script src="/home/x/.emacs.d/.local/straight/build-28.2/revealjs/plugin/notes/notes.js"></script>
+<script src="/home/x/.emacs.d/.local/straight/build-28.2/revealjs/plugin/search/search.js"></script>
+<script src="/home/x/.emacs.d/.local/straight/build-28.2/revealjs/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>

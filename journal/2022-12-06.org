@@ -1,0 +1,24 @@
+#+TITLE: 周二, 2022-12-06
+* 09:53 VEOS ADP cloud integration Meeting
+** Issues:
+*** tf graph execution /tracing (gpu utilization)
+*** remotecan asynchronous interface
+**** design review
+*** VBU version (safety, function)
+** Todo
+*** app integration on the cloud
+**** BOS integration
+**** function verification on the cloud (local host)
+**** data access
+**** log
+*** multiple data sources, multiple models
+***** driving style classification
+***** multiple vehicles
+***** federated learning
+****** data fusion
+*** app in container
+*** Plan
+**** performance verification
+***** comparison with on-board signal
+***** Anting
+***** Campus

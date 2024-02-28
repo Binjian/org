@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       3d828ce0-0108-42fc-85cd-11e5e18cb215
+:END:
+#+title: cooperative reinforcement learning
+* coordinated reinforcement learning
+[[id:9b90022a-391c-457a-b543-b939f8388430][deep-reinforcement-learning]]

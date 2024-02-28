@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       1890acb5-207a-44da-9239-c49ca0fe0d11
+:END:
+#+title: VERTEX Lab
+
+* VEhiculaR Tensor EXperience
+
+** Vision
+*** Using AI technology, in particular [[id:ff6d440f-07a9-4655-8f38-82f007aa13c3][deep learning]] and [[id:9b90022a-391c-457a-b543-b939f8388430][deep reinforcement learning]]  to improve vehicle control or prediction system
+*** AI-Powered Autonomous systems to optimize process variables, improve operation and production efficiency, increase safety
+** Domains:
+*** Vehicle Energy Optimization System ([[id:228e200d-6679-453b-af68-788ed82029d6][veos]])
+*** [[id:b2f068c3-a99a-4493-af4e-8f2762d9cb94][battery bank]]
+** Tasks:
+*** dyanmic/ static strategy to improve electrical vehicle energy efficiency by adjustment of controller parameters in electric power train (AlphaTruck)
+*** prediction of [[id:c8533b64-d2ab-4226-9424-2a7250d94b6a][battery]] state of health
+*** general performance optimization and cost reduction in vehicle operation and production
+
+* Recruiting
+
+[[id:47ed36d4-97cc-4912-9c21-ca27b9a2ddc0][Job Descirption for Deep Learning Engineer]]

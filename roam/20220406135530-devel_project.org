@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       c1d0f8ec-3e92-47a4-a12a-6bc9670b111b
+:END:
+#+title: devel-project
+
+* Battery
+[[id:39fa9095-e971-4b1e-9550-fab0045aaa8e][BLMP-devel]]
+
+* VEOS
+[[id:59bd937c-b70b-4546-bb0b-98d2215737d8][veos-adp]]

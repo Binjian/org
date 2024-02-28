@@ -1,0 +1,15 @@
+#+TITLE: 周五, 2023-02-24
+* 15:56 ITS Staff Weekly <2023-02-24 周五>
+** Company
+*** OKR 2023
+*** 换电站运营，数据，（非客户端）
+** Weekly review
+* 16:50 OKR
+** 培训
+** 专利
+*** 4 个专利（两个发明）
+*** 人员：依照
+** 平台化开发
+*** 平台分解到项目优化里
+** Research Report 2 veos, midterm, end term
+** 1 * EI paper

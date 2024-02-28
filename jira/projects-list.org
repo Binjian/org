@@ -1,0 +1,80 @@
+* Project: [[file:ALSW.org][ALSW]]
+:PROPERTIES:
+:name:     ALSW
+:key:      ALSW
+:lead:     AD License Software
+:ID:       10202
+:url:      https://jira.newrizon.work/browse/ALSW
+:END:
+* Project: [[file:AD.org][AD]]
+:PROPERTIES:
+:name:     AD
+:key:      AD
+:lead:     ADSoftware
+:ID:       10100
+:url:      https://jira.newrizon.work/browse/AD
+:END:
+* Project: [[file:APPC.org][APPC]]
+:PROPERTIES:
+:name:     APPC
+:key:      APPC
+:lead:     App需求收集
+:ID:       11603
+:url:      https://jira.newrizon.work/browse/APPC
+:END:
+* Project: [[file:CAP.org][CAP]]
+:PROPERTIES:
+:name:     CAP
+:key:      CAP
+:lead:     capstone
+:ID:       11200
+:url:      https://jira.newrizon.work/browse/CAP
+:END:
+* Project: [[file:AI.org][AI]]
+:PROPERTIES:
+:name:     AI
+:key:      AI
+:lead:     Data-Driven Planner
+:ID:       10400
+:url:      https://jira.newrizon.work/browse/AI
+:END:
+* Project: [[file:ALSYS.org][ALSYS]]
+:PROPERTIES:
+:name:     ALSYS
+:key:      ALSYS
+:lead:     ITS System and Simulation
+:ID:       10201
+:url:      https://jira.newrizon.work/browse/ALSYS
+:END:
+* Project: [[file:NANO.org][NANO]]
+:PROPERTIES:
+:name:     NANO
+:key:      NANO
+:lead:     Nanocar
+:ID:       10301
+:url:      https://jira.newrizon.work/browse/NANO
+:END:
+* Project: [[file:SQEM.org][SQEM]]
+:PROPERTIES:
+:name:     SQEM
+:key:      SQEM
+:lead:     SQE Management
+:ID:       10801
+:url:      https://jira.newrizon.work/browse/SQEM
+:END:
+* Project: [[file:BLMP.org][BLMP]]
+:PROPERTIES:
+:name:     BLMP
+:key:      BLMP
+:lead:     电池全生命周期管理平台
+:ID:       11604
+:url:      https://jira.newrizon.work/browse/BLMP
+:END:
+* Project: [[file:BLMPC.org][BLMPC]]
+:PROPERTIES:
+:name:     BLMPC
+:key:      BLMPC
+:lead:     电池全生命周期管理平台需求收集
+:ID:       11605
+:url:      https://jira.newrizon.work/browse/BLMPC
+:END:

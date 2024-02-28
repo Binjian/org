@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       fe9928b0-023e-4207-9c69-ca3e815d056d
+:END:
+#+title: offline reinforcement learning
+[[id:9b90022a-391c-457a-b543-b939f8388430][deep-reinforcement-learning]]
+
+
+[[id:55a779b7-e1e5-44d4-89e9-bf90c5e7b610][Conservative Q Learning]]
+
+
+[[id:cef3b331-ad2d-4eba-afd3-86bcfaf5f00d][DDPG]]

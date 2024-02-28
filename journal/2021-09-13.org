@@ -1,0 +1,14 @@
+#+TITLE: 一, 2021-09-13
+* TODO 09:05 agenda [0/2]
+** [ ] research in RNN and LSTM training
+fast ai book
+
+** [ ] support national innovation competition
+* TODO 09:16 TODO research in RNN and LSTM Training [0/2]
+** TODO fastai book chap 10
+reading
+** TODO fastai book chap 11
+<2021-09-13 一 13:00>
+* 09:19 TODO finish the rnn review
+<2021-09-13 一 11:00>
+* fit one cycle

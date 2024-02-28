@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       4b9aa962-6e09-4534-a88e-3b6fc38d4788
+:END:
+#+title:capstone
+application:
+ev
+methode:
+[[id:9b90022a-391c-457a-b543-b939f8388430][deep-reinforcement-learning]]
+platform:
+[[id:6aa2c2e8-4636-453f-a681-039dec041cc1][simulation]]
+[[id:6e22a310-074b-420f-9f03-d35c05386160][carla]]
+
+
+* DONE start new org file for capstone
+* TODO create outline of the org file for capstone
+SCHEDULED: <2021-09-03 五>
+* [[id:3d828ce0-0108-42fc-85cd-11e5e18cb215][cooperative reinforcement learning]]
+** for veos
+
+
+* Longicontrol
+** transfer learning: from Gym to the real world
+** from planning to model-based reinforcement learning [[id:9b90022a-391c-457a-b543-b939f8388430][deep-reinforcement-learning]]
+** github repo is in [[github.com/dynamik1703/gym_longicontrol][LongiControl]]
+** safety / conflicting goals / explainable
+** [[id:24c4f509-d0c6-41d6-b5d6-0b0833d14b86][system identification]]
+*** road load coefficient A, B, C
+
+* [[id:6aa2c2e8-4636-453f-a681-039dec041cc1][simulation]]
+** construct typical highway, urban scenarios
+** pgdrive
+** Assessment of veos strategy in open-ended simulation and its improvement: regarding overfitting, safety performance, traffic rule respectation and generalization, multi-agent behavior
+
+* [[id:dbd81655-b7c8-470d-b69a-292f6bfb3da5][UM-SJTU-T5]]
+** Gitlab, ScrUM & Jira
+*** 电脑,服务器
+*** 公司账号,vpn
+*** 分工?故事点分解?
+** Seminar?
+*** RL
+*** PCG
+*** 路阻系数
+** 按开发内容的开发状态
+*** 环境安装
+*** 仿真接口:
+**** 运动状态,安全状态,记录,
+**** 孵化接口
+**** traffic manager
+**** 训练?
+*** 能量接口(PGDrive) paper调研;
+*** 理论:路阻系数 (查找) --> 能量, 比较
+
+
+** design review
+*** customer requirements

@@ -1,0 +1,150 @@
+#+TITLE: Thu, 2022-01-20
+* TODO 08:35
+
++ backlog sprint setup
++ veos reward with punishment
+* TODO 09:11
+** DONE patent review meeting summary
+** DONE enterprise innovation competition slides
+** DONE test veos release
+** TODO RDPG
+** DONE 华进杜娟娟
+** DONE 交大马澄斌
+* 09:23
+** TODO innovation competetion training
+** TODO patent application
+* TODO 09:13
+** DONE Start new sprint
+** Prepare for VEOS review
+** RDPG (LSTM training)
+* 09:40
+** TODO TDP form filling and training
+** TODO redob code modification
+** TODO episode free
+** TODO neural turing machines
+** TODO patent application draft
+* 08:23
+** TODO epfree coding
+** TODO iC1 experience
+* 13:30
+** TODO epfree1 epsiode change
+** TODO epfree2 episode interrupted for interlude hold
+** TODO exit condition
+** TODO weekly report
+*** DONE episodefree concept construction and testing
+*** DONE code baseline preparation
+*** DONE testing system validation, hmi implementation
+*** DONE collection of baseline data without AI collection
+*** DONE patent support
+*** TODO epfree road test, debugging get base
+*** TODO sequential encoding of observation code baseline
+*** TODO patent review
+*** TODO capstone 2nd scrum meeting
+** TODO weekly report
+*** TODO capstone 2nd scrum meeting
+* TODO 08:35
+
++ backlog sprint setup
++ veos reward with punishment
+* TODO 09:11
+** DONE patent review meeting summary
+** DONE enterprise innovation competition slides
+** DONE test veos release
+** TODO RDPG
+** DONE 华进杜娟娟
+** DONE 交大马澄斌
+* 09:23
+** TODO innovation competetion training
+** TODO patent application
+* TODO 09:13
+** DONE Start new sprint
+** Prepare for VEOS review
+** RDPG (LSTM training)
+* 09:40
+** TODO TDP form filling and training
+** TODO redob code modification
+** TODO episode free
+** TODO neural turing machines
+** TODO patent application draft
+* 08:23
+** TODO epfree coding
+** TODO iC1 experience
+* 13:30
+** TODO epfree1 epsiode change
+** TODO epfree2 episode interrupted for interlude hold
+** TODO exit condition
+** TODO weekly report
+*** DONE episodefree concept construction and testing
+*** DONE code baseline preparation
+*** DONE testing system validation, hmi implementation
+*** DONE collection of baseline data without AI collection
+*** DONE patent support
+*** TODO epfree road test, debugging get base
+*** TODO sequential encoding of observation code baseline
+*** TODO patent review
+** TODO weekly report
+*** TODO patent review
+* TODO 08:35
+
++ backlog sprint setup
++ veos reward with punishment
+* TODO 09:11
+** DONE patent review meeting summary
+** DONE enterprise innovation competition slides
+** DONE test veos release
+** TODO RDPG
+** DONE 华进杜娟娟
+** DONE 交大马澄斌
+* 09:23
+** TODO innovation competetion training
+** TODO patent application
+* TODO 09:13
+** DONE Start new sprint
+** Prepare for VEOS review
+** RDPG (LSTM training)
+* 09:40
+** TODO TDP form filling and training
+** TODO redob code modification
+** TODO episode free
+** TODO neural turing machines
+** TODO patent application draft
+* TODO epfree2 episode interrupted for interlude hold
+* 08:23
+** TODO epfree coding
+** TODO iC1 experience
+** TODO epfree1 epsiode change
+* 13:04
+** VEOS TDP Review
+*** veos-t: terry
+**** torque, 减速度, torque表，最大torque表；动态标定
+**** 车和人：
+***** 车：随机探索,rl
+***** 人：专家
+**** 数据：低频，3秒刷写，18秒观测
+**** 油门放空值，匀速线（油门控制，线性，减速度，4.5吨），滑行阻力曲线，二次插值
+**** 方法1：rl调节滑行减速度，期望值
+**** 方法2：调节平滑一点会更省，高频区域变平滑，可与方法1组合
+**** 实验:
+***** 简单工况；30~40,自由工况，8分钟一次；
+***** 天气冷导致数据不可用；
+***** 结果：
+****** 3%，3~5%；
+****** anting: 1~3%; 200次；1.5%~3%
+*** terry summary
+** VEOS ADP Review
+*** 5~10辆测试车的批量，以量产形式下发，使用及测试
+*** 自由工况：盲测，仿照用户运营；驾驶员不知道开启；
+*** 有节能效果，但不能引起普通驾驶的安全和性能问题
+*** 5个月
+*** 数据评估
+*** 决策分工
+**** daniel
+**** hongshuai vbu
+**** 项目经理：晓飞
+**** 算法，技术：忻斌健
+**** 方案: Terry
+*** 启动会
+**** 估计资源，申请
+**** 春节后第一周
+**** 文档：confluence, jira
+**** 节点估计

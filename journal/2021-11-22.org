@@ -1,0 +1,24 @@
+#+TITLE: 一, 2021-11-22
+* 09:50
+** DONE anting road test system validation
+** DONE road test
+** DONE okr
+* 08:59
+** Scrum planning
+*** veos
+**** <20 kpmh
+***** pretraining in the campus
+***** testing on the road
+**** <30 kpmh:
+***** testing without training
+***** pretraining on the road
+***** training on the road
+**** rdpg coding
+**** keep simulation running
+*** capstone
+*** battery back
+** road test
+*** action space extension coding & verification
+*** improved HMI testing
+** ITS team meeting
+** Patent review update

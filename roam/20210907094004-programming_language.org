@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       62a198c9-6302-4ca0-82bf-a245d0ea2904
+:END:
+#+title: programming languages
+
+[[id:1a5c9833-a494-4952-b8e4-9c94f429489d][Python]]
+
+[[id:525c519b-64b1-4fbe-a37c-85af4b3ab285][C++]]
+
+
+[[id:01ca9373-46ab-4a11-a24b-af179f73d83f][emacs lisp]]
+
+[[id:03bd1ddd-0f79-481a-b6f2-8e58f12f69b1][cmake]]
+
+[[id:08ab59db-166b-4183-9c67-adb0b96a6656][bash script]]

@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       57b5fbd2-df44-4734-a69c-538f254c1f13
+:END:
+#+title: computer vision
+
+[[id:e874c7e2-6531-4ddf-a7fb-2e9b515301cd][NeRF]]

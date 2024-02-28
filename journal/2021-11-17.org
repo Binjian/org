@@ -1,0 +1,10 @@
+#+TITLE: 三, 2021-11-17
+* 08:52
+** road test
+*** gpu verification
+*** logging with logc and logd
+**** improved/reduced logs, round, counter
+**** sockethandler with cutelog
+**** check control logic and dataflow
+** cai weize
+** capstone

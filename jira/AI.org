@@ -1,0 +1,37 @@
+
+* AI-Tickets
+** TODO Mathematical formulation for Virtual Logisitic Hub :AI_521:
+:PROPERTIES:
+:assignee: binjian xin
+:filename: AI
+:reporter: binjian xin
+:type:     Story
+:type-id:  10001
+:priority: Medium
+:status:   In Progress
+:created:  2022-01-28T13:35:06.000+0800
+:updated:  2022-01-28T17:34:31.000+0800
+:ID:       AI-521
+:CUSTOM_ID: AI-521
+:END:
+:LOGBOOK:
+:END:
+*** description: [[https://jira.newrizon.work//browse/AI-521][AI-521]]
+GNN formulation:
+   * two network:
+   ** geographic network region nodes
+   ** vehicle network: truck nodes
+   * message: goods
+   ** properties: loads, volumen, occupancy
+
+  delaunay triangulation
+
+   
+
+  objective: optimal path planning for each truck.
+*** Comment: binjian xin
+:PROPERTIES:
+:ID:       19971
+:created:  2022-01-28T17:33:13.000+0800
+:END:
+  get the base framework for discussion

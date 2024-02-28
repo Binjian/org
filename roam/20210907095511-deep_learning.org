@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       ff6d440f-07a9-4655-8f38-82f007aa13c3
+:END:
+#+title: deep learning
+[[id:8b22340e-26b8-493e-8355-6f231415d81d][Neural Radiance Field]]
+
+[[id:9b90022a-391c-457a-b543-b939f8388430][deep-reinforcement-learning]]
+
+[[id:57b5fbd2-df44-4734-a69c-538f254c1f13][computer vision]]
+
+[[id:1355a07c-8e30-4ae9-ae86-8f17ce0b1a36][rnn]]
+
+[[id:3ea01d40-03e1-446a-abeb-8fb79bcb65d3][neural turning machine]]
+
+
+[[id:c099ea75-ef58-4ca8-96a2-6d1468e8d9e8][GAN]]
+[[id:015b3838-d86c-456a-b724-7d6863404046][
+pondernet]]
+
+
+[[id:eb2233d6-db7b-428f-b6f9-d6501082381b][deep learning hardware]]

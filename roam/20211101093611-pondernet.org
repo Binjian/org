@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       015b3838-d86c-456a-b724-7d6863404046
+:END:
+#+title: pondernet
+[[id:bddc0c72-394d-4a87-95d9-984b55f6479e][episodic memory]]

@@ -1,0 +1,17 @@
+#+TITLE: 一, 2022-02-21
+* 15:59
+** weekly schedule
+*** RDPG implementation
+**** understand tensorflow gradient tape, graph and function
+*** Park test of RDPG
+*** understand GAN training
+*** update samples for BLMP and retrain
+**** UMap
+**** understand t-SNE: unsupervised learning (clustering, non-parametric, nonlinear, visualization)
+**** imputation (preprocess/replace missing data)
+*** learn sk-learn, skorch
+**** HyperParameter Search for Production
+**** create objective for select hyperparameter
+*** prepare TechDay
+*** Patent GAN for BLMP
+*** Tongji RL master review

@@ -1,0 +1,9 @@
+#+TITLE: Thu, 2023-04-06
+* 16:05 ITS Staff Weekly <2023-02-17 周五>
+** 2023 年整体工作
+*** 软著下周二，提交两个
+DEADLINE: <2023-02-21 周二>
+**** TODO NeRF based SV camera calibration system
+**** TODO LLM driven complex road scene driving decision system
+* 11:51 Baidu-Cloud-Server
+** A10, 16x Xeon Platinum 8350C @ 2.6 GHz, 64G memory, 500GB hard disk: 23652 RMB

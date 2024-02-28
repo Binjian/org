@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       76c92ef8-8c74-406a-801d-adfa0f4b8b29
+:END:
+#+title: data engineering
+[[id:ac992fc9-e291-4acc-8eb2-d3a8c2619a07][opensource steam processing]]
+
+[[id:18d7b376-c12a-41a5-977a-966a078925f4][data warehouse]]

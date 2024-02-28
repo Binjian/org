@@ -1,0 +1,35 @@
+#+TITLE: Wed, 2021-12-29
+* 08:23
+** TODO
+* 14:00
+** Aliyun visit
+*** introduction
+**** 自动驾驶
+***** 闪电立方 PCIe？
+***** V100， A100，公共云；
+***** 数据采集，清洗标注，模型训练(quota组，权限资源管理)，模型部署与推理
+****** ai compiler; arm架构优化 cpu
+***** 标注平台：监狱人力；
+***** 训练平台
+****** PAI-Eflops
+****** PAI AI 管理服务:工作空间，任务，镜像，集群监控
+****** 开发服务DSW交互式建模
+****** 分布式训练服务
+****** Blade (vs jax?)
+***** 案例：
+****** 赢彻，多机多卡 jindoFS
+****** Lotus: 单机多卡
+****** 小鹏：数据层面分析，预测类，能耗分析
+***** 优点：
+****** 成本更低TCO
+****** 高可用，高可靠
+****** 安全合规：图商，数据脱敏，外资云不受认可；知行科技，从AWS到阿里云
+****** 全球通用的技术栈
+*** question
+**** sagemaker
+**** online, on policy
+**** federated learning
+**** streamlining training, deploying, testing, monitoring, deciding
+**** scaling up
+**** risk management
+**** sweep模式，grid search;

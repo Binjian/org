@@ -1,0 +1,83 @@
+#+TITLE: Mon, 2022-05-02
+* 09:22 Sprint Scrum Content
+** TODO VEOS ADP
+DEADLINE: <2022-04-22 Fri>
+*** remotecan json handling, quadruple creation, store and indexing
+DEADLINE: <2022-04-15 Fri>
+*** remotecan timestamp requirement
+DEADLINE: <2022-04-15 Fri>
+*** cluster resource, requirement, deployment
+DEADLINE: <2022-04-22 Fri>
+**** access, training, debugging, visualization
+**** docker composition, submission, conda, Jupyter notebook
+*** driving style clustering
+DEADLINE: <2022-04-22 Fri>
+**** First with Supervised, with LSTM
+**** Unsupervised: training with TimeGAN, clustering with PCA, t-SNE and UMap, (TriMap)
+** TODO BLMP
+DEADLINE: <2022-04-22 Fri>
+*** TODO Code Review
+DEADLINE: <2022-04-22 Fri>
+**** TODO GAN convergence
+**** TODO masking
+**** TODO refactoring (packaging, API, property, logging, inference logic)
+*** TODO Data update
+DEADLINE: <2022-04-22 Fri>
+**** TODO outlier highlighting
+**** TODO cluster interpretation
+***** TODO Weekly review with Dr. Wang, Outlier interpretation
+DEADLINE: <2022-04-15 Fri>
+***** TODO reverse finding in clusters
+DEADLINE: <2022-04-15 Fri>
+**** TODO dataset update by production data (timestamps, VIN)
+DEADLINE: <2022-04-22 Fri>
+** TODO BLMP
+DEADLINE: <2022-04-22 Fri>
+*** TODO Data update
+DEADLINE: <2022-04-22 Fri>
+**** TODO dataset update by production data (timestamps, VIN)
+DEADLINE: <2022-04-22 Fri>
+* 09:22 Sprint Scrum Content
+** TODO VEOS ADP
+DEADLINE: <2022-04-22 Fri>
+*** remotecan json handling, quadruple creation, store and indexing
+DEADLINE: <2022-04-15 Fri>
+*** remotecan timestamp requirement
+DEADLINE: <2022-04-15 Fri>
+*** cluster resource, requirement, deployment
+DEADLINE: <2022-04-22 Fri>
+**** access, training, debugging, visualization
+**** docker composition, submission, conda, Jupyter notebook
+*** driving style clustering
+DEADLINE: <2022-04-22 Fri>
+**** First with Supervised, with LSTM
+**** Unsupervised: training with TimeGAN, clustering with PCA, t-SNE and UMap, (TriMap)
+** TODO BLMP
+DEADLINE: <2022-04-22 Fri>
+*** TODO Code Review
+DEADLINE: <2022-04-22 Fri>
+**** TODO GAN convergence
+**** TODO masking
+**** TODO refactoring (packaging, API, property, logging, inference logic)
+*** TODO Data update
+DEADLINE: <2022-04-22 Fri>
+**** TODO outlier highlighting
+**** TODO cluster interpretation
+***** TODO Weekly review with Dr. Wang, Outlier interpretation
+DEADLINE: <2022-04-15 Fri>
+***** TODO reverse finding in clusters
+DEADLINE: <2022-04-15 Fri>
+** TODO BLMP
+DEADLINE: <2022-04-22 Fri>
+*** TODO Data update
+DEADLINE: <2022-04-22 Fri>
+**** TODO cluster interpretation
+***** TODO reverse finding in clusters
+DEADLINE: <2022-04-15 Fri>
+** TODO  <2022-05-02 Mon>
+*** TODO battery soh new data format (timestamp, separate csv, code) ? --> Hongchen?
+* 21:58 Cloud Problem
+** Install, github, ubuntu app overall
+** internal repo?
+** docker?
+** Install package by myself

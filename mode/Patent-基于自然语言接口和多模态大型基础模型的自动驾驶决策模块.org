@@ -1,0 +1,409 @@
+#+title: 基于自然语言接口和大型多模态基础模型的自动驾驶决策模块
+#+author: 忻斌健
+#+date: <2023-11-06 Mon>
+
+* 联系
+| 日期              | 申请人 |
+|------------------+-------|
+| <2023-11-06 Mon> | 忻斌健 |
+
+
+|                           |                                                     |
+|---------------------------+-----------------------------------------------------|
+| 交底书名称                 | 基于自然语言接口和多模态大型基础模型的自动驾驶决策模块 |
+| 发明人                     | 忻斌健                                               |
+| 联系人                     | 忻斌健                                               |
+| 交底书撰写人               | 忻斌健                                               |
+| 撰写人办公电话             |                                                     |
+| 撰写人手机号码 （急案必须） | 13918961550                                         |
+| 撰写人 email               | binjian.xin@newrizon.com                            |
+
+* 交底书注意事项
+1. _代理人并不是技术专家，交底书要使代理人能看懂，尤其是背景技术和详细技术方案，一定要写得全面、清楚、完整。_
+2. _全文对同一事物的叫法应统一，避免出现一种事物多种叫法。_
+3. _避免出现纯粹的商业广告用语、宣传及恶意且不客观的攻击性语言等；_
+4. _在与代理人沟通时，对于代理人的咨询和问题，应认真讲解并给予回答，并按要求及时且正确地补充相应材料。_
+5. _专利法对公开充分的规定：_
+    1) _专利必须是一个技术方案，应该阐述发明目的是通过什么技术方案来实现的，不能只有原理，也不能只做功能介绍；_
+    2) _专利必须充分公开，以本领域普通技术人员不需付出创造性劳动即可进行实施为准。_
+    _对我们来说，必须满足上述规定，专利申请才能被批准，获得专利权。_
+6. _技术交底书完成后，请将蓝色字体的说明文字进行删除。_
+
+* 缩略语和关键术语
+** 相关技术背景以及最接近的现有技术
+***  背景技术：用于方便读者理解本发明的技术背景
+_背景技术是对最接近的现有技术的说明，它是作出发明技术方案的基础；现有技术又称已有技术，是指在所属技术领域里已经公开的技术和知识，包括专利文献中存在的技术_
+
+自动驾驶系统通常采用模块化的结构实现，具体地软件上通常用分层的模块分别实现感知，决策，规划，轨迹跟踪，横向和纵向车辆控制等不同的功能。这种分层结构软件协议栈中的决策模块通常会根据感知的数据计算和更新周围环境中的目标运动信息，基于运动模型更新自车和环境目标的动态相对位置关系，再参考基于安全，交通法规预设确定的量化规则，做出合理的跟随或变道的横向决策和加速或减速的总想决策。这种基于量化规则的决策模块有两个缺点：第一，它通常只能处理平稳的交通场景，对于稍复杂一些的场景或者动态性稍高的场景往往无法合理进行决策;第二，即便对于稳定的交通场景，在处于边界条件的时刻，往往由于自车和环境车辆决策交互的不可预测性所造成的交通场景决策本身的模糊性，量化规则也无法合理和灵活地进行决策。对于采用基于规则的自动驾驶系统，实际工程上往往通过针对特定场景堆叠复杂的启发式量化规则来覆盖测试中出现的决策问题，也就是专家系统。专家系统是一种不可持续的开发策略，一方面这是由实际交通场景和多方决策的复杂性造成的，这种堆叠规则的方法会导致庞大而复杂的规则系统，本身可能不自洽且无法合理解释规则之间的相容性；另一方面，在特定道路场景随测试增多，针对不同场景分别维护复杂的规则库，特别是测试这些规则库的工程开销是不可持续的。
+
+另外这种分层的软件架构中的感知模块，无论是采用传统基于特征工程方法（Feature Engineering）或者基于端到端的神经网络方法，由于其系统定义，它们检测输出的结果结构化的特征向量，经常会丢失原始场景所包含的丰富信息。
+
+利用端到端的深度神经网络是如今自动驾驶技术处理复杂场景的主要方法。目前的应用方式举例来说有以下几种方式：1.偏重在感知模块，诸如基于 Transformer 模型的 BEV 模型（鸟瞰图模型）或者占据格栅网络（Tesla 等)；2. 在感知决策一体化上的应用还比较少，目前主要的方式有采用强化学习方式进行从感知到规划控制或决策的端到端学习（NVidia, Wayve 等）；3.针对十字路口等特殊的复杂场景进行特殊特征处理和与感知模型的融合（理想汽车）
+
+*** 与本发明相关的现有技术一
+**** 现有技术一的技术方案
+_除开拓性发明外，应当提供与本发明技术方案最接近的现有技术的技术方案，针对您所申请发明创造的领域，其同类技术、产品处于一种什么样的技术状态，具有什么样的基本结构、性能和原理。_
+
+Wayve LingGO-1 https://wayve.ai/thinking/lingo-natural-language-autonomous-driving/
+Wayve 自有的一种多任务，集合感知，场景理解和控制决策的大型基础模型（VLAM），它是 Wayve 原有的图像与控制基础大模型的基础上添加语言模型得到综合大型模型。自然语言结合视觉， 驾驶控制后，语言信息用于驾驶决策的解释，以及在训练已有的驾驶基础模型（视觉&驾驶控制）过程中提供调试信息，它是大型基础模型。
+在一种模式下，使用自然语言接口查询大型基础模型，用于解释行为，提供调试场景理解和控制决策功能需要的信息，但并不直接用于规划或控制车辆。它可以在驾驶过程中提供对决策的评论，增加测试数据中驾驶行为的可解释性，交叉评估基础模型决策的输出。
+**** 现有技术一的缺点
+_客观地指出现有技术在结构上、使用上所存在的实质问题和缺陷（该指出的现有技术中存在的问题和缺陷一定是本发明所能够解决的问题和缺陷），并且要客观、事实求是地说明该实质问题和缺陷的存在原因（为什么会存在这样的问题和缺点），可能的话，还应提供在解决该问题和缺陷时曾经遇到的困难；_
+_请务必提供一些描述同类技术、产品的期刊、论文、专利文献。_
+_开拓性发明一种全新的技术解决方案,在技术史上未曾有过先例,该全新的技术解决方案为人类科学技术在某个时期的发展开创了新纪元,这种发明称为开拓性发明_
+
+- 使用的模型是特定的结合视觉控制语言的公司自有基础模型，需要自行训练
+- 自然语言接口的使用是为增加自有基础模型的可解释性信息，比如对在测试中控制决策输出进行评估，并不直接用于控制决策
+
+** 本发明技术方案的详细阐述（发明内容）
+*** 本发明所要解决的技术问题
+_针对最接近的现有技术所存在的问题，结合申请所能取得的效果，提出本发明创造所要解决的任务。_
+
+- 利用多模态大型基础模型进行场景理解，加强或者取代现有感知模块的功能
+- 利用多模态大型基础模型进行驾驶决策
+- 利用多模态大型基础模型进行信息提取和代码适配
+- 可集成到传动自动驾驶软件协议栈
+- 接口完全兼容现存软件协议栈
+- 可非常便捷集成现有系统需求
+- 可灵活布置到移动端（适配的较小模型）或云端（高性能大型基础模型)
+
+*** 本发明技术实现的具体实施例
+**** 总体要求
+1. _专利必须是一个技术方案，应该阐述发明目的是通过什么技术方案来实现的，不能只有原理，也不能只作功能介绍。_
+2. _发明人要提供描述本发明的必要的附图或照片，该附图应该清楚地体现发明点所在，为此可采用多种绘图方式，并将主要部件统一编号（即多幅附图中每个部件的编号应前后一致）。_
+3. _为了便于代理人对方案的理解，可同时提供三维视图。_
+4. _每个图都应有对应的文字说明。_
+5. _应结合附图对本发明方案的整体结构、重点部件（尤其是与现有技术不同的部位）、工作原理、以及这样的改进是如何解决前面提到的技术问题等内容进行详细说明。_
+**** 具体要求：
+_应当对发明作出清楚、完整的说明,以所属技术领域的技术人员能够实现为准，对自己的发明创的技术内容进行全面介绍、详细描述，如对产品来说，包括哪些部件、各部件之间的位置关系、连接关系、作用原理。对于工艺方法来说包括哪些步骤、每步骤的操作工序如何、各步骤的作用是什么等等；自己的发明创造的优点介绍，与现有技术、现有产品进行比较，结合技术内容说明自己发明创造的优越性。如结构简化、加工方便、生产效率提高、产品收率提高、环境污染减少等等。_
+1. _机械类产品应结合附图说明产品的静态结构（即包括哪些部分和各部分之间的连接关系）及动态工作过程。_
+2. _电子类产品，应结合附图详细说明其由哪些分电路构成，各分电路及其中主要元器件之间的输出、输入配合和在电路中所起的作用、工作原理、各分电路是否有替换电路。_
+3. _化学类产品（包括生物、医药、基因工程、农业）应说明其化学组成、含量范围、各组份的作用等，还应在组份含量范围内举出一至几个具体的配比例子。_
+4. _工艺方法类（生物、医药、农业）应写明其步骤，各步骤中所需要的条件，如温度、压力范围、酸碱度、时间及其它具体要求。_
+_一般应达到同行看到该部份材料后能够完全搞清楚，并能实施为准。_
+
+
+**** 系统结构
+
+#+CAPTION: 图 1. 系统流程图
+#+NAME: fig:llm4ad_systemblocks
+#+attr_org: :width 800px
+[[excalidraw:/home/n/.org.d/excalidraw/124b5088-ec15-4bbb-b842-dab6f3a0b75e.excalidraw.svg]]
+
+系统如上图所示由两个子系统组成，其中感知和控制子系统的接口除了传感器输出为视频和点云等原始数据外都是结构化数据比如字典，即传统软件模块的程序接口，而非自然语言接口。这个子系统只需满足接口要求即可，可以是传统自动驾驶软件系统中的感知和控制模块，也可以是端到端的神经网络实现的感知和控制模块。决策子系统有六个部分组成：
+- 感知提示生成模块：
+  从数据库接受多种预设：1.感知目标的预设置和需要查询的内容：比如系统需要处理的场景类（高速公路，城区道路，十字路口，停车场泊车，地下车库等等），对应需要查询的道路目标（汽车，行人，摩托车，自行车）以及它们和本车的相对位置，在道路上的位置和方向，道路情况（车道数，道路曲率大小，交通是否拥堵），本车需要确定的信息和状态（在道路上的位置，与前车的位置关系等）2.由于需要集成到后面的决策提示中，可选地，可能需要添加格式化输出的预设置（比如需要格式化 json 字符串）3.其他一些模板设置（比如添加注意安全和谨慎驾驶的预设信息）。它接受预设之后确定和组装最后的感知提示文本。
+- 环境感知模块： 即多模态基础模型，此处使用的模态为视觉和语言两种，它接受感知提示生成模块的感知提示文本，对传感器输出的原始感知信息如图像或点云进行针对性查询，根据预训练得到的常识知识进行推理，得到自然语言形式的查询结果，此查询结果中含有感知提示预期的结果：1.当前感知信号对应的场景类别比如是高速公路换道或者通过十字路口；2.本车的位置和状态，以及目标和环境状态，比如当前环境中的移动目标，车辆，行人，摩托车，自行车，以及它们和本车相对位置关系和在当前道路上的位置和方向；如果此大型基础模型的对量化信息的检测较好，也可输出目标的量化信息比如距离，速度，加速度等。同时根据感知提示中的格式化要求，输出结构化自然语言形式的结果，比如结构化 json 字符串的结果。
+- 决策提示生成模块：
+  从环境感知模块输出接受两种结构化数据，这可以是多模态基础模型作为环境感知功能模块输出的结果，也可以是与感知和控制子系统输出经过交叉检验组合的结果。 1.当前的场景类别，2.目标和环境检测结果。再根据这些信息从数据库中获取对应场景类的一些预设（比如换道场景的一些提示文本基本结构和假设的文本模板预设，参数化接口），情景预设（比如行程是否紧急），和其他一些模板预设（比如假设司机是注重安全的有经验司机），确定和组装提示文本模板。然后再将目标和环境检测结果比如道路上其他车辆运动信息和相对本车位置，路况等信息填入提示文本模板生成自然语言形式的提示文本。
+- 决策模块：
+  即多模态基础模型，此处的使用模态为视觉和语言两种，它接受决策提示生成模块的提示文本对传感器输出的原始视频或点云进行查询，根据预训练得到的常识知识进行推理，得到自然语言形式的查询结果，此查询结果中含有确定的横向和纵向决策。
+- 指令提示生成
+  决策模块输出的横纵向决策是自然语言形式的，并不能直接作为控制子系统的输入。还需要转化成结构化数据，满足匹配控制子系统的需要。决策信息提取和代码适配模块也是大型语言模型，可以和决策模块共用同一个模型。它 根据数据库输出的预设场景模板，驾驶风格预设和其他模板预设进一步确认车辆控制一些驾驶偏好或预期目标，在附加格式化要求生成格式化提示模板，再和决策模块输出的自然语言结果组合成第二个自然语言形式的提示文本，用这个提示文本查询大型语言模型，就可以获得横向/纵向决策的结构化自然语言，可以直接用作控制子系统的输入。
+- 信息提取与代码适配模块
+  即多模态基础模型，此处使用的模态为语言一种，即它也可以是另一个只有语言模态的基础模型。它接受指令提示生成模块的提示指令，根据预训练得到的常识知识进行推理，得到结构化的自然语言形式的查询结果，此查询结果中含有确定的横向和纵向决策。
+
+**** 工作流程叙述如下：
+1) 感知提示生成模块从数据库获得两类设置值：
+   a. 感知目标的预设置参数，比如需要处理的所有场景类，需要观察的道路目标以及这些目标的状态包括它们和本车与道路的相对位置，需要确定的道路参数如车道数，车道线曲率等；
+   b. 格式化预设置，比如与要求基础模型输出格式化 json 字符串，是可选的；
+   然后感知提示模块根据此两类预设置值确定和组装最后的感知提示文本。
+2) 环境感知模块（多模态基础模型）根据感知提示文本，对传感器输入的原始感知信号（视频或者点云）进行查询，得到提示文本中期望获得的场景类别和目标及环境状态，这个结果可以是按提示文本中要求的格式或者是自然语言；
+3) 决策提示生成模块
+   a. 根据环境感知模块（多模态基础模型）输出的结果，或者组合感知和控制子系统中环境感知模块输出的结果，交叉检验和组合得到输入场景类别，目标及环境状态；
+   b. 从场景数据库获得场景预设，情景预设和其他模板预设值
+   c. 根据以上输入，生成决策提示文本
+4) 决策模块（多模态基础模型）
+   a. 从决策提示生成模块获得决策提示文本
+   b. 从传感器获得原始视频或点云数据
+   c. 根据以上两种输入进行推理，获得决策提示文本中要求的自然语言形式的决策结果的文本
+5) 指令提示生成模块
+   a. 从决策模块获得自然语言形式的决策结果文本
+   b. 从数据库获得驾驶风格预设，格式预设和其他模板预设
+   c. 利用大型语言模型的模板提示功能，增加格式化输出要求（比如 json 格式输出）
+   d. 生成指令提示文本
+6) 再将多模态基础模型或者另外一个大型语言模型作为代码适配器（code adapter）使用，将自然语言形式的指令提示文本输入此模型进行查询
+7) 得到结构化自然语言，比如 json 字符串数据,可直接用于后续车辆控制的决策指令
+8) 发送指令到车辆规划控制模块
+
+
+**** 在一种工作模式下，利用神经网络模型的批处理模式，对复杂场景可构造多种提示信息并行查询多模态基础模型，得到不同提示条件下的结果，这些结果可以相互交叉检验，以提高决策的可靠性和安全性。比如在最简单的模式下，利用多种驾驶预设或者安全预设从不同角度同时查询环境感知和决策模块，对横向或纵向决策进行简单投票后确定最终决策结果，这可以提高决策的安全性和可解释性。
+
+**** 此处使用的多模态基础模型可以有两种种部署方式，一种是在云端，直接利用现有的成熟通用大语言模型，如 OpenAI GPT 系列或者 Google Bard 等；另一种是通过模型蒸馏（model distillation），监督细调（Supervised fine-tuning）和量化低阶自适应（Quantized Low-Rank Adaptation）等针对自动驾驶相应场景细调训练得到较小模型后部署在企业内网服务器或车端服务器上。
+
+**** 实例：市区道路十字路口自主决策，各模块使用同一个多模态基础语言模型，为 LLaVA 1.5，使用 Python 库 langchain，举例使用英语作为接口使用的语言
+***** 感知提示文本可按如下方式生成：
+#+NAME: Prompt Template for Crossing Decision
+#+BEGIN_SRC python :session :results output
+from langchain.llms import HuggingFaceHub
+from langchain import PromptTemplate
+
+vlm = HuggingFaceHub(model_name="LLaVA-1.5", hf_api_key=hf_api_key)
+
+template = """
+"What is the target scenario of in the current image? Please select in categories {scenario_catgories}. Where is the ego car on the road?"
+"""
+prompt1 = PromptTemplate(
+    input_variables=["scenario_categories"],
+    template=template,
+)
+pp.pprint(f"prompt1: {prompt1}")
+#+END_SRC
+
+得到的提示模板的字符串结果如下：
+#+RESULTS: Prompt Template for Crossing Decision
+: ("prompt1: input_variables=['scenario_categories'] output_parser=None "
+:  'partial_variables={} template=\'\\n What is the target senario? Please '
+:  'select in categories {scenario_categroies}. Where is the ego car on the road?"\\n\' '
+:  "template_format='f-string' validate_template=True")
+
+***** 决策提示文本可按如下方式生成：
+这里假设已从环境感知模块（从多模态基础模型或传统感知模块）获得场景类为通过十字路口，以及本车在道路上的位置。
+决策提示生成模块从数据库中获得对应场景类别的决策提示模板，其中的参数为：1. 本车位置，2. 情景预设条件为本次驾驶行程的紧急程度，3. 本车的目标。需要查询的是最优的驾驶策略
+#+NAME: Prompt Template for Crossing Decision
+#+BEGIN_SRC python :session :results output
+from langchain.llms import HuggingFaceHub
+from langchain import PromptTemplate
+
+vlm = HuggingFaceHub(model_name="LLaVA-1.5", hf_api_key=hf_api_key)
+
+template = """
+"You are an experienced driver. {condition_of_urgency}, what is the best driving decision I can make if my car is {ego_car_location} and want to {ego_car_intention}?"
+"""
+prompt1 = PromptTemplate(
+    input_variables=["ego_car_location","ego_car_intention"],
+    template=template,
+)
+pp.pprint(f"prompt1: {prompt1}")
+#+END_SRC
+
+得到的提示模板的字符串结果如下：
+#+RESULTS: Prompt Template for Crossing Decision
+: ("prompt1: input_variables=['ego_car_location', 'ego_car_intention', "
+:  "'front_car_speed', 'ego_speed', 'condition_of_urgency'] output_parser=None "
+:  'partial_variables={} template=\'\\n"You\\\'re an experienced safe driver. '
+:  "{condition_of_urgency}, what is the best driving decision I can make if my car is "
+:  '{ego_car_location} and want to {ego_car_intenstion}?"\\n\' '
+:  "template_format='f-string' validate_template=True")
+
+***** 信息提取与代码适配提示模板可使用如下代码生成：
+
+该提示模板是通过感知确定的场景选择十字路口相关的模板,即需要输出横向和纵向的决策。它的第一个参数为查询结果的格式要求，限制输出的类型分别是变道或保持两类和加速，减速或保持车速三类，并通过大型语言模型的响应参数要求输出为格式化的结果。第二个参数为系统预期条件，此处示例为用户预期目标，比如驾驶风格期望保守或者偏好积极换道，也可以是其他系统预期比如用户的主管愿望或此次驾驶行程紧急程度等等。
+#+NAME: Prompt Template for Code Adapter
+#+BEGIN_SRC python :session :results output
+from langchain.output_parsers import StructuredOutputParser, ResponseSchema
+from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
+from langchain import PromptTemplate
+
+response_schemas = [
+    ResponseSchema(name="lateral_drive_decision", description="This is the drive decision to change or not change the lane, it's value should be either 'change' or 'keep'"),
+    ResponseSchema(name="longitudinal_drive_decision", description="This is the drive decision to accelerate, decelerate, or maintain the speed, its value should be either 'accelerate', 'decelerate', or 'maintain'"),
+]
+output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
+
+format_instructions = output_parser.get_format_instructions()
+
+template = """
+You will be given a string with drive decision from a user with an objective.
+Extract the lateral and longitudinal drive decision and make sure all the words are spelled correctly.
+
+{format_instructions}
+
+% USER_OBJECTIVE:
+{user_objective}
+
+% USER INPUT:
+{user_input}
+
+YOUR RESPONSE:
+"""
+
+prompt2 = PromptTemplate(
+    input_variables=["user_objective", "user_input"],
+    partial_variables={"format_instructions": format_instructions},
+    template=template
+)
+
+pp.pprint(f"prompt2: {prompt2}")
+#+END_SRC
+
+得到的提示模板的字符串结果如下：
+#+RESULTS: Prompt Template for Code Adapter
+#+begin_example
+("prompt2: input_variables=['user_objective', 'user_input'] output_parser=None "
+ "partial_variables={'format_instructions': 'The output should be a markdown "
+ 'code snippet formatted in the following schema, including the leading and '
+ 'trailing "```json" and '
+ '"```":\\n\\n```json\\n{\\n\\t"lateral_drive_decision": string  // This is '
+ "the drive decision to change or not change the lane, it\\'s value should be "
+ 'either \\\'change\\\' or \\\'keep\\\'\\n\\t"longitudinal_drive_decision": '
+ 'string  // This is the drive decision to accelerate, decelerate, or maintain '
+ "the speed, its value should be either \\'accelerate\\', \\'decelerate\\', or "
+ "\\'maintain\\'\\n}\\n```'} template='\\nYou will be given a string with "
+ 'drive decision from a user with an objective.\\nExtract the lateral and '
+ 'longitudinal drive decision and make sure all the words are spelled '
+ 'correctly.\\n\\n{format_instructions}\\n\\n% '
+ 'USER_OBJECTIVE:\\n{user_objective}\\n\\n% USER '
+ "INPUT:\\n{user_input}\\n\\nYOUR RESPONSE:\\n' template_format='f-string' "
+ 'validate_template=True')
+#+end_example
+
+***** 以下举十字路口拥堵工况为例说明其使用情况
+****** 十字路口拥堵
+   工况对应前视摄像头图像如下
+#+attr_org: :width 300px
+[[./img/llm4ad/crossing_scene.png]]
+
+******* 感知模块提示文本实例：
+感知模块提示文本的输入参数来自数据库预设置，比如“场景类别”如果在数据库中预定义为“高速公路场景”，“市区工况场景”，“十字路口场景”， “泊车场景”，感知模块的提示文本可以按如下方式生成：
+#+NAME: Crossing scenario
+#+BEGIN_SRC python :session :results output
+final_prompt = prompt1.format(scenario_categories="'highway driving', 'urban driving', 'crossing', 'parking' ")
+pp.pprint(f"Prompt: {fin and moving away from the cameraal_prompt}")
+
+output = llm(final_prompt)
+pp.pprint(f"llm output: {output}")
+#+END_SRC
+
+感知模块（多模态基础模型）的输出为
+#+RESULTS: Crossing scenario
+#+begin_example
+('Prompt: \n'
+ 'What is the target scenario of in the current image? Please select in categories'
+ "highway driving", "urban driving", "crossing", "parking". Where is the ego car ’
+ 'on the road?\n')
+('llm output: \n'
+ 'The ego car is in a crossing scenario. It's on the right lane and moving away '
+ 'from the camera.\n')
+#+end_example
+******* 决策模块提示文本实例：
+感知模块的输出结果可以通过大型语言模型提取出关键参数，此处为场景类别和本车位置，然后输入填入决策提示模板，形成描述满足场景描述的完整自然语言形式，即“本车在右车道远离相机的方向”，意图是“穿过十字路口”， 附加紧急条件是“没有特殊情况”
+#+NAME: Crossing scenario
+#+BEGIN_SRC python :session :results output
+final_prompt = prompt1.format(ego_car_location="on the right lane and moving away from the camera",ego_car_intention='drive through the crossing', condition_of_urgency='When there is nothing special')
+pp.pprint(f"Prompt: {fin and moving away from the cameraal_prompt}")
+
+output = llm(final_prompt)
+pp.pprint(f"llm output: {output}")
+#+END_SRC
+
+针对此工况的大型语言模型的输出结果实例为自然语言形式：“如果你的车在右道并且想穿过十字路口，最佳决策是减速，如果必要准备停车。这会让你更好地控制车辆，更好应对潜在危险和交通情况的变化。”
+#+RESULTS: Crossing scenario
+#+begin_example
+('Prompt: \n'
+ '"You\'re an experienced safe driver. When there nothing special, what is the'
+ "best driving decision I can make if my car is on the right lane, moving "
+ 'away from the camera and want to drive through the crossing?"\n')
+('llm output: \n'
+ 'If your car is on the right lane and you want to drive through the crossing, '
+ 'the best decision would be to decelerate and prepare to stop if necessary, '
+ 'as you are moving away from the camera. This will allow you to have better control'
+ 'over your vehicle and react to any potential hazards or changes in traffic '
+ 'conditions.')
+#+end_example
+
+******* 信息提取与代码适配提示文本实例
+信息提取与代码适配模板中第一个参数响应的格式化输出要求已经输入模板，此处只需确定第二个参数系统预期，此处为“我的驾驶风格趋于安全保守”。
+#+NAME: output of code adapter
+#+BEGIN_SRC python :session :results output
+promptValue = prompt2.format(user_objective="I am a defensive driver.",user_input=output)
+pp.pprint(f"prompt: {promptValue}")
+llm_output=llm(promptValue)
+pp.pprint(f"llm_output: {llm_output}")
+control_action = output_parser.parse(llm_output)
+pp.pprint(f"contorl code: {control_action}")
+#+END_SRC
+
+下面是信息提取代码适配适配的中间结果和输出实例。最后两行为最终输出的格式化字符串，可直接用于规划控制模块的决策输入，即减速准备刹停（横向不变道，纵向减速至刹停）。可以看出尽管系统预期为希望超车，大型语言模型最终出于安全考虑做出了保持车道的决策，并且所有的中间输入和最后输出的结果保证了决策是可解释的。
+#+RESULTS: output of code adapter
+#+begin_example
+('prompt: \n'
+ 'You will be given a string with drive decision from a user with an '
+ 'objective.\n'
+ 'Extract the lateral and longitudinal drive decision and make sure all the '
+ 'words are spelled correctly.\n'
+ '\n'
+ 'The output should be a markdown code snippet formatted in the following '
+ 'schema, including the leading and trailing "```json" and "```":\n'
+ '\n'
+ '```json\n'
+ '{\n'
+ '\t"lateral_drive_decision": string  // This is the drive decision to change '
+ "or not change the lane, it's value should be either 'change' or 'keep'\n"
+ '\t"longitudinal_drive_decision": string  // This is the drive decision to '
+ 'accelerate, decelerate, or maintain the speed, its value should be either '
+ "'accelerate', 'decelerate', or 'maintain'\n"
+ '}\n'
+ '```\n'
+ '\n'
+ '% USER_OBJECTIVE:\n'
+ 'I am a defensive driver.\n'
+ '\n'
+ '% USER INPUT:\n'
+ '\n'
+ 'If your car is on the right lane and you want to drive through the crossing, \n'
+ 'the best decision would be to decelerate and prepare to stop if necessary, \n'
+ 'as you are moving away from the camera. This will allow you to have better \n'
+ 'over your vehicle and react to any potential hazards or changes in traffic \n'
+ 'conditions.\n')
+ '\n'
+ 'YOUR RESPONSE:\n')
+('llm output: \n'
+ '```json\n'
+ '{\n'
+ '\t"lateral_drive_decision": "keep", \n'
+ '\t"longitudinal_drive_decision": "decelerate"\n'
+ '}\n'
+ '```')
+("control code: {'lateral_drive_decision': 'keep', "
+ "'longitudinal_drive_decision': 'decelerate'}")
+#+end_example
+
+
+*** 本发明技术方案带来的有益效果
+1. _结合技术方案来描述，做到有理有据；_
+2. _可以对应 [[* 本发明所要解决的技术问题][本发明所要解决的技术问题]] 部分所要解决的技术问题来描述。_
+
+   - 可利用多模态基础模型的常识进行驾驶决策
+   - 可通过过结合基础模型的视觉模态快速做出复杂场景下的最优驾驶决策
+   - 具备可解释性
+   - 自然语言可以将复杂感知信息高度压缩的特性，具有占用接口信息带宽小的优势
+   - 可集成到传动自动驾驶软件协议栈
+   - 接口完全兼容现存软件协议栈
+   - 可非常便捷集成系统需求到软件中
+   - 可灵活布置到移动端（适配的较小模型）或云端（高性能大型基础模型)
+   - 可利用神经网络的批处理模式高速并发处理多种可能方案，
+   - 利用神经网络的多方案处理的结构进行安全校验和决策
+
+*** 本发明的技术关键点和欲保护点是什
+
+- 通过提示模板适配感知模块的离散化信息输出，转换成自然语言的提示信息，从而得以对多模态基础模型进行查询
+- 通过多模态基础模型的模板提示接口，将多模态基础模型的自然语言输出转换成现有规划控制模块可接受的格式化信息输入格式
+- 整体上利用自然语言作为决策模块和上下游其他模块的接口，并利用多模态基础模型作为决策模块，提供具备可解释性的决策
+- 利用多模态基础模型预训练得到的先验常识知识，最终消除自动驾驶系统的长尾问题
+- 接口兼容现存软件协议栈
+- 可非常便捷集成自然语言形式的系统需求到软件中
+** 发散思维：
+1. _对于机械类产品，要考虑每个部件、结构，是否有可替代方案，如果有多个，需要一一详细说明。_
+2. _对于电子类产品，要考虑各分电路、及其中主要元器件是否有可替代方案，如果有，需要详细说明。_
+3. _对于化学类产品，要考虑其组成元素是否有其它相类似的元素可替代，如果有，需要一一说明，并说明原因。_
+
+   - 此处示例的大型语言模型为开源的 LLaVa 1.5 模型，但可以是任何其他大型多模态基础模型，比如 GPT4V
+   - 此处接口代码使用 langchain API,也可以是任何其他相同功能的功能库或者代码
+   - 此处的大型语言模型也可以是根据交通场景适配和细调过的任何其他模型，包括自有大型模型，或者在云端或移动端部署的适配过的较小模型
+   - 此处示例仅以通过十字路口场景为例，本方案用于其他自动驾驶场景是完全适配的，比如高速公路行驶，市区工况行驶，泊车等， 只需将相应的系统功能转换成提示模板，将相应的感知信息补充到模板即可
+
+* 请撰写人写完交底书后，按以下项目进行自检，所以项目都为“是”后再提交
+
+| 序号 | 评审项目                            | 评审结论     |
+|-----+-----------------------------------+------------|
+|   1 | 是否按模板撰写，格式正确              | [✓]是 - []否 |
+|   2 | 是否未检索到影响本发明专利性的对比文件   | [✓]是 - []否 |
+|   3 | 是否已按 Idea 评审的修改建议进行修改   | [✓]是 - []否 |
+|   4 | 背景技术是否正确易于理解              | [✓]是 - []否 |
+|   5 | 现有技术是否与本发明相关，描述是否恰当   | [✓]是 - []否 |
+|   6 | 本发明具体实施例是否是清楚完整的技术方案 | [✓]是 - []否 |
+|   7 | 方法类专利是否有对应的产品或实际装置    | [✓]是 - []否 |
+|   8 | 有益效果是否准确、全面                | [✓]是 - []否 |
+|   9 | 关键点和欲保护点是否清晰准确           | [✓]是 - []否 |
+|  10 | 是否不再有其它实现方式，或应用于其它领域 | [✓]是 - []否 |

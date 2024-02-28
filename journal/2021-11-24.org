@@ -1,0 +1,11 @@
+#+TITLE: 三, 2021-11-24
+* 13:30
+** DONE exit condition
+** DONE weekly report
+*** DONE episodefree concept construction and testing
+*** DONE code baseline preparation
+*** DONE testing system validation, hmi implementation
+*** DONE collection of baseline data without AI collection
+*** DONE patent support
+*** DONE epfree road test, debugging get base
+*** DONE sequential encoding of observation code baseline

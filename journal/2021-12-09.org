@@ -1,0 +1,7 @@
+#+TITLE: Thu, 2021-12-09
+* 10:06
+** 电池银行周会
+*** BLMP-4
+**** traveltime, statestime
+**** vin-->vin.keyword
+**** 6号车vin:12345678912345670

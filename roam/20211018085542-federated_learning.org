@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       f3b0d4ee-3d51-41a4-910e-afd9377881eb
+:END:
+#+title: federated learning
+[[id:7495c102-cab9-46af-baee-a5926d835a1c][distributed learning]]
+
+[[id:77420abb-5447-47fe-a53f-ab6e95506f32][differential privacy]]

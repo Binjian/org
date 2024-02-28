@@ -1,0 +1,446 @@
+#+title: 基于自然语言接口和大型语言模型的自动驾驶决策模块
+#+author: 忻斌健
+#+date: <2023-11-06 Mon>
+
+* 联系
+| 日期              | 申请人 |
+|------------------+-------|
+| <2023-11-06 Mon> | 忻斌健 |
+
+
+|                         |                                           |
+|-------------------------+-------------------------------------------|
+| 交底书名称                | 基于自然语言接口和大型语言模型的自动驾驶决策模块 |
+| 发明人                   | 忻斌健                                     |
+| 联系人                   | 忻斌健                                     |
+| 交底书撰写人              | 忻斌健                                     |
+| 撰写人办公电话            |                                           |
+| 撰写人手机号码 （急案必须） | 13918961550                               |
+| 撰写人 email             | binjian.xin@newrizon.com                  |
+
+* 交底书注意事项
+1. _代理人并不是技术专家，交底书要使代理人能看懂，尤其是背景技术和详细技术方案，一定要写得全面、清楚、完整。_
+2. _全文对同一事物的叫法应统一，避免出现一种事物多种叫法。_
+3. _避免出现纯粹的商业广告用语、宣传及恶意且不客观的攻击性语言等；_
+4. _在与代理人沟通时，对于代理人的咨询和问题，应认真讲解并给予回答，并按要求及时且正确地补充相应材料。_
+5. _专利法对公开充分的规定：_
+    1) _专利必须是一个技术方案，应该阐述发明目的是通过什么技术方案来实现的，不能只有原理，也不能只做功能介绍；_
+    2) _专利必须充分公开，以本领域普通技术人员不需付出创造性劳动即可进行实施为准。_
+    _对我们来说，必须满足上述规定，专利申请才能被批准，获得专利权。_
+6. _技术交底书完成后，请将蓝色字体的说明文字进行删除。_
+
+* 缩略语和关键术语
+** 相关技术背景以及最接近的现有技术
+***  背景技术：用于方便读者理解本发明的技术背景
+_背景技术是对最接近的现有技术的说明，它是作出发明技术方案的基础；现有技术又称已有技术，是指在所属技术领域里已经公开的技术和知识，包括专利文献中存在的技术_
+
+自动驾驶系统通常采用模块化的结构实现，具体地软件上通常用分层的模块分别实现感知，决策，规划，轨迹跟踪，横向和纵向车辆控制等不同的功能。这种分层结构软件协议栈中的决策模块通常会根据感知的数据计算和更新周围环境中的目标运动信息，基于运动模型更新自车和环境目标的动态相对位置关系，再参考基于安全，交通法规预设确定的量化规则，做出合理的跟随或变道的横向决策和加速或减速的总想决策。这种基于量化规则的决策模块有两个缺点：第一，它通常只能处理平稳的交通场景，对于稍复杂一些的场景或者动态性稍高的场景往往无法合理进行决策;第二，即便对于稳定的交通场景，在处于边界条件的时刻，往往由于自车和环境车辆决策交互的不可预测性所造成的交通场景决策本身的模糊性，量化规则也无法合理和灵活地进行决策。对于采用基于规则的自动驾驶系统，实际工程上往往通过针对特定场景堆叠复杂的启发式量化规则来覆盖测试中出现的决策问题，也就是专家系统。专家系统是一种不可持续的开发策略，一方面这是由实际交通场景和多方决策的复杂性造成的，这种堆叠规则的方法会导致庞大而复杂的规则系统，本身可能不自洽且无法合理解释规则之间的相容性；另一方面，在特定道路场景随测试增多，针对不同场景分别维护复杂的规则库，特别是测试这些规则库的工程开销是不可持续的。
+
+利用端到端的深度神经网络是如今自动驾驶技术处理复杂场景的主要方法。目前的应用方式举例来说有以下几种方式：1.偏重在感知模块，诸如基于 Transformer 模型的 BEV 模型（鸟瞰图模型）或者占据格栅网络（Tesla 等)；2. 在感知决策一体化上的应用还比较少，目前主要的方式有采用强化学习方式进行从感知到规划控制或决策的端到端学习（NVidia, Wayve 等）；3.针对十字路口等特殊的复杂场景进行特殊特征处理和与感知模型的融合（理想汽车）。
+*** 与本发明相关的现有技术一
+**** 现有技术一的技术方案
+_除开拓性发明外，应当提供与本发明技术方案最接近的现有技术的技术方案，针对您所申请发明创造的领域，其同类技术、产品处于一种什么样的技术状态，具有什么样的基本结构、性能和原理。_
+
+毫末智行 DriveGPT，是用于驾驶行为规划的大型基础模型，其中的行为规划对应了横纵向决策。
+https://leimao.github.io/blog/DriveGPT/f
+它是通过定义一种专门的形式化“驾驶语言”作为该基础模型的接口,所以并非自然语言。 需要进行内嵌化，对场景进行量化描述，利用已有驾驶标注数据，经过适配，可以训练大模型 Drive Languange Model
+
+**** 现有技术一的缺点
+_客观地指出现有技术在结构上、使用上所存在的实质问题和缺陷（该指出的现有技术中存在的问题和缺陷一定是本发明所能够解决的问题和缺陷），并且要客观、事实求是地说明该实质问题和缺陷的存在原因（为什么会存在这样的问题和缺点），可能的话，还应提供在解决该问题和缺陷时曾经遇到的困难；_
+_请务必提供一些描述同类技术、产品的期刊、论文、专利文献。_
+_开拓性发明一种全新的技术解决方案,在技术史上未曾有过先例,该全新的技术解决方案为人类科学技术在某个时期的发展开创了新纪元,这种发明称为开拓性发明_
+
+- DriveGPT 的性能取决于 Drive Language Model 的训练，基础模型从零开始训练是非常困难的，开销巨大
+- Driving Languauage 是一种人为定义的形式化语言，专门为描述交通场景而设计，还需要进行内嵌化训练，场景离散的量化描述需要人为定义的参数，产生了不必要的超参
+- Driving Language 非自然语言接口，对场景描述可能是有限的，和自然语言比，还是面临长尾效应问题
+
+
+** 本发明技术方案的详细阐述（发明内容）
+*** 本发明所要解决的技术问题
+_针对最接近的现有技术所存在的问题，结合申请所能取得的效果，提出本发明创造所要解决的任务。_
+
+- 利用大型语言模型进行驾驶决策
+- 利用大型语言模型进行信息提取和代码适配
+- 可集成到传动自动驾驶软件协议栈
+- 接口完全兼容现存软件协议栈
+- 可非常便捷集成现有系统需求
+- 可灵活布置到移动端（适配的较小模型）或云端（高性能大型基础模型)
+
+*** 本发明技术实现的具体实施例
+**** 总体要求
+1. _专利必须是一个技术方案，应该阐述发明目的是通过什么技术方案来实现的，不能只有原理，也不能只作功能介绍。_
+2. _发明人要提供描述本发明的必要的附图或照片，该附图应该清楚地体现发明点所在，为此可采用多种绘图方式，并将主要部件统一编号（即多幅附图中每个部件的编号应前后一致）。_
+3. _为了便于代理人对方案的理解，可同时提供三维视图。_
+4. _每个图都应有对应的文字说明。_
+5. _应结合附图对本发明方案的整体结构、重点部件（尤其是与现有技术不同的部位）、工作原理、以及这样的改进是如何解决前面提到的技术问题等内容进行详细说明。_
+**** 具体要求：
+_应当对发明作出清楚、完整的说明,以所属技术领域的技术人员能够实现为准，对自己的发明创的技术内容进行全面介绍、详细描述，如对产品来说，包括哪些部件、各部件之间的位置关系、连接关系、作用原理。对于工艺方法来说包括哪些步骤、每步骤的操作工序如何、各步骤的作用是什么等等；自己的发明创造的优点介绍，与现有技术、现有产品进行比较，结合技术内容说明自己发明创造的优越性。如结构简化、加工方便、生产效率提高、产品收率提高、环境污染减少等等。_
+1. _机械类产品应结合附图说明产品的静态结构（即包括哪些部分和各部分之间的连接关系）及动态工作过程。_
+2. _电子类产品，应结合附图详细说明其由哪些分电路构成，各分电路及其中主要元器件之间的输出、输入配合和在电路中所起的作用、工作原理、各分电路是否有替换电路。_
+3. _化学类产品（包括生物、医药、基因工程、农业）应说明其化学组成、含量范围、各组份的作用等，还应在组份含量范围内举出一至几个具体的配比例子。_
+4. _工艺方法类（生物、医药、农业）应写明其步骤，各步骤中所需要的条件，如温度、压力范围、酸碱度、时间及其它具体要求。_
+_一般应达到同行看到该部份材料后能够完全搞清楚，并能实施为准。_
+
+
+**** 系统结构
+
+#+CAPTION: 图 1. 系统流程图
+#+NAME: fig:llm4ad_systemblocks
+#+attr_org: :width 800px
+[[excalidraw:/home/n/.org.d/excalidraw/cea254d3-d6b5-4946-9a62-3a248f5cc9f4.excalidraw.svg]]
+
+系统如上图所示由三个子系统组成，其中感知子系统和控制子系统的接口是除了传感器输出是视频或点云等原始数据外结构化数据比如字典，即传统软件模块的程序接口，而非自然语言接口。这两个子系统只需满足接口要求即可，可以是传统自动驾驶软件系统中的感知和控制模块，也可以是端到端的神经网络实现的感知和控制模块。决策子系统有四个部分组成：
+- 决策提示生成模块：
+  从环境感知模块输出接受两种结构化数据 1.当前的场景类别，2.目标和环境检测结果。再根据这些信息从数据库中获取对应场景类的一些预设（比如换道场景的一些基本结构和假设的文本模板预设，参数化接口），情景预设（比如行程是否紧急），和其他一些模板预设（比如假设司机是注重安全的有经验司机），确定和组装提示模板。然后再将目标和环境检测结果比如道路上其他车辆运动信息和相对本车位置，路况等信息填入提示模板生成自然语言形式的提示文本。
+- 决策模块：
+  即大型语言模型，它接受决策提示生成模块的查询，根据预训练得到的常识知识进行推理，得到自然语言形式的查询结果，此查询结果中含有确定的横向和纵向决策。
+- 指令提示生成
+  决策模块输出的横纵向决策是自然语言形式的，并不能直接作为控制子系统的输入。还需要转化成结构化数据，满足匹配控制子系统的需要。决策信息提取和代码适配模块也是大型语言模型，可以和决策模块共用同一个模型。它 根据数据库输出的预设场景模板，驾驶风格预设和其他模板预设进一步确认车辆控制一些驾驶偏好或预期目标，在附加格式化要求生成格式化提示模板，再和决策模块输出的自然语言结果组合成第二个自然语言形式的提示文本，用这个提示文本查询大型语言模型，就可以获得横向/纵向决策的结构化自然语言(比如 json 字符串)，可以直接用作控制子系统的输入。
+- 信息提取与代码适配模块
+  即大型语言模型，它接受指令提示生成模块的提示指令，根据预训练得到的常识知识进行推理，得到结构化的自然语言形式的查询结果（比如 json 字符串），此查询结果中含有确定的横向和纵向决策。
+
+**** 工作流程叙述如下：
+1) 根据输入场景，场景数据库，驾驶预设数据库和提示模板数据库生成第一个提示模板
+2) 提取感知/场景理解模块的关键环境和周边移动及静止目标信息
+   - 填充到第一个提示模板的参数部分，生成大型语言模型（LLM）的最终输入提示文本
+3) 输入大型语言模型得到自然语言形式的相关决策查询结果
+4) 再将大型语言模型作为代码适配器（code adapter）使用
+   - 利用大型语言模型的模板提示功能，增加格式化输出要求（比如 json 格式输出）生成第二个提示模板
+   - 根据环境感知确定场景添加系统预期目标
+   - 将第一个提示文本生成的决策查询结果填入第二个提示模板以生成第二个提示文本
+   - 输入大型语言模型（可以是同一个模型或者另一个模型）进行查询
+5) 得到结构化自然语言，比如 json 字符串数据,可直接用于后续车辆控制的决策指令
+6) 发送指令到车辆规划控制模块
+
+**** 在一种工作模式下，利用神经网络模型的批处理模式，对复杂场景可构造多种提示信息并行查询大型语言模型，得到不同提示条件下的结果，这些结果可以相互交叉检验，以提高决策的可靠性和安全性。比如在最简单的模式下，利用多种驾驶预设或者安全预设从不同角度同时查询决策模块，对横向或纵向决策进行简单投票后确定最终决策结果，这可以提高决策的安全性和可解释性。
+
+**** 此处使用的大型语言模型可以有两种种部署方式，一种是在云端，直接利用现有的成熟通用大语言模型，如 OpenAI GPT 系列或者 Google Bard 等；另一种是通过模型蒸馏（model distillation），监督细调（Supervised fine-tuning）和量化低阶自适应（Quantized Low-Rank Adaptation）等针对自动驾驶相应场景细调训练得到较小模型后部署在企业内网服务器或车端服务器上。
+
+**** 实例：高速公路自主换道决策，各模块使用同一个大型语言模型，为 OpenAI GPT3.5，使用 Python 库 langchain，举例使用英语作为接口使用的语言
+***** 场景描述提示模板可按如下代码方式生成：
+
+这里提示模板的参数为感知模块输出信息中和自主换道相关左边车道目标检测结果，前方车辆距离和车速，本车车速。驾驶预设条件为本次驾驶行程的紧急程度，提示模板中的问题是选择题，变道或者跟随。
+#+NAME: Prompt Template for Highway Lane Change Decision
+#+BEGIN_SRC python :session :results output
+from langchain.llms import OpenAI
+from langchain import PromptTemplate
+
+llm = OpenAI(model_name="text-davinci-003", openai_api_key=openai_api_key)
+
+template = """
+"You're an experienced safe driver. {objects_on_left_lane}. The front car is {front_car_distance} ahead of me {front_car_speed}. I'm driving {ego_speed}. {condition_of_urgency}, should I change my lane or keep following the front car?"
+"""
+prompt1 = PromptTemplate(
+    input_variables=["objects_on_left_lane","front_car_distance", "front_car_speed", "ego_speed", "condition_of_urgency"],
+    template=template,
+)
+pp.pprint(f"prompt1: {prompt1}")
+#+END_SRC
+
+得到的提示模板的字符串结果如下：
+#+RESULTS: Prompt Template for Highway Lane Change Decision
+: ("prompt1: input_variables=['objects_on_left_lane', 'front_car_distance', "
+:  "'front_car_speed', 'ego_speed', 'condition_of_urgency'] output_parser=None "
+:  'partial_variables={} template=\'\\n"You\\\'re an experienced safe driver. '
+:  '{objects_on_left_lane}. The front car is {front_car_distance} ahead of me '
+:  "{front_car_speed}. I\\'m driving {ego_speed}. {condition_of_urgency}, should "
+:  'I change my lane or keep following the front car?"\\n\' '
+:  "template_format='f-string' validate_template=True")
+
+***** 信息提取和代码适配器的第二个提示模板可使用如下代码生成：
+
+第二个提示模板是通过感知确定的场景选择自主变道相关的模板,即需要输出横向和纵向的决策。它的第一个参数为查询结果的格式要求，限制输出的类型分别是变道或保持两类和加速，减速或保持车速三类，并通过大型语言模型的响应参数要求输出为格式化的结果。第二个参数为系统预期条件，此处示例为用户预期目标，比如驾驶风格期望保守或者偏好积极换道，也可以是其他系统预期比如用户的主管愿望或此次驾驶行程紧急程度等等。
+#+NAME: Prompt Template for Code Adapter
+#+BEGIN_SRC python :session :results output
+from langchain.output_parsers import StructuredOutputParser, ResponseSchema
+from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
+from langchain import PromptTemplate
+
+response_schemas = [
+    ResponseSchema(name="lateral_drive_decision", description="This is the drive decision to change or not change the lane, it's value should be either 'change' or 'keep'"),
+    ResponseSchema(name="longitudinal_drive_decision", description="This is the drive decision to accelerate, decelerate, or maintain the speed, its value should be either 'accelerate', 'decelerate', or 'maintain'"),
+]
+output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
+
+format_instructions = output_parser.get_format_instructions()
+
+template = """
+You will be given a string with drive decision from a user with an objective.
+Extract the lateral and longitudinal drive decision and make sure all the words are spelled correctly.
+
+{format_instructions}
+
+% USER_OBJECTIVE:
+{user_objective}
+
+% USER INPUT:
+{user_input}
+
+YOUR RESPONSE:
+"""
+
+prompt2 = PromptTemplate(
+    input_variables=["user_objective", "user_input"],
+    partial_variables={"format_instructions": format_instructions},
+    template=template
+)
+
+pp.pprint(f"prompt2: {prompt2}")
+#+END_SRC
+
+得到的信息提取和代码适配器的提示模板的字符串结果如下：
+#+RESULTS: Prompt Template for Code Adapter
+#+begin_example
+("prompt2: input_variables=['user_objective', 'user_input'] output_parser=None "
+ "partial_variables={'format_instructions': 'The output should be a markdown "
+ 'code snippet formatted in the following schema, including the leading and '
+ 'trailing "```json" and '
+ '"```":\\n\\n```json\\n{\\n\\t"lateral_drive_decision": string  // This is '
+ "the drive decision to change or not change the lane, it\\'s value should be "
+ 'either \\\'change\\\' or \\\'keep\\\'\\n\\t"longitudinal_drive_decision": '
+ 'string  // This is the drive decision to accelerate, decelerate, or maintain '
+ "the speed, its value should be either \\'accelerate\\', \\'decelerate\\', or "
+ "\\'maintain\\'\\n}\\n```'} template='\\nYou will be given a string with "
+ 'drive decision from a user with an objective.\\nExtract the lateral and '
+ 'longitudinal drive decision and make sure all the words are spelled '
+ 'correctly.\\n\\n{format_instructions}\\n\\n% '
+ 'USER_OBJECTIVE:\\n{user_objective}\\n\\n% USER '
+ "INPUT:\\n{user_input}\\n\\nYOUR RESPONSE:\\n' template_format='f-string' "
+ 'validate_template=True')
+#+end_example
+
+***** 以下举自主换道的四种工况为例说明其使用情况
+****** 车道跟随
+   工况示意图如下
+#+attr_org: :width 500px
+[[./img/llm4ad/Use_Cases/_20231011_16584629.png]]
+
+#+attr_org: :width 500px
+[[./img/llm4ad/Use_Cases/_20231011_165912single_mo_follow.gif]]
+
+******* 决策模块提示文本实例：
+感知模块的输出结果作为输入填入第一个提示模板，形成描述满足场景描述的完整自然语言形式，即“左车道没有车辆和其他目标，前车距离自车两百米，和自车车速相同，自车车速低于限速，”，附加紧急条件是“没有特殊情况”
+#+NAME: S1 scenario
+#+BEGIN_SRC python :session :results output
+final_prompt = prompt1.format(objects_on_left_lane="There are no cars on the left lane and the left lane is clear",front_car_distance='200 meters',front_car_speed='and with the same speed as me', ego_speed='slower than the speed limit', condition_of_urgency='When there is nothing special')
+pp.pprint(f"Prompt: {final_prompt}")
+
+output = llm(final_prompt)
+pp.pprint(f"llm output: {output}")
+#+END_SRC
+
+针对此工况的大型语言模型的输出结果实例为自然语言形式：“是否变道取决司机的偏好和具体情况。通常保持车道是最安全的选择，变道是危险的。如果司机对变道比较适应，且左道没有车辆或其他目标，可以变道。但务必注意盲区并在变道前使用转向灯。”
+#+RESULTS: S1 scenario
+#+begin_example
+('Prompt: \n'
+ '"You\'re an experienced safe driver. There are no cars on the left lane and '
+ 'the left lane is clear. The front car is 200 meters ahead of me and with the '
+ "same speed as me. I'm driving slower than the speed limit. When there is "
+ 'nothing special, should I change my lane or keep following the front car?"\n')
+('llm output: \n'
+ 'It depends on your preference and the situation. Generally, it is safest to '
+ 'stay in the lane you are in, as changing lanes can be dangerous. If you feel '
+ 'comfortable changing lanes, you can do so as long as the left lane is clear. '
+ 'Make sure to always check your blind spot and use your turn signal before '
+ 'changing lanes.')
+#+end_example
+
+******* 信息提取和代码适配器提示文本实例
+第二个模板中第一个参数响应的格式化输出要求已经输入模板，此处只需确定第二个参数系统预期，此处为“如前车比本车慢，用户希望超车”。
+#+NAME: output of code adapter
+#+BEGIN_SRC python :session :results output
+promptValue = prompt2.format(user_objective="I want to pass the front vehicle which is slower than me.",user_input=output)
+pp.pprint(f"prompt: {promptValue}")
+llm_output=llm(promptValue)
+pp.pprint(f"llm_output: {llm_output}")
+control_action = output_parser.parse(llm_output)
+pp.pprint(f"contorl code: {control_action}")
+#+END_SRC
+
+下面是代码适配器适配的中间结果和输出实例。最后两行为最终输出的格式化 json 字符串，可直接用于规划控制模块的决策输入，即跟随（横向不变道，纵向保持车速）。可以看出尽管系统预期为希望超车，大型语言模型最终出于安全考虑做出了保持车道的决策，并且所有的中间输入和最后输出的结果保证了决策是可解释的。
+#+RESULTS: output of code adapter
+#+begin_example
+('prompt: \n'
+ 'You will be given a string with drive decision from a user with an '
+ 'objective.\n'
+ 'Extract the lateral and longitudinal drive decision and make sure all the '
+ 'words are spelled correctly.\n'
+ '\n'
+ 'The output should be a markdown code snippet formatted in the following '
+ 'schema, including the leading and trailing "```json" and "```":\n'
+ '\n'
+ '```json\n'
+ '{\n'
+ '\t"lateral_drive_decision": string  // This is the drive decision to change '
+ "or not change the lane, it's value should be either 'change' or 'keep'\n"
+ '\t"longitudinal_drive_decision": string  // This is the drive decision to '
+ 'accelerate, decelerate, or maintain the speed, its value should be either '
+ "'accelerate', 'decelerate', or 'maintain'\n"
+ '}\n'
+ '```\n'
+ '\n'
+ '% USER_OBJECTIVE:\n'
+ 'I want to pass the front vehicle which is slower than me.\n'
+ '\n'
+ '% USER INPUT:\n'
+ '\n'
+ 'It is usually best to stay in the lane you are in, unless you need to change '
+ 'lanes to pass or turn. Since the car in the left lane is going slower than '
+ 'you, and the front car is a sufficient distance ahead of you, it would be '
+ 'better for you to stay in the same lane.\n'
+ '\n'
+ 'YOUR RESPONSE:\n')
+('llm output: \n'
+ '```json\n'
+ '{\n'
+ '\t"lateral_drive_decision": "keep", \n'
+ '\t"longitudinal_drive_decision": "accelerate"\n'
+ '}\n'
+ '```')
+("control code: {'lateral_drive_decision': 'keep', "
+ "'longitudinal_drive_decision': 'accelerate'}")
+#+end_example
+****** 多目标超车
+   工况示意图如下
+#+attr_org: :width 500px
+[[./img/llm4ad/Use_Cases/_20231011_16482429.png]]
+
+#+attr_org: :width 500px
+[[./img/llm4ad/Use_Cases/_20231011_164921double_mo.gif]]
+
+
+******* 大型语言模型的输入实例：
+感知模块的输出结果作为输入填入第一个提示模板，形成描述满足场景描述的完整自然语言形式，即“左车道后方有车辆距离 250 米，车速比自车慢，此外左车道空旷，前车和自车距离在缩小，车速比自车慢，自车车速略低于限速，”，附加紧急条件是“没有特殊情况”。
+#+NAME: S4 scenario
+#+BEGIN_SRC python :session :results output
+final_prompt = prompt1.format(objects_on_left_lane="There is one car on the left lane 250 meters away with a lower speed than me but otherwise the left lane is clear",front_car_distance='in a reducing distance closely',front_car_speed='with a lower speed than me', ego_speed="a little bit slower than the speed limit", condition_of_urgency='When there is nothing special')
+
+pp.pprint(f"prompt: {final_prompt}")
+output = llm(final_prompt)
+pp.pprint(f"llm output: {output}")
+
+#+END_SRC
+
+针对此工况的大型语言模型的输出结果实例为自然语言形式：“是否变道取决司机的偏好。如果跟车感觉安全，建议保持车道。然而如果司机对变道比较适应，可以考虑变道。如果左道是空旷的并且感觉变道没问题，就可以考虑变道。决定最终应适合用户对舒适性的要求。”可以看到，大型语言模型的决策输出偏于保守，但是没有排除变道的选择，是非常合理的。
+#+RESULTS: S4 scena#+begin_example
+('prompt: \n'
+ '"You\'re an experienced safe driver. There is one car on the left lane 250 '
+ 'meters away with a lower speed than me but otherwise the left lane is clear. '
+ 'The front car is in a reducing distance closely ahead of me with a lower '
+ "speed than me. I'm driving a little bit slower than the speed limit on the "
+ 'right lane. When there is nothing special, should I change my lane or keep '
+ 'following the front car?"\n')
+('llm output: \n'
+ 'It depends on your comfort level. If you feel safe behind the car in front, '
+ 'I would recommend keeping your current lane. However, if you feel more '
+ 'comfortable switching lanes, then you should consider changing lanes. If the '
+ 'left lane is clear and you feel comfortable changing lanes, you can do so. '
+ 'Ultimately, you should make the decision that best suits your comfort level.')
+#+end_example
+
+
+******* 信息提取和代码适配器的输入模板提示实例，
+第二个模板中第一个参数响应的格式化输出要求已经输入模板，此处只需确定第二个参数系统预期，此处为“如前车比本车慢，用户希望超车”，和前述工况相同。
+#+NAME: S4 output of code adapter
+#+BEGIN_SRC python :session :results output
+promptValue = prompt2.format(user_objective="I want to pass the front vehicle which is slower than me.", user_input=output)
+pp.pprint(f"prompt: {promptValue}")
+llm_output=llm(promptValue)
+pp.pprint(f"llm output: {llm_output}")
+control_action = output_parser.parse(llm_output)
+pp.pprint(f"control code: {control_action}")
+#+END_SRC
+
+下面是代码适配器适配的中间结果和输出实例。最后两行为最终输出的格式化 json 字符串，可直接用于规划控制模块的决策输入，即跟随（横向变道，纵向加速）。可以看出系统预期为希望超车，大型语言模型最终综合安全需求和用户预设的系统预期做出了超车和加速的合理决策，并且所有的中间输入和最后输出的结果保证了决策是可解释的。
+#+RESULTS: S4 output of code adapter
+#+begin_example
+('prompt: \n'
+ 'You will be given a string with drive decision from a user with an '
+ 'objective.\n'
+ 'Extract the lateral and longitudinal drive decision and make sure all the '
+ 'words are spelled correctly.\n'
+ '\n'
+ 'The output should be a markdown code snippet formatted in the following '
+ 'schema, including the leading and trailing "```json" and "```":\n'
+ '\n'
+ '```json\n'
+ '{\n'
+ '\t"lateral_drive_decision": string  // This is the drive decision to change '
+ "or not change the lane, it's value should be either 'change' or 'keep'\n"
+ '\t"longitudinal_drive_decision": string  // This is the drive decision to '
+ 'accelerate, decelerate, or maintain the speed, its value should be either '
+ "'accelerate', 'decelerate', or 'maintain'\n"
+ '}\n'
+ '```\n'
+ '\n'
+ '% USER_OBJECTIVE:\n'
+ 'I want to pass the front vehicle which is slower than me.\n'
+ '\n'
+ '% USER INPUT:\n'
+ '\n'
+ 'It depends on your comfort level. If you feel safe behind the car in front, '
+ 'I would recommend keeping your current lane. However, if you feel more '
+ 'comfortable switching lanes, then you should consider changing lanes. If the '
+ 'left lane is clear and you feel comfortable changing lanes, you can do so. '
+ 'Ultimately, you should make the decision that best suits your comfort '
+ 'level.\n'
+ '\n'
+ 'YOUR RESPONSE:\n')
+('llm output: \n'
+ '```json\n'
+ '{\n'
+ '\t"lateral_drive_decision": "change", \n'
+ '\t"longitudinal_drive_decision": "accelerate"\n'
+ '}\n'
+ '```')
+("control code: {'lateral_drive_decision': 'change', "
+ "'longitudinal_drive_decision': 'accelerate'}")
+#+end_example
+
+
+*** 本发明技术方案带来的有益效果
+1. _结合技术方案来描述，做到有理有据；_
+2. _可以对应 [[* 本发明所要解决的技术问题][本发明所要解决的技术问题]] 部分所要解决的技术问题来描述。_
+
+   - 可利用大型语言模型的常识进行驾驶决策
+   - 具备可解释性
+   - 自然语言可以将复杂感知信息高度压缩的特性，具有占用接口信息带宽小的优势
+   - 可集成到传动自动驾驶软件协议栈
+   - 接口完全兼容现存软件协议栈
+   - 可非常便捷集成系统需求到软件中
+   - 可灵活布置到移动端（适配的较小模型）或云端（高性能大型基础模型)
+   - 可利用神经网络的批处理模式高速并发处理多种可能方案，
+   - 利用神经网络的多方案处理的结构进行安全校验和决策
+
+*** 本发明的技术关键点和欲保护点是什
+
+- 通过提示模板适配感知模块的离散化信息输出，转换成自然语言的提示信息，从而得以对大型语言模型进行查询
+- 通过大型语言模型的模板提示接口，将大型语言模型的自然语言输出转换成现有规划控制模块可接受的格式化信息输入格式
+- 整体上利用自然语言作为决策模块和上下游其他模块的接口，并利用大型语言模型作为决策模块，提供具备可解释性的决策
+- 利用大型语言模型预训练得到的先验常识知识，最终消除自动驾驶系统的长尾问题
+- 接口兼容现存软件协议栈
+- 可非常便捷集成自然语言形式的系统需求到软件中
+** 发散思维：
+1. _对于机械类产品，要考虑每个部件、结构，是否有可替代方案，如果有多个，需要一一详细说明。_
+2. _对于电子类产品，要考虑各分电路、及其中主要元器件是否有可替代方案，如果有，需要详细说明。_
+3. _对于化学类产品，要考虑其组成元素是否有其它相类似的元素可替代，如果有，需要一一说明，并说明原因。_
+
+   - 此处示例的大型语言模型为 OpenAI GPT3.5 Davinci，但可以是任何其他大型语言模型
+   - 此处接口代码使用 langchain API,也可以是任何其他相同功能的功能库或者代码
+   - 此处的大型语言模型也可以是根据交通场景适配和细调过的任何其他模型，包括自有大型模型，或者在云端或移动端部署的适配过的较小模型
+   - 此处示例仅以自主换道场景为例，本方案用于其他自动驾驶场景是完全适配的，比如泊车，自适应巡航，车道居中，自动紧急制动（AEB)等， 只需将相应的系统功能转换成提示模板，将相应的感知信息补充到模板即可
+
+* 请撰写人写完交底书后，按以下项目进行自检，所以项目都为“是”后再提交
+
+| 序号 | 评审项目                            | 评审结论     |
+|-----+-----------------------------------+------------|
+|   1 | 是否按模板撰写，格式正确              | [✓]是 - []否 |
+|   2 | 是否未检索到影响本发明专利性的对比文件   | [✓]是 - []否 |
+|   3 | 是否已按 Idea 评审的修改建议进行修改   | [✓]是 - []否 |
+|   4 | 背景技术是否正确易于理解              | [✓]是 - []否 |
+|   5 | 现有技术是否与本发明相关，描述是否恰当   | [✓]是 - []否 |
+|   6 | 本发明具体实施例是否是清楚完整的技术方案 | [✓]是 - []否 |
+|   7 | 方法类专利是否有对应的产品或实际装置    | [✓]是 - []否 |
+|   8 | 有益效果是否准确、全面                | [✓]是 - []否 |
+|   9 | 关键点和欲保护点是否清晰准确           | [✓]是 - []否 |
+|  10 | 是否不再有其它实现方式，或应用于其它领域 | [✓]是 - []否 |

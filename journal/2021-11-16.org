@@ -1,0 +1,12 @@
+#+TITLE: 二, 2021-11-16
+* 09:18
+** DONE Add sockethandler and cutelog
+** Add features with adptive pedalmap
+** DONE Weize Cai orientation
+** Create systemback on veos@nr
+* 17:08
+** tomorrow road test checkpoint
+*** GPU
+*** logc, logd
+*** season, episode
+*** socket handler

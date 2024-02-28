@@ -1,0 +1,8 @@
+#+TITLE: Tue, 2022-03-29
+* 10:59 VEOS Weekly
+** 周计划，8月份
+** Daniel 接口讨论
+** A,B 表：不是阻塞点
+** Fota：VBU 版本号，刷表安全性
+** shadow mode: 开启，关闭
+**

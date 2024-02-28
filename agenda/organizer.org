@@ -1,0 +1,37 @@
+#+TITLE:Organizer
+* Learn more about Emacs :research:
+** TODO Read Emacs Manual
+** TODO Read Emacs List intro
+** TODO Install the Emacs source code
+* Go on vacation
+* Read mail
+** LOOP Choose a mail client
+** STARTED Install and configure the mail client
+- State "STARTED"    from "DONE"       [2022-01-28 Fri 11:00]
+- State "DONE"       from "WAITING"    [2022-01-28 Fri 11:00]
+- State "WAITING"    from "DELEGATED"  [2022-01-28 Fri 11:00]
+- State "DELEGATED"  from "WAITING"    [2022-01-28 Fri 10:58] \\
+  hongchen should continue
+- State "WAITING"    from "DONE"       [2022-01-28 Fri 10:58] \\
+  wait for input
+- State "DONE"       from "STARTED"    [2022-01-28 Fri 10:57]
+- State "STARTED"    from "TODO"       [2022-01-28 Fri 10:57]
+** DEFERRED Send a message  :research:
+SCHEDULED: <2022-01-29 Sat 15:00>
+- State "DEFERRED"   from              [2022-01-28 Fri 11:05] \\
+  wait until money available
+- State "STARTED"    from "DONE"       [2022-01-28 Fri 11:05]
+- State "DONE"       from "WAITING"    [2022-01-28 Fri 11:05]
+- State "WAITING"    from "DONE"       [2022-01-28 Fri 11:03] \\
+  wait for a new input
+- State "DONE"       from "STARTED"    [2022-01-28 Fri 11:03]
+- State "STARTED"    from "TODO"       [2022-01-28 Fri 11:02]
+* Inbox
+** DELEGATED PROJ [#C] Write yearly review :research:
+- State "DELEGATED"  from "CANCELLED"  [2022-01-28 Fri 10:56] \\
+  by me myself to test new todo
+** TODO Excercise
+** DONE Browse the Emacs Wiki
+
+
+- State "DONE"       from "TODO"       [2022-01-28 Fri 17:21]

@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       3c18d248-10b2-41ef-9a49-8f1d2acb85ec
+:END:
+#+title: q learning
+q learning is an off-policy online machine learning methode in [[id:9b90022a-391c-457a-b543-b939f8388430][deep reinforcement learning]]

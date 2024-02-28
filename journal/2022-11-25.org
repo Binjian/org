@@ -1,0 +1,8 @@
+#+TITLE: 周五, 2022-11-25
+* 11:24 ITS Staff Weekly
+** 蔚来资本入局
+* Issues
+** 专利申请状态收集
+** gitlab lfs?
+** no gitignore
+** design review remotecan

@@ -1,0 +1,141 @@
+#+TITLE: Mon, 2021-12-20
+* TODO 08:35
+
++ backlog sprint setup
++ veos reward with punishment
+* TODO 09:11
+** DONE patent review meeting summary
+** DONE enterprise innovation competition slides
+** DONE test veos release
+** TODO RDPG
+** DONE 华进杜娟娟
+** DONE 交大马澄斌
+* 09:23
+** TODO innovation competetion training
+** TODO patent application
+* TODO 09:13
+** DONE Start new sprint
+** Prepare for VEOS review
+** RDPG (LSTM training)
+* 09:40
+** TODO TDP form filling and training
+** TODO redob code modification
+** TODO episode free
+** TODO neural turing machines
+** TODO patent application draft
+* 08:23
+** TODO epfree coding
+** TODO iC1 experience
+* 13:30
+** TODO epfree1 epsiode change
+** TODO epfree2 episode interrupted for interlude hold
+** TODO exit condition
+** TODO weekly report
+*** DONE episodefree concept construction and testing
+*** DONE code baseline preparation
+*** DONE testing system validation, hmi implementation
+*** DONE collection of baseline data without AI collection
+*** DONE patent support
+*** TODO epfree road test, debugging get base
+*** TODO sequential encoding of observation code baseline
+*** TODO patent review
+*** TODO capstone 2nd scrum meeting
+** TODO weekly report
+*** TODO capstone 2nd scrum meeting
+* TODO 08:35
+
++ backlog sprint setup
++ veos reward with punishment
+* TODO 09:11
+** DONE patent review meeting summary
+** DONE enterprise innovation competition slides
+** DONE test veos release
+** TODO RDPG
+** DONE 华进杜娟娟
+** DONE 交大马澄斌
+* 09:23
+** TODO innovation competetion training
+** TODO patent application
+* TODO 09:13
+** DONE Start new sprint
+** Prepare for VEOS review
+** RDPG (LSTM training)
+* 09:40
+** TODO TDP form filling and training
+** TODO redob code modification
+** TODO episode free
+** TODO neural turing machines
+** TODO patent application draft
+* 08:23
+** TODO epfree coding
+** TODO iC1 experience
+* 13:30
+** TODO epfree1 epsiode change
+** TODO epfree2 episode interrupted for interlude hold
+** TODO exit condition
+** TODO weekly report
+*** DONE episodefree concept construction and testing
+*** DONE code baseline preparation
+*** DONE testing system validation, hmi implementation
+*** DONE collection of baseline data without AI collection
+*** DONE patent support
+*** TODO epfree road test, debugging get base
+*** TODO sequential encoding of observation code baseline
+*** TODO patent review
+** TODO weekly report
+*** TODO patent review
+* TODO 08:35
+
++ backlog sprint setup
++ veos reward with punishment
+* TODO 09:11
+** DONE patent review meeting summary
+** DONE enterprise innovation competition slides
+** DONE test veos release
+** TODO RDPG
+** DONE 华进杜娟娟
+** DONE 交大马澄斌
+* 09:23
+** TODO innovation competetion training
+** TODO patent application
+* TODO 09:13
+** DONE Start new sprint
+** Prepare for VEOS review
+** RDPG (LSTM training)
+* 09:40
+** TODO TDP form filling and training
+** TODO redob code modification
+** TODO episode free
+** TODO neural turing machines
+** TODO patent application draft
+* 08:23
+** TODO epfree coding
+** TODO iC1 experience
+* 13:30
+** TODO epfree1 epsiode change
+** TODO epfree2 episode interrupted for interlude hold
+* 08:24
+** TODO arg for inference
+** TODO 35kmh online training by changing action space
+** TODO campus training
+** TODO road test
+* 15:22
+** ITS meeting
+*** TODO 项目更新 Confluence 12月1日起
+**** 项目：工作；人员
+**** 人员：状态
+**** 工作交付
+***** 过去一周：当前sprint
+***** 未来一周
+* 15:05
+** 电池银行Issue
+*** TODO 充放电状态：不动，充电，使用，DC充，AC充，回馈充，
+*** TODO 找到一辆正常充电的车做基准
+*** TODO speed, epb, speed, 上高压， hvpowerup.: 列个表
+* 13:07
+** ITS Staff
+*** TODO 技术管理周报（资料分享）（填写），团队执行报告，智能系统/前沿开发/；本周五！
+******* 开发要素：时间；内容及交付；详细人员或人员数量；大概费用；
+* 10:00
+** Capstone 3rd
+** 专利FTO

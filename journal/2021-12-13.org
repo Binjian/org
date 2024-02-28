@@ -1,0 +1,8 @@
+#+TITLE: Mon, 2021-12-13
+* 09:02
+** Road test: baseline & continuie
+** weekly staff
+*** VEOS, Databank recheck
+** Git trainining
+** Read time series GAN
+** Conditional GAN

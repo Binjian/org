@@ -1,0 +1,133 @@
+:PROPERTIES:
+:ID:       dd9850e8-946d-46b7-b3e8-7331edf1be53
+:END:
+#+title: veos-adp-plan
+#+OPTIONS: p:t
+
+#  [[id:59bd937c-b70b-4546-bb0b-98d2215737d8][veos-adp]]
+
+* algorithm :veos:
+** ddpg :veos:
+*** TODO refactoring
+DEADLINE: <2022-05-13 fri>
+** rdpg :veos:
+*** TODO implementation and refactoring
+DEADLINE: <2022-05-19 thu>
+*** campus testgz
+*** road test
+** offline training
+** driving style clustering/classification
+DEADLINE: <2022-06-15 Wed>
+*** TODO classification review
+*** TODO training interface review
+*** TODO algorithm review
+** TODO algorithm revision and selection I
+DEADLINE: <2022-06-30 thu>
+** TODO algorithm revision and selection II
+DEADLINE: <2022-07-29 fri>
+** TODO continual learning: Avanlance (Pytorch, ContinualAI)
+** TODO Future Work
+*** TODO Active Inference (free energy principle) (POMDP, internal model)
+*** TODO Multi-agent system (human as an co-operative/adversarial another agent, with dynamic/adaptive Policy)
+*** TODO Streaming Transformer with unlimited length
+*** TODO Foundational Model TimeGPT
+*** TODO look at the entroy (complexity) of the model weights
+*** TODO Exploration with APRL, dynamics estimation,
+*** TODO Offline SAC, Ensemble, increase gradient steps.
+*** TODO Programming
+**** TODO world model
+**** TODO pydantic rewriting
+**** TODO integrate gpt interface, pandasai, etc.
+**** TODO light-weight analysis of time sequences in pool based on pandas, sk-learn, gpt
+**** TODO TimeGPT
+**** TODO use nbdev/orgmode for python for jupyter development
+**** TODO use delta lake with PySpark and dask-deltatable
+**** TODO use polor instead of pandas
+**** TODO use jxnl/instructor with GPT and Pydantic interface for automatic generation
+**** TODO integrating ORM (like TortoiseORM to map TS database to DataFrame Object)
+*** TODO Asyncio to transformer
+* cloud cluster :veos:
+** TODO create dockerfile for cluster environment
+DEADLINE: <2022-04-29 fri>
+*** TODO online
+*** TODO offline
+**** TODO quadruple
+**** TODO sample
+**** TODO pool
+** Daniel
+** Qinglong
+*** handy
+*** background
+** 数据，通信？
+* remotecan
+** TODO raw data packaging
+DEADLINE: <2022-05-13 fri>
+** TODO multithreading
+* TODO Avanlanche & DVS
+* integration test :veos:
+** TODO integration test with remotecan
+DEADLINE: <2022-05-13 fri>
+*** TODO offline training test
+DEADLINE: <2022-05-19 thu>
+*** TODO integration test with offline data engine
+DEADLINE: <2022-05-20 fri>
+*** TODO online training test
+DEADLINE: <2022-05-27 fri>
+** TODO rdpg campus
+DEADLINE: <2022-05-31 Tue>
+** TODO ddpg road test phase I
+DEADLINE: <2022-06-16 thu>
+** TODO rdpg road test phase I
+DEADLINE: <2022-06-30 thu>
+** TODO ddpg road test phase II
+DEADLINE: <2022-07-14 thu>
+** TODO rdpg road test phase II
+DEADLINE: <2022-07-28 thu>
+* RoadTest Jiangyin
+** Test specification
+*** Route
+**** loop
+**** avoid crossings (always turning right)
+**** few traffic (few pedestrians or other vehicles, bicycles)
+**** smooth road surface
+*** Time
+**** 1~2 min
+*** Test Requirements:
+**** continuous, no interrruption
+*** Driving requirements
+**** normal but constant, no jerky or sudden braking
+**** cruising on straight road
+**** slow down before turn, accelerate to cruise speed after turning
+*** equipment
+**** mobile phone
+**** login on test report webpage http://58.34.202.172:5830/  with personal account，
+**** configure: set vehicle ID (name of the test vehicle like vb7, m2, etc)
+*** Workflow
+0. Safety first
+1. Mobile phone keeps on the test report page
+2. press Start on test report page
+3. drive the vehicle according to the driving requirements
+4. when arriving and stopping at the termination point (in case of loop, the starting position), press the stop button
+5. prepare for the next round and return to 1.
+* MP
+** data
+*** quality
+*** exploring
+**** remotecan issues finding --> debugging/fixing
+*** my own data (mongodb, data folder in docker)
+** model
+*** training, 0.4
+*** 1.0 model with new interface
+*** data format conversion from 0.4 to 1.0
+** compute
+*** growth expection for future
+** VEOS status
+*** performance
+**** ？没测过
+*** algorithm
+**** 简单模型
+**** 特别场景
+*** data
+**** timestamps
+**** quality
+**** validation

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       1a5c9833-a494-4952-b8e4-9c94f429489d
+:END:
+#+title: Python
+
+[[id:944393ba-02a5-49c7-bf55-ffefc710510b][tensorflow]]
+[[id:d68e0e07-471b-4784-a614-b2349d2002bb][pytorch]]
+
+[[id:693c9b79-094c-4f90-a16b-3b1c8d77e32f][opencv]]

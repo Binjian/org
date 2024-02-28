@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       47c14bc9-1a18-4d74-9a5f-6b594ece8cb2
+:END:
+#+title: camera calibration
+[[id:0c3267f0-dbd3-423d-89f7-f8e66d9aa026][self-calibration]]
+
+* fisheye model
+:PROPERTIES:
+:ID:       e6d70bc7-c178-4fb5-9b5b-7aba32656986
+:ROAM_ALIASES: "calibration camera"
+:END:
