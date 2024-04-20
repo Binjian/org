@@ -1,0 +1,52 @@
+#+title: Taming MacOS as Linux Immigrant
+* Terminal
+** brew install
+*** updf
+** Migration from Ubuntu
+*** with exFAT file system
+** Linux Image and ext4
+*** parallel desktop
+*** external usb disk
+*** create ubuntu backup
+**** rsync
+**** create conezilla image
+***** convert ubuntu destop to image with CloneZila
+***** decompress with partclone cat and zstd decompress
+** fonts install
+*** Iosevka
+*** LXGW chinese font
+*** MesloLGS NF
+*** Sarosa
+** zsh, omz, powerline10k
+** add openssh keys for github ssh access
+** iTerm2
+*** Profiles
+**** switch option and command
+**** add escape key mappings in keys for Ctrl-Shift-F2 Alt-F12 Alt-F11
+**** option -> hyper Escape +
+*** Copy and paste mode
+**** copy mode, 'v', ctrl-v to select, ctrl-c to copy
+**** enable sharing pasteboard in Preference/General/Selection
+** Keyboard
+*** KeyChron K6
+**** restore key cap in mac keyboard format
+**** not to switch capslock and ctrl
+** Byobu
+*** enable Fn keys
+*** use tmux not gnome-screen (avoid ctrl-a setting conflict with emacs)
+*** enable Mouse and keyboard
+*** list and show sessions from command line byobu list-session byobu kill-seesion -t
+*** enable tmux escape keys: ctrl-b, ctrl-b " to show session-windows-panes overview for selection
+** MacOS keyboard settings
+*** Automator for Launch Application
+*** Settings Keyboard Services
+*** Mouse Zoom with Chrome plugin, VS setting
+** Tmuxinator for persistent sessions
+* Emacs
+** install from brew
+** build emacs 30, enabling native comp, images,
+** doom emacs
+** install rg, fd,
+* VSCode
+** separate ubuntu, windows and macos profiles
+**
