@@ -22,6 +22,8 @@ no realtime requirement, based on the scenario, minutes would be sufficient. act
 
 Contextual Information like NLU different scenario, any action is like tokens. --> Sequential decision by transformer/RNN
 
+extract driving mode from large data in a online-learning mode.
+
 
 * sota
 
@@ -35,12 +37,16 @@ Contextual Information like NLU different scenario, any action is like tokens. -
 equation
 **** observation model: state,
 equation
-**** reward model
+**** **reward model**
+no artificial reward points but true reward, the energy consumuption
 **** driver model
+driving style
 
 ** time sequence is important for exact reward
 ** data pool with dask and mongodb for easy sampling, storing, indexing, data interface with DataFrame with every timestamps
-
+** system
+*** signal interface
+*** signal flow diagram
 * experiment results discussion
 ** ddpg
 short period of attention window
@@ -51,7 +57,15 @@ long episode truncated BPTT long period of attention window
 episode management, training selection,
 
 RLHF? easy way with empirical distribution no sequential model, first ignore the time sequence, just to look at the difference.
+** driving style
+** multimodal
+** transfer
+
+* future worok
+*** add sequence model for driving style identification e2e way.
+*** utilizing offline data CGL
+*** improve learning efficiency by
+*** federated learning for meta learning,evolving
 
 * broader impact
-federated learning for meta learning,evolving
 NAS,

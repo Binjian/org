@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       9a119ad9-6aba-4b79-840c-2c225b3cb3df
+:END:
+#+title: newrizon-ai-todo
+
+[[id:b37a3d2a-9138-4625-89a5-457373c00324][veos-production-plan]]
+
+[[id:39fa9095-e971-4b1e-9550-fab0045aaa8e][BLMP-devel]]
+
+* SWE
+** Literate programming
+*** notebook for C/C++/Rust/Bash
+*** org mode with Yasnippet
+** docker based remote devel and debugging
+** dashboard
+*** streamlit
+*** Taipy
+*** HMI with TUI (texutualize)
+*** logging (toolong)
+** ORM
+*** lancedb
+*** pydantic
+*** time series (Timestamps)
+** rust
+*** rustcan
+*** python migration (tensorflow, pytorch)
+** framework
+*** pytorch
+*** keras 3.0
+* AI
+** GPT
+*** Timegpt
+*** Mamba
+*** agent
+** Reinforcement Learning
+*** Active inference
+*** timeseries RL
+**** PPO,SAC,CQL,AWAC，
+*** transoformer/mamba instead of LSTM
+*** Offline reinforcement learning
+**** daydreamer

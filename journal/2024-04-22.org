@@ -1,0 +1,22 @@
+#+TITLE: Mon, 2024-04-22
+* 08:50AI Sprint
+** TimeGPT
+*** GPT-2 adpation for TS-Ananlysis
+**** nanoGPT finetuning
+**** llama.c
+***** llama.cpp
+*** TimeGPT investigation for funes
+*** Textualize investiagtion for TUI implementation of veos online training interface
+**** elements:
+screen, button, sparkline
+**** events and messages
+**** css
+**** animation
+** eos paper drafting
+
+** rustcan as secure and safe backend for candycan
+*** rust basics understanding
+*** lancedb investigation
+** Management
+*** AI sprint
+*** ITS Staff weekly review

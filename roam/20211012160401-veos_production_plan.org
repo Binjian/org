@@ -1,4 +1,4 @@
-:PROPERTIES:
+ :PROPERTIES:
 :ID:       b37a3d2a-9138-4625-89a5-457373c00324
 :END:
 #+title: veos-production-plan
@@ -190,3 +190,6 @@ SCHEDULED: <2022-07-15 Fri>
 ** Offline Reinforcement Learning CQL, etc.
 ** Transformer substitute LSTM
 ** Foundational Model for time series
+** dashboard for results with streamlit
+** data pipeline with [[https://github.com/Avaiga/taipy][Taipy]]
+** can migration to rustcan
