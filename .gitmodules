@@ -1,0 +1,3 @@
+[submodule "latex/arxiv-style"]
+	path = latex/arxiv-style
+	url = https://github.com/kourgeorge/arxiv-style.git
