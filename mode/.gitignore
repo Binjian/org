@@ -6,3 +6,7 @@
 firn
 firn-linux-x86_64
 *.pdf
+*.pptx
+*.gz
+/.orgids
+/.orgids

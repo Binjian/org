@@ -1,7 +1,8 @@
 :PROPERTIES:
 :ID:       f949414e-7ddf-4d0f-b2b0-d27c2644a498
 :END:
-#+title: veos-paper draft
+#+title: Application of deep reinforcement learning in improving power consumption of battery electric vehicle
+#+LaTeX_HEADER: \synctex=1
 [[id:228e200d-6679-453b-af68-788ed82029d6][veos]]
 * motivation
 alex irpan paper post why reinforcement leanring does not work yet in the real world
@@ -51,6 +52,7 @@ long episode truncated BPTT long period of attention window
 episode management, training selection,
 
 RLHF? easy way with empirical distribution no sequential model, first ignore the time sequence, just to look at the difference.
+Native RLHF, no extra training.
 
 * broader impact
 federated learning for meta learning,evolving
