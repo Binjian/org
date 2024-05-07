@@ -13,3 +13,6 @@
 [submodule "andreacrotti-suite"]
 	path = snippets/andreacrotti-suite
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+[submodule "yyr-org"]
+	path = snippets/yyr-org
+	url = https://github.com/yyr/yasnippets-orgmode.git
