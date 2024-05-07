@@ -1,3 +1,15 @@
 [submodule "latex/arxiv-style"]
 	path = latex/arxiv-style
 	url = https://github.com/kourgeorge/arxiv-style.git
+[submodule "mooerslab-org"]
+	path = snippets/mooerslab-org
+	url = https://github.com/MooersLab/snippet-org-mode.git
+[submodule "madsdk-latex"]
+	path = snippets/madsdk-latex
+	url = https://github.com/madsdk/yasnippets-latex.git
+[submodule "doom-suite"]
+	path = snippets/doom-suite
+	url = https://github.com/doomemacs/snippets.git
+[submodule "andreacrotti-suite"]
+	path = snippets/andreacrotti-suite
+	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
