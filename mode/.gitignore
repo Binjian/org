@@ -10,3 +10,5 @@ firn-linux-x86_64
 *.gz
 /.orgids
 /.orgids
+*.svg
+tes

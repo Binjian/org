@@ -16,3 +16,6 @@
 [submodule "yyr-org"]
 	path = snippets/yyr-org
 	url = https://github.com/yyr/yasnippets-orgmode.git
+[submodule "sleft-latex"]
+	path = snippets/sleft-latex
+	url = https://github.com/Sleft/yasnippet-latex-mode.git

@@ -2,8 +2,10 @@
 :ID:       f949414e-7ddf-4d0f-b2b0-d27c2644a498
 :END:
 #+title: veos-paper draft
-[[id:228e200d-6679-453b-af68-788ed82029d6][veos]]
-* motivation
+
+* Introduction
+** motivation
+*** theoretical significance
 alex irpan paper post why reinforcement leanring does not work yet in the real world
 scaling up model, is not the case
 1. Simulation atari
@@ -14,6 +16,12 @@ scaling up model, is not the case
 make some progress, any progress in the application;
 
 
+
+*** Industrial significance:
+1. saving energy,
+2. extending driving range
+
+#+begin_quote
 learning based.
 
 driving decision with short horizon has an impact on the overall energy consumption
@@ -24,8 +32,20 @@ Contextual Information like NLU different scenario, any action is like tokens. -
 
 extract driving mode from large data in a online-learning mode.
 
+#+end_quote
 
-* sota
+
+
+[[edraw:data=H4sIAOPOOWYAA5VR3W6DIBR+FXJ6XRFrl9qIT7A9hFVEIgWDrNi339Fi3MWWZSHwBTjfz4FyekgSVOt7Due3FEgvlOw9hzzDzXzXZuLQez9eKQ0hJOGUWCdplqYpRSqQh3CTsoYDS1gkXGetzPATjRVFQddbqEonGk9mDujzXNdfY6iWg2hdHY63uhmks5+mBTJ5ZwfBwVgjgHRKaw6HruuA0KqU30m2fW5+W9llGbvGgaXL2A6OMUq2B2H5nhC7XzMvQbEBtiB6Cq3VOIlNw451ozyWMfi/rUPeGS8c6l8QG9yflsoGD7JoONa+j9KvR/hbFx/lA+kEW3hfMYuYR4zSVOLED66+AAYcyWYhAgAA]]
+
+** sota
+*** physical model based
+1. [1]Data-driven Framework for Fuel Efficiency Improvement in Extended Range Electric Vehicle Used in Package Delivery Application
+   2020, specific model (physical model, EREV) , state space: observe SoC, f, GPS; action space: range of $L_{set}$  *Energy Compensated expected trip distance*
+   change only scalar action value, no high dyanmic
+2. [999] RL based Energy Optimization for a Fuel Cell Electric Vehicle
+***** state: soc difficult to observer, action/control variable u is $P_{{fc}}$
+
 
 * method
 
@@ -58,11 +78,7 @@ episode management, training selection,
 
 RLHF? easy way with empirical distribution no sequential model, first ignore the time sequence, just to look at the difference.
 ** driving style
-** multimodal
-** transfer
-
-* future worok
-*** add sequence model for driving style identification e2e way.
+** training schedule is important model for driving style identification e2e way.
 *** utilizing offline data CGL
 *** improve learning efficiency by
 *** federated learning for meta learning,evolving
