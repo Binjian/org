@@ -15,7 +15,9 @@ scaling up model, is not the case
 
 make some progress, any progress in the application;
 
+*** energy consumption optimization:
 
+while meeting the desired vehicle control (driving dynamics). The dynamics will be changed in a way that is energy efficient. In how far the dynamics will be changes, while guaranteeing the motion planning and safety.
 
 *** Industrial significance:
 1. saving energy,
@@ -34,18 +36,21 @@ extract driving mode from large data in a online-learning mode.
 
 #+end_quote
 
-
-
-[[edraw:data=H4sIAOPOOWYAA5VR3W6DIBR+FXJ6XRFrl9qIT7A9hFVEIgWDrNi339Fi3MWWZSHwBTjfz4FyekgSVOt7Due3FEgvlOw9hzzDzXzXZuLQez9eKQ0hJOGUWCdplqYpRSqQh3CTsoYDS1gkXGetzPATjRVFQddbqEonGk9mDujzXNdfY6iWg2hdHY63uhmks5+mBTJ5ZwfBwVgjgHRKaw6HruuA0KqU30m2fW5+W9llGbvGgaXL2A6OMUq2B2H5nhC7XzMvQbEBtiB6Cq3VOIlNw451ozyWMfi/rUPeGS8c6l8QG9yflsoGD7JoONa+j9KvR/hbFx/lA+kEW3hfMYuYR4zSVOLED66+AAYcyWYhAgAA]]
+*** A new domain for AI application
+**** human in the loop,
+**** cooperative learning
 
 ** sota
 *** physical model based
-1. [1]Data-driven Framework for Fuel Efficiency Improvement in Extended Range Electric Vehicle Used in Package Delivery Application
+
+**** [1]Data-driven Framework for Fuel Efficiency Improvement in Extended Range Electric Vehicle Used in Package Delivery Application
    2020, specific model (physical model, EREV) , state space: observe SoC, f, GPS; action space: range of $L_{set}$  *Energy Compensated expected trip distance*
    change only scalar action value, no high dyanmic
-2. [999] RL based Energy Optimization for a Fuel Cell Electric Vehicle
-***** state: soc difficult to observer, action/control variable u is $P_{{fc}}$
 
+**** [999] RL based Energy Optimization for a Fuel Cell Electric Vehicle, overly complicated model parameters
+ state: power demand and soc, ( $P_{dem}$ , SOC) difficult to observe, reward functoin
+ $R_{t}(\dot{m}_{fc},P_{b},R_{b},Q_{m},U_{ocv})$ contains instantaneous hydrogen consumption, battery power, battery internal resistance, battery capacity, open-circuit voltage; action/control variable $A=(P_{fc})$ is the fuel cell power
+**** [111] Reinforcement learning for electric vehicle applications in power systems: a critical review
 
 * method
 
@@ -82,6 +87,18 @@ RLHF? easy way with empirical distribution no sequential model, first ignore the
 *** utilizing offline data CGL
 *** improve learning efficiency by
 *** federated learning for meta learning,evolving
+
+
+* MLOps, dataflow and ETL pipelines
+
+\begin{figure}
+\begin{center}
+    \includegraphics[width=0.86\textwidth, angle=0]{./img/adp_data_flow_seq_block.png}
+\end{center}
+\caption{Data pipelines}
+\end{figure}
+
+
 
 * broader impact
 NAS,

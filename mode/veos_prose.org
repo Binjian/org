@@ -2,7 +2,6 @@
 :ID:       f949414e-7ddf-4d0f-b2b0-d27c2644a498
 :END:
 #+title: veos-prose
-[[id:228e200d-6679-453b-af68-788ed82029d6][veos]]
 * motivation
 alex irpan paper post why reinforcement learning does not work yet in the real world
 scaling up model, is not the case
