@@ -1,0 +1,16 @@
+#+TITLE: Mon, 2024-05-13
+* 07:57 Weekly Sprint
+* STARTED CV
+DEADLINE: <2024-05-17 Fri>
+- State "STARTED"    from "TODO"       [2024-05-13 Mon 08:13]
+** TODO org,tex,pdf,chinese
+** TODO html
+** TODO export to html
+** TODO github host
+** TODO linkedin
+* TODO Job search
+* TODO 随申办失业登记
+* TODO devel
+** TODO streamlit
+** TODO documentation of eos, dataflow_io,
+* TODO running

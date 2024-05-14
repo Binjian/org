@@ -1,3 +1,6 @@
 /org-ai-images/
 /.orgids
 /excalidraw/*.svg
+/.DS_Store
+/latex/.DS_Store
+/snippets/.DS_Store
