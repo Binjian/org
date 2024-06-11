@@ -223,12 +223,12 @@ pedaltorque_map_3_7 = pedaltorque_map[3:7, :].reshape(-1).tolist()
 returncode = send_pedaltorque_map(pedaltorque_map_3_7, 3, 4)
 
 #+END_SRC
-* Dataflow
+* Dataflow through Cloud
 
-#+CAPTION[Dataflow]: Dataflow
-#+NAME: Fig. Dataflow
-#+begin_src mermaid :file ./img/adp_data_flow_seq_block.svg
-graph  BT
+#+CAPTION[DataflowCloud]: Dataflow through cloud
+#+NAME: Fig. Dataflow through cloud
+#+begin_src mermaid :file ./img/data_flow_cloud.svg
+graph TB
   subgraph vehicle ["Vehicle"]
     %% line 0
     ECU(ECU)-->TBox(TBox)
@@ -263,12 +263,11 @@ graph  BT
   class cloud green
 #+end_src
 
+#+RESULTS: Fig. Dataflow through cloud
+[[file:./img/data_flow_cloud.svg]]
+
 #+RESULTS: Fig. Dataflow
-[[file:./img/adp_data_flow_seq_block.svg]]
-
-#+CAPTION[Dataflow]: Dataflow
-
-
+[[file:./img/data_flow_cloud.svg]]
 
 ** Upload (Observe)
 - the arrows with black link
@@ -294,7 +293,7 @@ graph  BT
 - latency: expected/upper bound/lowerbound for both Intest & Internal interface
 
 #+BEGIN_COMMENT
-#+begin_src mermaid :file adp_data_flow_seq_block.png
+#+begin_src mermaid :file data_flow_cloud.png
 graph LR
   subgraph Cloud Interfaces
     direction TB
@@ -382,3 +381,40 @@ plt.savefig('output.png')
 
 #+RESULTS:
 : None
+
+* Dataflow through local KvaserCAN
+
+#+CAPTION[DataflowKvaser]: Dataflow through KvaserCAN
+#+NAME: Fig. Dataflow through Kvaser
+#+begin_src mermaid :file ./img/data_flow_kvaser.svg
+graph TB
+  subgraph vehicle ["Vehicle"]
+    %% line 0
+    ECU(ECU)-->Kvaser(Kvaser)
+    %% line 1
+    Kvaser-->ECU
+    %% line 2
+    Kvaser-->UDP("UDP Server")
+    UDP-->Kvaser
+    UDP-->KvaserCAN
+    KvaserCAN-->UDP
+    Cruncher-->KvaserCAN
+    KvaserCAN-->Cruncher
+  end
+  %% line 7
+  linkStyle 1 stroke-width:3px,stroke:red
+  linkStyle 3 stroke-width:3px,stroke:red
+  linkStyle 5 stroke-width:3px,stroke:red
+  linkStyle 6 stroke-width:3px,stroke:red
+  style Cruncher fill:#ccccff
+  style ECU fill:#ffffcc
+  style Kvaser fill:#ffffcc
+  style KvaserCAN fill:#ccccff
+  style UDP fill:#ccccff
+
+  classDef green fill:#e6ffe6;
+  class vehicle green
+#+end_src
+
+#+RESULTS: Fig. Dataflow through Kvaser
+[[file:./img/data_flow_kvaser.svg]]
