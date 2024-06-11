@@ -227,30 +227,46 @@ returncode = send_pedaltorque_map(pedaltorque_map_3_7, 3, 4)
 
 #+CAPTION[Dataflow]: Dataflow
 #+NAME: Fig. Dataflow
-#+begin_src mermaid :file ./img/adp_data_flow_seq_block.png
-graph BT
-  subgraph "vehicle (CAN)"
-  VBU(VBU)-->TBox(TBox)
-  TBox-->VBU
+#+begin_src mermaid :file ./img/adp_data_flow_seq_block.svg
+graph  BT
+  subgraph vehicle ["Vehicle"]
+    %% line 0
+    ECU(ECU)-->TBox(TBox)
+    %% line 1
+    TBox-->ECU
   end
-  subgraph "Cloud (Sync API)"
+  subgraph cloud ["Cloud"]
     direction LR
-    TBox--"BW/Latency (Intest)"-->Buffer("Buffer (OSS)")
-    Buffer--"BW/Latency (Internal)"-->RemoteCAN(RemoteCAN)
-    RemoteCAN--"BW/Latency (Internal)"-->TSP(TSP Service)
+    %% line 2
+    Buffer--"BW/Latency (On Server)"-->RemoteCAN(RemoteCAN)
+    RemoteCAN--"BW/Latency (On Server)"-->TSP(TSP Service)
+    RemoteCAN-.configure.->Buffer
+    Cruncher(Cruncher)-->RemoteCAN(RemoteCAN)
+    RemoteCAN-->Cruncher
   end
-  TSP--"BW/Latency (Intest)"-->TBox
-  VEOS(VEOS)-->RemoteCAN(RemoteCAN)
-  RemoteCAN-->VEOS
-  RemoteCAN-.configure.->Buffer
+  %% line 7
+  TBox--"BW/Latency (OTA)"-->Buffer("Buffer (OSS)")
+  TSP--"BW/Latency (OTA)"-->TBox
   linkStyle 1 stroke-width:3px,stroke:red
-  linkStyle 4 stroke-width:3px,stroke:red
+  linkStyle 3 stroke-width:3px,stroke:red
   linkStyle 5 stroke-width:3px,stroke:red
-  linkStyle 6 stroke-width:3px,stroke:red
+  linkStyle 8 stroke-width:3px,stroke:red
+  style Cruncher fill:#ccccff
+  style ECU fill:#ffffcc
+  style TBox fill:#ffffcc
+  style RemoteCAN fill:#ccccff
+  style Buffer fill:#ccccff
+  style TSP fill:#ffffcc
+
+  classDef green fill:#e6ffe6;
+  class vehicle green
+  class cloud green
 #+end_src
 
-#+CAPTION[Dataflow]: Dataflow
 #+RESULTS: Fig. Dataflow
+[[file:./img/adp_data_flow_seq_block.svg]]
+
+#+CAPTION[Dataflow]: Dataflow
 
 
 
