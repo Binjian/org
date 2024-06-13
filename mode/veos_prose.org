@@ -12,6 +12,8 @@ scaling up model, is not the case
 
 make some progress, any progress in the application;
 
+reinforcement learning in the physical world, not in the virtual environment, complexity,
+there's some application that has a simple and real reward function, need human in the loop, agent needs to work with human.
 
 learning based.
 
@@ -52,5 +54,5 @@ episode management, training selection,
 RLHF? easy way with empirical distribution no sequential model, first ignore the time sequence, just to look at the difference.
 
 * broader impact
-federated learning for meta learning,evolving
+federated learning for meta learning, evolving
 NAS,

@@ -2,6 +2,10 @@
 :ID:       f949414e-7ddf-4d0f-b2b0-d27c2644a498
 :END:
 #+title: veos-paper draft
+#+latex: synctex=true
+#+bibliography: ../latex/arxiv-style/references.bib
+#+bibliography: ../bib/veos.bib
+#+bibliography: local.bib
 
 * Introduction
 ** motivation
@@ -14,6 +18,13 @@ scaling up model, is not the case
 4. Bonsai
 
 make some progress, any progress in the application;
+understand the driving style with respect to energy consumption
+
+[cite:@Irpan_2018]
+
+Can you really make progress in real world application
+
+advocate a learning based dynamic policy, that is flexible, multimodal in complex real road scenarios
 
 *** energy consumption optimization:
 
@@ -39,20 +50,53 @@ extract driving mode from large data in a online-learning mode.
 *** A new domain for AI application
 **** human in the loop,
 **** cooperative learning
+*** BEV driving
+**** optimal policy is determined by longitudinal speed control (torque request) and road condition, and driving style
+**** real reward,  no artificial point, no human target of reward function, but object reward, same goal if human is neutral or cooperative,
+**** short time horizon of several seconds is enough to get a decent policy
+**** long time horizon is possible but need more training and scale up.
+**** human in the loop, not RLHF, reward is determined by human, subjective,
+**** whether the complexity is overparametrized.
 
 ** sota
 *** physical model based
 
-**** [1]Data-driven Framework for Fuel Efficiency Improvement in Extended Range Electric Vehicle Used in Package Delivery Application
-   2020, specific model (physical model, EREV) , state space: observe SoC, f, GPS; action space: range of $L_{set}$  *Energy Compensated expected trip distance*
-   change only scalar action value, no high dyanmic
 
+
+**** 2020, specific model (physical model, EREV) , state space: observe SoC, f, GPS; action space: range of $L_{set}$  *Energy Compensated expected trip distance*
+change only scalar action value, no high dyanmic
+[cite:@Wang_2020]
 **** [999] RL based Energy Optimization for a Fuel Cell Electric Vehicle, overly complicated model parameters
- state: power demand and soc, ( $P_{dem}$ , SOC) difficult to observe, reward functoin
- $R_{t}(\dot{m}_{fc},P_{b},R_{b},Q_{m},U_{ocv})$ contains instantaneous hydrogen consumption, battery power, battery internal resistance, battery capacity, open-circuit voltage; action/control variable $A=(P_{fc})$ is the fuel cell power
+state: power demand and soc, ( $P_{dem}$ , SOC) difficult to observe, reward functoin
+$R_{t[cite:@Hou_2022]}(\dot{m}_{fc},P_{b},R_{b},Q_{m},U_{ocv})$ contains instantaneous hydrogen consumption, battery power, battery internal resistance, battery capacity, open-circuit voltage; action/control variable $A=(P_{fc})$ is the fuel cell power
+[cite:@Hou_2022]
 **** [111] Reinforcement learning for electric vehicle applications in power systems: a critical review
+[cite:@Qiu_2023]
+
+* system
+** whole system
+
+#+ATTR_HTML: :alt  :title system architecture :width 600px  :align center
+#+attr_org: :width 500px
+[[./img/tspace_overview.svg]]
+
+** local interface
+
+#+ATTR_HTML: :alt  :title cloud interface :width 400px :align center
+#+attr_org: :width 300px
+[[./img/data_flow_kvaser.svg]]
+
+** cloud interface
+
+#+ATTR_HTML: :alt  :title cloud interface :width 600px :align center
+#+attr_org: :width 600px
+[[./img/data_flow_cloud.svg]]
 
 * method
+
+[[./img/actor-critic.svg]]
+
+[[excalidraw:/Users/x/.org.d/excalidraw/8167a3b6-bf87-44fb-9b85-42f33fcf9b53.excalidraw.svg]]
 
 ** model
 *** vehicle dynamic system modeling
@@ -66,12 +110,25 @@ equation
 no artificial reward points but true reward, the energy consumuption
 **** driver model
 driving style
+** Inference
+
+[[./img/rl_control.svg]]
+
+
 
 ** time sequence is important for exact reward
 ** data pool with dask and mongodb for easy sampling, storing, indexing, data interface with DataFrame with every timestamps
 ** system
 *** signal interface
 *** signal flow diagram
+** Training mode and Inference mode
+
+* MLOps, dataflow and ETL pipelines
+
+[[./img/adp_data_flow_seq_block.png]]
+
+
+
 * experiment results discussion
 ** ddpg
 short period of attention window
@@ -88,17 +145,11 @@ RLHF? easy way with empirical distribution no sequential model, first ignore the
 *** improve learning efficiency by
 *** federated learning for meta learning,evolving
 
-
-* MLOps, dataflow and ETL pipelines
-
-\begin{figure}
-\begin{center}
-    \includegraphics[width=0.86\textwidth, angle=0]{./img/adp_data_flow_seq_block.png}
-\end{center}
-\caption{Data pipelines}
-\end{figure}
-
-
+** controllability
+tends to be heavier on the pedal, but
 
 * broader impact
 NAS,
+
+* Bibliography
+#+print_bibliography:
