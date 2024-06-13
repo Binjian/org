@@ -1,0 +1,19 @@
+#+TITLE: Mon, 2024-06-03
+* DONE CV
+DEADLINE: <2024-05-17 Fri>
+- State "DONE"       from "STARTED"    [2024-06-03 Mon 16:56]
+- State "STARTED"    from "TODO"       [2024-05-13 Mon 08:13]
+** DONE org,tex,pdf,chinese
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:55]
+** DONE html
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:55]
+** DONE export to html
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:55]
+** DONE github host
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:55]
+** DONE linkedin
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:56]
+* DONE 随申办失业登记
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:53]
+* DONE running
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:59]

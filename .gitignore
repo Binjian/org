@@ -4,3 +4,5 @@
 /.DS_Store
 /latex/.DS_Store
 /snippets/.DS_Store
+/mode/.auctex-auto/
+/bib/.auctex-auto/
