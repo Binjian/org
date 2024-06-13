@@ -1,0 +1,66 @@
+:PROPERTIES:
+:ID:       d3bab20a-66ad-4e4d-96ae-94de2b09afe3
+:END:
+#+title: Job Seeking
+
+
+* TODO Job search
+** TODO amazon
+** TODO microsoft
+** TODO Cariad (VW)
+** TODO linkedin
+*** TODO fpga
+*** TODO amazon dsp
+** TODO NVidia
+** TODO Aptiv
+** TODO Tesla
+** DONE UniTree
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:57]
+* TODO 领失业救济金
+** DONE 五月
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:54]
+** TODO 六月
+* TODO devel
+** DEFERRED streamlit
+- State "DEFERRED"   from "TODO"       [2024-06-03 Mon 16:52] \\
+  not urgent, after job seeking
+** DONE documentation of eos, dataflow_io,
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:56]
+** TODO Wavenet
+** TODO T5 - transformer
+** TODO rnn-lua
+** TODO chronos
+** TODO frequncy with VQ-VAE skills
+** TODO quantization with entropy object
+* TODO Metron Inc.
+** Company
+*** ES management? Scale
+*** Contractor employee:
+**** time frame of the position?
+*** A Inc.?
+*** Can the position be HK based? Taxes. As Expert
+*** Benefits?
+** Technical
+*** projects? contractor? general, concrete
+*** scale?
+*** solution? HW/SW, framework?
+*** What's the missing piece?
+*** target? resource? time?
+*** Whom to work with, internal and external?
+*** Not available:
+**** objective-c
+**** touch screen
+* TODO Tom Haw
+** ADAS on Infotainment system
+*** System, video solution
+** Self-driving
+*** embedded system, domain controller
+*** L4 autonomous system: perception, planning and control (Dynamic programming, non-DL)
+** Deep learning
+*** Deep reinforcement learning (alphago, driving style learning, reducing the power consumption by 10% for one week of online training)
+*** Generative modeling for time sequences
+*** LLM
+**** wrapper around LLM and VLM to do decision system (no training required)
+** relocation
+*** Germany
+*** Aptiv,
