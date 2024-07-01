@@ -21,14 +21,108 @@ make some progress, any progress in the application;
 understand the driving style with respect to energy consumption
 
 [cite:@Irpan_2018]
+sample inefficient
+classic robotics techniques provide better performance than DRL
+requires reward function which needs design, reward shaping
+escape local minima
+overfitting to rare patterns
+hyperparameter manually chosen, performance sensible to them, unstable: 30% of failure rate counts as working. 30% of the time 0 reward. In this case overall efficiency increase is evident.
+        - sensitive to initialization, dynamics of training process
+
+it's difficult to find real-world productionized uses of deep RL:
+        - Games: Atari[cite:@mnih13:_playin_atari_deep_reinf_learn], Go[cite:@DBLP:journals/nature/SilverHMGSDSAPL16], Poker[cite:@DBLP:conf/ijcai/BrownS17]  Dota2[cite:@openai19:_dota_large_scale_deep_reinf_learn], Diplomacy[cite:@bakhtin22:_Human_level_diplomacy_cicero]
+        - Data center power usage
+        - autoML
+        - NAS
+        - Automotive:
+          - ADS
+                RL in self-driving is hard
+                wayve: leverage simulation and foundation model, not official yet.
+                Tesla: narrow domain, ACC, not yet public, no paper
+
+Problems suitable for DRL
+        - easy to generate unbounded amounts of experience
+        - simplified into an easier form, limiting the domain
+        - self-play for learning
+        - clean way to define a learnable, ungameable reward, if reward shaping is required, reward should be rich.
+
+Conclusion: still a research topic, not robust for widespread use, usable but no publicizing, the former is more likely.
+        - local optima are good enough
+        - hardware scaling up
+        - more learning signal
+        - model based learning for sample efficiency
+        - start with Supervised learning, RL as fine-tuning
+        - reward functions could be learnable
+        - transfer learnings
+        - good priors: get real-world prior, data-driven way of meta-learning
+        - Harder environment could be paradoxically easier: provide more learning signals.
+        - generalization might not matter for practical purposes.
+
+
+[cite:@Irpan_2024]
+        - Generic RL is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
+        - Robot learning has drifted towards imitation learning, easier to work with and effective usage of computation.
+
+[cite:@TesslerChen_2021]
+        - the gap between theory and practice
+        - infinite horizon with stationary model
+        - regularization with noise
+        - hyperparameter sensitivity
+        - algorithm novelty vs performance: performance might be acheived by simple augmentation + simple policy, novelty of method have truly result?
+        - evaluation environment? simple and direct
+[cite:@RietzFinn_2023]
+        - sample inefficiency
+        - reward is scalar, to optimize complex tasks is difficult, multi-objective?
+        - unsafe exploration of trial and error based , blackbox-nature of reuslting DNN based agents,
+[cite:@DBLP:journals/ijrr/IbarzTFKPL21]
+
+always has sepcific technicalities, for specific problems/domain (atari, locomotive, quadrupedal robots)
+
+regularizaiton,
+encoder with sparsity, bottleneck
+world model
+
+model based
+[cite:@hafner18:_learn_laten_dynam_plann_pixel]
+[cite:@DBLP:journals/corr/abs-1803-10122]
+[cite:@hafner20:_master_atari_discr_world_model]
+might be specific for atari, because it's model-based
+
+APRL Adaptive Policy ReguLarization
+[cite:@smith23:_grow_your_limit]
+        efficient-performance trade-off (veos: limit only the delta torque, but which can be accumulated in the final torque map table)
+        soft policy contraint (veos: limit the )
+
+
+[cite:@kumar21:_rma]
+        Sim2Real, adaptation module, specific for env(terrain) changes.
+[cite:@Miki_2022]
+        Sim2Real, privleged learning, encoder integrate proprioception and exteroceptive perception to locomotion control
+[cite:@Hoeller_2024]
+        sim2real (has good simulations where the agent has enough to train, then transfer)
+        break down to 3 modules: perception(point cloud encoding, output estimate of terrain and belief state for navigation to choose skills) + locomotion(specs for limited skills) + navigation
+        separate training of perception, locamotion module, not the whole pipeline, not e2e
+
+[cite:@Song_2023]
+        optimmal control vs reinforcement learning
+        sim2real, simulation/data augmentation: special initialization to guide the learning, simulate delay in simulation, randomize physical parameter
+
 
 Can you really make progress in real world application
 
 advocate a learning based dynamic policy, that is flexible, multimodal in complex real road scenarios
 
+- sample efficiency (hyperparameter, leveraging simulation)
+- exploration strategy
+- offline reinforcement learning
+- practical issues for robot
+
+We will give an example showing that there're still many chances when you can achieve major progress in real world application with very basic deep reinforcement technology. And many concerns of the research might not play an important roll in those areas. Even though in long term, the multimodality, out of data distribution does reallly matter in complex and very long time horizon, but they need a significantly longer verification and require much more effort to validate.
 *** energy consumption optimization:
 
 while meeting the desired vehicle control (driving dynamics). The dynamics will be changed in a way that is energy efficient. In how far the dynamics will be changes, while guaranteeing the motion planning and safety.
+
+difficult to simulate, no good electric powertrain simulation yet
 
 *** Industrial significance:
 1. saving energy,
@@ -47,6 +141,22 @@ extract driving mode from large data in a online-learning mode.
 
 #+end_quote
 
+Unaware of the Regenerative Braking System, the Agent is exploiting the RBS, to reach an optimal logitudinal driving policy for energy efficiency.
+we don't explicitly make any model assumption in the neural network. With regen + 10% increase in engery efficiency. Adapting to the environment and driving style.
+
+modulation on human driving command through brake and accelerate pedal
+
+*** Regenerative braking system (RBS)
+in no way modify the RBS other system parameter
+
+https://www.notateslaapp.com/tesla-reference/1051/how-tesla-s-regenerative-braking-works
+
+https://www.tesla.com/ownersmanual/modely/en_au/GUID-3DFFB071-C0F6-474D-8A45-17BE1A006365.html
+
+https://www.tesla.com/blog/magic-tesla-roadster-regenerative-braking
+
+https://en.wikipedia.org/wiki/Regenerative_braking
+
 *** A new domain for AI application
 **** human in the loop,
 **** cooperative learning
@@ -60,8 +170,6 @@ extract driving mode from large data in a online-learning mode.
 
 ** sota
 *** physical model based
-
-
 
 **** 2020, specific model (physical model, EREV) , state space: observe SoC, f, GPS; action space: range of $L_{set}$  *Energy Compensated expected trip distance*
 change only scalar action value, no high dyanmic
@@ -96,12 +204,14 @@ $R_{t[cite:@Hou_2022]}(\dot{m}_{fc},P_{b},R_{b},Q_{m},U_{ocv})$ contains instant
 
 [[./img/actor-critic.svg]]
 
-[[excalidraw:/Users/x/.org.d/excalidraw/8167a3b6-bf87-44fb-9b85-42f33fcf9b53.excalidraw.svg]]
 
 ** model
 *** vehicle dynamic system modeling
 **** general model
 *** reinforcement learning model
+**** overview
+[[./img/actor-critic.svg]]
+
 **** action model: torque model, translational mixed gaussian model, with speed translation invariance
 equation
 **** observation model: state,
@@ -110,11 +220,14 @@ equation
 no artificial reward points but true reward, the energy consumuption
 **** driver model
 driving style
+**** inference is decoupled from training, so that offline reinforcement can be utilized to leverage the large amount of static data, logs which contains the necessary required information: speed, acc pedal, braking pedal,
+**** training with episodes, inferring with infinite horizon, we can think the gamma is step function which drops to zero after T steps. Short attention.
 ** Inference
 
-[[./img/rl_control.svg]]
+[[./img/inference.svg]]
+** Training
 
-
+[[./img/training.svg]]
 
 ** time sequence is important for exact reward
 ** data pool with dask and mongodb for easy sampling, storing, indexing, data interface with DataFrame with every timestamps
@@ -127,29 +240,61 @@ driving style
 
 [[./img/adp_data_flow_seq_block.png]]
 
+Notes: keeping the order of the time sequence is crucial in keep the causality of the data, thus reducing noise in the overall training data.
+
+Time resolution of the action and observation: relative to the overall observation and the long-term or short-term strategy
+
 
 
 * experiment results discussion
 ** ddpg
 short period of attention window
 ** driving style hinted at a common reward of human drive and agent
+we can easily add another model to learn the driver's behavior policy,
+for the sake of simplicity, we omit the step, just assume that the driver style has a certain distribution, but observe quatitatively the change of the distribution. In Future work, we can add a diffusion model in the control loop for better policy learning and adapt to each individual driver.
+
 
 ** rdpg
 long episode truncated BPTT long period of attention window
 episode management, training selection,
 
 RLHF? easy way with empirical distribution no sequential model, first ignore the time sequence, just to look at the difference.
+** offline reinforcement learing with Implicit Diffusion Q-learning
+[cite:@hansen-estruch23:_idql]
+IQDL (Implicit Q-Leaning as an Actor-Critic Method with Diffusion Policies)
+
+Offline reinforcement learning
+leveraging large amount of static datasets, extract from static dataset a better policy than the behaivor
+handling out of distribution actions
+
 ** driving style
 ** training schedule is important model for driving style identification e2e way.
 *** utilizing offline data CGL
 *** improve learning efficiency by
 *** federated learning for meta learning,evolving
-
+** transferable and multimodality (MLP is long enough)
 ** controllability
 tends to be heavier on the pedal, but
+** long horizon
+infinite horizone
+episodic constraints
+with frozen model, short period, as long as policies on a short interval works and the there's enough rich tricks to cover different scenarios, the infinite horizon episode is covered sufficiently.
+- long-term policy is hard, vulnerable,
+- low density and therefore abundancy of data,
+** receding horizon with diffusion policy
+[cite:@chi23:_diffus_polic]
+** Offline reinforcement learning: overall previous policy $\pi_{\beta}$
+Implicit Diffusion Q-learning unimodal
+recurrent version of implicit diffusion q-learning maybe
 
+** sample efficiency
+
+** sequential model with IDQL to handle POMDP.
 * broader impact
 NAS,
+We advocate/propose to look at broader industrial applications which has explicit reward modeling, easily abundant data with complex human behavior, human in the loop, long-horizon, mass-production, real applications can be found in those domains.
+
+explore the cooperative human-machine interaction when machine modulates human behavior like a support agent to achieve a same goal.
 
 * Bibliography
 #+print_bibliography:

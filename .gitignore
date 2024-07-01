@@ -6,3 +6,8 @@
 /snippets/.DS_Store
 /mode/.auctex-auto/
 /bib/.auctex-auto/
+/latex/A2C/
+/latex/svg-inkscape/
+*.zip
+/mode/veos_paper_draft.bbl
+/latex/LaTeX-graphics-with-TikZ/
