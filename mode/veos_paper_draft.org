@@ -3,9 +3,8 @@
 :end:
 #+title: veos-paper draft
 #+latex: synctex=true
-#+bibliography: ../latex/arxiv-style/references.bib
+#+bibliography: ../bib/rl.bib
 #+bibliography: ../bib/veos.bib
-#+bibliography: local.bib
 
 * introduction
 ** motivation
@@ -20,7 +19,7 @@ video games and simulation, robotics (quadrupedal )
 make some progress, any progress in the application;
 understand the driving style with respect to energy consumption
 
-[cite:@irpan_2018]
+[cite:@Irpan_2018]
 sample inefficient
 classic robotics techniques provide better performance than drl
 requires reward function which needs design, reward shaping
@@ -30,7 +29,7 @@ hyperparameter manually chosen, performance sensible to them, unstable: 30% of f
         - sensitive to initialization, dynamics of training process
 
 it's difficult to find real-world productionized uses of deep rl:
-        - games: atari[cite:@mnih13:_playin_atari_deep_reinf_learn], go[cite:@dblp:journals/nature/silverhmgsdsapl16], poker[cite:@dblp:conf/ijcai/browns17]  dota2[cite:@openai19:_dota_large_scale_deep_reinf_learn], diplomacy[cite:@bakhtin22:_human_level_diplomacy_cicero]
+        - games: atari[cite:@mnih13:_playin_atari_deep_reinf_learn], go[cite:@DBLP:journals/nature/SilverHMGSDSAPL16] , poker[cite:@DBLP:conf/ijcai/BrownS17]   dota2[cite:@openai19:_dota_large_scale_deep_reinf_learn], diplomacy[cite:@bakhtin22:_Human_level_diplomacy_cicero]
         - data center power usage
         - automl
         - nas
@@ -58,26 +57,26 @@ conclusion: still a research topic, not robust for widespread use, usable but no
         - harder environment could be paradoxically easier: provide more learning signals.
         - generalization might not matter for practical purposes.
 
-[cite:@irpan_2024]
+[cite:@Irpan_2024]
         - generic rl is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
         - robotiii learning has drifted towards imitation learning, easier to work with and effective usage of computation.
 
         - generic rl is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
         - robotiii learning has drifted towards imitation learning, easier to work with and effective usage of computation.
 
-[cite:@tesslerchen_2021]
+[cite:@TesslerChen_2021]
         - the gap between theory and practice
         - infinite horizon with stationary model
         - regularization with noise
         - hyperparameter sensitivity
         - algorithm novelty vs performance: performance might be acheived by simple augmentation + simple policy, novelty of method have truly result?
         - evaluation environment? simple and direct
-[cite:@rietzfinn_2023]
+[cite:@RietzFinn_2023]
         - sample inefficiency
         - reward is scalar, to optimize complex tasks is difficult, multi-objective?
         - unsafe exploration of trial and error based , blackbox-nature of reuslting dnn based agents,
 
-[cite:@dblp:journals_ijrr_ibarztfkpl21]
+[cite:@DBLP:journals_ijrr_IbarzTFKPL21]
 
 always has sepcific technicalities, for specific problems/domain (atari, locomotive, quadrupedal robots)
 
@@ -88,7 +87,7 @@ world model
 model based
 [cite:@hafner18:_learn_laten_dynam_plann_pixel]
 [cite:@hafner20:_master_atari_discr_world_model]
-[cite:@dblp:journals/corr/abs-1803-10122]
+[cite:@DBLP:journals/corr/abs-1803-10122]
 [cite:@hafner20:_master_atari_discr_world_model]
 might be specific for atari, because it's model-based
 
@@ -100,18 +99,18 @@ aprl adaptive policy regularization
 
 [cite:@kumar21:_rma]
         sim2real, adaptation module, specific for env(terrain) changes.
-[cite:@miki_2022]
+[cite:@Miki_2022]
         sim2real, privleged learning, encoder integrate proprioception and exteroceptive perception to locomotion control
-[cite:@hoeller_2024]
+[cite:@Hoeller_2024]
         sim2real (has good simulations where the agent has enough to train, then transfer)
         break down to 3 modules: perception(point cloud encoding, output estimate of terrain and belief state for navigation to choose skills) + locomotion(specs for limited skills) + navigation
         separate training of perception, locamotion module, not the whole pipeline, not e2e
 
-[cite:@song_2023]
+[cite:@Song_2023]
         optimmal control vs reinforcement learning
         sim2real, simulation/data augmentation: special initialization to guide the learning, simulate delay in simulation, randomize physical parameter
 
-[cite:@dblp:journals_ijrr_ibarztfkpl21]
+[cite:@DBLP:journals_ijrr_IbarzTFKPL21]
         challenges in rl
         - maninulation skills
           - guided policy search hierarchical structure with general policy network and model-based rl policy with individual skills (local policies, usually not drl)
@@ -266,22 +265,22 @@ overfitting, not generalizable.
 **** 2020, specific model (physical model, erev) , state space: observe soc, f, gps; action space: range of $l_{set}$  *energy compensated expected trip distance*
 erev action derived energy compensated expected trip distance.
 change only scalar action value, no high dyanmic, reward function is heuristic with weighted sum of fuel consumption, a penalty for low soc, penalty for unfavored specific action, and a penalty for fuel use compensation at the end of an episode)
-[cite:@wang_2020]
+[cite:@Wang_2020]
 **** [999] rl based energy optimization for a fuel cell electric vehicle, overly complicated model parameters
 fuel cell engergy fcev
 state: power demand and soc, ( $p_{dem}$ , soc) difficult to observe, reward functoin
 $r_{t}(\dot{m}_{fc},p_{b},r_{b},q_{m},u_{ocv})$ contains instantaneous hydrogen consumption, battery power, battery internal resistance, battery capacity, open-circuit voltage; action/control variable $a=(p_{fc})$ is the fuel cell power
-[cite:@hou_2022]
-**** [cite:@hu_2019]
-[cite:@hu_2018]
+[cite:@Hou_2022]
+[cite:@Hu_2019]
+[cite:@Hu_2018]
 hev and phev
 objective is composite complex, heuristic: minimize fuel consumption, penalty term based on fuel consumption and soc state
 action torque-split ratio between ice and battery, $a(t)=t_{e}(t)$
 
 **** [111] reinforcement learning for electric vehicle applications in power systems: a critical review
-[cite:@qiu_2023]
+[cite:@Qiu_2023]
 ev dispatch problem vehicle to grid (g2v, v2h, v2g)
-**** [cite:@egan_2023]
+[cite:@Egan_2023]
 review of action dicrete and continuous action spaces in power train (hybrid ev, phev) and the reward functions (mostly need reward shaping with combined fuel and soc to guarantee soc above a minimum )
 
 * preliminaries
@@ -586,9 +585,9 @@ handling out of distribution actions
 ** human in the loop (hitl) rl
 mostly heuristic, doesn't comply with markov decision process. add noise to reward or action of the learning process. hard to explain theoretically and might not be stable, might not learn efficiently.
 However, in the case of EVEOS system, we see that the agent will exploiting a non-stationary process of
-[cite:@retzlaff_2024]
+[cite:@Retzlaff_2024]
 [cite:@saunders17:_trial_error] hirl human intervention rl. non-markovian, human intervention violate the markvianness. learning seems to be disturbed by noise.
-[cite:@huang_2023]
+[cite:@Huang_2023]
 modify the reward signal and
 ** training schedule is important model for driving style identification e2e way.
 *** utilizing offline data cgl

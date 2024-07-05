@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       9f2d4cc4-dd0c-4613-99f4-3668f3e996fd
+:END:
+#+title: William Saunders AND Girish Sastry AND Andreas Stuhlmueller AND Owain Evans :: Trial without Error: Towards Safe Reinforcement Learning via Human Intervention
