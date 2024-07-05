@@ -1,80 +1,83 @@
-:PROPERTIES:
-:ID:       f949414e-7ddf-4d0f-b2b0-d27c2644a498
-:END:
+:properties:
+:id:       f949414e-7ddf-4d0f-b2b0-d27c2644a498
+:end:
 #+title: veos-paper draft
 #+latex: synctex=true
 #+bibliography: ../latex/arxiv-style/references.bib
 #+bibliography: ../bib/veos.bib
 #+bibliography: local.bib
 
-* Introduction
+* introduction
 ** motivation
-*** theoretical significance
 alex irpan paper post why reinforcement leanring does not work yet in the real world
 scaling up model, is not the case
-1. Simulation atari
-2. Carla
-3. server cluster VAC
-4. Bonsai
+video games and simulation, robotics (quadrupedal )
+1. simulation atari
+2. carla
+3. server cluster vac
+4. bonsai
 
 make some progress, any progress in the application;
 understand the driving style with respect to energy consumption
 
-[cite:@Irpan_2018]
+[cite:@irpan_2018]
 sample inefficient
-classic robotics techniques provide better performance than DRL
+classic robotics techniques provide better performance than drl
 requires reward function which needs design, reward shaping
 escape local minima
 overfitting to rare patterns
-hyperparameter manually chosen, performance sensible to them, unstable: 30% of failure rate counts as working. 30% of the time 0 reward. In this case overall efficiency increase is evident.
+hyperparameter manually chosen, performance sensible to them, unstable: 30% of failure rate counts as working. 30% of the time 0 reward. in this case overall efficiency increase is evident.
         - sensitive to initialization, dynamics of training process
 
-it's difficult to find real-world productionized uses of deep RL:
-        - Games: Atari[cite:@mnih13:_playin_atari_deep_reinf_learn], Go[cite:@DBLP:journals/nature/SilverHMGSDSAPL16], Poker[cite:@DBLP:conf/ijcai/BrownS17]  Dota2[cite:@openai19:_dota_large_scale_deep_reinf_learn], Diplomacy[cite:@bakhtin22:_Human_level_diplomacy_cicero]
-        - Data center power usage
-        - autoML
-        - NAS
-        - Automotive:
-          - ADS
-                RL in self-driving is hard
+it's difficult to find real-world productionized uses of deep rl:
+        - games: atari[cite:@mnih13:_playin_atari_deep_reinf_learn], go[cite:@dblp:journals/nature/silverhmgsdsapl16], poker[cite:@dblp:conf/ijcai/browns17]  dota2[cite:@openai19:_dota_large_scale_deep_reinf_learn], diplomacy[cite:@bakhtin22:_human_level_diplomacy_cicero]
+        - data center power usage
+        - automl
+        - nas
+        - automotive:
+          - ads
+                rl in self-driving is hard
                 wayve: leverage simulation and foundation model, not official yet.
-                Tesla: narrow domain, ACC, not yet public, no paper
+                tesla: narrow domain, acc, not yet public, no paper
 
-Problems suitable for DRL
+problems suitable for drl
         - easy to generate unbounded amounts of experience
         - simplified into an easier form, limiting the domain
         - self-play for learning
         - clean way to define a learnable, ungameable reward, if reward shaping is required, reward should be rich.
 
-Conclusion: still a research topic, not robust for widespread use, usable but no publicizing, the former is more likely.
+conclusion: still a research topic, not robust for widespread use, usable but no publicizing, the former is more likely.
         - local optima are good enough
         - hardware scaling up
         - more learning signal
         - model based learning for sample efficiency
-        - start with Supervised learning, RL as fine-tuning
+        - start with supervised learning, rl as fine-tuning
         - reward functions could be learnable
         - transfer learnings
         - good priors: get real-world prior, data-driven way of meta-learning
-        - Harder environment could be paradoxically easier: provide more learning signals.
+        - harder environment could be paradoxically easier: provide more learning signals.
         - generalization might not matter for practical purposes.
 
+[cite:@irpan_2024]
+        - generic rl is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
+        - robotiii learning has drifted towards imitation learning, easier to work with and effective usage of computation.
 
-[cite:@Irpan_2024]
-        - Generic RL is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
-        - Robot learning has drifted towards imitation learning, easier to work with and effective usage of computation.
+        - generic rl is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
+        - robotiii learning has drifted towards imitation learning, easier to work with and effective usage of computation.
 
-[cite:@TesslerChen_2021]
+[cite:@tesslerchen_2021]
         - the gap between theory and practice
         - infinite horizon with stationary model
         - regularization with noise
         - hyperparameter sensitivity
         - algorithm novelty vs performance: performance might be acheived by simple augmentation + simple policy, novelty of method have truly result?
         - evaluation environment? simple and direct
-[cite:@RietzFinn_2023]
+[cite:@rietzfinn_2023]
         - sample inefficiency
         - reward is scalar, to optimize complex tasks is difficult, multi-objective?
-        - unsafe exploration of trial and error based , blackbox-nature of reuslting DNN based agents,
-[cite:@DBLP:journals/ijrr/IbarzTFKPL21]
+        - unsafe exploration of trial and error based , blackbox-nature of reuslting dnn based agents,
+
+[cite:@dblp:journals_ijrr_ibarztfkpl21]
 
 always has sepcific technicalities, for specific problems/domain (atari, locomotive, quadrupedal robots)
 
@@ -84,31 +87,109 @@ world model
 
 model based
 [cite:@hafner18:_learn_laten_dynam_plann_pixel]
-[cite:@DBLP:journals/corr/abs-1803-10122]
+[cite:@hafner20:_master_atari_discr_world_model]
+[cite:@dblp:journals/corr/abs-1803-10122]
 [cite:@hafner20:_master_atari_discr_world_model]
 might be specific for atari, because it's model-based
 
-APRL Adaptive Policy ReguLarization
+aprl adaptive policy regularization
 [cite:@smith23:_grow_your_limit]
         efficient-performance trade-off (veos: limit only the delta torque, but which can be accumulated in the final torque map table)
         soft policy contraint (veos: limit the )
 
 
 [cite:@kumar21:_rma]
-        Sim2Real, adaptation module, specific for env(terrain) changes.
-[cite:@Miki_2022]
-        Sim2Real, privleged learning, encoder integrate proprioception and exteroceptive perception to locomotion control
-[cite:@Hoeller_2024]
+        sim2real, adaptation module, specific for env(terrain) changes.
+[cite:@miki_2022]
+        sim2real, privleged learning, encoder integrate proprioception and exteroceptive perception to locomotion control
+[cite:@hoeller_2024]
         sim2real (has good simulations where the agent has enough to train, then transfer)
         break down to 3 modules: perception(point cloud encoding, output estimate of terrain and belief state for navigation to choose skills) + locomotion(specs for limited skills) + navigation
         separate training of perception, locamotion module, not the whole pipeline, not e2e
 
-[cite:@Song_2023]
+[cite:@song_2023]
         optimmal control vs reinforcement learning
         sim2real, simulation/data augmentation: special initialization to guide the learning, simulate delay in simulation, randomize physical parameter
 
+[cite:@dblp:journals_ijrr_ibarztfkpl21]
+        challenges in rl
+        - maninulation skills
+          - guided policy search hierarchical structure with general policy network and model-based rl policy with individual skills (local policies, usually not drl)
+          - model free drl: image based, still use positin/torque control, both on and off policy; constrained env, limited robustness, specific objects
+            - off-policy
+                  sample efficient, improved stability (sac)
+            - on-policy
+              - sample inefficient;
+              - ease of use, more stable, and robust to suboptimal hyperparameter settting
+              - need reward specification
+          - learning predictive models for multiple skills (general knowledge about physics and dynamics, images + actions, no reward), then target positioin with image for training policy.
+            - generalization of tasks with a single learned model, task agnostic
+            - constrained env in lab, difficult for open world env.
+            - inaccuracies in the model and reward function
+            - use human demonstration as guide for training
+        - grasp skills
+          - prior work: separate perception and control (control becomes open loop)
+          - qt-opt: close loop, self-supervised, offline-data
+        - legged locomotion
+          - sim2real, overcome reality gap
+          - prior
+          - manual tuning
+          - challenges:
+            - sample efficiency, hyperparameter tuning
+            - robot safety
+            - asynchronous control: *asynchrony*
+        - outstanding challenges
+          - reliable, stable learning: reducing sensitivity to hyperparameters: automated tuning, difficult
+          - reducing issues owing to local optima and delayed rewards: more complex optimization landscape, leverage exploration
+          - sample efficiency:
+            - model-based (samples with distribution model) > model-free off-policy > model-free on-policy
+            - input-remapping (encoding), privileged learning with internal state and then transfer with raw image; vae; offline training, off-policy->offline off-policy training batch rl; use simulation
+          - simulation
+            - on real robot (vehicle) human supervison is always required for safety and resettting, monitoring hardware.
+            - overcoming reality gap: dynamics, partial observability, latency, safety
+            - partial observability: utilize privileged information and then transfer
+            - physics discrepancy: simulate uncertainty in physics and latency, develop accurate model.
+            - domain randomization: disturbing simulation parameters, data augmentation for diverse conditions
+            - domain adaptation
+            - side-stepping exploration: sparse reward with reward shaping; use demonstration;
+            - initialization: behavior cloning
+            - scripted policies (residual rl with scripted + learned)
+            - reward shaping
+          - generalization: data diversity; correct train/test evaluation protocol
+          - model exploitation
+          - robot operation at scale
+            - maximizing experimental throughput
+            - facilitating continuous operation
+            - dealing with non-stationarity
+          - aysnchronous control
+          - goals and reward
+            - add additional sensors
+            - heuristics
+            - learning the reward irl
+          - multi-task learning and meta-learning
+          - safe learning
+            - safe action space
+            - smooth actions
+            - recognize unsafe situations
+            - contrain learned policy
+            - aprl
+          - persistance
+            - self-persistence: driving with a marginal action space of 20% of maximum request torque
+            - task persistence
 
-Can you really make progress in real world application
+general rl for a diverse set of problems is hard to find. to be useful
+        - make use of simulation
+        - not really e2e in the sense that tradition pid controller are mostly still at the end of execution chain in order to reduce the modeling complexity and utilize the available engineering resources. learning solves the planning and trajectory tracking, but also account for the model deviation and latency of the classic controller (ads longitudinal and lateral controller, robotics poistion control or torque control)
+        - regularization
+        - encoding/decoding
+          - use sequential model to record history
+          - bottleneck to reduce the state complexity for reinforcement learning
+          - model based with a good model world model
+        - policy representation
+        - inductive bias in the models structure.
+
+
+can you really make progress in real world application
 
 advocate a learning based dynamic policy, that is flexible, multimodal in complex real road scenarios
 
@@ -117,14 +198,14 @@ advocate a learning based dynamic policy, that is flexible, multimodal in comple
 - offline reinforcement learning
 - practical issues for robot
 
-We will give an example showing that there're still many chances when you can achieve major progress in real world application with very basic deep reinforcement technology. And many concerns of the research might not play an important roll in those areas. Even though in long term, the multimodality, out of data distribution does reallly matter in complex and very long time horizon, but they need a significantly longer verification and require much more effort to validate.
+we will give an example showing that there're still many chances when you can achieve major progress in real world application with very basic deep reinforcement technology. and many concerns of the research might not play an important roll in those areas. even though in long term, the multimodality, out of data distribution does reallly matter in complex and very long time horizon, but they need a significantly longer verification and require much more effort to validate.
 *** energy consumption optimization:
 
-while meeting the desired vehicle control (driving dynamics). The dynamics will be changed in a way that is energy efficient. In how far the dynamics will be changes, while guaranteeing the motion planning and safety.
+while meeting the desired vehicle control (driving dynamics). the dynamics will be changed in a way that is energy efficient. in how far the dynamics will be changes, while guaranteeing the motion planning and safety.
 
 difficult to simulate, no good electric powertrain simulation yet
 
-*** Industrial significance:
+*** industrial significance:
 1. saving energy,
 2. extending driving range
 
@@ -135,74 +216,191 @@ driving decision with short horizon has an impact on the overall energy consumpt
 
 no realtime requirement, based on the scenario, minutes would be sufficient. actuallly the luxuray of seconds updating the nearby rows of torque table.
 
-Contextual Information like NLU different scenario, any action is like tokens. --> Sequential decision by transformer/RNN
+contextual information like NLU different scenario, any action is like tokens. --> sequential decision by transformer/rnn
 
 extract driving mode from large data in a online-learning mode.
 
 #+end_quote
 
-Unaware of the Regenerative Braking System, the Agent is exploiting the RBS, to reach an optimal logitudinal driving policy for energy efficiency.
-we don't explicitly make any model assumption in the neural network. With regen + 10% increase in engery efficiency. Adapting to the environment and driving style.
+
+*** regenerative braking system (rbs)
+unaware of the regenerative braking system, the agent is exploiting the rbs, to reach an optimal logitudinal driving policy for energy efficiency.
+we don't explicitly make any model assumption in the neural network. with regen + 10% increase in engery efficiency. adapting to the environment and driving style.
 
 modulation on human driving command through brake and accelerate pedal
-
-*** Regenerative braking system (RBS)
-in no way modify the RBS other system parameter
+in no way modify the rbs other system parameter
 
 https://www.notateslaapp.com/tesla-reference/1051/how-tesla-s-regenerative-braking-works
 
-https://www.tesla.com/ownersmanual/modely/en_au/GUID-3DFFB071-C0F6-474D-8A45-17BE1A006365.html
+https://www.tesla.com/ownersmanual/modely/en_au/guid-3dffb071-c0f6-474d-8a45-17be1a006365.html
 
 https://www.tesla.com/blog/magic-tesla-roadster-regenerative-braking
 
-https://en.wikipedia.org/wiki/Regenerative_braking
+https://en.wikipedia.org/wiki/regenerative_braking
 
-*** A new domain for AI application
+*** a new domain for ai application
 **** human in the loop,
 **** cooperative learning
-*** BEV driving
+*** bev driving
 **** optimal policy is determined by longitudinal speed control (torque request) and road condition, and driving style
-**** real reward,  no artificial point, no human target of reward function, but object reward, same goal if human is neutral or cooperative,
+**** real reward,  no artificial point, no human target of reward function, but object reward, same goal if human is neutral or cooperative, important to design a actions space and safety measure to avoid any hyperparameter and regularization term to unnecessarily pollute the reward signal.
+**** no simulation is available (we tried to create simple electric powertrain model which interact with carla-simulator but agave up when the physical ev can generate abundant samples and rewards.)
+**** reliable and stable training, well conditioned optimzaition.
+**** human supervision is easy, driver is enough, whose most important and eminant responsibility is to drive safely. when data collection, hardware fails or episode is interrupted by road condition, to reset the episode after get the vehicle in a safe state.
+**** electric vehicle's fast action execution and observation response comparing to ice vehicle
+**** compact state space, (speed, acc, brake, voltage, current), no need to encoder (not vision based)
+**** safe to learn, sample efficiency, abundant reward
+**** sample efficiency is not an issue, because samples are cheap, abudant where rewards are real.
 **** short time horizon of several seconds is enough to get a decent policy
 **** long time horizon is possible but need more training and scale up.
-**** human in the loop, not RLHF, reward is determined by human, subjective,
+**** human in the loop, not rlhf, reward is determined by human, subjective,
 **** whether the complexity is overparametrized.
+*** design of the system while checking the up to date techniques with respect to practical relevance.
+* related work
+** sota in domain
+*** physical model based, many domain knowlege with specific state and action of the dediated vehicle model.
+model based, domain knowledge, low action dimentionality but high hyperparameter dimentionality.
+samples difficult and expensive to get, decision mostly low dimentionality, not considering environment, not enough data, to leverage the capability of deep neural network
+overfitting, not generalizable.
 
-** sota
-*** physical model based
+**** 2020, specific model (physical model, erev) , state space: observe soc, f, gps; action space: range of $l_{set}$  *energy compensated expected trip distance*
+erev action derived energy compensated expected trip distance.
+change only scalar action value, no high dyanmic, reward function is heuristic with weighted sum of fuel consumption, a penalty for low soc, penalty for unfavored specific action, and a penalty for fuel use compensation at the end of an episode)
+[cite:@wang_2020]
+**** [999] rl based energy optimization for a fuel cell electric vehicle, overly complicated model parameters
+fuel cell engergy fcev
+state: power demand and soc, ( $p_{dem}$ , soc) difficult to observe, reward functoin
+$r_{t}(\dot{m}_{fc},p_{b},r_{b},q_{m},u_{ocv})$ contains instantaneous hydrogen consumption, battery power, battery internal resistance, battery capacity, open-circuit voltage; action/control variable $a=(p_{fc})$ is the fuel cell power
+[cite:@hou_2022]
+**** [cite:@hu_2019]
+[cite:@hu_2018]
+hev and phev
+objective is composite complex, heuristic: minimize fuel consumption, penalty term based on fuel consumption and soc state
+action torque-split ratio between ice and battery, $a(t)=t_{e}(t)$
 
-**** 2020, specific model (physical model, EREV) , state space: observe SoC, f, GPS; action space: range of $L_{set}$  *Energy Compensated expected trip distance*
-change only scalar action value, no high dyanmic
-[cite:@Wang_2020]
-**** [999] RL based Energy Optimization for a Fuel Cell Electric Vehicle, overly complicated model parameters
-state: power demand and soc, ( $P_{dem}$ , SOC) difficult to observe, reward functoin
-$R_{t[cite:@Hou_2022]}(\dot{m}_{fc},P_{b},R_{b},Q_{m},U_{ocv})$ contains instantaneous hydrogen consumption, battery power, battery internal resistance, battery capacity, open-circuit voltage; action/control variable $A=(P_{fc})$ is the fuel cell power
-[cite:@Hou_2022]
-**** [111] Reinforcement learning for electric vehicle applications in power systems: a critical review
-[cite:@Qiu_2023]
+**** [111] reinforcement learning for electric vehicle applications in power systems: a critical review
+[cite:@qiu_2023]
+ev dispatch problem vehicle to grid (g2v, v2h, v2g)
+**** [cite:@egan_2023]
+review of action dicrete and continuous action spaces in power train (hybrid ev, phev) and the reward functions (mostly need reward shaping with combined fuel and soc to guarantee soc above a minimum )
 
+* preliminaries
+Drivers with diverse driving experience tend to have quite different fuel or electricity consumption on the same vehicle and the same driving route. The general common sense is that the driving styles, i.e., how drivers operate the vehicle through acceleration and brake, have an impact on the vehicle energy consumption. we'd expect there exists an experienced driver who has the optimal driving style can handle various driving conditions to achieve the greatest energy efficiency. This leads us to the assumption that if we could apply an agent observing the driving dynamics and adjust the operation of the vehicle, we could reduce the energy consumption.
+
+ The agent will get the vehicle speed $V$, driver operation on the acceleration pedal $A$ and the brake pedal $B$ from the on-board sensors as its observation. The engergy consumption is the product of the voltage $U$ and the current $I$ from the sensors in powertrain. Its action $\Delta T$ will be imposed on the pedal map of powertrain controller. The pedal map is a lookup table which stores the torque request for the electric motor for a given acceleration pedal opening the driver effects and the current speed. The requested torque, once exerted by the electric motor, is proportional to the vehicle acceleration.
+
+#+attr_html: :alt  :title system architecture :width 200px  :align center
+#+attr_org: :width 200px
+[[file:img/eveos_control.png]]
+
+here we'd only consider to effect the longitudinal control the vehicle, namely the electric powertrain, since the lateral operation through the steering wheel has far less impact on the energy consumption than the longitudinal control.
+each driver has his own driving style which we model as part of the whole environment.
+
+we can collect a huge amount of drivng data (acceleration pedal, brake pedal, the resulting speed, the energy consumption, the voltage and the current from electric powertain), due to its low data density. we can record and process a long period of driving, to figure out a long-term optimal driving policy regards to what is an energy efficient way of driving.
+
+in low speed, there's a coast-down profile which keeps the vehile in moving forward in low speed
+
+*** $s_t$
+state at timestamp $t$
+- $v_k$: velocity of the vehicle
+- $a_k$: acceleration pedal position in percentage
+- $b_k$: brake pedal position in percentage
+- $k$: number of frames within a single record. a record starts from timestamp $t$, contains $k$ can frames and ends by the end of the last frame
+  - each line in a record is referred to as a single frame, whose information can be extracted from multiple can frames at the same moment
+  - rows within a record is contiguous in time starting from the timestamp $t$
+  - in case of frame loss, a loss token needs to be inserted as a lost frame state at the next timestamp of $t$, that is $t+1$
+*** $s'_t$
+the next state following $s_t$
+- the state according to which the next decsion $a_t$ will be made.
+- in case of previous assumption, this state will contain the next adjacent 30 frames of state $s_t$.
+- $s'_t$ must be contiguous in time to $s_t$
+*** $a_t$
+action at timestamp $t$
+- it's the decision of what pedal map will be applied after observing the state $s_t$ by the agent
+- the action $a_t$ of veos system is the pedal map $[pm_{5\times17}]^t$ at timestamp $t$. it's currently 5 consecutive rows in the full pedal map corresponding to the current state $s_t$, 17 is the current discretization level of the throttle pedal percentage. each element of the pedal map is the requested torque given the vehicle velocity and the throttle pedal position
+- the real effective time of $a_t$ could be delayed by $\delta t$ due to transmission and flashing latency, i.e. $a_t$ will be applied at $t+\delta t$
+- $a_t$ must precede $s'_t$, that is $t+\delta t < t+1$ so that the next state $s'_t$ is the result of applying $a_t$
+*** $r_t$
+reward at timestamp $t$
+- it's the electricity consumption effected by the action $a_t$
+- it's computed by accumlating the product of battery voltage $u_{r_k}$ and current values $i_{r_k}$ at the frames after the current action $a_t$ is applied and before the next action $a_{t+1}$ becomes effective, that is to say, the voltage and current values after the moment $r_0$  when flashing the pedal map is done and in effect, until after the last effective moment $r_k$  when the next action $a_{t+1}$ is applied (flashed and in effect)
+
+** record
+- record is the uploading unit of remote-can module
+*** it's a timestamped [[quadruple][/quadruple/]], which is a tuple of 4 elements $(s_t, a_t, r_t, s'_t)$ with a timestamp $t$
+- a record without timestamp is called a quadruple<<quadruple>>
+- the sequence of records consist of an [[*episode][/episode/]]
+
+*** the structure of the record
+
+#+caption[record]: the timestamped quadruple
+#+ATRT_LATEX: :environment tabular
+|                 | $s_t$                           | $a_t$                | $r_t$                 | $s'_t$                             |
+|-----------------+---------------------------------+----------------------+-----------------------+------------------------------------|
+| $t$ (timestamp) | $v_0$, $a_0$, $b_0$             |                      |                       | $v'_0$, $a'_0$, $b'_0$             |
+|                 | $v_1$, $a_1$, $b_1$             |                      | ...                   | $v'_1$, $a'_1$, $b'_1$             |
+|                 | ...                             |                      | $u_{r_0}$ , $i_{r_0}$ |                                    |
+|                 | ...                             |                      | ...                   |                                    |
+|                 | $v_k$, $a_k$, $b_k$             |                      | $u_{r_k}$ , $i_{r_k}$ | $v'_k$, $a'_k$, $b'_k$             |
+|                 | ...                             |                      | ...                   | ...                                |
+|                 | $v_{k-1}$, $a_{k-1}$, $b_{k-1}$ | $[pm_{5\times17}]^t$ | $u_{r_k}$ , $i_{r_k}$ | $v'_{k-1}$, $a'_{k-1}$, $b'_{k-1}$ |
+
+** Episode
+
+An episode is a consecutive sequence of [[*Record][records]] with a start and a termination state which typically represents a driving route/task or a test case and the vehicle operates on routinely.
+
+- *Triple*: Since the sequence is consecutive, the next state $s'_t$ is the next adjacent state $s_{t+1}$ and thus not required in the tuple. Therefore one record is reduced to a triple.
+- *Null elements*: Care needs to be taken to insert null elements in the sequence in case of absent records.
+- *Ragged*: $T$ is the total time steps of the episode. Episodes have different sequence length, since the termination of an episode could mean reaching the destination with different speeds or events. Therefore the episode pool  is ususally ragged.
+
+$e_T=[(s_0,a_0,r_0),(s_1,a_1,r_1), ...,(s_{T-1},a_{T-1},r_{T-1})]$
+
+
+#+attr_html: :alt  :title system architecture :width 100px  :align center
+#+attr_org: :width 400px
+[[file:img/table_init.png]]
+
+
+torque
+-> figure
+
+by calibration.
+
+#+attr_html: :alt  :title system architecture :width 100px  :align center
+#+attr_org: :width 400px
+[[file:img/table_final.png]]
+** markov decision process
 * system
+a new real world application of deep reinforcement learning, with considerations of leveraging capacity of deep neural net work to make use of a large mount of data.
+
+checking and review the applications of current deep rl techniques, in theory and practice. caveats regarding the issues of applying deep reinforcement. system design and experiment design, data collection, safety, system resi
+interesting issues of system safety and persistance, task persistance.
+explore the application of recent offline-reinforcment learning in this application.
+
+action, state choice.
+
 ** whole system
 
-#+ATTR_HTML: :alt  :title system architecture :width 600px  :align center
-#+attr_org: :width 500px
-[[./img/tspace_overview.svg]]
-
+#+attr_html: :alt  :title system architecture :width 100px  :align center
+#+attr_org: :width 100px
+[[./img/tspace_overview.png]]
 ** local interface
 
-#+ATTR_HTML: :alt  :title cloud interface :width 400px :align center
+#+attr_html: :alt  :title cloud interface :width 100px :align center
 #+attr_org: :width 300px
-[[./img/data_flow_kvaser.svg]]
+[[./img/data_flow_kvaser.png]]
 
 ** cloud interface
 
-#+ATTR_HTML: :alt  :title cloud interface :width 600px :align center
-#+attr_org: :width 600px
-[[./img/data_flow_cloud.svg]]
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/data_flow_cloud.png]]
 
 * method
 
-[[./img/actor-critic.svg]]
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/actor-critic.png]]
 
 
 ** model
@@ -210,10 +408,16 @@ $R_{t[cite:@Hou_2022]}(\dot{m}_{fc},P_{b},R_{b},Q_{m},U_{ocv})$ contains instant
 **** general model
 *** reinforcement learning model
 **** overview
-[[./img/actor-critic.svg]]
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/actor-critic.png]]
 
 **** action model: torque model, translational mixed gaussian model, with speed translation invariance
 equation
+action space safe learning with safe action space -> definition maximal delta torque (200nm) as a safe margin, then action is the percentage of the maximal safe margin, but accumulated over the training steps and across episodes. avoid jerk -> smooth action without further unnecessary reward shaping item and hyperparameters. human driver controls 80% of the request all the time.
+exploration: ou noise are added for exploration.
+
+safety: clipping to the maximum and minimum of the requested torque to contrain the learned policy, can be treated as part of the environment, no extra regularization term. keep the reward pure and simple
 **** observation model: state,
 equation
 **** **reward model**
@@ -221,58 +425,176 @@ no artificial reward points but true reward, the energy consumuption
 **** driver model
 driving style
 **** inference is decoupled from training, so that offline reinforcement can be utilized to leverage the large amount of static data, logs which contains the necessary required information: speed, acc pedal, braking pedal,
-**** training with episodes, inferring with infinite horizon, we can think the gamma is step function which drops to zero after T steps. Short attention.
-** Inference
+**** training with episodes, inferring with infinite horizon, we can think the gamma is step function which drops to zero after t steps. short attention.
+** inference
 
-[[./img/inference.svg]]
-** Training
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/inference.png]]
+** training
+- we train once after every episode end with six training steps and batch of 4~8 to reduce unnecessary computation and avoid overfitting when no important update observation is available.
+- stationarity: battery charging level kept constant for every episode start. keep the minimal charging status for training.
+- on proving ground: first train under proving ground to achieve a baseline policy then transfer to real road.
+- on real roads: define red traffic light and pedestrian interrupt as multimodal of the test scenarios and allow for a certian threshold of delay. label the scenario for future evaluation of the mulitmodal adaptation of policy network.
 
-[[./img/training.svg]]
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/training.png]]
 
-** time sequence is important for exact reward
-** data pool with dask and mongodb for easy sampling, storing, indexing, data interface with DataFrame with every timestamps
+** time sequence is important, crucial, critical for exact reward, asynchrony
+*** to make sure the the markovian process is still right, every oberservation, reward and action is timestamped for checking at any time. all the offline data in the time series database for quick indexing and retrieval based on time range.
+*** each episode is timestamped at the episode start
+*** latency: next state and reward for the current action is the measured observeration after the latency which for ev is small but needs to be taken into account. at the least, the time order needs to be respected.
+*** thinking (inference 50ms) and then acting (flashing the torque map 100ms, then dozens of milliseconds after the ecu set it into effectively being used) theoretically needs to be at the same time.
+*** the data processing pipeline is synchronous without concurrency, so that observation, action, reward and next observation stay markovian.
+*** to make sure no important reward is missed at the episode end which is often quite dynamic in order to reach the target position and to halt , there's a timeout of 3 seconds after the last action is executed
+** data pool with dask and mongodb for easy sampling, storing, indexing, data interface with dataframe with every timestamps
 ** system
 *** signal interface
 *** signal flow diagram
-** Training mode and Inference mode
+** training mode and inference mode
 
-* MLOps, dataflow and ETL pipelines
+* mlops, dataflow and etl pipelines
 
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
 [[./img/adp_data_flow_seq_block.png]]
 
-Notes: keeping the order of the time sequence is crucial in keep the causality of the data, thus reducing noise in the overall training data.
+notes: keeping the order of the time sequence is crucial in keep the causality of the data, thus reducing noise in the overall training data.
 
-Time resolution of the action and observation: relative to the overall observation and the long-term or short-term strategy
+time resolution of the action and observation: relative to the overall observation and the long-term or short-term strategy
 
 
 
 * experiment results discussion
+** Driving style
+
+*** definition, simplified, ignoring the sequential dependcies, only look at the distribution of acceleration pedal opening.
+**** for each episode we can calculate the distribution of the pedal opening. As baseline we calculate an average distribution of episdoe with the same driver, vehicle and configurations. Then we compute the KL-divergence of the distributions of other episodes against the baseline. Then we can evaluate whether the driving style has changed. Since we don't use a sequntial model, it's a simplified way of evaluating drivnig style. Nevertheless, it's sufficient to monitor the change of the driving style, which is all we want for this experiment now.
+**** We can see in the figure that
+***** the distribution of the pedal openings tends to have larger variance for switching on agent than the one without agent since the agent is exploring different driving strategy.
+***** the distributions are skewed toward smaller pedal openings as we would expect from most conservative drivers.
+
+#+attr_html: :alt  :title ai-driving-style :width 100px :align center
+#+attr_org: :width 100px
+[[./img/ai-driving-style.png]]
+
+#+attr_html: :alt  :title ai-driving-style :width 100px :align center
+#+attr_org: :width 100px
+[[./img/no-ai-driving-style.png]]
+
+***** After a while the driving style tends to stabilize.
+#+attr_html: :alt  :title ai-driving-style :width 100px :align center
+#+attr_org: :width 100px
+[[./img/driving-filted.png]]
+
+****
+*** Discussion
+**** human is in control of the vehicle. An agent
+**** we can add a deep neural network to learn the human behavior as a model based rl. actor can leverage the
+**** human can be seen as part of the environment
+** Energy consumption results
+*** On the real road
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_a_map.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_a_velocity.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_a_consumption.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_a_style.png]]
+
+*** Generalization: transferred frozen model on a different road
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_b_map.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_b_velocity.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_b_consumption.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_b_style.png]]
+
+*** mulitmodality: we test on the road with traffic light
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_mm_000_velocity.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_mm_111_velocity.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_mm_000_consumption.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_mm_111_consumption.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_mm_000_style.png]]
+
+#+attr_html: :alt  :title cloud interface :width 100px :align center
+#+attr_org: :width 100px
+[[./img/openroad_mm_111_style.png]]
+
 ** ddpg
 short period of attention window
 ** driving style hinted at a common reward of human drive and agent
 we can easily add another model to learn the driver's behavior policy,
-for the sake of simplicity, we omit the step, just assume that the driver style has a certain distribution, but observe quatitatively the change of the distribution. In Future work, we can add a diffusion model in the control loop for better policy learning and adapt to each individual driver.
+for the sake of simplicity, we omit the step, just assume that the driver style has a certain distribution, but observe quatitatively the change of the distribution. in future work, we can add a diffusion model in the control loop for better policy learning and adapt to each individual driver.
+** persistancy
+- self-persistence: driving with a marginal action space of 20% of maximum request torque
+- task persistence: during training on real road, pedestrian/traffic light on the road, later we define the episode compatible to halt due to pedestrian, but add labels to the data
 
+** soft safety margin to include action regularization to enable faster learning.
 
 ** rdpg
-long episode truncated BPTT long period of attention window
+long episode truncated bptt long period of attention window
 episode management, training selection,
 
-RLHF? easy way with empirical distribution no sequential model, first ignore the time sequence, just to look at the difference.
-** offline reinforcement learing with Implicit Diffusion Q-learning
-[cite:@hansen-estruch23:_idql]
-IQDL (Implicit Q-Leaning as an Actor-Critic Method with Diffusion Policies)
+training with truncated backpropagtion
+efficient inference with stateful feature of lstm network
 
-Offline reinforcement learning
+rlhf? easy way with empirical distribution no sequential model, first ignore the time sequence, just to look at the difference.
+
+** offline reinforcement learing with implicit diffusion q-learning
+[cite:@hansen-estruch23:_idql]
+iqdl (implicit q-leaning as an actor-critic method with diffusion policies)
+
+offline reinforcement learning
 leveraging large amount of static datasets, extract from static dataset a better policy than the behaivor
 handling out of distribution actions
 
-** driving style
+** human in the loop (hitl) rl
+mostly heuristic, doesn't comply with markov decision process. add noise to reward or action of the learning process. hard to explain theoretically and might not be stable, might not learn efficiently.
+However, in the case of EVEOS system, we see that the agent will exploiting a non-stationary process of
+[cite:@retzlaff_2024]
+[cite:@saunders17:_trial_error] hirl human intervention rl. non-markovian, human intervention violate the markvianness. learning seems to be disturbed by noise.
+[cite:@huang_2023]
+modify the reward signal and
 ** training schedule is important model for driving style identification e2e way.
-*** utilizing offline data CGL
+*** utilizing offline data cgl
 *** improve learning efficiency by
 *** federated learning for meta learning,evolving
-** transferable and multimodality (MLP is long enough)
+** transferable and multimodality (mlp is long enough)
 ** controllability
 tends to be heavier on the pedal, but
 ** long horizon
@@ -283,18 +605,30 @@ with frozen model, short period, as long as policies on a short interval works a
 - low density and therefore abundancy of data,
 ** receding horizon with diffusion policy
 [cite:@chi23:_diffus_polic]
-** Offline reinforcement learning: overall previous policy $\pi_{\beta}$
-Implicit Diffusion Q-learning unimodal
+[cite:@hansen-estruch23:_idql]q
+
+temporal consistancy, smooth in long-horizon planning while allowing prompt reactions to unexpected observations
+expressivity of diffusion model, complex multimodal behavior
+
+** offline reinforcement learning: overall previous policy $\pi_{\beta}$
+implicit diffusion q-learning unimodal
 recurrent version of implicit diffusion q-learning maybe
 
 ** sample efficiency
-
-** sequential model with IDQL to handle POMDP.
+** keep the reward noise free, no artifical reward shaping, keep the gamma close to 1. Or even take the set gamma to 1 when the episode is short.
+** federated learning
+** sequential model with idql to handle pomdp.
 * broader impact
-NAS,
-We advocate/propose to look at broader industrial applications which has explicit reward modeling, easily abundant data with complex human behavior, human in the loop, long-horizon, mass-production, real applications can be found in those domains.
+
+nas,
+we advocate/propose to look at broader industrial applications which has explicit reward modeling, easily abundant data with complex human behavior, human in the loop, long-horizon, mass-production, real applications can be found in those domains.
+
+energy optimziation system like this is very generic, requires only low-density data, which enable observation of a long and complex period for an optimal long-term policy.
+engineering of ml,
+
+There is more potential in applying learning based system in the industry and real world.
 
 explore the cooperative human-machine interaction when machine modulates human behavior like a support agent to achieve a same goal.
 
-* Bibliography
+* bibliography
 #+print_bibliography:

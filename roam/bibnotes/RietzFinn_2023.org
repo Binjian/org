@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       96329c42-b5a0-410e-942a-1704df8ac8b9
+:ROAM_REFS: @RietzFinn_2023
+:END:
+#+title: Rietz, Finn :: Multi-Objective Deep Reinforcement Learning with Lexicographic Task-priority constraints
+
+        - sample inefficiency
+        - reward is scalar, to optimize complex tasks is difficult, multi-objective?
+        - unsafe exploration of trial and error based , blackbox-nature of reuslting DNN based agents,

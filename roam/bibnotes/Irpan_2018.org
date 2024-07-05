@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       873b8d85-2319-49b9-a850-fccec7db1b08
+:ROAM_REFS: @Irpan_2018
+:END:
+#+title: Irpan, Alex :: Deep Reinforcement Learning Doesn’t Work Yet
+
+sample inefficient
+classic robotics techniques provide better performance than DRL
+requires reward function which needs design, reward shaping
+escape local minima
+overfitting to rare patterns
+hyperparameter manually chosen, performance sensible to them, unstable: 30% of failure rate counts as working. 30% of the time 0 reward. In this case overall efficiency increase is evident.
+        - sensitive to initialization, dynamics of training process
+
+it's difficult to find real-world productionized uses of deep RL:
+        - Games: Atari[cite:@mnih13:_playin_atari_deep_reinf_learn], Go[cite:@DBLP:journals/nature/SilverHMGSDSAPL16], Poker[cite:@DBLP:conf/ijcai/BrownS17]  Dota2[cite:@openai19:_dota_large_scale_deep_reinf_learn], Diplomacy[cite:@bakhtin22:_Human_level_diplomacy_cicero]
+        - Data center power usage
+        - autoML
+        - NAS
+        - Automotive:
+          - ADS
+                RL in self-driving is hard
+                wayve: leverage simulation and foundation model, not official yet.
+                Tesla: narrow domain, ACC, not yet public, no paper
+
+Problems suitable for DRL
+        - easy to generate unbounded amounts of experience
+        - simplified into an easier form, limiting the domain
+        - self-play for learning
+        - clean way to define a learnable, ungameable reward, if reward shaping is required, reward should be rich.
+
+Conclusion: still a research topic, not robust for widespread use, usable but no publicizing, the former is more likely.
+        - local optima are good enough
+        - hardware scaling up
+        - more learning signal
+        - model based learning for sample efficiency
+        - start with Supervised learning, RL as fine-tuning
+        - reward functions could be learnable
+        - transfer learnings
+        - good priors: get real-world prior, data-driven way of meta-learning
+        - Harder environment could be paradoxically easier: provide more learning signals.
+        - generalization might not matter for practical purposes.

@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       48a735aa-ac21-4a89-a322-6f95b1db1564
+:ROAM_REFS: @Irpan_2024
+:END:
+#+title: Irpan, Alex :: My AI Timelines Have Sped Up (Again)
+
+        - Generic RL is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
+        - RobotiiI learning has drifted towards imitation learning, easier to work with and effective usage of computation.

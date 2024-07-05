@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       9b29ef08-30cd-4175-a3a9-a8f675522209
+:ROAM_REFS: @TesslerChen_2021
+:END:
+#+title: Tessler, Chen :: Deep Reinforcement Learning Works - Now What?
+
+        - the gap between theory and practice
+        - infinite horizon with stationary model
+        - regularization with noise
+        - hyperparameter sensitivity
+        - algorithm novelty vs performance: performance might be acheived by simple augmentation + simple policy, novelty of method have truly result?
+        - evaluation environment? simple and direct

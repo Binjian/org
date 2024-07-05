@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       0c566fd0-c7a0-4ada-9033-25ac1cc85ec9
+:ROAM_REFS: @DBLP:journals_ijrr_IbarzTFKPL21
+:END:
+#+title: Julian Ibarz and Jie Tan and Chelsea Finn and Mrinal Kalakrishnan and Peter Pastor and Sergey Levine :: How to train your robot with deep reinforcement learning: lessons we have learned
