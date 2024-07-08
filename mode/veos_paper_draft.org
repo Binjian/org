@@ -59,10 +59,7 @@ conclusion: still a research topic, not robust for widespread use, usable but no
 
 [cite:@Irpan_2024]
         - generic rl is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
-        - robotiii learning has drifted towards imitation learning, easier to work with and effective usage of computation.
-
-        - generic rl is still hard to searching for when extra pretraining or supervised fine-tuning is cheaper.
-        - robotiii learning has drifted towards imitation learning, easier to work with and effective usage of computation.
+        - robotics learning has drifted towards imitation learning, easier to work with and effective usage of computation.
 
 [cite:@TesslerChen_2021]
         - the gap between theory and practice
@@ -78,7 +75,7 @@ conclusion: still a research topic, not robust for widespread use, usable but no
 
 [cite:@DBLP:journals_ijrr_IbarzTFKPL21]
 
-always has sepcific technicalities, for specific problems/domain (atari, locomotive, quadrupedal robots)
+always has specific technicalities, for specific problems/domain (atari, locomotive, quadrupedal robots)
 
 regularizaiton,
 encoder with sparsity, bottleneck
@@ -88,7 +85,9 @@ model based
 [cite:@hafner18:_learn_laten_dynam_plann_pixel]
 [cite:@hafner20:_master_atari_discr_world_model]
 [cite:@DBLP:journals/corr/abs-1803-10122]
-[cite:@hafner20:_master_atari_discr_world_model]
+[cite:@wu22:_daydr]
+
+
 might be specific for atari, because it's model-based
 
 aprl adaptive policy regularization
@@ -271,7 +270,6 @@ fuel cell engergy fcev
 state: power demand and soc, ( $p_{dem}$ , soc) difficult to observe, reward functoin
 $r_{t}(\dot{m}_{fc},p_{b},r_{b},q_{m},u_{ocv})$ contains instantaneous hydrogen consumption, battery power, battery internal resistance, battery capacity, open-circuit voltage; action/control variable $a=(p_{fc})$ is the fuel cell power
 [cite:@Hou_2022]
-[cite:@Hu_2019]
 [cite:@Hu_2018]
 hev and phev
 objective is composite complex, heuristic: minimize fuel consumption, penalty term based on fuel consumption and soc state
@@ -583,6 +581,8 @@ leveraging large amount of static datasets, extract from static dataset a better
 handling out of distribution actions
 
 ** human in the loop (hitl) rl
+require further investigation. long-term policy
+
 mostly heuristic, doesn't comply with markov decision process. add noise to reward or action of the learning process. hard to explain theoretically and might not be stable, might not learn efficiently.
 However, in the case of EVEOS system, we see that the agent will exploiting a non-stationary process of
 [cite:@Retzlaff_2024]

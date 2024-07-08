@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       68887a01-1c62-4116-a965-0e5db15dfdc5
+:END:
+#+title: OpenAI AND : AND Christopher Berner AND Greg Brockman AND Brooke Chan AND Vicki Cheung AND Przemysław Dębiak AND Christy Dennison AND David Farhi AND Quirin Fischer AND Shariq Hashme AND Chris Hesse AND Rafal Józefowicz AND Scott Gray AND Catherine Olsson AND Jakub Pachocki AND Michael Petrov AND Henrique P. d. O. Pinto AND Jonathan Raiman AND Tim Salimans AND Jeremy Schlatter AND Jonas Schneider AND Szymon Sidor AND Ilya Sutskever AND Jie Tang AND Filip Wolski AND Susan Zhang :: Dota 2 with Large Scale Deep Reinforcement Learning

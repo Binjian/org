@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       cc909277-cd8a-413b-b893-2c0f1fbf7d1b
+:END:
+#+title: Ashish Kumar AND Zipeng Fu AND Deepak Pathak AND Jitendra Malik :: RMA: Rapid Motor Adaptation for Legged Robots
