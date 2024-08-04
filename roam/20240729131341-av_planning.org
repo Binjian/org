@@ -1,0 +1,72 @@
+:PROPERTIES:
+:ID:       84945f8f-bc8d-4b05-b581-67edeb5140f1
+:END:
+#+title: AV-Planning
+
+* 13:47 Maxieye
+** multimodality
+*** representation should be multimodal: mixed gaussian model
+*** learning multimodality from data
+*** keep multimodal distribution and update in time from perception, evolve the multimodes to a findal few modes or unimode in time
+*** latent model (CVAE)
+*** epistemic vs aleatoric multimodality
+** adapt to dedicated driving styles
+*** DAgger
+*** RLHF (reward model with Bradley-Terry model [comparison], online reward model with online HF, state trajectory, (speed), action), DPO
+*** rl based diffusion policy (control net)
+*** concrete reward: KL-Divergence between the behavior policy and target policy
+*** abstract reward: minimize the observation distribution drift ➡ fix data distribution drift
+*** Diffuison with ControlNet
+** diffuison:
+*** multimodality: approximate any complex (multimodal) distributions by sampling data from a data distribution
+*** by score function
+*** if data distribution drifts, by sampling the up-to-date data, adapt the learned model to the new data distribution
+**** train diffusion by reinforcement learning
+*** learning follows the same paradigm as regular deep learning
+*** Comparison for approximation model distribution against data distribution
+**** GAN: not stable by games
+**** VAE: hyperparameters (latent dimension)
+**** Flow model: inefficient,
+** latent
+*** embedding layer for training e2e is always better than pre-trained tokens
+** learning based
+*** generating/collecting samples --> improvements by sampling: sample/data distribution to approximate the real statistics
+**** expectations
+**** gradients
+**** distributions
+**** why? math, statistics
+*** solving open problems with RL
+* 中文
+** 多模态(多目标行为和轨迹预测)
+*** 区分认识论与偶然论的多模态（epistemic vs aleatoric）：前者可通过更新测量消除，后者无法消除
+*** 表示应该是多模态的：比如非端到端采用混合高斯模型
+*** 端到端从数据中学习多模态
+**** 潜在模型（CVAE）
+**** 扩散模型（Diffusion)
+*** 保持多模态分布并从感知中实时更新，随时间演变成最终几个最终无法消除的多模态或单一模态
+** 特定驾驶风格自适应匹配
+*** DAgger,简单，实用，有效
+*** RLHF（使用Bradley-Terry模型的奖励模型[比较]，在线奖励模型与在线HF，state（运动轨迹），action）
+**** 使用回归loss,可切换至DPO方法，RL->常规MLE，稳定，高效训练
+**** 具体奖励：行为策略与目标策略之间的KL散度
+**** 抽象奖励：最小化观察分布漂移->修复数据分布漂移
+*** 基于RL的扩散策略
+**** 使用ControlNet
+** 扩散模型为何高效？
+*** 多模态概率分布拟合的SOTA：通过从数据分布中采样数据来近似任意复杂（包括多模态）分布
+*** 通过得分函数（Score Function)把原始随机分布分布迁移到数据样本分布(真实分布)
+*** 如果数据分布漂移，通过从最新数据中采样来适应学习模型到新的数据分布
+**** 通过强化学习训练扩散模型
+*** 训练遵循与常规深度学习相同的方法
+*** 数据分布拟方法比较
+**** GAN：由于博弈不稳定
+**** VAE：多模态是超参数Z（潜在维度），需要调试
+**** 流模型：效率低下
+** 隐空间（内嵌）
+*** 用于端到端训练的内嵌层始终优于预训练的tokens
+** 基于学习的方法（端到端）
+*** 生成/收集样本 --> 通过采样改进：采样/数据分布来近似真实统计数据
+**** 期望
+**** 梯度
+**** 分布
+*** 用RL解决开放性问题

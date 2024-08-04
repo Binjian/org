@@ -1,0 +1,33 @@
+#+TITLE: Fri, 2024-07-26
+* 13:47 Maxieye
+** diffuison:
+*** multimodality: approximate any complex (multimodal) distributions by sampling data from a data distribution
+*** by score function
+*** if data distribution drifts, by sampling the up-to-date data, adapt the learned model to the new data distribution
+**** train diffusion by reinforcement learning
+*** learning follows the same paradigm as regular deep learning
+*** Comparison for approximation model distribution against data distribution
+**** GAN: not stable by games
+**** VAE: hyperparameters (latent dimension)
+**** Flow model: inefficient,
+** multimodality
+*** representation should be multimodal: mixed gaussian model
+*** learning multimodality from data
+*** keep multimodal distribution and update in time from perception, evolve the multimodes to a findal few modes or unimode in time
+** latent
+*** embedding layer for training e2e is always better than pre-trained tokens
+** adapt to dedicated driving styles
+*** control net
+*** rl based diffusion policy,
+*** concrete reward: KL-Divergence between the behavior policy and target policy
+*** abstract reward: minimize the observation distribution drift ➡ fix data distribution drift
+*** RLHF (reward model with Bradley-Terry model [comparison], online reward model with online HF, state trajectory, (speed), action), DPO
+*** Diffuison with ControlNet
+*** DAgger
+** learning based
+*** generating/collecting samples --> improvements by sampling: sample/data distribution to approximate the real statistics
+**** expectations
+**** gradients
+**** distributions
+**** why? math, statistics
+*** solving open problems with RL

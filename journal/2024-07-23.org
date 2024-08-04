@@ -1,0 +1,11 @@
+#+TITLE: Tue, 2024-07-23
+* 09:19 Autobrains
+** the core is Not deep learning based, not even learning based, maybe interleaved with deep learning. maybe the missing piece.
+** HW agnostic (no specific hw acceleration requried)
+** revolutionary/unique
+** contructed features, and a database for the features
+** technology is new. contextual concept, no optimization by BP
+** self-supervised, how?
+** moat! potential, radically
+** Compatible to current deep learning framework? how? Integration?
+** ME mode?

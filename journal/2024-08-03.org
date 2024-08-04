@@ -1,0 +1,126 @@
+#+TITLE: Sat, 2024-08-03
+* TODO Job search
+** TODO amazon
+** TODO microsoft
+** TODO Cariad (VW)
+** TODO linkedin
+*** TODO fpga
+*** TODO amazon dsp
+** TODO NVidia
+** TODO Aptiv
+** TODO Tesla
+** DONE UniTree
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:57]
+** TODO Autobrains
+*** Pilot project, important
+*** Current trends of foundation models/LLMs seems unsustainable, they are useful but depending now heavily on investment, burning cash, less innovation/technology development, grasping the chance on a sustainable AI method for AV.
+*** Solid engineering
+**** Python, testing, coverage, integration, type hints, abstraction
+**** MOT, Filtering,
+*** Technical/management (Technical management consists of both, planning & analysis, key factor, team orchestration, people's capability & motivation & resource, balance and compromises)
+*** build-up a team is highly dynamic, overlapping of responisbility, pro-activity, feeling to get involved.
+*** overtaking a team is to be familiar with every team member. Keep communication to feel involved.
+*** flat vs architectured: everyone feels respected for startup work together, team size growth, necessary to have team leads; delegation: trust with double-checking
+** TODO 中科摩通
+*** 公司人工智能方向开发大概是一个什么样的定位和构想， 除了昨天提到的提高CAD开发效率以外，还可能会有哪些需求和规划？
+**** 智能工厂
+***** 数字孪生，故障预测，特定生产流程的时间序列故障预测，报警
+***** 生产饱和度预测，物料供给预测，AGV需求预测
+***** AGV车队柔性自动调度算法，负载均衡（定义负载奖励/成本目标，优化）
+***** 产线自动化率提升（->100%）瓶颈分析，对策，-> 预测，自动调度
+***** 产线节拍提升：瓶颈分析，对策。
+***** 车间交通调度
+***** 产线工位排布优化（定义成本函数，优化）
+***** 电池包自动
+*** 人工智能辅助CAD的构想
+**** 目前具体需求能否稍细化一下？
+***** 使用的数据，软件，
+***** 需要的集成方式
+***** 希望实现的具体使用方式和接口（和需求方工程师的配合方式）
+***** 短期和长期的目标
+***** 项目时间线
+**** 需要资源
+***** CAD专家，CAD插件软件集成工程师 20%, 应用软件集成，可外包（POC项目可不需要）
+***** 数据采集，>50%
+****** 样本：输入，输出（在画的过程中收集绘画序列，无监督学习）
+****** 生成模拟数据
+****** 编码层
+****** 训练调试
+****** 验证，测试
+***** 模型训练资源，机器学习服务器，云服务器 30%
+**** 效果 https://experiments.withgoogle.com/sketch-rnn-demo
+**** 计划
+***** 搭框架，打通数据流通道，插件开发；设计初代模型架构 (POC开发) (AutoCAD/CATIA V5/SolidWorks) (产品形态为插件/桌面应用)
+****** 建议形态：独立桌面应用，抽象CAD数据格式，兼容多种应用，功能：快速3D建模,输出特定应用程序格式。
+****** AutoCAD ActiveX/COM model, pyautocad, IronPython (.Net in Python), comtypes, CadPythonShell/RevitPythonShell
+****** SolidWorks/Autodesk Inventor -> xCAD.NET
+***** 用户界面：网页技术（streamlit，类似chatgpt;桌面应用）
+***** 收集数据，整理数据集（训练，验证，测试）
+***** _构建神经网络模型_, _编码器，解码器_(编码和推理效率，竞争力)
+***** _训练，调优，迭代超参数和架构_（竞争力）
+***** 强化学习自适应调整，越来越匹配用户需求（DPO，多选项界面选择偏好）
+** TODO Porcche Engineering
+*** ADAS系统经验
+**** 接口，需求，模块，空能
+**** 文档，变更
+**** 平台，项目相关性
+*** 配合严格管理
+**** 工程师：能力，态度，资源，项目，目标，定时更新
+***** 发挥每个工程师的潜力，工作饱满
+***** 稳定团队
+***** 奖惩分明
+**** 项目：目标，资源，时间线，交付情况；
+**** 问题：分析，对策
+*** 上传下达
+* TODO 领失业救济金
+** DONE 五月
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:54]
+** TODO 六月
+* TODO devel
+** DEFERRED streamlit
+- State "DEFERRED"   from "TODO"       [2024-06-03 Mon 16:52] \\
+  not urgent, after job seeking
+** DONE documentation of eos, dataflow_io,
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:56]
+** DONE DDPM
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:36]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:36]
+** DONE diffusion policy
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:36]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:36]
+** DONE offline rl
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:36]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:36]
+** DONE Mojo tutorial
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:36]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:36]
+** TODO Wavenet
+** TODO T5 - transformer
+** TODO rnn-lua
+** TODO chronos
+** TODO frequency with VQ-VAE skills
+** STARTED JPDA
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** TODO Autogluon and Chronos
+** DONE TNT, Trajectron, MPNet
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** DONE DAgger
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** DONE GNN
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** STARTED SLAM
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** STARTED data fusion, Radar signal processing
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** TODO quantization with entropy object
+- State "DONE"       from "TODO"       [2024-07-28 Sun 11:21]
+** DONE RLHF
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** DONE DPO
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+* 10:40

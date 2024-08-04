@@ -1,0 +1,92 @@
+% Created 2024-07-30 Tue 11:07
+% Intended LaTeX compiler: xelatex
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Binjian Xin}
+\date{\today}
+\title{AV-Planning\textsubscript{CN}}
+\hypersetup{
+ pdfauthor={Binjian Xin},
+ pdftitle={AV-Planning\textsubscript{CN}},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.0.60 (Org mode 9.8)}, 
+ pdflang={English}}
+\usepackage{biblatex}
+
+\begin{document}
+
+\maketitle
+\section*{多模态(多目标行为和轨迹预测)}
+\label{sec:orge4fac1d}
+\subsection*{区分认识论与偶然论的多模态（epistemic vs aleatoric）：前者可通过更新测量消除，后者无法消除}
+\label{sec:org15b9d10}
+\subsection*{表示应该是多模态的：比如非端到端采用混合高斯模型}
+\label{sec:org00b743d}
+\subsection*{端到端从数据中学习多模态}
+\label{sec:org35f170f}
+\subsubsection*{潜在模型（CVAE）}
+\label{sec:orgc62f135}
+\subsubsection*{扩散模型（Diffusion)}
+\label{sec:org796b078}
+\subsection*{保持多模态分布并从感知中实时更新，随时间演变成最终几个最终无法消除的多模态或单一模态}
+\label{sec:org1e6cb4b}
+\section*{特定驾驶风格自适应匹配}
+\label{sec:org1689ca5}
+\subsection*{DAgger,简单，实用，有效}
+\label{sec:orgba4630b}
+\subsection*{RLHF（使用Bradley-Terry模型的奖励模型[比较]，在线奖励模型与在线HF，state（运动轨迹），action）}
+\label{sec:orgafa9095}
+\subsubsection*{使用回归loss,可切换至DPO方法，RL->常规MLE，稳定，高效训练}
+\label{sec:org609c0cc}
+\subsubsection*{具体奖励：行为策略与目标策略之间的KL散度}
+\label{sec:org6215884}
+\subsubsection*{抽象奖励：最小化观察分布漂移->修复数据分布漂移}
+\label{sec:orgf720cd3}
+\subsection*{基于RL的扩散策略}
+\label{sec:orgeb02d7d}
+\subsubsection*{使用ControlNet}
+\label{sec:org2bedaf9}
+\section*{扩散模型为何高效？}
+\label{sec:org70295d5}
+\subsection*{多模态概率分布拟合的SOTA：通过从数据分布中采样数据来近似任意复杂（包括多模态）分布}
+\label{sec:orge5a7566}
+\subsection*{通过得分函数（Score Function)把原始随机分布分布迁移到数据样本分布(真实分布)}
+\label{sec:org314ff9e}
+\subsection*{如果数据分布漂移，通过从最新数据中采样来适应学习模型到新的数据分布}
+\label{sec:org3e5db83}
+\subsubsection*{通过强化学习训练扩散模型}
+\label{sec:org506432e}
+\subsection*{训练遵循与常规深度学习相同的方法}
+\label{sec:orgf517f6a}
+\subsection*{数据分布拟方法比较}
+\label{sec:org024d9ce}
+\subsubsection*{GAN：由于博弈不稳定}
+\label{sec:orgefa2c83}
+\subsubsection*{VAE：多模态是超参数Z（潜在维度），需要调试}
+\label{sec:org9174a8a}
+\subsubsection*{流模型：效率低下}
+\label{sec:org810750d}
+\section*{隐空间（内嵌）}
+\label{sec:org5c87287}
+\subsection*{用于端到端训练的内嵌层始终优于预训练的tokens}
+\label{sec:org4d69358}
+\section*{基于学习的方法（端到端）}
+\label{sec:orgf0258c3}
+\subsection*{生成/收集样本 --> 通过采样改进：采样/数据分布来近似真实统计数据}
+\label{sec:orgf2b3610}
+\subsubsection*{期望}
+\label{sec:org34ddc56}
+\subsubsection*{梯度}
+\label{sec:orgf5a3e2c}
+\subsubsection*{分布}
+\label{sec:orgba88e9d}
+\subsection*{用RL解决开放性问题}
+\label{sec:orgd675e27}
+\end{document}

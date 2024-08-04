@@ -1,32 +1,4 @@
 #+TITLE: Fri, 2024-06-21
-* TODO Job search
-** TODO amazon
-** TODO microsoft
-** TODO Cariad (VW)
-** TODO linkedin
-*** TODO fpga
-*** TODO amazon dsp
-** TODO NVidia
-** TODO Aptiv
-** TODO Tesla
-** DONE UniTree
-- State "DONE"       from "TODO"       [2024-06-03 Mon 16:57]
-* TODO 领失业救济金
-** DONE 五月
-- State "DONE"       from "TODO"       [2024-06-03 Mon 16:54]
-** TODO 六月
-* TODO devel
-** DEFERRED streamlit
-- State "DEFERRED"   from "TODO"       [2024-06-03 Mon 16:52] \\
-  not urgent, after job seeking
-** DONE documentation of eos, dataflow_io,
-- State "DONE"       from "TODO"       [2024-06-03 Mon 16:56]
-** TODO Wavenet
-** TODO T5 - transformer
-** TODO rnn-lua
-** TODO chronos
-** TODO frequncy with VQ-VAE skills
-** TODO quantization with entropy object
 * 08:56 Aptiv Mockup Strategy (from scratch without any information of propriotary technology, basic, by no means to be exhaustive, open, for the current moment and exploratory, Engineering of AI, somewhat a little techical)
 ** in a piecemeal approach
 ** Algorithms

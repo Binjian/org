@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       d7c970fc-8eba-4f62-b8aa-f12d8ad4a2bb
+:END:
+#+title: CAD-LLM
+
+* 3d data inference
+** well defined model, no stochasticity, no noise
+** geometry
+** ideal data
+* 软件CAD接口和AI模型集成
+** HMI -> CadQuery接口->LLM->CadQuery->obj,stl------>AutoCAD/CATIA->3d model with texture
+** texture?
+** volumnetric (Gaussian Splatting)
+** AutoCAD/CATIA plugin,
+* LLM模型训练
+** wrapper training PEFT
+** agent
+** LORA
