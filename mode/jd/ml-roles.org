@@ -1,0 +1,31 @@
+#+title:     机器学习项目的职责
+#+author:    Binjian Xin
+#+email:     binjian.xin@hotmail.com
+#+LATEX_COMPILER: xelatex
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
+#+LATEX_HEADER: \setmainfont{AdobeKaitiStd-Regular}
+#+OPTIONS: tex:t
+#+OPTIONS: ^:{}
+
+* 机器学习工程师
+- 软件开发：嵌入式，云端
+- 特征开发
+- 基础算法开发
+- 标签
+* 运维工程师
+- 基础设施管理，机器学习规模化运营(K8s,docker)
+- 软件和模型的版本管理,持续集成,部署
+- 系统可靠性，延展性，维护便利性，弹性
+- 定制工具开发和适配
+* 数据工程师
+- 多模态数据库开发设计：预处理，存储，索引，采样
+- 离线静态数据库（批处理，模型训练）
+- 实时流数据库（ETL，模型推理，云端模型交互，数据流管理）
+- 数据集管理和维护
+- 模型管理和维护
+* 数据科学家
+- 模型开发，评估，监督(数据扰动，数据分布漂移)，系统优化目标
+- 商业目标分析和对齐
+- 强化学习，深度学习策略
+- 主动学习，持续学习，联邦学习（工程化）
