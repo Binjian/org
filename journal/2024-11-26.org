@@ -1,0 +1,36 @@
+#+TITLE: 周二, 2024-11-26
+#+STARTUP: inlineimages
+* 09:42 Novel Robot Weekly
+** https://www.youtube.com/watch?v=ZBFwe1gF0FU
+
+#+CAPTION: 2016 机器人训练(谷歌)
+#+NAME: 集群式训练
+#+ATTR_HTML: :align right
+#+ATTR_ORG: :align center
+[[http://img.youtube.com/vi/ZBFwe1gF0FU/0.jpg]]
+
+[[yt:ZBFwe1gF0FU]]
+** Aloha 2023 （20k$,安装~2h,)
+*** 像素到行动：强化学习，*策略梯度建复杂模型效率高*
+*** 难度：训练数据分布符合
+**** 模仿学习：
+- 多步预测(action chunking) -->减小复合误差
+- 时间集成(temporal ensembling)
+- 变形金刚模型, CVAE (ACT, CVAE目标) （base BERT， ResNet18, 80M param., 5h on 11G RTX2080Ti GPU, 14d state,）
+**** 数据集收集
+***** 2 sim. + 6 real (非sim2real)
+***** 6 real Aloha遥控
+- 8~14s/400~700step, 50~100次演示，10~20min(+reset 30~60min)
+***** 2 sim 基于模型遥控 + Aloha物理遥控
+50次成功的演示数据
+CVAE对基于模型控制不敏感(成功率降1%)，对专家演示很重要（35.3%->2%）
+***** 随机场景收集
+***** 高频率(50Hz)对高精度遥控任务很重要（vs 5Hz)
+*** Mobile Aloha (32k$, 1.5kg,100N, 1.5m， 1.26kWh, 14kg, 3070Ti, Intel i712800，)
+- 移动基座
+- 构造高效训练数据集：
+  移动+已有的静态aloha数据集
+  静态->移动：构造高效数据集：aloha + 双臂数据集 vs 简单端到端
+- ACT✓ , Diffusion Policy✓ , VINN(BYOL)
+- 发现（发明）
+** ROS2 windows & linux虚拟机安装部署

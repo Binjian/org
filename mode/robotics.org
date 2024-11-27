@@ -1,0 +1,82 @@
+#+title: Robotics
+
+* Simulation
+** IsaacSim/Lab(training,rendering)
+*** Not enough RAM(>32G), GPU(>10GB)
+*** BSD-3 licnese
+** Maniskill/Sapien(training,rendering)
+*** Simulation
+**** Rigid Body Dyanmics
+**** Sensing (Environment, task)
+*** Rendering
+*** Benefits
+**** GPU parallelization with minimal Pytorch/Python
+**** Low GPU memory
+**** 12 categories of env 20+ embodied robot
+**** sim2real, real2sim
+**** dataset generation
+
+#+CAPTION: Maniskill
+#+NAME: Maniskill Comparison
+[[./img/Maniskill.png]]
+
+
+** Pinoccho (C++, Python) vs Mujoco, RBDL（Rigid Body Dynamics framework, composite rigid body algorithm)
+*** Linux (Tried Windows build)
+*** depends on HPP-FCL (Humanoid Path Planning FCL flexible collison library), EigenPy (Linear Algebra with Eigen3), assimp (raw mesh files, 3d geometry), urdfdom (URDF parsing), octomap (motion planning data structure)
+*** Mujoco (depends on libccd, collision detection library)
+*** model
+ - SW data/model abstraction, sparsity handling -> fast
+ - Spatial algebra (SE3, motion, force, inertia)
+ - kinematic model for joints: revolute,prismatic,spherical,planar, free floating
+ - Lie Group Geometry
+ - gemoetric model (FCL for collision detection)
+*** Algorithm
+- forward kinematics
+- kinematics jacobian
+- inverse dynamics
+- joint space inertia matrix
+- forward dynamics
+** Humanoid Locomotion with RL
+*** Real-world humanoid locomotion with reinforcement learning
+https://learning-humanoid-locomotion.github.io/
+*** Digits
+#+CAPTION: Digitsss
+#+NAME: Maniskill Comparison
+[[./img/malik_digit.png]]
+** Aloha-BiGym
+https://github.com/AlmondGod/aloha-bigym
+*** Process
+**** Teleoperation Nintendo Joycons
+**** Data collection
+**** Training NN
+*** Conclusion
+**** Humanoid easy for collection high quality data through teleoperation
+**** data flywheel
+**** More compute in inference like o1
+*** 丽台科技
+**** SA
+**** 训练仿真
+**** IsaacSim/Lab
+**** 不支持Gym
+**** Jetson平台，边缘端, jetson orin 275top, 中心，边缘端
+**** 5880 8卡 （A6000)；48G, 仿真，计算，训练；5880 Ada Lovelace （RTX core）；Blackwell 计算；
+**** PCI-E vs NV-Link
+**** IsaacSim (闭源，个人版两个人，nucleus)
+**** OpenUSD
+**** No PG?
+
+3.5Kw*5
+19kw
+**** 方案
+***** 单卡单机 ~15万
+****** RTX5880 (A6000合规减配版，48GB)
+****** 仿真+训练
+****** Isaac Sim, Isaac Lab闭源
+****** 显卡虚拟化vGPU闭源
+****** 多卡连接合规减配方案采用PCIe链接（非减配NVLink)
+***** 8卡+软件 ~60万/台 服务器（IsaacSim/Lab,虚拟桌面，vGPU）
+***** 供应商整体方案建议：
+- 2x服务器开发，3台训练 ~ 300万
+- 单服务器8卡
+- 单服务器单卡

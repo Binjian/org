@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       b1f629e1-c159-4feb-b7b4-620cef850eaf
+:END:
+#+title: remote manipulation

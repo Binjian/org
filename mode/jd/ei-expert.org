@@ -4,7 +4,7 @@
 #+LATEX_COMPILER: xelatex
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
-#+LATEX_HEADER: \setmainfont{AdobeKaitiStd-Regular}
+#+LATEX_HEADER: \usepackage{xeCJK}
 #+OPTIONS: tex:t
 #+OPTIONS: ^:{}
 #+OPTIONS: toc:nil

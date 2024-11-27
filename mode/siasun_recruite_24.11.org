@@ -1,0 +1,70 @@
+#+title: Siasun Recruite 24 11
+
+* <2024-11-15 周五>
+** 杨贵德
+- 四川大学 信号与信息处理
+- 小米科技（21.5~22.7）
+  - 人像语义分割（数据集搭建经验）
+- 理想汽车（22.8~23.9）
+  - NOA嵌入式 orin上部署和加速，支持BEVformer onnx->tensorrt(contribution/design/difficulties overcome except toolchain application) 非AI算法，嵌入式上有经验，英伟达平台
+  - profile工具经验
+- 优必选(24.1~24.4) 可忽略
+  - 标注，labelme，yolov8
+  - 调研多模态：BERT，LLaMA，微调部署经验？
+  - 了解TensorRT-LLM，Triton
+- 千寻智能（24.8~24.10）
+  - VLM导航？
+** 刘岩? dubios
+- stanford 学习经历（学位？14~18计算机研究生肄业？课程？）/哈尔滨理工大学电子科学
+- 深厚理解LLM，Diffusion MOdel, VAE,GAN,AGent,BEV？
+- 熟悉C++，python, java, pytorch, tf,
+- LLaMA, VLM，BERT, GPT
+- 熟悉RL，TRPO,PPO (sample effienct RL? sample efficiency?)
+- 熟悉AlphaFold?
+- 深入理解Attention, CoT? RAG, Agent? 何为对大模型进行推理训练？
+- 何为多模态技术？多模态模式提取？
+- Add reinforcement learning to LLM?
+- Ingetral fusion?
+  - New model of transformer?
+  - compress data?
+  - reasoning ability?
+  - memory?
+** 王会军
+- 海信
+  - 具身智能，人形机器人，大模型算法专家，AI负责人，首席科学家
+  - VLM, VLA
+  - 熟悉机器人学习，具身智能，强化学习，多模态大模型，具身智能大模型训练与优化，微调？
+  - 精通语言大模型的与训练与优化？0-1基座模型训练？（样本，方案，策略？）奖励模型训练（PPO,DPO）？强化学习训练？推理加速？
+  - 精通Diffusion model? LLaMa3-V?
+  - 丰富大模型，具身智能，制造业应用场景应用？IsaacSim, Mujoco?
+  - 大模型，具身智能，人形机器人一体化架构设计？具身大脑，多模态下达模型，具身小脑？视觉运动模型？
+  - 自研星海大模型？HiGPT？特点？投入产出？（scaling?distilling? improvements?）
+- 北京智源人工智能研究院（19.3~22.2）
+  - 悟道（1.75T,22.3.31,4.9TB images and texts, 1.2T Ch+1.2T Eng)
+- 北京东软望海科技
+  - 知识图谱？
+- 中国矿业大学本科/中国人民大学在职AI硕士
+** 党政明
+- 淮北师范大学/衡水学院
+- linux知识
+- tf,torch,caffe, yolo5/7,svm,transformer,xgboost,faster-rcnn
+- 长城（AI架构师）（23.10~24.2）
+  - 大模型算法研究，模型架构算子研发
+  - 工业检测
+  - 芯片算计优化/部署
+- *宝时得（22.2~23.3）*
+  - 机器人算法
+  - 导航，视觉技术 ros cartographer
+  - 3D ToF，点云
+- *海尔（17.8~21.12）*
+  - *人工智能平台，训练集群设计/搭建，数据平台设计搭建*
+  - 深度视觉，
+- 北京邮政储蓄银行（12.9~27.7)
+  - *风控平台集群搭建*
+  - *数据分析与挖掘*
+  - 数据挖掘，分析*hadoop，spark*
+  - 算法架构设计
+** 李江涛
+- 吉咖智能（黑芝麻工具链）：模型算子优化，量化，模型部署（较浅），C++经验
+- 华北科技学研/宁波大学
+- 自动化标注

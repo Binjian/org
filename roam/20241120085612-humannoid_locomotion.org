@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       aded58ac-a32d-46a1-9e0c-eaf9e073861a
+:END:
+#+title: humannoid locomotion

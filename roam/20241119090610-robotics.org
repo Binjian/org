@@ -1,0 +1,164 @@
+:PROPERTIES:
+:ID:       97cb8160-5809-4591-bbe9-5797d717a955
+:END:
+#+title: robotics
+
+
+[[id:9b90022a-391c-457a-b543-b939f8388430][deep reinforcement learning]]
+
+* Humanoid locomotion
+[[id:aded58ac-a32d-46a1-9e0c-eaf9e073861a][humannoid locomotion]]
+
+
+** [[id:b1f629e1-c159-4feb-b7b4-620cef850eaf][remote manipulation]]
+*** Aloha
+-
+@Online{ganesan17:_recur_aloha,
+  author          = {Ghurumuruhan Ganesan},
+  title           = {{Recurrence region of multiuser Aloha}},
+  year            = 2017,
+  eprint          = {1709.03785v1},
+  primaryclass    = {math.PR},
+  archiveprefix   = {arXiv}
+}
+
+@InProceedings{Zhao_2023,
+  author          = {Zhao, Tony and Kumar, Vikash and Levine, Sergey and Finn,
+                  Chelsea},
+  title           = {Learning Fine-Grained Bimanual Manipulation with Low-Cost
+                  Hardware},
+  year            = 2023,
+  booktitle       = {Robotics: Science and Systems XIX},
+  series          = {RSS2023},
+  publisher       = {Robotics: Science and Systems Foundation},
+  month           = jul,
+  doi             = {10.15607/rss.2023.xix.016},
+  url             = {http://dx.doi.org/10.15607/rss.2023.xix.016},
+  collection      = {RSS2023}
+}
+
+
+
+
+@Online{team24:_aloha,
+  author          = {ALOHA 2 Team AND Jorge Aldaco AND Travis Armstrong AND
+                  Robert Baruch AND Jeff Bingham AND Sanky Chan AND Kenneth
+                  Draper AND Debidatta Dwibedi AND Chelsea Finn AND Pete
+                  Florence AND Spencer Goodrich AND Wayne Gramlich AND Torr Hage
+                  AND Alexander Herzog AND Jonathan Hoech AND Thinh Nguyen AND
+                  Ian Storz AND Baruch Tabanpour AND Leila Takayama AND Jonathan
+                  Tompson AND Ayzaan Wahid AND Ted Wahrburg AND Sichun Xu AND
+                  Sergey Yaroshenko AND Kevin Zakka AND Tony Z. Zhao},
+  title           = {{ALOHA 2: An Enhanced Low-Cost Hardware for Bimanual
+                  Teleoperation}},
+  year            = 2024,
+  eprint          = {2405.02292v1},
+  primaryclass    = {cs.RO},
+  archiveprefix   = {arXiv}
+}
+
+@Online{qin23:_tool_learn_found_model,
+  author          = {Yujia Qin AND Shengding Hu AND Yankai Lin AND Weize Chen
+                  AND Ning Ding AND Ganqu Cui AND Zheni Zeng AND Yufei Huang AND
+                  Chaojun Xiao AND Chi Han AND Yi Ren Fung AND Yusheng Su AND
+                  Huadong Wang AND Cheng Qian AND Runchu Tian AND Kunlun Zhu AND
+                  Shihao Liang AND Xingyu Shen AND Bokai Xu AND Zhen Zhang AND
+                  Yining Ye AND Bowen Li AND Ziwei Tang AND Jing Yi AND Yuzhang
+                  Zhu AND Zhenning Dai AND Lan Yan AND Xin Cong AND Yaxi Lu AND
+                  Weilin Zhao AND Yuxiang Huang AND Junxi Yan AND Xu Han AND
+                  Xian Sun AND Dahai Li AND Jason Phang AND Cheng Yang AND
+                  Tongshuang Wu AND Heng Ji AND Zhiyuan Liu AND Maosong Sun},
+  title           = {{Tool Learning with Foundation Models}},
+  year            = 2023,
+  eprint          = {2304.08354v3},
+  primaryclass    = {cs.CL},
+  archiveprefix   = {arXiv}
+}
+
+@Online{qin23:_tool_learn_found_model,
+  author          = {Yujia Qin AND Shengding Hu AND Yankai Lin AND Weize Chen
+                  AND Ning Ding AND Ganqu Cui AND Zheni Zeng AND Yufei Huang AND
+                  Chaojun Xiao AND Chi Han AND Yi Ren Fung AND Yusheng Su AND
+                  Huadong Wang AND Cheng Qian AND Runchu Tian AND Kunlun Zhu AND
+                  Shihao Liang AND Xingyu Shen AND Bokai Xu AND Zhen Zhang AND
+                  Yining Ye AND Bowen Li AND Ziwei Tang AND Jing Yi AND Yuzhang
+                  Zhu AND Zhenning Dai AND Lan Yan AND Xin Cong AND Yaxi Lu AND
+                  Weilin Zhao AND Yuxiang Huang AND Junxi Yan AND Xu Han AND
+                  Xian Sun AND Dahai Li AND Jason Phang AND Cheng Yang AND
+                  Tongshuang Wu AND Heng Ji AND Zhiyuan Liu AND Maosong Sun},
+  title           = {{Tool Learning with Foundation Models}},
+  year            = 2023,
+  eprint          = {2304.08354v3},
+  primaryclass    = {cs.CL},
+  archiveprefix   = {arXiv}
+}
+
+
+@Online{yang23:_found_model_decis_makin,
+  author          = {Sherry Yang AND Ofir Nachum AND Yilun Du AND Jason Wei AND
+                  Pieter Abbeel AND Dale Schuurmans},
+  title           = {{Foundation Models for Decision Making: Problems, Methods,
+                  and Opportunities}},
+  year            = 2023,
+  eprint          = {2303.04129v1},
+  primaryclass    = {cs.AI},
+  archiveprefix   = {arXiv}
+}
+
+
+
+@Article{Saito_2021,
+  author          = {Saito, Namiko and Ogata, Tetsuya and Funabashi, Satoshi and
+                  Mori, Hiroki and Sugano, Shigeki},
+  title           = {How to Select and Use Tools? : Active Perception of Target
+                  Objects Using Multimodal Deep Learning},
+  journal         = {IEEE Robotics and Automation Letters},
+  year            = 2021,
+  volume          = 6,
+  number          = 2,
+  month           = apr,
+  pages           = {2517–2524},
+  issn            = {2377-3774},
+  doi             = {10.1109/lra.2021.3062004},
+  url             = {http://dx.doi.org/10.1109/LRA.2021.3062004},
+  publisher       = {Institute of Electrical and Electronics Engineers (IEEE)}
+}
+
+@Article{Kawaharazuka_2021,
+  author          = {Kawaharazuka, Kento and Okada, Kei and Inaba, Masayuki},
+  title           = {Adaptive Robotic Tool-Tip Control Learning Considering
+                  Online Changes in Grasping State},
+  journal         = {IEEE Robotics and Automation Letters},
+  year            = 2021,
+  volume          = 6,
+  number          = 3,
+  month           = jul,
+  pages           = {5992–5999},
+  issn            = {2377-3774},
+  doi             = {10.1109/lra.2021.3088807},
+  url             = {http://dx.doi.org/10.1109/LRA.2021.3088807},
+  publisher       = {Institute of Electrical and Electronics Engineers (IEEE)}
+}
+
+@InProceedings{Kawaharazuka_2024,
+  author          = {Kawaharazuka, Kento and Okada, Kei and Inaba, Masayuki},
+  title           = {Adaptive Whole-body Robotic Tool-use Learning on
+                  Low-rigidity Plastic-made Humanoids Using Vision and Tactile
+                  Sensors},
+  year            = 2024,
+  booktitle       = {2024 IEEE International Conference on Robotics and
+                  Automation (ICRA)},
+  publisher       = {IEEE},
+  month           = may,
+  pages           = {583–589},
+  doi             = {10.1109/icra57147.2024.10610913},
+  url             = {http://dx.doi.org/10.1109/ICRA57147.2024.10610913}
+}
+
+
+*** Mobile Aloha
+* Athletic Intelligence
+* durability (power, long haul, loading)
+* dexerity (swift dynamics, DoF, prompt responsiveness)
+* robustness
+* operational safety (human friendly, recovery)

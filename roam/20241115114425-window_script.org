@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       3ae902db-e689-4f19-8987-a552f20f8966
+:END:
+#+title: window_script
+
+* boost build
+./b2 variant=release,debug link=shared,static threading=multi,single address-model=64 runtime-link=shared,static --with-python --with-chrono --with-filesystem --with-context
+* scoop
+scoop bucket add versions
+scoop install python python312
+scoop reset python312
+* cmake
+cmake --build . --config Release --target install
+cmake -G "Visual Studio 17 2022"
