@@ -1,13 +1,17 @@
 #+TITLE: 周二, 2024-11-26
 #+STARTUP: inlineimages
 * 09:42 Novel Robot Weekly
-** https://www.youtube.com/watch?v=ZBFwe1gF0FU
+** ROS2 windows & linux虚拟机安装部署
+** 早期机械臂的强化学习训练
+开门场景人工示教
+https://www.youtube.com/watch?v=ZBFwe1gF0FU
 
 #+CAPTION: 2016 机器人训练(谷歌)
 #+NAME: 集群式训练
 #+ATTR_HTML: :align right
 #+ATTR_ORG: :align center
 [[http://img.youtube.com/vi/ZBFwe1gF0FU/0.jpg]]
+vs Aloha
 
 [[yt:ZBFwe1gF0FU]]
 ** Aloha 2023 （20k$,安装~2h,)
@@ -32,5 +36,4 @@ CVAE对基于模型控制不敏感(成功率降1%)，对专家演示很重要（
   移动+已有的静态aloha数据集
   静态->移动：构造高效数据集：aloha + 双臂数据集 vs 简单端到端
 - ACT✓ , Diffusion Policy✓ , VINN(BYOL)
-- 发现（发明）
-** ROS2 windows & linux虚拟机安装部署
+  - 发现（发明）
