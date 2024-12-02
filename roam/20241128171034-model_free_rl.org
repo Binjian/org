@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       22e9c4b1-0822-494c-8fe4-9f661474f653
+:END:
+#+title: Model-free RL
+
+* increase sample efficency
+
+UTD
+* reduce variance of TD error
+** conservative contraints on policy
+oberserve data distribution drift
+** NN structural modification
+Layer normalization (RLPD)
