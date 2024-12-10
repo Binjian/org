@@ -11,3 +11,8 @@
 *.zip
 /mode/veos_paper_draft.bbl
 /latex/LaTeX-graphics-with-TikZ/
+/mode/jd/*.xml
+/mode/jd/*.bcf
+/mode/jd/*.synctex(busy)
+/mode/jd/*.xdv
+/roam/*.pdf

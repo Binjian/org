@@ -1,5 +1,7 @@
 #+title: Robotics
 
+[[id:09f3242c-3571-4658-b139-0e2ba626f391][Siasun Novel Robotics]]
+
 * Simulation
 ** IsaacSim/Lab(training,rendering)
 *** Not enough RAM(>32G), GPU(>10GB)
@@ -65,7 +67,6 @@ https://github.com/AlmondGod/aloha-bigym
 **** IsaacSim (闭源，个人版两个人，nucleus)
 **** OpenUSD
 **** No PG?
-
 3.5Kw*5
 19kw
 **** 方案

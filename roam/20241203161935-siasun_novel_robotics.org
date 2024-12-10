@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       09f3242c-3571-4658-b139-0e2ba626f391
+:END:
+#+title: Siasun Novel Robotics
+
+
+* Simulation
+** Mujoco
+** ROS2
+* Layered (Interpretability)
+** Sensing
+*** Marigold
+*** 3D Pose estimation
+- VIO: Kimera-VIO + SLAM (pose, slam from CPU + semantic from GPU)
+  - VIO & Robot Pose estimation
+  - 3D metric/semantic environment reconstruction
+  - semantic reconstruction from
+- VO
+*** as intepretablitiy output (risk assessment)
+*** for layered motion planning
+** Planning
+*** optimal control
+**** Nonlinear Online MPC (Yuval Tassa)
+***** cost function design
+***** Cannot handle complex
+***** Model needs to be known (issue transferred to system identification), very difficult to impossible for complex dynamic tasks
+***** model has to be global
+**** --> Neural Network: Learning NN Policy with guided policy search under unknown dynamics (Levine & Abberl 2014):
+***** Guilded Policy Search: PG method with Gaussson Mixed Model, Trust Region (PO)
+***** time variant linear dynamic model,
+***** learning local model
+**** Bertesekas: Optimal control --> RL
+** Control
+*** MIT Mini Cheetah
+*** 张文迪
+*** Lincoln
+** GTLIDAR - Digit (walking in dynamic environment)
+*** Task planner
+*** motion planner
+*** motion controller (ALIP/R)
+*** Reduced Order Model (3d prismatic inverted pendulum model)
+* E2E (Performance)
+** Agility Robotics walking
+*** 2021: Blind Bipedal Stair Traversal via Sim-to-Real RL (only proprioception)
+*** 2022: Optimizing Bipedal Maneuvers of *Single Rigid-Body Models* for Reinforcement Learning
+*** 2022: *Dynamic Bipedal Maneuvers* through Sim-to-Real Reinforcement Learning (training paradigm)
+*** 2022: Learning Dynamic Bipedal Walking Across Stepping Stones 2205.01807v1.pdf (e2e, sim2real for dynamic locomotion over stepping stone)
+** Manipulating

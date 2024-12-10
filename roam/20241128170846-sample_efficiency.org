@@ -2,3 +2,8 @@
 :ID:       fc720af3-af0e-4b13-b3e4-3e7beac62b6e
 :END:
 #+title: sample efficiency
+
+* [[id:6d34a4c7-6571-47e0-9a79-6e81450c65ff][Model-based RL]]
+
+
+* [[id:22e9c4b1-0822-494c-8fe4-9f661474f653][MODEL-free RL]]

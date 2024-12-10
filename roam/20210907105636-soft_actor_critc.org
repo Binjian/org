@@ -2,3 +2,39 @@
 :ID:       99ff4006-bf17-4e65-84e5-8f5b46708392
 :END:
 #+title: Soft Actor Critc
+
+
+
+@InProceedings{DBLP:conf/icml/HaarnojaZAL18,
+  author          = {Tuomas Haarnoja and Aurick Zhou and Pieter Abbeel and
+                  Sergey Levine},
+  title           = {Soft Actor-Critic: Off-Policy Maximum Entropy Deep
+                  Reinforcement Learning with a Stochastic Actor},
+  year            = 2018,
+  booktitle       = {Proceedings of the 35th International Conference on Machine
+                  Learning, {ICML} 2018, Stockholmsm{\"{a}}ssan, Stockholm,
+                  Sweden, July 10-15, 2018},
+  pages           = {1856-1865},
+  url             = {http://proceedings.mlr.press/v80/haarnoja18b.html},
+  crossref        = {DBLP:conf/icml/2018},
+  timestamp       = {Wed, 03 Apr 2019 18:17:30 +0200},
+  biburl          = {https://dblp.org/rec/conf/icml/HaarnojaZAL18.bib},
+  bibsource       = {dblp computer science bibliography, https://dblp.org}
+}
+
+@Article{DBLP:journals/corr/abs-1812-05905,
+  author          = {Tuomas Haarnoja and Aurick Zhou and Kristian Hartikainen
+                  and George Tucker and Sehoon Ha and Jie Tan and Vikash Kumar
+                  and Henry Zhu and Abhishek Gupta and Pieter Abbeel and Sergey
+                  Levine},
+  title           = {Soft Actor-Critic Algorithms and Applications},
+  journal         = {CoRR},
+  year            = 2018,
+  volume          = {abs/1812.05905},
+  eprint          = {1812.05905},
+  eprinttype      = {arXiv},
+  url             = {http://arxiv.org/abs/1812.05905},
+  timestamp       = {Tue, 01 Jan 2019 15:01:25 +0100},
+  biburl          = {https://dblp.org/rec/journals/corr/abs-1812-05905.bib},
+  bibsource       = {dblp computer science bibliography, https://dblp.org}
+}

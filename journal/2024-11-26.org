@@ -2,6 +2,7 @@
 #+STARTUP: inlineimages
 * 09:42 Novel Robot Weekly
 ** ROS2 windows & linux虚拟机安装部署
+** Digits导入Mujoco & ROS2
 ** 早期机械臂的强化学习训练
 开门场景人工示教
 https://www.youtube.com/watch?v=ZBFwe1gF0FU
@@ -16,8 +17,11 @@ vs Aloha
 [[yt:ZBFwe1gF0FU]]
 ** Aloha 2023 （20k$,安装~2h,)
 *** 像素到行动：强化学习，*策略梯度建复杂模型效率高*
-*** 难度：训练数据分布符合
-**** 模仿学习：
+*** SAC
+*** 难度：强化学习方法基本理论的改进
+**** 离策略在线强化学习(模仿学习,利用离线数据学习UTD,对已有观测的过拟合)：
+- 通过仿真实验发现UTD问题（2010~2023）不是数据质量差/非稳态过程/数据分布漂移
+- 通过正则化降低时序差分的方差（TD Error）的方差,提升样本效率
 - 多步预测(action chunking) -->减小复合误差
 - 时间集成(temporal ensembling)
 - 变形金刚模型, CVAE (ACT, CVAE目标) （base BERT， ResNet18, 80M param., 5h on 11G RTX2080Ti GPU, 14d state,）
@@ -37,3 +41,4 @@ CVAE对基于模型控制不敏感(成功率降1%)，对专家演示很重要（
   静态->移动：构造高效数据集：aloha + 双臂数据集 vs 简单端到端
 - ACT✓ , Diffusion Policy✓ , VINN(BYOL)
   - 发现（发明）
+** 新型机器人的模块化设计
