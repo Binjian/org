@@ -1,0 +1,8 @@
+#+TITLE: 周一, 2024-12-16
+* STARTED Simulation Overview doc
+- State "STARTED"    from "TODO"       [2024-12-17 周二 08:44]
+* STARTED DRL report draft
+- State "STARTED"    from "TODO"       [2024-12-16 周一 10:29]
+* DONE OKR review
+- State "DONE"       from "STARTED"    [2024-12-16 周一 10:29]
+- State "STARTED"    from "TODO"       [2024-12-16 周一 09:12]
