@@ -1,0 +1,232 @@
+#+TITLE: Mon, 2024-08-19
+* TODO Job search
+** TODO amazon
+** TODO microsoft
+** TODO Cariad (VW)
+** TODO linkedin
+*** TODO fpga
+*** TODO amazon dsp
+** TODO NVidia
+** TODO Aptiv
+** TODO Tesla
+** DONE UniTree
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:57]
+** DONE Autobrains
+- State "DONE"       from "DEFERRED"   [2024-08-18 Sun 10:01]
+*** Pilot project, important
+*** Current trends of foundation models/LLMs seems unsustainable, useful but depending now heavily on investment, burning cash, less innovation/technology development, grasping the chance on a sustainable AI method for AV.
+*** Solid engineering
+**** Good code base, integration architecture (>50%), familiar with interface, design, test coverage, CI/CD, type hinting
+**** Python, testing, coverage, integration, type hints, abstraction
+**** MOT, Filtering,
+**** Integration, quality control, requirement management, customer support
+*** build-up a team is highly dynamic, overlapping of responisbility, pro-activity, feeling to get involved, very good cooperation and transparency to the local team (implementation) and global team (support);
+*** good communictation with the  customer (support)
+*** Technical/management (Technical management consists of both)
+**** planning & analysis, backup solutions, changes
+**** show authority, confidence
+**** Customer support, supervision, guidance
+**** agility
+**** resource allocation
+**** key factor identificiation
+**** team orchestration,
+**** people's capability & motivation & resource, balance and compromises
+*** overtaking a team is to be familiar with every team member. Keep communication to feel involved.
+*** flat vs architectured: everyone feels respected for startup work together, team size growth, necessary to have team leads; delegation: trust with double-checking
+*** 2024.08.05 Ronny, Noga
+** DONE 中科摩通
+- State "DONE"       from "STARTED"    [2024-08-13 Tue 14:17]
+- State "STARTED"    from "TODO"       [2024-08-13 Tue 14:17]
+*** 公司人工智能方向开发大概是一个什么样的定位和构想， 除了昨天提到的提高CAD开发效率以外，还可能会有哪些需求和规划？
+**** 智能工厂
+***** 数字孪生，故障预测，特定生产流程的时间序列故障预测，报警
+***** 生产饱和度预测，物料供给预测，AGV需求预测
+***** AGV车队柔性自动调度算法，负载均衡（定义负载奖励/成本目标，优化）
+***** 产线自动化率提升（->100%）瓶颈分析，对策，-> 预测，自动调度
+***** 产线节拍提升：瓶颈分析，对策。
+***** 车间交通调度
+***** 产线工位排布优化（定义成本函数，优化）
+***** 电池包自动
+*** 人工智能辅助CAD的构想
+**** 目前具体需求能否稍细化一下？
+***** 使用的数据，软件，
+***** 需要的集成方式
+***** 希望实现的具体使用方式和接口（和需求方工程师的配合方式）
+***** 短期和长期的目标
+***** 项目时间线
+**** 需要资源
+***** CAD专家，CAD插件软件集成工程师 20%, 应用软件集成，可外包（POC项目可不需要）
+***** 数据采集，>50%
+****** 样本：输入，输出（在画的过程中收集绘画序列，无监督学习）
+****** 生成模拟数据
+****** 编码层
+****** 训练调试
+****** 验证，测试
+***** 模型训练资源，机器学习服务器，云服务器 30%
+**** 效果 https://experiments.withgoogle.com/sketch-rnn-demo
+**** 人工智能开发重点和开发模式：
+***** 建模：
+****** 信号抽象数学模型，
+****** 构造数据模型，
+****** 目标函数，
+****** 设计深度神经网络，
+***** 收集大数据
+***** 训练网络
+***** 验证功能目标
+***** 迭代
+**** 计划
+***** 搭框架，打通数据流通道，插件开发；设计初代模型架构 (POC开发) (AutoCAD/CATIA V5/SolidWorks) (产品形态为插件/桌面应用)
+****** 建议形态：独立桌面应用，抽象CAD数据格式，兼容多种应用，功能：快速3D建模,输出特定应用程序格式。
+****** AutoCAD ActiveX/COM model, pyautocad, IronPython (.Net in Python), comtypes, CadPythonShell/RevitPythonShell
+****** SolidWorks/Autodesk Inventor -> xCAD.NET
+***** 用户界面：网页技术（streamlit，类似chatgpt;桌面应用）
+***** 收集数据，整理数据集（训练，验证，测试）
+***** _构建神经网络模型_, _编码器，解码器_(编码和推理效率，竞争力)
+***** _训练，调优，迭代超参数和架构_（竞争力）
+***** 强化学习自适应调整，越来越匹配用户需求（DPO，多选项界面选择偏好）
+** TODO Porsche Engineering
+*** ADAS系统经验
+**** 接口，需求，模块，功能
+**** 文档，变更
+**** 平台，项目相关性，平台技术架构，工具
+**** vision box
+**** video transmission solution and driver: cvbs, lvds, gmsl, fpd-link
+**** camera module
+**** data project
+**** from rule based to e2e
+*** 配合严格管理
+**** 工程师：能力，态度，资源，项目，目标，定时更新
+***** 想办法发挥每个工程师的潜力，紧迫感，工作饱满；
+***** 能力要有成长，不能原地踏步；不进则退；learning by doing
+***** 要有积极上进的心态；
+***** 稳定团队；
+****** 成员退出（能力，动机），而非资源不够（目标，规划要好，否则management failure）
+****** 保证正常流动
+****** 岗位和人员备案
+***** 形势，压力；
+***** 奖惩分明；
+**** 项目：目标，资源，时间线，交付情况；
+**** 权威性,信心
+**** 问题：分析，对策
+*** 上传下达
+*** Interview
+**** Mindsets
+***** motivated for fine honing the details, enthusiastic for delivery, hard-working, adaptable to changes, like backups, options
+***** customer support
+***** find requirements, chances for continuous improvments
+***** high standard quality
+***** first impression for setting high standards
+***** Projects/Milestones oriented, review, improve
+***** improvements in funcitonal requirements/documentation of ADAS/AD prodcuts, technical specifications, issue tracking
+***** confident,not bragging, using we/our not I/my
+***** show enthusiasm: technical and team management, business and people grow
+***** skills: continuous spectrum with regard to the ADAS/AD methods, unified way of understanding these methods with regard to parametriic complexity, rule based vs. e2e
+***** having an overview of the product design/test/validation, coordination of partners, suppliers, departments
+**** Expression (work related skills)
+***** effective verbal and written communication at all levels
+***** positive customer focused approach
+***** listening and questioning
+***** organization, planning and co-ordination: like planning in advance,
+***** consultation and negotiation (with customers, superior)
+***** accuracy: renowned for accuracy, hard-working, fine-honing details, overthinking (compromiss)
+***** team work
+***** problem solving: analysis, compromiss, main factors
+***** perform the role to a high standard and would appreciate the opportunity to work for the company. bring a great deal of experience, loyalty and positive qualities to the team.
+***** have the skills, qualities and attributes to carry out the job to a high standard.
+***** new fresh challenge, something which I have been looking for for sometime now.
+***** your company seems to have a very positive approach to the work you carry out and I'm also very much like th way you strive to deliver a high standard of customer care. High levels of customer care are not common nowadays.
+***** Where do you see yourself in 5 years's time?
+****** get competent in the role as soon as possible, no idea how long this will take, aimed to get trained up very quickly
+****** consolidate my skills and become experienced within the team. accepted and respected by my work colleagus and peers, want to do well in my appraisals,
+****** become good at the job, accepted by the team and line managers enjoy my work as much as possible
+****** if opportunities presents itself for me to progress with the organization, that would be amazing. plan to stay with the company t interview.
+***** weakness
+****** not give weakness that is one of the key requirements of the role
+****** overthinking
+****** irritated when people don't carry out their work to a high standard.
+****** align toward reality
+***** STAR: situation, task, action, result
+***** preferred management for flat organization
+***** new situation/environment: messy, hectic, backup, options, review, lessons learned,
+**** Questions
+***** matrix organization exactly (management/technical/local/hq)?
+***** ways of achieving buisness opportunities (exteranl/internal demoshow/during project execution/company gathering/department communication/All-hands meeting)
+***** which interdisciplinary teams?
+** TODO 易出行
+*** modeling
+**** representation
+***** graph neural network, sequential (remedy for Thompson sampling)
+***** reinforcement learning: state action reward
+***** contextual bandit: exploration, push to the lower bound
+***** adverserial/competitive multiagent environment
+**** objective (reward)
+**** simulation
+**** online learning
+**** offline data training
+**** constraint: budget/time
+*** principled way of showing banners, potential to apply theories
+**** Multi-armed bandit/Contextual Bandit
+**** reinforcement learning exploration and exploitation
+***** random, optimism in the face of uncertainty/information state space
+***** state-action exploration, parameter exploration
+**** try different solutions offline, maintaining the current solutions
+***** benchmark dataset, verification
+***** nn model improvement
+***** training data improvement
+*** piecemeal progress
+*** 自动驾驶->深度强化学习和大数据处理
+*** Lawrence许彬，Richard
+*** Ronak, Richard
+* TODO 领失业救济金
+** DONE 五月
+** DONE 六月～八月
+- State "DONE"       from "STARTED"    [2024-08-05 Mon 10:16]
+** TODO 九月～十月
+* TODO devel
+** DEFERRED streamlit
+- State "DEFERRED"   from "TODO"       [2024-06-03 Mon 16:52] \\
+  not urgent, after job seeking
+** DONE documentation of eos, dataflow_io,
+- State "DONE"       from "TODO"       [2024-06-03 Mon 16:56]
+** DONE DDPM
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:36]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:36]
+** DONE diffusion policy
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:36]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:36]
+** DONE offline rl
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:36]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:36]
+** DONE Mojo tutorial
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:36]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:36]
+** TODO Wavenet
+** TODO T5 - transformer
+** TODO rnn-lua
+** TODO chronos
+** TODO frequency with VQ-VAE skills
+** STARTED JPDA
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** TODO Autogluon and Chronos
+** DONE TNT, Trajectron, MPNet
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** DONE DAgger
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** DONE GNN
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** STARTED SLAM
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** STARTED data fusion, Radar signal processing
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** TODO quantization with entropy object
+- State "DONE"       from "TODO"       [2024-07-28 Sun 11:21]
+** DONE RLHF
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+** DONE DPO
+- State "DONE"       from "STARTED"    [2024-07-30 Tue 13:35]
+- State "STARTED"    from "TODO"       [2024-07-30 Tue 13:35]
+* 08:28
