@@ -19,3 +19,6 @@
 [submodule "sleft-latex"]
 	path = snippets/sleft-latex
 	url = https://github.com/Sleft/yasnippet-latex-mode.git
+[submodule "elisp-guide"]
+	path = elisp-guide
+	url = git@github.com:Binjian/elisp-guide.git
