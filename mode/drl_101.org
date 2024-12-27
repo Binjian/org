@@ -24,19 +24,63 @@
 #+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 1
 #+REVEAL_EXTRA_CSS: ./grids.css
+#+REVEAL_PLUGINS: (highlight)
 #+REVEAL_TITLE_SLIDE: ./templates/title_drl101.html
 #+HTML_HEAD_EXTRA: <style> .figure p {text-align: center;}</style>
 
 * 概述
-** 深度学习与深度强化学习
-***
-** 目标和前提
-*** 了解强化学习工程师的思维
-***
+#+ATTR_REVEAL: :frag (appear)
+- 深度学习与深度强化学习
+- 目标和前提
+  - 了解强化学习工程师的思维
 ** 最优控制的元老
 [[yt:OmpzeWym7HQ#t=14m22s]]
 * 寻找最优决策(控制)
-**
+** 石头剪刀布
+
+        #+ATTR_HTML: :alt  :title 神经网络的条理性 :width 800pix
+        #+attr_org: :width 100px
+       [[./img/drl101/sn-rockpaper.jpg][石头剪刀布]]
+
+** 决策分析
+#+CAPTION[技术进步]: 猜拳
+#+NAME: 猜拳
+#+ATTR_HTML: :alt  :title 技术进步 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src plantuml :file img/drl101/paperscissorstone.png
+@startmindmap
+<style>
+mindmapDiagram {
+  .green {
+    BackgroundColor green
+  }
+  .red {
+    BackgroundColor red
+  }
+  .yellow {
+    BackgroundColor yellow
+  }
+}
+</style>
+ * 开始
+ ** 石头
+ *** 石头 <<yellow>>
+ *** 剪刀 <<green>>
+ *** 布 <<red>>
+ ** 剪刀
+ *** 石头 <<red>>
+ *** 剪刀 <<yellow>>
+ *** 布 <<green>>
+ ** 布
+ *** 石头 <<green>>
+ *** 剪刀 <<red>>
+ *** 布 <<yellow>>
+@endmindmap
+#+end_src
+
+#+RESULTS: 猜拳
+[[file:img/drl101/paperscissorstone.png]]
+
 ** 总结：学习
 * 强化学习
 ** 让学习收敛，高效

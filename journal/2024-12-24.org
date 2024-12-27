@@ -1,0 +1,10 @@
+#+TITLE: 周二, 2024-12-24
+* DONE 08:32 gantt chart modify
+- State "DONE"       from "STARTED"    [2024-12-24 周二 16:02]
+- State "STARTED"    from "TODO"       [2024-12-24 周二 08:34]
+:LOGBOOK:
+CLOCK: [2024-12-24 周二 08:34]--[2024-12-24 周二 09:15] =>  0:41
+:END:
+* STARTED reinforcement in robotics survery report
+- State "STARTED"    from "TODO"       [2024-12-24 周二 16:02]
+* 13:34 x1 weekly
