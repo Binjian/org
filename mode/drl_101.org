@@ -34,13 +34,178 @@
 - 目标和前提
   - 了解强化学习工程师的思维
 ** 最优控制的元老
+#+begin_comment
 [[yt:OmpzeWym7HQ#t=14m22s]]
-* 寻找最优决策(控制)
-** 石头剪刀布
+#+end_comment
 
-        #+ATTR_HTML: :alt  :title 神经网络的条理性 :width 800pix
-        #+attr_org: :width 100px
-       [[./img/drl101/sn-rockpaper.jpg][石头剪刀布]]
+* 寻找最优决策(控制)
+** PK
+#+CAPTION[PK]:
+#+NAME: PK
+#+ATTR_HTML: :alt  :title PK width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/drl101/dominated_fight.png
+digraph G {
+    node1 [shape=none, margin=0, label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">2,0</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS: PK
+[[file:img/drl101/dominated_fight.png]]
+
+
+** 优势策略
+#+CAPTION[PK]:
+#+NAME: PK1
+#+ATTR_HTML: :alt  :title PK1 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/drl101/dominated_fight1.png
+digraph G {
+    node1 [shape=none, margin=0, label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"><u><font color="green">进攻</font></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3"><u>1</u>,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3"><u>2</u>,<u>0</u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,<u>1</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS: PK1
+[[file:img/drl101/dominated_fight1.png]]
+
+** 势均力敌
+#+CAPTION[技术进步]: 势均力敌
+#+NAME: 势均力敌
+#+ATTR_HTML: :alt  :title 势均力敌 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/drl101/ne.png
+digraph G {
+    node1 [shape=none, margin=0, label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">2,0</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,2</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS: 势均力敌
+[[file:img/drl101/ne.png]]
+
+** 纳什均衡
+#+CAPTION[技术进步]: 势均力敌
+#+NAME: 势均力敌1
+#+ATTR_HTML: :alt  :title 势均力敌 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/drl101/ne1.png
+digraph G {
+    node1 [shape=none, margin=0, label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u>2</u>,<u>0</u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u>0</u>,<u>2</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS: 势均力敌1
+[[file:img/drl101/ne1.png]]
+
+** 混合策略
+- 对手进攻收益：$(-1)\times p + (2)\times (1-p)$
+- 对手退出收益：$(0)\times p + (0)\times (1-p)$
+#+CAPTION[技术进步]: 势均力敌
+#+NAME: 势均力敌2
+#+ATTR_HTML: :alt  :title 势均力敌 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/drl101/mixed.png
+digraph G {
+    node1 [shape=none, margin=0, label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="400">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">进攻</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3"><u>2</u>,<u>0</u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">退出</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3"><u>0</u>,<u>2</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,0</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100">p</TD>
+                <TD WIDTH="100" HEIGHT="100">1-p</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS: 势均力敌2
+[[file:img/drl101/mixed.png]]
 
 ** 决策分析
 #+CAPTION[技术进步]: 猜拳
