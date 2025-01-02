@@ -1,0 +1,12 @@
+#+HTML_HEAD: <style>
+.custom-bullet-1::before {
+    content: "👉";  /* Using an right hand symbol */
+    margin-right: 10px;
+}
+
+.custom-bullet-2::before {
+    content: "•";  /* Using a dot */
+    color: red;    /* Can change color */
+    margin-right: 10px;
+}
+</style>
