@@ -4,18 +4,18 @@
 #+title: 深度强化学习101
 #+AUTHOR: 忻斌健
 #+CREATOR: 忻斌健
-#+DATE:
+#+DATE:<2025-01-02 周四>
 #+STARTUP: latexpreview
 #+LATEX_COMPILER: xelatex
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
+#+LANGUAGE: cn
 #+OPTIONS: tex:t
 #+OPTIONS: ^:{}
 #+DOWNLOAD_IMAGE_DIR:  '~/.org.d/mode/img'
 #+OPTIONS: reveal_center:t reveal_progress:t reveal_history:t reveal_control:t
 #+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
 #+OPTIONS: reveal_width:1200 reveal_height:800
-#+OPTIONS: reve
 #+OPTIONS: toc:1
 #+REVEAL_INIT_OPTIONS: transition: 'cube'
 #+REVEAL_MARGIN: 0.01
@@ -37,14 +37,15 @@
 ** 强化学习
 #+attr_html: :alt :width 400pix
 #+attr_org: :width 300px
-[[./img/_generated/jim_fan.png]]
+[[./img/drl101/jim_fan.png]]
 
 * 概述
 #+ATTR_REVEAL: :frag (appear)
-- 了解深度学习与深度强化学习
 - 理解强化学习工程师的思维方式
+  - 复杂决策可以通过编程解决
   - 理解游戏的意义
   - 了解机器学习的原理
+- 了解深度强化学习的“暗物质”
 
 * 寻找最优决策
 ** 游戏
@@ -59,6 +60,9 @@
 - 游戏的趣味：复杂，难度，平衡
 
 ** PK
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:END:
 #+CAPTION[PK]:
 #+NAME: PK
 #+ATTR_HTML: :alt  :title PK width 800px  :align right
@@ -113,11 +117,11 @@ digraph G {
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">1,-1</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1">2,<u>0</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">2,<u><FONT COLOR="red">0</FONT></u></TD>
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u>1</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u><FONT COLOR="red">1</FONT></u></TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
             </TR>
         </TABLE>
@@ -148,12 +152,12 @@ digraph G {
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u>1</u>,-1</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u>2</u>,<u>0</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="darkgreen">1</FONT></u>,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u>1</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u><FONT COLOR="red">1</FONT></u></TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
             </TR>
         </TABLE>
@@ -256,11 +260,11 @@ digraph G {
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u>2</u>,<u>0</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="red">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u>0</u>,<u>2</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="red">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
             </TR>
         </TABLE>
@@ -292,11 +296,11 @@ digraph G {
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u>2</u>,<u>0</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u><FONT COLOR="red">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u>0</u>,<u>2</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u><FONT COLOR="red">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
             </TR>
         </TABLE>
@@ -309,17 +313,22 @@ digraph G {
 
 
 ** 混合策略
-#+ATTR_REVEAL: :frag (appear)
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube in none out'
+:END:
+#+ATTR_REVEAL: :frag (appear) :frag_idx (1 2 3 4 5 6)
 - 对手攻击收益：$\color{red}{PO^{f}=(-1)\times p + (2)\times (1-p)}$
 - 对手撤退收益：$\color{blue}{PO^{q}=(0)\times p + (0)\times (1-p)}$
-- $\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p=\frac{2}{1+2}=\frac{2}{3}$
-- 不确定环境下的随机策略有最优策略（混合均衡策略）
+- $p=0.5$?
+- 最优策略：$\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p=\frac{2}{1+2}=\frac{2}{3}$
+- $p=1$?
+- 多轮持续PK？
 
 
 #+CAPTION[混合策略]: 混合策略
 #+NAME: 混合策略
 #+ATTR_HTML: :alt  :title 混合策略 width 600px  :align right
-#+attr_org: :width 600px
+#+attr_org: :width 800px
 #+begin_src dot :file img/_generated/mixed.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
@@ -331,14 +340,14 @@ digraph G {
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="3">-1,<FONT COLOR="red">-1</FONT></TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="3"><u>2</u>,<u><FONT COLOR="blue">0</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,<FONT COLOR="red">-1</FONT></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u>2</u>,<u><FONT COLOR="blue">0</FONT></u></TD>
                 <TD WIDTH="100" HEIGHT="100">p</TD>
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="3"><u>0</u>,<u><FONT COLOR="red">2</FONT></u></TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="3">0,<FONT COLOR="blue">0</FONT></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u>0</u>,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<FONT COLOR="blue">0</FONT></TD>
                 <TD WIDTH="100" HEIGHT="100">1-p</TD>
             </TR>
         </TABLE>
@@ -347,11 +356,13 @@ digraph G {
 #+end_src
 
 #+RESULTS: 混合策略
-[[file:img/_generated/mixed.png]]
-
+[[file:img/_generated/mixed1.png]]
 
 ** 决策树
-#+CAPTION[混合策略]: 决策树
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:END:
+#+CAPTION[决策树]: 决策树
 #+NAME: 决策树
 #+ATTR_HTML: :alt  :title 决策树 width 800px  :align right
 #+attr_org: :width 600px
@@ -385,7 +396,10 @@ digraph G {
 
 
 ** 决策树
-#+CAPTION[混合策略]: 决策树1
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+#+CAPTION[决策树1]: 决策树1
 #+NAME: 决策树1
 #+ATTR_HTML: :alt  :title 决策树1 width 800px  :align right
 #+attr_org: :width 600px
@@ -420,16 +434,53 @@ digraph G {
 #+RESULTS: 决策树1
 [[file:img/_generated/tree1.png]]
 
-** 持续PK
-#+ATTR_REVEAL: :frag (appear)
-- 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
-- 倒推
-- 逐级分析
-#+CAPTION[混合策略]: 决策树2
+** 决策树
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+#+CAPTION[决策树2]: 决策树2
 #+NAME: 决策树2
 #+ATTR_HTML: :alt  :title 决策树2 width 800px  :align right
 #+attr_org: :width 600px
 #+begin_src dot :file img/_generated/tree2.png
+digraph G {
+    rankdir=LR;
+    {
+        node [group=top]
+        A11[label=A,style=filled, fillcolor=lightblue]
+        B1[label=B,style=filled, fillcolor=lightgrey]
+        A21[label="-c,-c",style=filled, fillcolor=lightblue]
+    }
+    B2[label=B,style=filled, fillcolor=lightgrey]
+    A11->B1[label="F(1)"]
+
+    A11->B2[label="Q(1)"]
+
+    B1 -> B2 [style="dotted", dir=none]
+
+    P12[label="v,0",shape=rect,color=none]
+    B1->A21[label="F(2)"]
+    B1->P12[label="Q(2)"]
+
+    P21[label="0,v",shape=rect,color=none]
+    P22[label="0,0",shape=rect,color=none]
+    B2->P21[label="F(2)"]
+    B2->P22[label="Q(2)"]
+    {rank=same; B1,B2}
+}
+#+end_src
+
+#+RESULTS: 决策树2
+[[file:img/_generated/tree2.png]]
+** 持续PK
+#+ATTR_REVEAL: :frag (appear)
+- 逐级倒推: 从最后一轮开始分析
+- 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
+#+CAPTION[决策树3]: 决策树3
+#+NAME: 决策树3
+#+ATTR_HTML: :alt  :title 决策树3 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/tree3.png
 digraph G {
     rankdir=LR;
     {
@@ -478,24 +529,44 @@ digraph G {
 }
 #+end_src
 
-#+RESULTS: 决策树2
-[[file:img/_generated/tree2.png]]
+#+RESULTS: 决策树3
+[[file:img/_generated/tree3.png]]
 
 
 ** 持续PK
 #+ATTR_REVEAL: :frag (appear)
-- 理性决策 vs 非理性决策（算法是理性决策，理性决策针对非理性决策是优势策略）
-- 分步骤解决复杂问题（动态规划）
-
-#+CAPTION[混合策略]: War
-#+NAME: 战争
-#+ATTR_HTML: :alt  :title 战争 width 800px  :align right
-#+attr_org: :width 600px
-
-
-** 总结：学习
-* 强化学习
+- 博弈与强化学习的关系
+  #+ATTR_REVEAL: :frag (appear)
+  | 玩家 | 收益/代价 | 策略 | (游戏状态)                            | (策略评估)                     |
+  |------+-----------+------+---------------------------------------+--------------------------------|
+  | ?    | 奖励      | 行动 | 系统状态@@html:<br>@@(状态，状态迁移) | 状态价值@@html:<br/>@@行动价值 |
+- 分步骤解决复杂问题
+  #+ATTR_REVEAL: :frag (appear)
+  - “如给定现在，未来与过去无关”
+    #+ATTR_REVEAL: :frag (appear)
+    👉 马尔可夫决策过程
+  #+ATTR_REVEAL: :frag (appear)
+  - 复杂问题可分解为子问题
+    #+ATTR_REVEAL: :frag (appear)
+    👉 动态规划
+- 价值估计
+    #+ATTR_REVEAL: :frag (appear)
+    👉 贝尔曼方程
+** 持续PK
+#+ATTR_REVEAL: :frag (appear)
+- 理性决策
+  - 算法是理性决策
+  - 理性决策针对非理性决策是优势策略
+* 学习
 ** 让学习收敛，高效
+#+ATTR_REVEAL: :frag (appear)
+- 博弈与强化学习的关系
+#+CAPTION[为何学习]: 为何学习
+#+NAME: 为何学习
+#+ATTR_HTML: :alt  :title 决策树3 width 800px  :align center
+#+attr_org: :width 600px
+[[./img/_generated/tree3.png]]
+
 ** 动态规划
 *** 最优控制
 *** 强化学习
@@ -505,16 +576,3 @@ digraph G {
 *** agents
 *** inference time compute
 *** synthetic data
-* 概述
-# :PROPERTIES:
-# :reveal_overview: t
-# :EXPORT_AUTHOR: TEST_EXPORT Author
-# :EXPORT_DATE: 2023-01-10
-# :EXPORT_TITLE: My Title
-# :EXPORT_EMAIL: Test@example.com
-# :EXPORT_OPTIONS: num:nil toc:nil reveal_keyboard:t reveal_overview:t
-# :EXPORT_REVEAL_HLEVEL: 3
-# :EXPORT_REVEAL_MARGIN: 200
-# :END:
-
-** Motivation plantuml
