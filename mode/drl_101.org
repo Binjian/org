@@ -37,7 +37,7 @@
 ** 强化学习
 #+attr_html: :alt :width 400pix
 #+attr_org: :width 300px
-[[./img/drl101/jim_fan.png]]
+[[./img/_generated/jim_fan.png]]
 
 * 概述
 #+ATTR_REVEAL: :frag (appear)
@@ -63,7 +63,7 @@
 #+NAME: PK
 #+ATTR_HTML: :alt  :title PK width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/dominated_fight.png
+#+begin_src dot :file img/_generated/dominated_fight.png
 digraph G {
     node1l [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
@@ -89,7 +89,7 @@ digraph G {
 
 #+ATTR_REVEAL: :frag (appear)
 #+RESULTS: PK
-[[file:img/drl101/dominated_fight.png]]
+[[file:img/_generated/dominated_fight.png]]
 
 
 ** PK
@@ -101,7 +101,7 @@ digraph G {
 #+NAME: PK0
 #+ATTR_HTML: :alt  :title PK0 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/dominated_fight0.png
+#+begin_src dot :file img/_generated/dominated_fight0.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
@@ -126,7 +126,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: PK0
-[[file:img/drl101/dominated_fight0.png]]
+[[file:img/_generated/dominated_fight0.png]]
 
 ** PK
 :PROPERTIES:
@@ -137,7 +137,7 @@ digraph G {
 #+NAME: PK1
 #+ATTR_HTML: :alt  :title PK1 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/dominated_fight1.png
+#+begin_src dot :file img/_generated/dominated_fight1.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
@@ -162,7 +162,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: PK1
-[[file:img/drl101/dominated_fight1.png]]
+[[file:img/_generated/dominated_fight1.png]]
 
 ** 优势策略
 :PROPERTIES:
@@ -173,7 +173,7 @@ digraph G {
 #+NAME: PK2
 #+ATTR_HTML: :alt  :title PK2 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/dominated_fight2.png
+#+begin_src dot :file img/_generated/dominated_fight2.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
@@ -197,7 +197,7 @@ digraph G {
 }
 #+end_src
 #+RESULTS: PK2
-[[file:img/drl101/dominated_fight2.png]]
+[[file:img/_generated/dominated_fight2.png]]
 
 ** 势均力敌
 :PROPERTIES:
@@ -208,7 +208,7 @@ digraph G {
 #+NAME: 势均力敌
 #+ATTR_HTML: :alt  :title 势均力敌 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/ne.png
+#+begin_src dot :file img/_generated/ne.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
@@ -233,7 +233,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: 势均力敌
-[[file:img/drl101/ne.png]]
+[[file:img/_generated/ne.png]]
 
 ** 势均力敌
 :PROPERTIES:
@@ -244,7 +244,7 @@ digraph G {
 #+NAME: 势均力敌1
 #+ATTR_HTML: :alt  :title 势均力敌1 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/ne1.png
+#+begin_src dot :file img/_generated/ne1.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
@@ -269,7 +269,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: 势均力敌1
-[[file:img/drl101/ne1.png]]
+[[file:img/_generated/ne1.png]]
 
 ** 策略均衡
 :PROPERTIES:
@@ -280,7 +280,7 @@ digraph G {
 #+NAME: 势均力敌2
 #+ATTR_HTML: :alt  :title 势均力敌2 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/ne2.png
+#+begin_src dot :file img/_generated/ne2.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
@@ -305,7 +305,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: 势均力敌2
-[[file:img/drl101/ne2.png]]
+[[file:img/_generated/ne2.png]]
 
 
 ** 混合策略
@@ -320,7 +320,7 @@ digraph G {
 #+NAME: 混合策略
 #+ATTR_HTML: :alt  :title 混合策略 width 600px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/mixed.png
+#+begin_src dot :file img/_generated/mixed.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="400" HEIGHT="300">
@@ -347,7 +347,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: 混合策略
-[[file:img/drl101/mixed.png]]
+[[file:img/_generated/mixed.png]]
 
 
 ** 决策树
@@ -355,7 +355,7 @@ digraph G {
 #+NAME: 决策树
 #+ATTR_HTML: :alt  :title 决策树 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/tree.png
+#+begin_src dot :file img/_generated/tree.png
 digraph G {
     rankdir=LR;
 
@@ -381,7 +381,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: 决策树
-[[file:img/drl101/tree.png]]
+[[file:img/_generated/tree.png]]
 
 
 ** 决策树
@@ -389,7 +389,7 @@ digraph G {
 #+NAME: 决策树1
 #+ATTR_HTML: :alt  :title 决策树1 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/tree1.png
+#+begin_src dot :file img/_generated/tree1.png
 digraph G {
     rankdir=LR;
     {
@@ -418,7 +418,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: 决策树1
-[[file:img/drl101/tree1.png]]
+[[file:img/_generated/tree1.png]]
 
 ** 持续PK
 #+ATTR_REVEAL: :frag (appear)
@@ -429,7 +429,7 @@ digraph G {
 #+NAME: 决策树2
 #+ATTR_HTML: :alt  :title 决策树2 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/tree2.png
+#+begin_src dot :file img/_generated/tree2.png
 digraph G {
     rankdir=LR;
     {
@@ -479,7 +479,7 @@ digraph G {
 #+end_src
 
 #+RESULTS: 决策树2
-[[file:img/drl101/tree2.png]]
+[[file:img/_generated/tree2.png]]
 
 
 ** 持续PK
@@ -491,28 +491,6 @@ digraph G {
 #+NAME: 战争
 #+ATTR_HTML: :alt  :title 战争 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/drl101/war.png
-digraph G {
-    rankdir=LR;
-
-    A11[label=A,style=filled, fillcolor=lightblue]
-    B1[label=B,style=filled, fillcolor=lightgrey]
-    B2[label=B,style=filled, fillcolor=lightgrey]
-    A11->B1[label="F(1)"]
-    A11->B2[label="Q(1)"]
-
-    B1 -> B2 [style="dotted", dir=none]
-
-    A
-    B1->P11[label="F(2)"]
-    B1->P12[label="Q(2)"]
-
-    B2->P21[label="F(2)"]
-    B2->P22[label="Q(2)"]
-    {rank=same; B1,B2}
-}
-#+end_src
-**
 
 
 ** 总结：学习
