@@ -18,8 +18,8 @@
 #+OPTIONS: reveal_width:1200 reveal_height:800
 #+OPTIONS: toc:1
 #+REVEAL_INIT_OPTIONS: transition: 'cube'
-#+REVEAL_MARGIN: 0.01
-#+REVEAL_MIN_SCALE: 0.05
+#+REVEAL_MARGIN: 0.005
+#+REVEAL_MIN_SCALE: 0.02
 #+REVEAL_MAX_SCALE: 2.5
 #+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 1
@@ -573,7 +573,9 @@ digraph G {
   - 理性决策针对非理性决策是优势策略
 
 #+BEGIN_NOTES
-  - AlphaGo 很难战胜，人很难战胜机器
+  - 玩家：人类 vs 自然/物理规律
+  - AlphaGo 很难战胜，人很难战胜机器：完美记忆，纯粹理性，高效执行，可复制
+  - 没有目的
   - Jeff Hinton的忧虑
 #+END_NOTES
 * 学习
@@ -762,6 +764,9 @@ digraph G {
 - 自然规律
 - 处理复杂的高效方式
 - 可以从碎片化的经验中学习
+#+BEGIN_NOTES
+- 掷色子通常是复杂随机环境最高效的学习方式
+#+END_NOTES
 ** AlphaGo
 #+attr_html: :alt :title AlphaGo决策树 :width 800pix :align center
 #+NAME: AlphaGo决策树
@@ -780,12 +785,22 @@ digraph G {
 #+BEGIN_NOTES
   5m57s~6m27s, 7m08s~8:45s
 #+END_NOTES
-** 动态规划
-*** 最优控制
-*** 强化学习
-** 价值函数
-** 深度强化学习
-*** 基于特征的强化学习
-*** agents
-*** inference time compute
-*** synthetic data
+** 神经网络
+#+ATTR_REVEAL: :frag (appear)
+- 碎片化经验学习
+  #+ATTR_REVEAL: :frag (appear)
+  - 部分经验累积 👉 神经网络
+  #+ATTR_REVEAL: :frag (appear)
+  - 不完整经验累积 👉 在线学习
+- 最优策略 👉 均衡策略
+#+BEGIN_NOTES
+- 可以下完一局学一局
+- 可以边下边学(时序差分学习)
+- 决策网络，价值网络
+- 纳什均衡
+#+END_NOTES
+
+#+attr_html: :alt :title AlphaGo神经网络 :width 800pix :align center
+#+NAME: AlphaGo神经网络
+#+attr_org: :width 300px
+[[./img/drl101/alphago_nn.png]]
