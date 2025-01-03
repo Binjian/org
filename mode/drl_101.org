@@ -23,19 +23,22 @@
 #+REVEAL_MAX_SCALE: 2.5
 #+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 1
-#+REVEAL_EXTRA_CSS: ./templates/custom_bullets.css
-#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_EXTRA_CSS: ./templates/grids.css
+#+REVEAL_PLUGINS: (highlight notes)
 #+REVEAL_TITLE_SLIDE: ./templates/title_drl101.html
 #+HTML_HEAD_EXTRA: <style> .figure p {text-align: center;}</style>
 #+HTML_HEAD_EXTRA: <style>*{font-family: "LXGW WenKai Mono" !important}</style>
 
-* 最优控制到强化学习
-** 最优控制
-#+attr_html: :alt  :width 600pix
-#+attr_org: :width 600px
-[[yt:OmpzeWym7HQ#t=14m22s]]
-** 强化学习
-#+attr_html: :alt :width 400pix
+* 从最优控制到强化学习
+** 最优控制研究历史
+
+#+REVEAL_HTML: <iframe width="1280" height="720" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=14m00s" frameborder="0" allowfullscreen></iframe>
+#+BEGIN_NOTES
+2019 talk 14m00s~15m57s
+#+END_NOTES
+
+** 强化学习研究现状
+#+attr_html: :alt 'Jim Fan' :title '2025, year of RL' :width 600pix
 #+attr_org: :width 300px
 [[./img/drl101/jim_fan.png]]
 
@@ -46,6 +49,8 @@
   - 理解游戏的意义
   - 了解机器学习的原理
 - 了解深度强化学习的“暗物质”
+  - 有时违反直觉
+  - 数学与直觉的理解
 
 * 寻找最优决策
 ** 游戏
@@ -316,39 +321,31 @@ digraph G {
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube in none out'
 :END:
-#+ATTR_REVEAL: :frag (appear) :frag_idx (1 2 3 4 5 6)
-- 对手攻击收益：$\color{red}{PO^{f}=(-1)\times p + (2)\times (1-p)}$
-- 对手撤退收益：$\color{blue}{PO^{q}=(0)\times p + (0)\times (1-p)}$
-- $p=0.5$?
-- 最优策略：$\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p=\frac{2}{1+2}=\frac{2}{3}$
-- $p=1$?
-- 多轮持续PK？
-
 
 #+CAPTION[混合策略]: 混合策略
 #+NAME: 混合策略
-#+ATTR_HTML: :alt  :title 混合策略 width 600px  :align right
-#+attr_org: :width 800px
+#+ATTR_HTML: :alt  :title 混合策略 width 300px  :align right
+#+attr_org: :width 400px
 #+begin_src dot :file img/_generated/mixed.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
-        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="400" HEIGHT="300">
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="200" HEIGHT="150">
             <TR>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
+                <TD WIDTH="50" HEIGHT="50" BGCOLOR="None"></TD>
+                <TD WIDTH="50" HEIGHT="50" BGCOLOR="None">攻击</TD>
+                <TD WIDTH="50" HEIGHT="50" BGCOLOR="None">撤退</TD>
             </TR>
             <TR>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,<FONT COLOR="red">-1</FONT></TD>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u>2</u>,<u><FONT COLOR="blue">0</FONT></u></TD>
-                <TD WIDTH="100" HEIGHT="100">p</TD>
+                <TD WIDTH="50" HEIGHT="50" BGCOLOR="None">攻击</TD>
+                <TD WIDTH="50" HEIGHT="50" BORDER="1">-1,<FONT COLOR="red">-1</FONT></TD>
+                <TD WIDTH="50" HEIGHT="50" BGCOLOR="lightgreen" BORDER="3"><u>2</u>,<u><FONT COLOR="blue">0</FONT></u></TD>
+                <TD WIDTH="50" HEIGHT="50">p</TD>
             </TR>
             <TR>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u>0</u>,<u><FONT COLOR="red">2</FONT></u></TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<FONT COLOR="blue">0</FONT></TD>
-                <TD WIDTH="100" HEIGHT="100">1-p</TD>
+                <TD WIDTH="50" HEIGHT="50" BGCOLOR="None">撤退</TD>
+                <TD WIDTH="50" HEIGHT="50" BGCOLOR="lightgreen" BORDER="3"><u>0</u>,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="50" HEIGHT="50" BORDER="1">0,<FONT COLOR="blue">0</FONT></TD>
+                <TD WIDTH="50" HEIGHT="50">1-p</TD>
             </TR>
         </TABLE>
     >];
@@ -356,7 +353,23 @@ digraph G {
 #+end_src
 
 #+RESULTS: 混合策略
-[[file:img/_generated/mixed1.png]]
+[[file:img/_generated/mixed.png]]
+
+#+ATTR_REVEAL: :frag (appear) :frag_idx (1 2 3 4 5)
+- 随机策略优于确定策略
+- 对手攻击收益：$\color{red}{PO^{f}=(-1)\times p + (2)\times (1-p)}$
+- 对手撤退收益：$\color{blue}{PO^{q}=(0)\times p + (0)\times (1-p)}$
+- $p=0.5$?
+- 最优策略：$\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p=\frac{2}{1+2}=\frac{2}{3}$
+  #+ATTR_REVEAL: :frag (appear)
+  - 最佳收益？
+  - $p=1$?
+  - 多轮持续PK？
+
+  #+BEGIN_NOTES
+  A 非理性决策 (p=1,0.5) vs B 理性决策 (p=2/3)
+  #+END_NOTES
+
 
 ** 决策树
 :PROPERTIES:
@@ -549,24 +562,224 @@ digraph G {
   - 复杂问题可分解为子问题
     #+ATTR_REVEAL: :frag (appear)
     👉 动态规划
-- 价值估计
-    #+ATTR_REVEAL: :frag (appear)
-    👉 贝尔曼方程
+  #+ATTR_REVEAL: :frag (appear)
+  - 从碎片化的经验中估计状态和行动价值
+      #+ATTR_REVEAL: :frag (appear)
+      👉 贝尔曼方程
 ** 持续PK
 #+ATTR_REVEAL: :frag (appear)
 - 理性决策
   - 算法是理性决策
   - 理性决策针对非理性决策是优势策略
-* 学习
-** 让学习收敛，高效
-#+ATTR_REVEAL: :frag (appear)
-- 博弈与强化学习的关系
-#+CAPTION[为何学习]: 为何学习
-#+NAME: 为何学习
-#+ATTR_HTML: :alt  :title 决策树3 width 800px  :align center
-#+attr_org: :width 600px
-[[./img/_generated/tree3.png]]
 
+#+BEGIN_NOTES
+  - AlphaGo 很难战胜，人很难战胜机器
+  - Jeff Hinton的忧虑
+#+END_NOTES
+* 学习
+** 采样
+#+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :alt  :title 决策树采样 width 800px  :align center
+#+CAPTION[决策树采样]: 决策树采样
+#+NAME: 决策树采样
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/tree_sample.png
+digraph G {
+    rankdir=LR;
+    {
+        node [group=top]
+        A1[label=A,style=filled, fillcolor=lightblue]
+        B1[label=B,style=filled, fillcolor=lightgrey]
+        A21[label="A",style=filled, xlabel=<<FONT COLOR="coral">-c,-c</FONT>>,fillcolor=deepskyblue]
+        B21[label=B,style=filled,fillcolor=lightslategrey]
+        A31[label=A,style=filled,xlabel=<<FONT COLOR="coral">-c</FONT>-c,<FONT COLOR="coral">-c</FONT>-c>,fillcolor=dodgerblue]
+        future[style=invis]
+    }
+    B2[label=B,style=filled, fillcolor=lightgrey]
+    A1->B1[label="F(1)"]
+
+    A1->B2[label="Q(1)",color="lime"]
+    A21->B21[label="F(3)"]
+
+    B1 -> B2 [style="dotted", dir=none]
+
+    B22[label=B,style=filled, fillcolor=lightslategrey]
+
+    P12[label="v,0",shape=rect,color=none]
+    P21[label="0,v",shape=rect,color="lime"]
+    P22[label="0,0",shape=rect,color=none]
+    B1->A21[label="F(2)"]
+    B1->P12[label="Q(2)"]
+    B21 -> B22 [style="dotted", dir=none]
+    {rank=same; B21,B22}
+
+    B2->P21[label="F(2)",color="lime"]
+    B2->P22[label="Q(2)"]
+    {rank=same; B1,B2}
+
+    A21->B22[label="Q(3)"]
+
+    B21 -> A31[label="F(4)"]
+    P32[label=<<FONT COLOR="coral">-c</FONT>+v,<FONT COLOR="coral">-c</FONT>+0>,shape=rect,color=none]
+    P31[label=<<FONT COLOR="coral">-c</FONT>+0,<FONT COLOR="coral">-c</FONT>+v>,shape=rect,color=none]
+    P33[label=<<FONT COLOR="coral">-c</FONT>+0,<FONT COLOR="coral">-c</FONT>+0>,shape=rect,color=none]
+    A31 -> future[style="dashed"]
+    B21 -> P32[label="Q(4)"]
+
+    B22 -> P31[label="F(4)"]
+    B22 -> P33[label="Q(4)"]
+
+}
+#+end_src
+
+#+RESULTS: 决策树采样
+[[file:img/_generated/tree_sample.png]]
+
+** 采样
+#+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :alt  :title 决策树采样 width 800px  :align center
+#+CAPTION[决策树采样1]: 决策树采样1
+#+NAME: 决策树采样1
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/tree_sample1.png
+digraph G {
+    rankdir=LR;
+    {
+        node [group=top]
+        A1[label=A,style=filled, fillcolor=lightblue]
+        B1[label=B,style=filled, fillcolor=lightgrey]
+        A21[label="A",style=filled, xlabel=<<FONT COLOR="coral">-c,-c</FONT>>,fillcolor=deepskyblue]
+        B21[label=B,style=filled,fillcolor=lightslategrey]
+        A31[label=A,style=filled,xlabel=<<FONT COLOR="coral">-c</FONT>-c,<FONT COLOR="coral">-c</FONT>-c>,fillcolor=dodgerblue]
+        future[style=invis]
+    }
+    B2[label=B,style=filled, fillcolor=lightgrey]
+    A1->B1[label="F(1)",color="lime"]
+
+    A1->B2[label="Q(1)"]
+    A21->B21[label="F(3)"]
+
+    B1 -> B2 [style="dotted", dir=none]
+
+    B22[label=B,style=filled, fillcolor=lightslategrey]
+
+    P12[label="v,0",shape=rect,color=none]
+    P21[label="0,v",shape=rect,color=none]
+    P22[label="0,0",shape=rect,color=none]
+    B1->A21[label="F(2)",color="lime"]
+    B1->P12[label="Q(2)"]
+    B21 -> B22 [style="dotted", dir=none]
+    {rank=same; B21,B22}
+
+    B2->P21[label="F(2)"]
+    B2->P22[label="Q(2)"]
+    {rank=same; B1,B2}
+
+    A21->B22[label="Q(3)",color="lime"]
+
+    B21 -> A31[label="F(4)"]
+    P32[label=<<FONT COLOR="coral">-c</FONT>+v,<FONT COLOR="coral">-c</FONT>+0>,shape=rect,color=none]
+    P31[label=<<FONT COLOR="coral">-c</FONT>+0,<FONT COLOR="coral">-c</FONT>+v>,shape=rect,color=none]
+    P33[label=<<FONT COLOR="coral">-c</FONT>+0,<FONT COLOR="coral">-c</FONT>+0>,shape=rect,color="lime"]
+    A31 -> future[style="dashed"]
+    B21 -> P32[label="Q(4)"]
+
+    B22 -> P31[label="F(4)"]
+    B22 -> P33[label="Q(4)",color="lime"]
+
+}
+#+end_src
+
+#+RESULTS: 决策树采样1
+[[file:img/_generated/tree_sample1.png]]
+** 采样
+#+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :alt  :title 决策树采样 width 800px  :align center
+#+CAPTION[决策树采样2: 决策树采样2
+#+NAME: 决策树采样2
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/tree_sample2.png
+digraph G {
+    rankdir=LR;
+    {
+        node [group=top]
+        A1[label=A,style=filled, fillcolor=lightblue]
+        B1[label=B,style=filled, fillcolor=lightgrey]
+        A21[label="A",style=filled, xlabel=<<FONT COLOR="coral">-c,-c</FONT>>,fillcolor=deepskyblue]
+        B21[label=B,style=filled,fillcolor=lightslategrey]
+        A31[label=A,style=filled,xlabel=<<FONT COLOR="coral">-c</FONT>-c,<FONT COLOR="coral">-c</FONT>-c>,fillcolor=dodgerblue]
+        future[style=invis]
+    }
+    B2[label=B,style=filled, fillcolor=lightgrey]
+    A1->B1[label="F(1)",color="lime"]
+
+    A1->B2[label="Q(1)"]
+    A21->B21[label="F(3)",color="lime"]
+
+    B1 -> B2 [style="dotted", dir=none]
+
+    B22[label=B,style=filled, fillcolor=lightslategrey]
+
+    P12[label="v,0",shape=rect,color=none]
+    P21[label="0,v",shape=rect,color=none]
+    P22[label="0,0",shape=rect,color=none]
+    B1->A21[label="F(2)",color="lime"]
+    B1->P12[label="Q(2)"]
+    B21 -> B22 [style="dotted", dir=none]
+    {rank=same; B21,B22}
+
+    B2->P21[label="F(2)"]
+    B2->P22[label="Q(2)"]
+    {rank=same; B1,B2}
+
+    A21->B22[label="Q(3)"]
+
+    B21 -> A31[label="F(4)",color="lime"]
+    P32[label=<<FONT COLOR="coral">-c</FONT>+v,<FONT COLOR="coral">-c</FONT>+0>,shape=rect,color=none]
+    P31[label=<<FONT COLOR="coral">-c</FONT>+0,<FONT COLOR="coral">-c</FONT>+v>,shape=rect,color=none]
+    P33[label=<<FONT COLOR="coral">-c</FONT>+0,<FONT COLOR="coral">-c</FONT>+0>,shape=rect,color=none]
+    A31 -> future[style="dashed",color="lime"]
+    B21 -> P32[label="Q(4)"]
+
+    B22 -> P31[label="F(4)"]
+    B22 -> P33[label="Q(4)"]
+
+}
+#+end_src
+
+#+RESULTS: 决策树采样2
+[[file:img/_generated/tree_sample2.png]]
+
+** 采样
+#+ATTR_REVEAL: :frag (appear)
+- 真实的数据
+  #+ATTR_REVEAL: :frag (appear)
+  - 建模的复杂度过高
+- 复杂函数/分布：
+  #+ATTR_REVEAL: :frag (appear)
+  - 非线性
+  - 时变过程与非平稳过程
+- 自然规律
+- 处理复杂的高效方式
+- 可以从碎片化的经验中学习
+** AlphaGo
+#+attr_html: :alt :title AlphaGo决策树 :width 800pix :align center
+#+NAME: AlphaGo决策树
+#+attr_org: :width 300px
+[[./img/drl101/MCTS-in-AlphaGo.png]]
+** AlphaGo
+#+attr_html: :alt :title AlphaGo决策树 :width 800pix :align center
+#+NAME: AlphaGo决策树
+#+attr_org: :width 300px
+[[./img/drl101/alphago_mcts.png]]
+** AlphaGo
+#+CAPTION[AlphaGo]: AlphaGo
+#+REVEAL_HTML: <iframe width="640" height="368" src="./img/drl101/alphago.mp4" frameborder="0" allowfullscreen></iframe>
+** 双足机器人Cassie的控制模型
+#+REVEAL_HTML: <iframe width="1280" height="720" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allowfullscreen></iframe>
+#+BEGIN_NOTES
+  5m57s~6m27s, 7m08s~8:45s
+#+END_NOTES
 ** 动态规划
 *** 最优控制
 *** 强化学习
