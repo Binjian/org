@@ -32,7 +32,7 @@
 * 从最优控制到强化学习
 ** 最优控制研究历史
 
-#+REVEAL_HTML: <iframe width="1280" height="720" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=14m00s" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=14m00s" frameborder="0" allowfullscreen></iframe>
 #+BEGIN_NOTES
 2019 talk 14m00s~15m57s
 #+END_NOTES
@@ -44,14 +44,23 @@
 
 * 概述
 #+ATTR_REVEAL: :frag (appear)
-- 理解强化学习工程师的思维方式
+- 理解强化学习的思维方式
+  #+ATTR_REVEAL: :frag (appear)
   - 复杂决策可以通过编程解决
-  - 理解游戏的意义
-  - 了解机器学习的原理
+  #+ATTR_REVEAL: :frag (appear)
+  - 了解强化学习的原理
+#+ATTR_REVEAL: :frag (appear)
 - 了解深度强化学习的“暗物质”
-  - 有时违反直觉
-  - 数学与直觉的理解
+  #+ATTR_REVEAL: :frag (appear)
+  - 逻辑与直觉结合处理复杂现象
 
+#+BEGIN_NOTES
+- 暗物质指基本事实经常会被忽略，或下意识假定，经常是错误的假定，而对理解问题是非常必要的前提。
+- 机器人抓取任务里为何会使用随机决策?
+- 可以用基本的问题引出
+  - 为什么可以学习？
+  - 为什么是树？
+#+END_NOTES
 * 寻找最优决策
 ** 游戏
 :PROPERTIES:
@@ -59,18 +68,19 @@
 :END:
 
 #+ATTR_REVEAL: :frag (appear)
-- 游戏规则：玩家，收益，代价，策略
-  #+ATTR_REVEAL: :frag (appear)
-  👉 王者荣耀
+- 游戏规则:玩家,收益(代价,奖励)策略
 - 游戏的趣味：复杂，难度，平衡
 
-** PK
+#+BEGIN_NOTES
+  👉 王者荣耀
+#+END_NOTES
+** 对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
-#+CAPTION[PK]:
-#+NAME: PK
-#+ATTR_HTML: :alt  :title PK width 800px  :align right
+#+CAPTION[对决]:
+#+NAME: 对决
+#+ATTR_HTML: :alt  :title 对决 width 800px  :align right
 #+attr_org: :width 600px
 #+begin_src dot :file img/_generated/dominated_fight.png
 digraph G {
@@ -97,18 +107,23 @@ digraph G {
 #+end_src
 
 #+ATTR_REVEAL: :frag (appear)
-#+RESULTS: PK
+#+RESULTS: 对决
 [[file:img/_generated/dominated_fight.png]]
+#+BEGIN_NOTES
+- 玩家:我方-横向-A;对手-纵向-B
+- 策略:攻击,撤退
+- 收益:左侧我方,右侧对手
+- 代价:-1,奖励2
+#+END_NOTES
 
-
-** PK
+** 对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
 
-#+CAPTION[PK0]:
-#+NAME: PK0
-#+ATTR_HTML: :alt  :title PK0 width 800px  :align right
+#+CAPTION[对决0]:
+#+NAME: 对决0
+#+ATTR_HTML: :alt  :title 对决0 width 800px  :align right
 #+attr_org: :width 600px
 #+begin_src dot :file img/_generated/dominated_fight0.png
 digraph G {
@@ -134,17 +149,17 @@ digraph G {
 }
 #+end_src
 
-#+RESULTS: PK0
+#+RESULTS: 对决0
 [[file:img/_generated/dominated_fight0.png]]
 
-** PK
+** 对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
 
-#+CAPTION[PK1]:
-#+NAME: PK1
-#+ATTR_HTML: :alt  :title PK1 width 800px  :align right
+#+CAPTION[对决1]:
+#+NAME: 对决1
+#+ATTR_HTML: :alt  :title 对决1 width 800px  :align right
 #+attr_org: :width 600px
 #+begin_src dot :file img/_generated/dominated_fight1.png
 digraph G {
@@ -170,7 +185,7 @@ digraph G {
 }
 #+end_src
 
-#+RESULTS: PK1
+#+RESULTS: 对决1
 [[file:img/_generated/dominated_fight1.png]]
 
 ** 优势策略
@@ -178,9 +193,9 @@ digraph G {
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
 
-#+CAPTION[PK2]:
-#+NAME: PK2
-#+ATTR_HTML: :alt  :title PK2 width 800px  :align right
+#+CAPTION[对决2]:
+#+NAME: 对决2
+#+ATTR_HTML: :alt  :title 对决2 width 800px  :align right
 #+attr_org: :width 600px
 #+begin_src dot :file img/_generated/dominated_fight2.png
 digraph G {
@@ -205,7 +220,7 @@ digraph G {
     >];
 }
 #+end_src
-#+RESULTS: PK2
+#+RESULTS: 对决2
 [[file:img/_generated/dominated_fight2.png]]
 
 ** 势均力敌
@@ -316,6 +331,12 @@ digraph G {
 #+RESULTS: 势均力敌2
 [[file:img/_generated/ne2.png]]
 
+  #+BEGIN_NOTES
+   - 前提条件是同时决策,不知道对方的策略!
+   - 策略均衡是对双方最合理的最优状态：任何一方偏离均衡状态，而另一方保持理性决策，都会导致偏离方收益受损，所以没有任何一方愿意偏离均衡状态下的最优决策
+   - A 非理性决策 vs B 理性决策
+   - 理性决策优于非理性决策
+  #+END_NOTES
 
 ** 混合策略
 :PROPERTIES:
@@ -355,21 +376,41 @@ digraph G {
 #+RESULTS: 混合策略
 [[file:img/_generated/mixed.png]]
 
-#+ATTR_REVEAL: :frag (appear) :frag_idx (1 2 3 4 5)
-- 随机策略优于确定策略
-- 对手攻击收益：$\color{red}{PO^{f}=(-1)\times p + (2)\times (1-p)}$
-- 对手撤退收益：$\color{blue}{PO^{q}=(0)\times p + (0)\times (1-p)}$
-- $p=0.5$?
-- 最优策略：$\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p=\frac{2}{1+2}=\frac{2}{3}$
+#+ATTR_REVEAL: :frag (appear) :frag_idx (1 2 3 4)
+- 对手攻击收益：$\color{red}{PO^{f}=(-1)\times p^{A} + (2)\times (1-p^{A})}$
+- 对手撤退收益：$\color{blue}{PO^{q}=(0)\times p^{A} + (0)\times (1-p^{A})}$
+- $p^{A}=0.5$ ?
+- $p^A$ 何时最优?
   #+ATTR_REVEAL: :frag (appear)
-  - 最佳收益？
-  - $p=1$?
-  - 多轮持续PK？
-
+  👉 让对方失去选择, $\forall p^{B}$
   #+BEGIN_NOTES
-  A 非理性决策 (p=1,0.5) vs B 理性决策 (p=2/3)
+   - 对手的任何策略,收益都一样
   #+END_NOTES
 
+** 混合策略
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+#+ATTR_HTML: :alt  :title 混合策略 width 300px  :align center
+#+attr_org: :width 400px
+[[./img/_generated/mixed.png]]
+
+#+ATTR_REVEAL: :frag (appear)
+- 我方策略:$\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p^{A}=\frac{2}{1+2}=\frac{2}{3}$
+  #+ATTR_REVEAL: :frag (appear)
+  - 最优策略: 我方收益 $-\frac{2}{3}\times p^{B} + \frac{4}{3}\times (1-p^{B})$
+  - 最佳收益？
+  - $p^{A}=1$?
+- 理性决策优于非理性决策
+- 混合策略的均衡是对双方最合理的最优状态
+- 随机策略优于确定策略
+- 多轮持续对决？
+
+  #+BEGIN_NOTES
+   - A 非理性决策 (p=1,0.5) vs B 理性决策 (p=2/3)
+   - 混合策略的均衡：任何一方偏离均衡状态，而另一方保持理性决策，都会导致偏离方收益受损，所以没有任何一方愿意偏离均衡状态下的最优决策
+  #+END_NOTES
 
 ** 决策树
 :PROPERTIES:
@@ -485,7 +526,7 @@ digraph G {
 
 #+RESULTS: 决策树2
 [[file:img/_generated/tree2.png]]
-** 持续PK
+** 持续对决
 #+ATTR_REVEAL: :frag (appear)
 - 逐级倒推: 从最后一轮开始分析
 - 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
@@ -546,7 +587,7 @@ digraph G {
 [[file:img/_generated/tree3.png]]
 
 
-** 持续PK
+** 持续对决
 #+ATTR_REVEAL: :frag (appear)
 - 博弈与强化学习的关系
   #+ATTR_REVEAL: :frag (appear)
@@ -566,17 +607,20 @@ digraph G {
   - 从碎片化的经验中估计状态和行动价值
       #+ATTR_REVEAL: :frag (appear)
       👉 贝尔曼方程
-** 持续PK
+#+BEGIN_NOTES
+  - 玩家：人类, vs 人类,计算机,自然/物理规律;
+  - 计算机 vs. 自然/物理规律
+#+END_NOTES
+** 持续对决
 #+ATTR_REVEAL: :frag (appear)
 - 理性决策
   - 算法是理性决策
   - 理性决策针对非理性决策是优势策略
 
 #+BEGIN_NOTES
-  - 玩家：人类 vs 自然/物理规律
   - AlphaGo 很难战胜，人很难战胜机器：完美记忆，纯粹理性，高效执行，可复制
   - 没有目的
-  - Jeff Hinton的忧虑
+  - Jeff Hinton的警告
 #+END_NOTES
 * 学习
 ** 采样
@@ -676,6 +720,7 @@ digraph G {
     B2->P21[label="F(2)"]
     B2->P22[label="Q(2)"]
     {rank=same; B1,B2}
+
 
     A21->B22[label="Q(3)",color="lime"]
 
@@ -780,10 +825,27 @@ digraph G {
 ** AlphaGo
 #+CAPTION[AlphaGo]: AlphaGo
 #+REVEAL_HTML: <iframe width="640" height="368" src="./img/drl101/alphago.mp4" frameborder="0" allowfullscreen></iframe>
-** 双足机器人Cassie的控制模型
-#+REVEAL_HTML: <iframe width="1280" height="720" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allowfullscreen></iframe>
+
+#+ATTR_REVEAL: :frag (appear)
+- 所有的位置（观测量） $3^{{19}^2}\approx 1.74\times 10^{172}$, $1.20\%$ 合法
+- 平均~200步/局，不同棋局的平均数量 $~3\times 10^{511}$
+- 理论最长步数 $10^{48}$, 不同棋局的数量:$[10^{10^{48}},10^{10^{171}}]$
+- 可观测宇宙的原子个数 $10^{80}$
+- 如何学习?
+  #+ATTR_REVEAL: :frag (appear)
+  👉 神经网络
 #+BEGIN_NOTES
-  5m57s~6m27s, 7m08s~8:45s
+ - 原子个数: 爱丁顿数
+ - 从完整的部份经验中学习: 从部份棋局中学习,累积学习经验
+ - 从不完整的部份经验中学习: 在线学习,不等棋局结束,边干边学
+#+END_NOTES
+** 双足机器人Cassie控制模型复杂度
+#+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allowfullscreen></iframe>
+#+BEGIN_NOTES
+  - 5m57s~6m27s, 7m08s~8:45s
+  - 处理复杂现象的两种方式:
+    - 精确的环境和动力学模型,抓住主要矛盾,缺点是模型的特异性,针对特殊场景和功能(难以泛化),抗干扰能力差(不健壮)
+    - 随机和概率模型,通过学习的方式(自然和人处理和解决问题的方式)
 #+END_NOTES
 ** 神经网络
 #+ATTR_REVEAL: :frag (appear)
@@ -791,16 +853,54 @@ digraph G {
   #+ATTR_REVEAL: :frag (appear)
   - 部分经验累积 👉 神经网络
   #+ATTR_REVEAL: :frag (appear)
-  - 不完整经验累积 👉 在线学习
-- 最优策略 👉 均衡策略
+  - 不完整经验累积
+    #+ATTR_REVEAL: :frag (appear)
+    👉 在线学习
+#+ATTR_REVEAL: :frag (appear)
+- 最优策略
+  #+ATTR_REVEAL: :frag (appear)
+  👉 均衡策略
+  #+ATTR_REVEAL: :frag (appear)
+  👉 随机和概率是应对复杂现象的有效模型
 #+BEGIN_NOTES
 - 可以下完一局学一局
 - 可以边下边学(时序差分学习)
-- 决策网络，价值网络
-- 纳什均衡
+- 决策网络，
+- 价值网络: 可理解为简单的胜率查找表
+- 纳什均衡: 自我博弈，我的决策必须让对手的收益在任何决策下是一样的
+- 均衡策略为何是最优的策略?
+- 围棋复杂度极高,但是确定性游戏
 #+END_NOTES
 
 #+attr_html: :alt :title AlphaGo神经网络 :width 800pix :align center
 #+NAME: AlphaGo神经网络
 #+attr_org: :width 300px
 [[./img/drl101/alphago_nn.png]]
+
+** 神经网络
+#+ATTR_REVEAL: :frag (appear)
+- 碎片化经验学习
+  #+ATTR_REVEAL: :frag (appear)
+  - 完整的部分经验累积 👉 神经网络
+  #+ATTR_REVEAL: :frag (appear)
+  - 不完整的部份经验累积 👉 在线学习
+- 最优策略?
+  #+ATTR_REVEAL: :frag (appear)
+  👉 均衡策略
+#+BEGIN_NOTES
+ - 混合策略的均衡是对双方最合理的最优状态：任何一方偏离均衡状态，而另一方保持理性决策，都会导致偏离方收益受损，所以没有任何一方愿意偏离均衡状态下的最优决策
+ - A 非理性决策 (人类棋手) vs B 理性决策 (AlphaGo)
+ - 理性决策优于非理性决策
+ - 自我训练/自我学习:左右互搏
+   - 自我训练为何
+#+END_NOTES
+
+#+attr_html: :alt :title AlphaGo神经网络 :width 800pix :align center
+#+NAME: AlphaGo神经网络
+#+attr_org: :width 300px
+[[./img/drl101/alphago_nn.png]]
+** 总结
+#+ATTR_REVEAL: :frag (appear)
+- 最优策略
+- 强化学习
+- 随机和概率是应对复杂现象的有效模型
