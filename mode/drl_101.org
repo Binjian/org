@@ -529,9 +529,6 @@ digraph G {
 #+RESULTS: 决策树2
 [[file:img/_generated/tree2.png]]
 ** 持续对决
-#+ATTR_REVEAL: :frag (appear)
-- 逐级倒推: 从最后一轮开始分析
-- 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
 #+CAPTION[决策树3]: 决策树3
 #+NAME: 决策树3
 #+ATTR_HTML: :alt  :title 决策树3 width 800px  :align right
@@ -588,14 +585,22 @@ digraph G {
 #+RESULTS: 决策树3
 [[file:img/_generated/tree3.png]]
 
-
-** 持续对决
 #+ATTR_REVEAL: :frag (appear)
-- 博弈与强化学习的关系
-  #+ATTR_REVEAL: :frag (appear)
-  | 玩家 | 收益/代价 | 策略 | (游戏状态)                            | (策略评估)                     |
-  |------+-----------+------+---------------------------------------+--------------------------------|
-  | ?    | 奖励      | 行动 | 系统状态@@html:<br>@@(状态，状态迁移) | 状态价值@@html:<br/>@@行动价值 |
+- 逐级倒推: 从最后一轮开始分析
+- 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
+
+** 博弈与强化学习
+#+ATTR_REVEAL: :frag (appear)
+| 玩家 | 收益/代价 | 策略 | (游戏状态)                            | (策略评估)                     |
+|------+-----------+------+---------------------------------------+--------------------------------|
+| ?    | 奖励      | 行动 | 系统状态@@html:<br>@@(状态，状态迁移) | 状态价值@@html:<br/>@@行动价值 |
+#+BEGIN_NOTES
+  - 玩家：人类, vs 人类,计算机,自然/物理规律;
+  - 计算机 vs. 自然/物理规律
+  - 增加观测量和价值估计
+#+END_NOTES
+** 强化学习的基础
+#+ATTR_REVEAL: :frag (appear)
 - 分步骤解决复杂问题
   #+ATTR_REVEAL: :frag (appear)
   - “如给定现在，未来与过去无关”
@@ -607,22 +612,23 @@ digraph G {
     👉 动态规划
   #+ATTR_REVEAL: :frag (appear)
   - 从碎片化的经验中估计状态和行动价值
-      #+ATTR_REVEAL: :frag (appear)
-      👉 贝尔曼方程
+    #+ATTR_REVEAL: :frag (appear)
+    👉 贝尔曼方程
 #+BEGIN_NOTES
-  - 玩家：人类, vs 人类,计算机,自然/物理规律;
-  - 计算机 vs. 自然/物理规律
+  - 理解概念比记住概念的名称更重要
+  - 动态规划是主流的经典概念,也是最优控制的基础
+  - 从a走到b的最短路径,可分两个阶段a到c,c到b:假设c到b最短,那么只要解决a到c最短这一个子问题!
 #+END_NOTES
-** 持续对决
+** 理性决策
 #+ATTR_REVEAL: :frag (appear)
-- 理性决策
-  - 算法是理性决策
-  - 理性决策针对非理性决策是优势策略
+- 算法是理性决策
+- 理性决策针对非理性决策是优势策略
 
 #+BEGIN_NOTES
   - AlphaGo 很难战胜，人很难战胜机器：完美记忆，纯粹理性，高效执行，可复制
   - 没有目的
   - Jeff Hinton的警告
+  - 强化学习本来是人工智能领域里一个比较冷僻的方向,和最优控制最大的差异在于学习的概念.
 #+END_NOTES
 * 学习
 ** 采样
@@ -848,6 +854,7 @@ digraph G {
   - 处理复杂现象的两种方式:
     - 精确的环境和动力学模型,抓住主要矛盾,缺点是模型的特异性,针对特殊场景和功能(难以泛化),抗干扰能力差(不健壮)
     - 随机和概率模型,通过学习的方式(自然和人处理和解决问题的方式)
+    - 强化学习为何能处理复杂问题? 主要是深度学习的突破,实现里从碎片化经验中学习复杂的系统动态,评估复杂价值函数,复杂的策略!
 #+END_NOTES
 ** 神经网络
 #+ATTR_REVEAL: :frag (appear)
@@ -905,4 +912,7 @@ digraph G {
 #+ATTR_REVEAL: :frag (appear)
 - 最优策略
 - 强化学习
+- 神神经网络
+#+BEGIN_NOTES
 - 随机和概率是应对复杂现象的有效模型
+#+END_NOTES
