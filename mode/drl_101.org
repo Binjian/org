@@ -9,7 +9,7 @@
 #+LATEX_COMPILER: xelatex
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
-#+LANGUAGE: cn
+#+LANGUAGE: zh-CN
 #+OPTIONS: tex:t
 #+OPTIONS: ^:{}
 #+DOWNLOAD_IMAGE_DIR:  '~/.org.d/mode/img'
@@ -360,13 +360,13 @@ digraph G {
                 <TD WIDTH="50" HEIGHT="50" BGCOLOR="None">攻击</TD>
                 <TD WIDTH="50" HEIGHT="50" BORDER="1">-1,<FONT COLOR="red">-1</FONT></TD>
                 <TD WIDTH="50" HEIGHT="50" BGCOLOR="lightgreen" BORDER="3"><u>2</u>,<u><FONT COLOR="blue">0</FONT></u></TD>
-                <TD WIDTH="50" HEIGHT="50">p</TD>
+                <TD WIDTH="50" HEIGHT="50">p<sup>A</sup></TD>
             </TR>
             <TR>
                 <TD WIDTH="50" HEIGHT="50" BGCOLOR="None">撤退</TD>
                 <TD WIDTH="50" HEIGHT="50" BGCOLOR="lightgreen" BORDER="3"><u>0</u>,<u><FONT COLOR="red">2</FONT></u></TD>
                 <TD WIDTH="50" HEIGHT="50" BORDER="1">0,<FONT COLOR="blue">0</FONT></TD>
-                <TD WIDTH="50" HEIGHT="50">1-p</TD>
+                <TD WIDTH="50" HEIGHT="50">1-p<sup>A</sup></TD>
             </TR>
         </TABLE>
     >];
@@ -382,7 +382,7 @@ digraph G {
 - $p^{A}=0.5$ ?
 - $p^A$ 何时最优?
   #+ATTR_REVEAL: :frag (appear)
-  👉 让对方失去选择, $\forall p^{B}$
+  👉 让对方失去选择, 对$\forall\hspace{0.5em}p^{B}$
   #+BEGIN_NOTES
    - 对手的任何策略,收益都一样
   #+END_NOTES
