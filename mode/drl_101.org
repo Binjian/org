@@ -12,6 +12,7 @@
 #+LANGUAGE: zh-CN
 #+OPTIONS: tex:t
 #+OPTIONS: ^:{}
+#+bind: org-export-publishing-directory "./exports"
 #+DOWNLOAD_IMAGE_DIR:  '~/.org.d/mode/img'
 #+OPTIONS: reveal_center:t reveal_progress:t reveal_history:t reveal_control:t
 #+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
@@ -42,7 +43,7 @@
 #+attr_org: :width 300px
 [[./img/drl101/jim_fan.png]]
 
-* 概述
+** 概述
 #+ATTR_REVEAL: :frag (appear)
 - 理解强化学习的思维方式
   #+ATTR_REVEAL: :frag (appear)
@@ -856,7 +857,7 @@ digraph G {
     - 随机和概率模型,通过学习的方式(自然和人处理和解决问题的方式)
     - 强化学习为何能处理复杂问题? 主要是深度学习的突破,实现里从碎片化经验中学习复杂的系统动态,评估复杂价值函数,复杂的策略!
 #+END_NOTES
-** 神经网络
+* 神经网络
 #+ATTR_REVEAL: :frag (appear)
 - 碎片化经验学习
   #+ATTR_REVEAL: :frag (appear)
