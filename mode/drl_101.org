@@ -440,14 +440,13 @@ digraph G {
 
 - 多轮持续对决？
 
-** 决策树
+
+* 决策树
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
-#+CAPTION[决策树]: 决策树
-#+NAME: 决策树
-#+ATTR_HTML: :alt  :title 决策树 width 800px  :align right
-#+attr_org: :width 600px
+#+ATTR_HTML: :alt  :title tree :width 400pix  :align center
+#+attr_org: :width 300px :align left
 #+begin_src dot :file img/_generated/tree.png
 digraph G {
     rankdir=LR;
@@ -473,93 +472,304 @@ digraph G {
 }
 #+end_src
 
-#+RESULTS: 决策树
+#+RESULTS:
 [[file:img/_generated/tree.png]]
+
+
+
+** 决策树
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:END:
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title tree :width 400pix  :align center
+        #+attr_org: :width 300px :align left
+        [[file:img/_generated/tree.png]]
+
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title table :width 400pix  :align center
+        #+attr_org: :width 300px :align left
+        [[./img/_generated/mixed.png]]
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** 决策树
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title tree :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        [[./img/_generated/tree.png]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title flat_tree :width 400pix  :align center
+        #+attr_org: :width 300px :align left
+        #+begin_src dot :file img/_generated/flat_tree.png
+        digraph G {
+            rankdir=LR;
+            {
+                node [group=top]
+                A11[label=A,style=filled, fillcolor=lightblue]
+                B1[label=B,style=filled, fillcolor=lightgrey]
+                P11[label="-1,-1",shape=rect,color=none]
+            }
+            B2[label=B,style=filled, fillcolor=lightgrey]
+            A11->B1[label="F(1)"]
+
+            A11->B2[label="Q(1)"]
+
+            B1 -> B2 [style="dotted", dir=none]
+
+            P12[label="2,0",shape=rect,color=none]
+            B1->P11[label="F(2)"]
+            B1->P12[label="Q(2)"]
+
+            P21[label="0,2",shape=rect,color=none]
+            P22[label="0,0",shape=rect,color=none]
+            B2->P21[label="F(2)"]
+            B2->P22[label="Q(2)"]
+            {rank=same; B1,B2}
+        }
+        #+end_src
+
+        #+RESULTS:
+        [[file:img/_generated/flat_tree.png]]
+
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 
 
 ** 决策树
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
-#+CAPTION[决策树1]: 决策树1
-#+NAME: 决策树1
-#+ATTR_HTML: :alt  :title 决策树1 width 800px  :align right
-#+attr_org: :width 600px
-#+begin_src dot :file img/_generated/tree1.png
-digraph G {
-    rankdir=LR;
-    {
-        node [group=top]
-        A11[label=A,style=filled, fillcolor=lightblue]
-        B1[label=B,style=filled, fillcolor=lightgrey]
-        A21[label="-1,-1",style=filled, fillcolor=lightblue]
-    }
-    B2[label=B,style=filled, fillcolor=lightgrey]
-    A11->B1[label="F(1)"]
 
-    A11->B2[label="Q(1)"]
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title tree :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        [[./img/_generated/tree.png]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title flat_tree2 :width 400pix  :align center
+        #+attr_org: :width 300px :align left
+        #+begin_src dot :file img/_generated/flat_tree2.png
+        digraph G {
+            rankdir=LR;
+            {
+                node [group=top]
+                A11[label=A,style=filled, fillcolor=lightblue]
+                B1[label=B,style=filled, fillcolor=lightgrey]
+                P11[label="-c,-c",shpae=rect,color=none]
+            }
+            B2[label=B,style=filled, fillcolor=lightgrey]
+            A11->B1[label="F(1)"]
 
-    B1 -> B2 [style="dotted", dir=none]
+            A11->B2[label="Q(1)"]
 
-    P12[label="2,0",shape=rect,color=none]
-    B1->A21[label="F(2)"]
-    B1->P12[label="Q(2)"]
+            B1 -> B2 [style="dotted", dir=none]
 
-    P21[label="0,2",shape=rect,color=none]
-    P22[label="0,0",shape=rect,color=none]
-    B2->P21[label="F(2)"]
-    B2->P22[label="Q(2)"]
-    {rank=same; B1,B2}
-}
-#+end_src
+            P12[label="v,0",shape=rect,color=none]
+            B1->P11[label="F(2)"]
+            B1->P12[label="Q(2)"]
 
-#+RESULTS: 决策树1
-[[file:img/_generated/tree1.png]]
+            P21[label="0,v",shape=rect,color=none]
+            P22[label="0,0",shape=rect,color=none]
+            B2->P21[label="F(2)"]
+            B2->P22[label="Q(2)"]
+            {rank=same; B1,B2}
+        }
+        #+end_src
 
-** 决策树
+        #+RESULTS:
+        [[file:img/_generated/flat_tree2.png]]
+
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** 持续对决
 :PROPERTIES:
-:REVEAL_DATA_TRANSITION: 'none-in cube-out'
+:REVEAL_DATA_TRANSITION: 'none'
 :END:
-#+CAPTION[决策树2]: 决策树2
-#+NAME: 决策树2
-#+ATTR_HTML: :alt  :title 决策树2 width 800px  :align right
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title flat_tree3 :width 400pix  :align center
+        #+attr_org: :width 300px :align left
+        #+begin_src dot :file img/_generated/flat_tree3.png
+        digraph G {
+            rankdir=LR;
+            {
+                node [group=top]
+                A11[label=A,style=filled, fillcolor=lightblue]
+                B1[label=B,style=filled, fillcolor=lightgrey]
+                A21[label="-c,-c",style=filled, fillcolor=lightblue]
+                A21[label="A",style=filled, xlabel=<<FONT COLOR="coral">-c,-c</FONT>>,fillcolor=deepskyblue]
+            }
+            B2[label=B,style=filled, fillcolor=lightgrey]
+            A11->B1[label="F(1)"]
+
+            A11->B2[label="Q(1)"]
+
+            B1 -> B2 [style="dotted", dir=none]
+
+            P12[label="v,0",shape=rect,color=none]
+            B1->A21[label="F(2)"]
+            B1->P12[label="Q(2)"]
+
+            P21[label="0,v",shape=rect,color=none]
+            P22[label="0,0",shape=rect,color=none]
+            B2->P21[label="F(2)"]
+            B2->P22[label="Q(2)"]
+            {rank=same; B1,B2}
+        }
+        #+end_src
+
+        #+RESULTS:
+        [[file:img/_generated/flat_tree3.png]]
+
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title flat_tree2 :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        [[file:img/_generated/flat_tree2.png]]
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** 持续对决
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+#+CAPTION[决策树3]: 决策树21
+#+NAME: 决策树21
+#+ATTR_HTML: :alt  :title 决策树21 width 800px  :align right
 #+attr_org: :width 600px
-#+begin_src dot :file img/_generated/tree2.png
+#+begin_src dot :file img/_generated/tree21.png
 digraph G {
     rankdir=LR;
     {
         node [group=top]
-        A11[label=A,style=filled, fillcolor=lightblue]
+        A1[label=A,style=filled, fillcolor=lightblue]
         B1[label=B,style=filled, fillcolor=lightgrey]
-        A21[label="-c,-c",style=filled, fillcolor=lightblue]
+        A21[label="A",style=filled, xlabel=<<FONT COLOR="coral">-c,-c</FONT>>,fillcolor=deepskyblue]
+        B21[label=B,style=invis,fillcolor=lightslategrey]
+        A31[label=A,style=invis,xlabel=<<FONT COLOR="coral">-1</FONT>-1,<FONT COLOR="coral">-1</FONT>-1>,fillcolor=dodgerblue]
+        future[style=invis]
     }
-    B2[label=B,style=filled, fillcolor=lightgrey]
-    A11->B1[label="F(1)"]
+    B2[label=B,fillcolor=lightgrey]
+    A1->B1[label="F(1)"]
 
-    A11->B2[label="Q(1)"]
+    A1->B2[label="Q(1)"]
+    A21->B21[label="F(3)",style=invis]
 
     B1 -> B2 [style="dotted", dir=none]
+
+    B22[label=B,style=invis, fillcolor=lightslategrey]
 
     P12[label="v,0",shape=rect,color=none]
-    B1->A21[label="F(2)"]
-    B1->P12[label="Q(2)"]
-
     P21[label="0,v",shape=rect,color=none]
     P22[label="0,0",shape=rect,color=none]
+    B1->A21[label="F(2)"]
+    B1->P12[label="Q(2)"]
+    B21 -> B22 [style="dotted",dir=none,style=invis]
+    {rank=same; B21,B22}
+
     B2->P21[label="F(2)"]
     B2->P22[label="Q(2)"]
     {rank=same; B1,B2}
+
+    A21->B22[label="Q(3)",style=invis]
+
+    B21 -> A31[label="F(4)",style=invis]
+    P32[label=<<FONT COLOR="coral">-1</FONT>+2,<FONT COLOR="coral">-1</FONT>+0>,shape=rect,color=none,style=invis]
+    P31[label=<<FONT COLOR="coral">-1</FONT>+0,<FONT COLOR="coral">-1</FONT>+2>,shape=rect,color=none,style=invis]
+    P33[label=<<FONT COLOR="coral">-1</FONT>+0,<FONT COLOR="coral">-1</FONT>+0>,shape=rect,color=none,style=invis]
+    A31 -> future[style="dashed",style=invis]
+    B21 -> P32[label="Q(4)",style=invis]
+
+    B22 -> P31[label="F(4)",style=invis]
+    B22 -> P33[label="Q(4)",style=invis]
+
 }
 #+end_src
 
-#+RESULTS: 决策树2
-[[file:img/_generated/tree2.png]]
+#+RESULTS: 决策树21
+[[file:img/_generated/tree21.png]]
+
 ** 持续对决
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
 #+CAPTION[决策树3]: 决策树3
 #+NAME: 决策树3
 #+ATTR_HTML: :alt  :title 决策树3 width 800px  :align right
 #+attr_org: :width 600px
 #+begin_src dot :file img/_generated/tree3.png
+digraph G {
+    rankdir=LR;
+    {
+        node [group=top]
+        A1[label=A,style=filled, fillcolor=lightblue]
+        B1[label=B,style=filled, fillcolor=lightgrey]
+        A21[label="A",style=filled, xlabel=<<FONT COLOR="coral">-1,-1</FONT>>,fillcolor=deepskyblue]
+        B21[label=B,style=invis,fillcolor=lightslategrey]
+        A31[label=A,style=invis,xlabel=<<FONT COLOR="coral">-1</FONT>-1,<FONT COLOR="coral">-1</FONT>-1>,fillcolor=dodgerblue]
+        future[style=invis]
+    }
+    B2[label=B,fillcolor=lightgrey]
+    A1->B1[label="F(1)"]
+
+    A1->B2[label="Q(1)"]
+    A21->B21[label="F(3)",style=invis]
+
+    B1 -> B2 [style="dotted", dir=none]
+
+    B22[label=B,style=invis, fillcolor=lightslategrey]
+
+    P12[label="2,0",shape=rect,color=none]
+    P21[label="0,2",shape=rect,color=none]
+    P22[label="0,0",shape=rect,color=none]
+    B1->A21[label="F(2)"]
+    B1->P12[label="Q(2)"]
+    B21 -> B22 [style="dotted",dir=none,style=invis]
+    {rank=same; B21,B22}
+
+    B2->P21[label="F(2)"]
+    B2->P22[label="Q(2)"]
+    {rank=same; B1,B2}
+
+    A21->B22[label="Q(3)",style=invis]
+
+    B21 -> A31[label="F(4)",style=invis]
+    P32[label=<<FONT COLOR="coral">-1</FONT>+2,<FONT COLOR="coral">-1</FONT>+0>,shape=rect,color=none,style=invis]
+    P31[label=<<FONT COLOR="coral">-1</FONT>+0,<FONT COLOR="coral">-1</FONT>+2>,shape=rect,color=none,style=invis]
+    P33[label=<<FONT COLOR="coral">-1</FONT>+0,<FONT COLOR="coral">-1</FONT>+0>,shape=rect,color=none,style=invis]
+    A31 -> future[style="dashed",style=invis]
+    B21 -> P32[label="Q(4)",style=invis]
+
+    B22 -> P31[label="F(4)",style=invis]
+    B22 -> P33[label="Q(4)",style=invis]
+
+}
+#+end_src
+
+#+RESULTS: 决策树3
+[[file:img/_generated/tree3.png]]
+
+** 持续对决
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+#+CAPTION[决策树4]: 决策树4
+#+NAME: 决策树4
+#+ATTR_HTML: :alt  :title 决策树4 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/tree4.png
 digraph G {
     rankdir=LR;
     {
@@ -608,8 +818,15 @@ digraph G {
 }
 #+end_src
 
-#+RESULTS: 决策树3
-[[file:img/_generated/tree3.png]]
+#+RESULTS: 决策树4
+[[file:img/_generated/tree4.png]]
+** 持续对决
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+#+ATTR_HTML: :alt  :title 决策树4 width 800px  :align center
+#+attr_org: :width 600px :align left
+[[file:img/_generated/tree4.png]]
 
 #+ATTR_REVEAL: :frag (appear)
 - 逐级倒推: 从最后一轮开始分析
@@ -662,8 +879,67 @@ digraph G {
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
 #+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :alt  :title 决策树采样0 width 800px  :align center
+#+NAME: 决策树采样0
+#+attr_org: :width 600px :align left
+#+begin_src dot :file img/_generated/tree_sample0.png
+digraph G {
+    rankdir=LR;
+    {
+        node [group=top]
+        A1[label=A,style=filled, fillcolor=lightblue]
+        B1[label=B,style=filled, fillcolor=lightgrey]
+        A21[label="A",style=filled, xlabel=<<FONT COLOR="coral">-c,-c</FONT>>,fillcolor=deepskyblue]
+        B21[label=B,style=filled,fillcolor=lightslategrey]
+        A31[label=A,style=filled,xlabel=<<FONT COLOR="coral">-c</FONT>-c,<FONT COLOR="coral">-c</FONT>-c>,fillcolor=dodgerblue]
+        future[style=invis]
+    }
+    B2[label=B,style=filled, fillcolor=lightgrey]
+    A1->B1[label="F(1)"]
+
+    A1->B2[label="Q(1)"]
+    A21->B21[label="F(3)"]
+
+    B1 -> B2 [style="dotted", dir=none]
+
+    B22[label=B,style=filled, fillcolor=lightslategrey]
+
+    P12[label="v,0",shape=rect,color=none]
+    P21[label="0,v",shape=rect,color=none]
+    P22[label="0,0",shape=rect,color=none]
+    B1->A21[label="F(2)"]
+    B1->P12[label="Q(2)"]
+    B21 -> B22 [style="dotted", dir=none]
+    {rank=same; B21,B22}
+
+    B2->P21[label="F(2)"]
+    B2->P22[label="Q(2)"]
+    {rank=same; B1,B2}
+
+    A21->B22[label="Q(3)"]
+
+    B21 -> A31[label="F(4)"]
+    P32[label=<<FONT COLOR="coral">-c</FONT>+v,<FONT COLOR="coral">-c</FONT>+0>,shape=rect,color=none]
+    P31[label=<<FONT COLOR="coral">-c</FONT>+0,<FONT COLOR="coral">-c</FONT>+v>,shape=rect,color=none]
+    P33[label=<<FONT COLOR="coral">-c</FONT>+0,<FONT COLOR="coral">-c</FONT>+0>,shape=rect,color=none]
+    A31 -> future[style="dashed"]
+    B21 -> P32[label="Q(4)"]
+
+    B22 -> P31[label="F(4)"]
+    B22 -> P33[label="Q(4)"]
+
+}
+#+end_src
+
+#+RESULTS: 决策树采样0
+[[file:img/_generated/tree_sample0.png]]
+
+** 采样
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+#+ATTR_REVEAL: :frag (appear)
 #+ATTR_HTML: :alt  :title 决策树采样 width 800px  :align center
-#+CAPTION[决策树采样]: 决策树采样
 #+NAME: 决策树采样
 #+attr_org: :width 600px
 #+begin_src dot :file img/_generated/tree_sample.png
@@ -840,7 +1116,7 @@ digraph G {
 #+RESULTS: 决策树采样2
 [[file:img/_generated/tree_sample2.png]]
 
-** 采样
+** 采样的好处
 #+ATTR_REVEAL: :frag (appear)
 - 真实的数据
   #+ATTR_REVEAL: :frag (appear)
