@@ -426,6 +426,7 @@ digraph G {
   #+END_NOTES
 - 随机策略优于确定策略
   #+BEGIN_NOTES
+   -随机是应对复杂现象的高效模型
    - 如何从随机策略中选择一个最优的策略? 对信号的概率分布进行运算,找出符合目标的最优策略.
   #+END_NOTES
 
@@ -441,7 +442,8 @@ digraph G {
 - 多轮持续对决？
 
 
-* 决策树
+* 在时间的长河里
+** 决策树
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -489,7 +491,7 @@ digraph G {
 
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_HTML: :alt  :title table :width 400pix  :align center
+        #+ATTR_HTML: :alt  :title table :width 300pix  :align center
         #+attr_org: :width 300px :align left
         [[./img/_generated/mixed.png]]
      #+REVEAL_HTML: </div>
@@ -832,7 +834,7 @@ digraph G {
 - 逐级倒推: 从最后一轮开始分析
 - 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
 
-** 博弈与强化学习
+* 博弈与强化学习
 #+ATTR_REVEAL: :frag (appear)
 | 玩家 | 收益/代价 | 策略 | (游戏状态)                            | (策略评估)                     |
 |------+-----------+------+---------------------------------------+--------------------------------|
@@ -873,8 +875,8 @@ digraph G {
   - Jeff Hinton的警告
   - 强化学习本来是人工智能领域里一个比较冷僻的方向,和最优控制最大的差异在于学习的概念.
 #+END_NOTES
-* 机器学习
-** 采样
+* 从碎片化经验中学习
+** 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -934,7 +936,7 @@ digraph G {
 #+RESULTS: 决策树采样0
 [[file:img/_generated/tree_sample0.png]]
 
-** 采样
+** 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -994,7 +996,7 @@ digraph G {
 #+RESULTS: 决策树采样
 [[file:img/_generated/tree_sample.png]]
 
-** 采样
+** 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -1055,7 +1057,7 @@ digraph G {
 
 #+RESULTS: 决策树采样1
 [[file:img/_generated/tree_sample1.png]]
-** 采样
+** 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none-in cube-out'
 :END:
@@ -1116,7 +1118,7 @@ digraph G {
 #+RESULTS: 决策树采样2
 [[file:img/_generated/tree_sample2.png]]
 
-** 采样的好处
+** 随机采样的好处
 #+ATTR_REVEAL: :frag (appear)
 - 真实的数据
   #+ATTR_REVEAL: :frag (appear)
@@ -1130,6 +1132,7 @@ digraph G {
 - 可以从碎片化的经验中学习
 #+BEGIN_NOTES
 - 掷色子通常是复杂随机环境最高效的学习方式
+- 数学上的确定性问题用概率方法去求解往往有简洁高效的的方式，（组合数学）
 #+END_NOTES
 ** AlphaGo
 #+attr_html: :alt :title AlphaGo决策树 :width 800pix :align center
@@ -1178,6 +1181,7 @@ digraph G {
   - 最优控制
     #+BEGIN_NOTES
     - 自从1990s以来, 两种方法
+    - 处理复杂现象没有简单有效的魔术方法，必须要消耗计算资源，关键是如何运用：或者用于系统辨识，或者用于分步分片消化经验数据。
     - 最优控制,近似动态规划 Approximate DP：精确的环境和动力学模型,抓住主要矛盾,缺点是模型的特异性,针对特殊场景和功能(难以泛化),抗干扰能力差(不健壮)
     #+END_NOTES
   #+ATTR_REVEAL: :frag (appear)
@@ -1192,7 +1196,8 @@ digraph G {
   - 实现里从碎片化经验中学习复杂的系统动态
   - 评估复杂价值函数,复杂的策略!
   #+END_NOTES
-* 神经网络
+* 再深入一点
+** AlphaGo
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -1235,28 +1240,46 @@ digraph G {
 - 自我训练/自我学习
   #+ATTR_REVEAL: :frag (appear)
   - 不断提升水平
-  - → 均衡状态
+  - → 均衡状态(极高水平)
 
 #+BEGIN_NOTES
  - 均衡策略为何是最优的策略?
    - 混合策略的均衡：任何一方偏离均衡状态，而另一方保持理性决策，都会导致偏离方收益受损，所以没有任何一方愿意偏离均衡状态下的最优决策
-   - 先立于不败之地(防御)，才能战胜对手
+   - 直觉：先立于不败之地(防御)，才能战胜对手
  - A 非理性决策(人类棋手) vs B 理性决策(AlphaGo)
  - 纳什均衡: 自我博弈，我的决策必须让对手的收益在任何决策下是一样的
    - 自我训练/自我学习:左右互搏
    - 自我训练为何能提升水平
-     - 在合理假设下（收益大于代价$v>c$,理性决策：平衡状态对应收益的一阶导数，平衡状态的二阶导数<0
+     - 数学上:在合理假设下（收益大于代价$v>c$,理性决策：平衡状态对应收益的一阶导数，平衡状态的二阶导数<0
 #+END_NOTES
 
 ** 总结
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:END:
 #+ATTR_REVEAL: :frag (appear)
 - 最优策略
   #+ATTR_REVEAL: :frag (appear)
   - 最优决策必须要考虑对手的决策
 - 机器学习
   #+ATTR_REVEAL: :frag (appear)
-  - 采样是应对复杂问题的高效方法
+  - 随机采样是应对复杂问题的高效方法
   #+ATTR_REVEAL: :frag (appear)
+- 神经网络
+  - 随机和概率是应对复杂现象的有效模型
+#+BEGIN_NOTES
+- 第二条最重要
+#+END_NOTES
+
+
+** 总结
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+- 最优策略
+  - 最优决策必须要考虑对手的决策
+- 机器学习
+  - *随机采样是应对复杂问题的高效方法*
 - 神经网络
   - 随机和概率是应对复杂现象的有效模型
 #+BEGIN_NOTES
