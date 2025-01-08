@@ -1,0 +1,18 @@
+#+TITLE: 周三, 2025-01-08
+* TODO 09:28 investigate Simscape Multibody & Taichi for simulation environment
+* TODO Investigate FROST
+* DONE reinforcement 101 report
+- State "DONE"       from "TODO"       [2025-01-08 周三 09:20]
+* TODO 杨洪面试
+SCHEDULED: <2025-01-08 周三 13:30-14:30>
+- Note taken on [2025-01-08 周三 09:46] \\
+  - 人形机器人整机系统软件开发
+- Note taken on [2025-01-08 周三 09:45] \\
+  西南交大
+[[d:/04-HR/recruit_2025.01/yanghong.pdf]]
+* TODO 李林聪面试
+SCHEDULED: <2025-01-09 周四 14:00-16:00>
+[[d:/04-HR/recruit_2025.01/lilincong.pdf]]
+* TODO 方东面试
+SCHEDULED: <2025-01-10 周五 10:00-11:00>
+[[d:/04-HR/recruit_2025.01/fangdong.pdf]]
