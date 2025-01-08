@@ -477,6 +477,10 @@ digraph G {
 #+RESULTS:
 [[file:img/_generated/tree.png]]
 
+#+BEGIN_NOTES
+- 决策树对决策理论（强化学习）, 几乎是唯一的模型
+- 对理解时间序列至关重要
+#+END_NOTES
 
 
 ** 决策树
@@ -822,6 +826,12 @@ digraph G {
 
 #+RESULTS: 决策树4
 [[file:img/_generated/tree4.png]]
+#+BEGIN_NOTES
+- 时间序列的复杂度指数数增加！
+- 生物演化也是树状
+- 因果序列的分歧演化
+- 复杂性如何应对？-->强化学习
+#+END_NOTES
 ** 持续对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
@@ -833,7 +843,6 @@ digraph G {
 #+ATTR_REVEAL: :frag (appear)
 - 逐级倒推: 从最后一轮开始分析
 - 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
-
 * 博弈与强化学习
 #+ATTR_REVEAL: :frag (appear)
 | 玩家 | 收益/代价 | 策略 | (游戏状态)                            | (策略评估)                     |
@@ -874,6 +883,8 @@ digraph G {
   - 没有目的
   - Jeff Hinton的警告
   - 强化学习本来是人工智能领域里一个比较冷僻的方向,和最优控制最大的差异在于学习的概念.
+    - 为何自2016年以来越来成为人工智能，机器人的主流？--> 深度学习。
+    - 两者如何结合？采样！从碎片化经验中学习。
 #+END_NOTES
 * 从碎片化经验中学习
 ** 随机采样
