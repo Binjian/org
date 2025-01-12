@@ -29,6 +29,7 @@
 #+REVEAL_TITLE_SLIDE: ./templates/title_drl101.html
 #+HTML_HEAD_EXTRA: <style> .figure p {text-align: center;}</style>
 #+HTML_HEAD_EXTRA: <style>*{font-family: "LXGW WenKai Mono" !important}</style>
+#+MACRO: color @@html:<font color="$1">$2</font>@@
 #+BEGIN_NOTES
   - Rip Van Winkel 华盛顿·欧文 1819，黄粱一梦，错过美国独立革命，纽约的民间故事
 #+END_NOTES
@@ -1184,6 +1185,8 @@ digraph G {
 #+BEGIN_NOTES
   - 再看一个具身智能的例子：cassie，双足机器人
   - 5m57s~6m27s, 7m08s~8:45s
+    - 系统状态与动态,策略(控制器);
+    - 目标(收益,控制轨迹),策略评估,(玩家)
 #+END_NOTES
 
 #+ATTR_REVEAL: :frag (appear)
@@ -1199,6 +1202,7 @@ digraph G {
   - 强化学习
     #+BEGIN_NOTES
     - 随机和概率模型,通过学习的方式(自然和人处理和解决问题的方式)
+    - 系统状态,策略通过学习得到
     - 强化学习为何能处理复杂问题?
     #+END_NOTES
 - 如何学习?
@@ -1207,6 +1211,31 @@ digraph G {
   - 实现里从碎片化经验中学习复杂的系统动态
   - 评估复杂价值函数,复杂的策略!
   #+END_NOTES
+** 机器人的机器学习
+#+CAPTION[robot leanring]: robot learning
+#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allowfullscreen></iframe>
+
+  #+ATTR_REVEAL: :frag (appear)
+ - 机器人农场
+ - 每次演示是决策树上的一条路径
+ - 随机采样的数据密度
+ - 成功或失败的经验
+ - 算法:
+   - 数据
+   - 学习模型
+
+#+BEGIN_NOTES
+  - 强化学习训练
+  - 覆盖特定功能的观测数据分布
+  - 成功或失败的路径
+  - 学习模型:代表学习,神经网络
+  - 数据非常重要
+    - 在线/离线
+    - 预训练(基础模型GPT)
+    - 数据多样化非常重要,多形态的机器人数据更有意义:可训练同一个模型,平均性能改善50%以上
+  - 高效学习模型,能学习复杂行为模式(多模态)
+    - 鲁棒性和多样性
+#+END_NOTES
 * 再深入一点
 ** AlphaGo
 :PROPERTIES:
@@ -1270,17 +1299,11 @@ digraph G {
 :END:
 #+ATTR_REVEAL: :frag (appear)
 - 最优策略
-  #+ATTR_REVEAL: :frag (appear)
   - 最优决策必须要考虑对手的决策
 - 机器学习
-  #+ATTR_REVEAL: :frag (appear)
   - 随机采样是应对复杂问题的高效方法
-  #+ATTR_REVEAL: :frag (appear)
 - 神经网络
   - 随机和概率是应对复杂现象的有效模型
-#+BEGIN_NOTES
-- 第二条最重要
-#+END_NOTES
 
 
 ** 总结
@@ -1290,9 +1313,6 @@ digraph G {
 - 最优策略
   - 最优决策必须要考虑对手的决策
 - 机器学习
-  - *随机采样是应对复杂问题的高效方法*
+  - *{{{color(red,随机采样是应对复杂问题的高效方法)}}}*
 - 神经网络
   - 随机和概率是应对复杂现象的有效模型
-#+BEGIN_NOTES
-- 第二条最重要
-#+END_NOTES
