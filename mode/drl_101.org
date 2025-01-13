@@ -20,7 +20,7 @@
 #+OPTIONS: toc:1
 #+REVEAL_INIT_OPTIONS: transition: 'cube'
 #+REVEAL_MARGIN: 0.005
-#+REVEAL_MIN_SCALE: 0.02
+#+REVEAL_MIN_SCALE: 0.01
 #+REVEAL_MAX_SCALE: 2.5
 #+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 1
@@ -856,16 +856,16 @@ digraph G {
 #+END_NOTES
 ** 强化学习的基础
 #+ATTR_REVEAL: :frag (appear)
-- 分步骤解决复杂问题
+#+begin_quote
+分步骤解决复杂问题
+#+end_quote
   #+ATTR_REVEAL: :frag (appear)
   - “如给定现在，未来与过去无关”
     #+ATTR_REVEAL: :frag (appear)
     👉 马尔可夫决策过程
-  #+ATTR_REVEAL: :frag (appear)
   - 复杂问题可分解为子问题
     #+ATTR_REVEAL: :frag (appear)
     👉 动态规划
-  #+ATTR_REVEAL: :frag (appear)
   - 从碎片化的经验中估计状态和行动价值
     #+ATTR_REVEAL: :frag (appear)
     👉 贝尔曼方程
@@ -1215,28 +1215,41 @@ digraph G {
 #+CAPTION[robot leanring]: robot learning
 #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allowfullscreen></iframe>
 
-  #+ATTR_REVEAL: :frag (appear)
- - 机器人农场
- - 每次演示是决策树上的一条路径
- - 随机采样的数据密度
- - 成功或失败的经验
- - 算法:
-   - 数据
-   - 学习模型
+#+ATTR_REVEAL: :frag (appear)
+- 机器人农场
+- 每次演示是决策树上的一条路径
+- 随机采样的数据密度
+- 成功或失败的经验
 
 #+BEGIN_NOTES
   - 强化学习训练
   - 覆盖特定功能的观测数据分布
   - 成功或失败的路径
+#+END_NOTES
+** 机器人机器学习的算法
+#+CAPTION[robot leanring]: robot learning
+#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allowfullscreen></iframe>
+
+#+ATTR_REVEAL: :frag (appear)
+- 数据
+  #+ATTR_REVEAL: :frag (appear)
+  - 在线/离线
+  - 预训练(基础模型GPT)
+  - 数据多样化
+- 学习模型
+  #+ATTR_REVEAL: :frag (appear)
+  - 鲁棒性
+  - 多样性
+
+#+BEGIN_NOTES
   - 学习模型:代表学习,神经网络
   - 数据非常重要
     - 在线/离线
     - 预训练(基础模型GPT)
     - 数据多样化非常重要,多形态的机器人数据更有意义:可训练同一个模型,平均性能改善50%以上
   - 高效学习模型,能学习复杂行为模式(多模态)
-    - 鲁棒性和多样性
 #+END_NOTES
-* 再深入一点
+* 理解AlphaGo的最优决策
 ** AlphaGo
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
@@ -1280,7 +1293,10 @@ digraph G {
 - 自我训练/自我学习
   #+ATTR_REVEAL: :frag (appear)
   - 不断提升水平
-  - → 均衡状态(极高水平)
+#+ATTR_REVEAL: :frag (appear)
+#+begin_quote
+→ 均衡状态(极高水平)
+#+end_quote
 
 #+BEGIN_NOTES
  - 均衡策略为何是最优的策略?
