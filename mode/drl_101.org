@@ -218,12 +218,12 @@ digraph G {
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"><u><font color="green">攻击</font></u></TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u>1</u>,-1</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u>2</u>,<u>0</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u><FONT COLOR="darkgreen">1</FONT></u>,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u>1</u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u><FONT COLOR="red">1</FONT></u></TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
             </TR>
         </TABLE>
@@ -290,11 +290,11 @@ digraph G {
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="red">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">2,<u><FONT COLOR="red">0</FONT></u></TD>
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="red">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u><FONT COLOR="red">2</FONT></u></TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
             </TR>
         </TABLE>
@@ -304,6 +304,43 @@ digraph G {
 
 #+RESULTS: 势均力敌1
 [[file:img/_generated/ne1.png]]
+
+** 势均力敌
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+#+CAPTION[技术进步]: 势均力敌3
+#+NAME: 势均力敌3
+#+ATTR_HTML: :alt  :title 势均力敌3 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/ne3.png
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="darkgreen">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS: 势均力敌3
+[[file:img/_generated/ne3.png]]
+
 
 ** 策略均衡
 :PROPERTIES:
@@ -326,11 +363,11 @@ digraph G {
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u><FONT COLOR="red">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
             </TR>
             <TR>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u><FONT COLOR="red">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="3"><u><FONT COLOR="darkgreen">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
                 <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
             </TR>
         </TABLE>
@@ -1246,11 +1283,12 @@ digraph G {
   - 数据非常重要
     - 在线/离线
     - 预训练(基础模型GPT)
+      -基础模型(常识和基础推理能力)，跨域学习（自动驾驶经验有助于人形机器人的性能）
     - 数据多样化非常重要,多形态的机器人数据更有意义:可训练同一个模型,平均性能改善50%以上
   - 高效学习模型,能学习复杂行为模式(多模态)
 #+END_NOTES
-* 理解AlphaGo的最优决策
-** AlphaGo
+* 理解AlphaGo
+** AlphaGo系统结构
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
