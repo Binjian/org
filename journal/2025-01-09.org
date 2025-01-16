@@ -1,0 +1,18 @@
+#+TITLE: 周四, 2025-01-09
+* DONE President Li Zijun
+SCHEDULED: <2025-01-08 周三 16:30-17:30>
+- State "DONE"       from "TODO"       [2025-01-09 周四 15:09]
+* DONE 李林聪面试
+SCHEDULED: <2025-01-09 周四 14:00-16:00>
+- State "DONE"       from "STARTED"    [2025-01-09 周四 15:09]
+- State "STARTED"    from "TODO"       [2025-01-09 周四 14:17]
+  - 系统软件开发
+  - 系统接口匹配，系统适配，供应商接口，应用项目开发
+  - 基本无算法开发经验，
+  - 基本无深度学习或大模型开发经验
+  - 多线程不会同步，埋bug
+  - 软银机器人业务收缩
+  - 交流，tpm?
+  - 优必选，sdk开发不清晰；
+[[d:/04-HR/recruit_2025.01/lilincong.pdf]]
+* 08:54

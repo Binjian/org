@@ -1,20 +1,42 @@
-#+TITLE: Wed, 2025-01-15
-* TODO 09:28 investigate Simscape Multibody & Taichi for simulation environment
-* TODO Investigate FROST
-* TODO 杨洪面试
-SCHEDULED: <2025-01-08 周三 13:30-14:30>
-- Note taken on [2025-01-08 周三 09:46] \\
-  - 人形机器人整机系统软件开发
-- Note taken on [2025-01-08 周三 09:45] \\
-  西南交大
-[[d:/04-HR/recruit_2025.01/yanghong.pdf]]
-* TODO 李林聪面试
-SCHEDULED: <2025-01-09 周四 14:00-16:00>
-[[d:/04-HR/recruit_2025.01/lilincong.pdf]]
-* TODO 方东面试
-SCHEDULED: <2025-01-10 周五 10:00-11:00>
-[[d:/04-HR/recruit_2025.01/fangdong.pdf]]
-* 19:55 柯希俊面试
+#+TITLE: 周三, 2025-01-15
+* TODO RVC reading
+* TODO Taichi documentation
+* TODO Paper
+:LOGBOOK:
+CLOCK: [2025-01-13 周一 11:23]--[2025-01-13 周一 13:04] =>  1:41
+:END:
+** STARTED Foundation model RT-1
+- State "STARTED"    from "DEFERRED"   [2025-01-15 周三 08:41]
+- Note taken on [2025-01-14 周二 15:48] \\
+  - FiLM
+  - Token Learner
+- Note taken on [2025-01-14 周二 11:34]
+- State "DEFERRED"   from "STARTED"    [2025-01-13 周一 17:31]
+:LOGBOOK:
+CLOCK: [2025-01-15 周三 11:02]
+CLOCK: [2025-01-14 周二 16:33]--[2025-01-15 周三 11:02] => 18:29
+CLOCK: [2025-01-14 周二 15:54]--[2025-01-14 周二 16:24] =>  0:30
+CLOCK: [2025-01-14 周二 15:08]--[2025-01-14 周二 15:53] =>  0:45
+CLOCK: [2025-01-14 周二 14:38]--[2025-01-14 周二 15:08] =>  0:30
+CLOCK: [2025-01-13 周一 17:18]--[2025-01-13 周一 17:31] =>  0: 13
+CLOCK: [2025-01-13 周一 16:36]--[2025-01-13 周一 17:06] =>  0:30
+:END:
+- State "STARTED"    from "TODO"       [2025-01-13 周一 16:36]
+** TODO Foundation Model RT-2
+** TODO Thinking with moving
+** TODO OpenVLA paper
+- Note taken on [2025-01-15 周三 09:15] \\
+  - ~5GB model
+  - 72GB GPU memory
+  - fine-tuning 8xA100
+  - Lora: 1xA100, >27GB
+** TODO Foundation model Grounded Decoding
+** TODO Diffusion Policy
+** TODO Flow matching
+** TODO shortest paths in graphs of convex sets
+* DONE 面试柯希俊
+SCHEDULED: <2025-01-15 周三 20:00-21:00>
+- State "DONE"       from "TODO"       [2025-01-16 周四 09:07]
 ** 安波福零部件供应商:智能驾驶,语义,基于学习的地图vslam,交通标识识别
 *** hd地图, 两类交通图,预研项目;
 *** slam 软件系统
@@ -34,3 +56,30 @@ SCHEDULED: <2025-01-10 周五 10:00-11:00>
 ** 专长
 *** vslam
 *** 机器人
+* DONE 08:36 极狐gitlab会议
+SCHEDULED: <2025-01-15 周三 15:00-16:00>
+- State "DONE"       from "TODO"       [2025-01-15 周三 16:50]
+- Note taken on [2025-01-15 周三 15:01] \\
+  - DevOps解决方案
+    - JiHu
+      - 贡献到上游，版本号保持一致
+      - 国内生态适配
+    - 专业版vs专业版
+      - 稳定性，高可用HA，（千人以上）
+      - 500人以下：GEO多地部署架构
+        - 主节点，同步从节点
+          - repo层级定义主从？
+          - 域名自动解析
+          - 异地热备容灾
+      - 项目管理
+        - 敏捷方式项目管理，需求管理，排期，看板，标签，燃尽图
+      - 版本管理
+        - gitlab flow 分支策略
+        - 保护分支
+      - Gitlab CI, runner, pipeline
+      -
+- Note taken on [2025-01-15 周三 08:44] \\
+  - Git-LFS
+  - git hook on the server side
+  - gitlab CI
+  - gitlab pages
