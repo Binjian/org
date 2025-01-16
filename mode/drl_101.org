@@ -247,7 +247,7 @@ digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
             <TR>
-                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>:w;
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>:w;
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
                 <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
             </TR>
