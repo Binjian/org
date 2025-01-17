@@ -28,7 +28,7 @@ SCHEDULED: <2025-01-10 周五 10:00-11:00>
     - How do you train a diffusion model?
   -
 [[d:/04-HR/recruit_2025.01/fangdong.pdf]]
-* DEFERRED 08:52 mujoco documentation reading
+* TODO 08:52 mujoco documentation reading
 - State "DEFERRED"   from "STARTED"    [2025-01-13 周一 16:36] \\
   task switch
 :LOGBOOK:

@@ -1,0 +1,42 @@
+#+TITLE: 周五, 2025-01-17
+* TODO RVC reading
+* TODO Taichi documentation
+* TODO Paper
+:LOGBOOK:
+CLOCK: [2025-01-13 周一 11:23]--[2025-01-13 周一 13:04] =>  1:41
+:END:
+** STARTED Foundation model RT-1
+- State "STARTED"    from "DEFERRED"   [2025-01-15 周三 08:41]
+- Note taken on [2025-01-14 周二 15:48] \\
+  - FiLM
+  - Token Learner
+- Note taken on [2025-01-14 周二 11:34]
+- State "DEFERRED"   from "STARTED"    [2025-01-13 周一 17:31]
+:LOGBOOK:
+CLOCK: [2025-01-15 周三 11:02]--[2025-01-16 周四 11:18] => 24:16
+CLOCK: [2025-01-14 周二 16:33]--[2025-01-15 周三 11:02] => 18:29
+CLOCK: [2025-01-14 周二 15:54]--[2025-01-14 周二 16:24] =>  0:30
+CLOCK: [2025-01-14 周二 15:08]--[2025-01-14 周二 15:53] =>  0:45
+CLOCK: [2025-01-14 周二 14:38]--[2025-01-14 周二 15:08] =>  0:30
+CLOCK: [2025-01-13 周一 17:18]--[2025-01-13 周一 17:31] =>  0: 13
+CLOCK: [2025-01-13 周一 16:36]--[2025-01-13 周一 17:06] =>  0:30
+:END:
+- State "STARTED"    from "TODO"       [2025-01-13 周一 16:36]
+** TODO Foundation Model RT-2
+** TODO Thinking with moving
+** TODO OpenVLA paper
+- Note taken on [2025-01-15 周三 09:15] \\
+  - ~5GB model
+  - 72GB GPU memory
+  - fine-tuning 8xA100
+  - Lora: 1xA100, >27GB
+** TODO Foundation model Grounded Decoding
+** TODO Diffusion Policy
+** TODO Flow matching
+** TODO shortest paths in graphs of convex sets
+* STARTED 09:10 add the drl model in drl101
+:LOGBOOK:
+CLOCK: [2025-01-17 周五 09:48]--[2025-01-17 周五 11:42] =>  1:54
+CLOCK: [2025-01-17 周五 09:10]--[2025-01-17 周五 09:36] =>  0:26
+:END:
+- State "STARTED"    from "TODO"       [2025-01-17 周五 09:10]

@@ -9,6 +9,10 @@
 #+LATEX_COMPILER: xelatex
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
+#+LATEX_HEADER: \usepackage{svg}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetikzlibrary{positioning,shapes.symbols, calc}
+#+LATEX_HEADER: \usepackage{tikzmark}
 #+LANGUAGE: zh-CN
 #+OPTIONS: tex:t
 #+OPTIONS: ^:{}
@@ -339,7 +343,6 @@ digraph G {
 #+end_src
 
 #+RESULTS: 势均力敌3
-[[file:img/_generated/ne3.png]]
 
 
 ** 策略均衡
@@ -883,14 +886,77 @@ digraph G {
 - 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
 * 博弈与强化学习
 #+ATTR_REVEAL: :frag (appear)
-| 玩家 | 收益/代价 | 策略 | (游戏状态)                            | (策略评估)                     |
-|------+-----------+------+---------------------------------------+--------------------------------|
-| ?    | 奖励      | 行动 | 系统状态@@html:<br>@@(状态，状态迁移) | 状态价值@@html:<br/>@@行动价值 |
+| **博弈** | 玩家 | 收益@@html:<br>@@(代价) | 策略                   | (状态)                              | (策略评估)                    |
+|------+------+----------------------+------------------------+-------------------------------------+------------------------------|
+| **强化学习** | 智能体@@html:<br>@@系统    | 奖励                 | 行动 | 状态                       | 状态价值@@html:<br/>@@行动价值 |
 #+BEGIN_NOTES
   - 玩家：人类, vs 人类,计算机,自然/物理规律;
   - 计算机 vs. 自然/物理规律
   - 增加观测量和价值估计
 #+END_NOTES
+
+#+ATTR_REVEAL: :frag (appear)
+#+attr_html: :alt :title 强化学习模型 :width 1000pix :align center
+#+NAME: 强化学习模型
+#+attr_org: :width 300px :align left
+[[./img/drl101/rl_model.png]]
+
+#+begin_comment
+
+#+NAME: 强化学习模型
+#+header: :results file drawer
+#+header: :file img/_generated/rl_model.png
+#+header: :imagemagick yes
+#+header: :compiler xelatex
+#+begin_src latex
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\tikzstyle{block} = [rectangle, draw,
+    text width=8em, text centered, rounded corners, minimum height=4em]
+
+\tikzstyle{line} = [draw, -latex]
+
+\begin{tikzpicture}[node distance = 6em, auto, thick]
+    \node [block] (Agent) {Agent};
+    \node [block, below of=Agent] (Environment) {Environment};
+
+     \path [line] (Agent.0) --++ (4em,0em) |- node [near start]{Action $a_t$} (Environment.0);
+     \path [line] (Environment.190) --++ (-6em,0em) |- node [near start] {New state  $s_{t+1}$} (Agent.170);
+     \path [line] (Environment.170) --++ (-4.25em,0em) |- node [near start, right] {Reward $r_{t+1}$} (Agent.190);
+\end{tikzpicture}
+\end{document}
+#+end_src
+
+#+ATTR_REVEAL: :frag (appear)
+#+CAPTION[强化学习模型]: 强化学习模型
+#+NAME: 强化学习模型
+#+ATTR_HTML: :alt  :title 强化学习模型 width 600px  :align right
+#+attr_org: :width 600px
+#+begin_src latex :file img/_generated/rl_model.png
+\documentclass{standalone}
+\usepackage{xeCJK}
+\usepackage{tikz}
+\begin{document}
+\tikzstyle{block} = [rectangle, draw,
+    text width=8em, text centered, rounded corners, minimum height=4em]
+
+\tikzstyle{line} = [draw, -latex]
+
+\begin{tikzpicture}[node distance = 6em, auto, thick]
+    \node [block] (Agent) {Agent};
+    \node [block, below of=Agent] (Environment) {Environment};
+
+     \path [line] (Agent.0) --++ (4em,0em) |- node [near start]{Action $a_t$} (Environment.0);
+     \path [line] (Environment.190) --++ (-6em,0em) |- node [near start] {New state  $s_{t+1}$} (Agent.170);
+     \path [line] (Environment.170) --++ (-4.25em,0em) |- node [near start, right] {Reward $r_{t+1}$} (Agent.190);
+\end{tikzpicture}
+\end{document}
+#+end_src
+
+#+end_comment
+
+
 ** 强化学习的基础
 #+ATTR_REVEAL: :frag (appear)
 #+begin_quote
@@ -1043,7 +1109,6 @@ digraph G {
 #+end_src
 
 #+RESULTS: 决策树采样
-[[file:img/_generated/tree_sample.png]]
 
 ** 随机采样
 :PROPERTIES:
