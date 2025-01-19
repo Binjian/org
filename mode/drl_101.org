@@ -28,7 +28,7 @@
 #+REVEAL_MAX_SCALE: 2.5
 #+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 1
-#+REVEAL_EXTRA_CSS: ./templates/grids.css
+#+REVEAL_EXTRA_CSS: ./templates/drl101.css
 #+REVEAL_PLUGINS: (highlight notes)
 #+REVEAL_TITLE_SLIDE: ./templates/title_drl101.html
 #+HTML_HEAD_EXTRA: <style> .figure p {text-align: center;}</style>
@@ -1287,8 +1287,15 @@ digraph G {
 #+BEGIN_NOTES
   - 再看一个具身智能的例子：cassie，双足机器人
   - 5m57s~6m27s, 7m08s~8:45s
+    - 惯性/质量矩阵正定矩阵,高复杂性
     - 系统状态与动态,策略(控制器);
     - 目标(收益,控制轨迹),策略评估,(玩家)
+  - 复杂性
+    - 动力学系统, 控制量的长效影响
+    - 部份可观测性/随机性
+    - 非线性
+    - 足式机器人:欠驱动系统,
+      - 有意为之,控制有难度,但是更自然,更节能,自然的步态是最优的控制方案:用尽量少的能量,经济的方式进行运动控制.(控制量影响状态量的方式!)
 #+END_NOTES
 
 #+ATTR_REVEAL: :frag (appear)
@@ -1328,6 +1335,45 @@ digraph G {
   - 覆盖特定功能的观测数据分布
   - 成功或失败的路径
 #+END_NOTES
+
+** 仿真的作用
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in cube-cout'
+:END:
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+        #+ATTR_HTML: :alt  :title  :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION: 抓取
+        #+NAME: pick
+        [[https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image16.gif]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+        #+ATTR_HTML: :alt  :title tree :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION: 定位
+        #+NAME: position
+        [[https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image5-1.gif]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+        #+ATTR_HTML: :alt  :title tree :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION: 操作
+        #+NAME: operation
+        [[https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image6.gif]]
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** 机器人的机器学习
+#+CAPTION[robot leanring]: training dataset generation
+#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/OAZrBYCLnaA" frameborder="0" allowfullscreen></iframe>
+#+BEGIN_NOTES
+  - 15:24 ~ 16:57
+  - ACRONYM Nvidia FLEX
+  - 想象一下用模型方式来描述
+#+END_NOTES
+
 ** 机器人机器学习的算法
 #+CAPTION[robot leanring]: robot learning
 #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allowfullscreen></iframe>
