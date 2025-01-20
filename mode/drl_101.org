@@ -38,10 +38,10 @@
   - Rip Van Winkel 华盛顿·欧文 1819，黄粱一梦，错过美国独立革命，纽约的民间故事
 #+END_NOTES
 
-* 从最优控制到强化学习
+* 最优控制
 ** 最优控制研究回顾
 
-#+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=12m45s" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=12m45s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 #+BEGIN_NOTES
 2019 talk
 - 1990s,12:45, 最优控制（近似动态规划）与强化学习
@@ -52,7 +52,7 @@
 - 将会简单评论AlphaGO算法
 #+END_NOTES
 
-** 强化学习研究现状
+** 强化学习
 #+attr_html: :alt 'Jim Fan' :title '2025, year of RL' :width 600pix
 #+attr_org: :width 300px
 [[./img/drl101/jim_fan.png]]
@@ -884,7 +884,7 @@ digraph G {
 #+ATTR_REVEAL: :frag (appear)
 - 逐级倒推: 从最后一轮开始分析
 - 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
-* 博弈与强化学习
+* 强化学习
 #+ATTR_REVEAL: :frag (appear)
 | **博弈** | 玩家 | 收益@@html:<br>@@(代价) | 策略                   | (状态)                              | (策略评估)                    |
 |------+------+----------------------+------------------------+-------------------------------------+------------------------------|
@@ -1263,7 +1263,7 @@ digraph G {
 [[./img/drl101/alphago_mcts.png]]
 ** AlphaGo
 #+CAPTION[AlphaGo]: AlphaGo
-#+REVEAL_HTML: <iframe width="640" height="368" src="./img/drl101/alphago.mp4" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="640" height="368" src="./img/drl101/alphago.mp4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 
 #+ATTR_REVEAL: :frag (appear)
 - 所有的位置（观测量） $3^{{19}^2}\approx 1.74\times 10^{172}$, $1.20\%$ 合法
@@ -1282,7 +1282,7 @@ digraph G {
 #+END_NOTES
 ** 双足机器人Cassie控制模型复杂度
 #+CAPTION[AlphaGo]: Cassie
-#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 
 #+BEGIN_NOTES
   - 再看一个具身智能的例子：cassie，双足机器人
@@ -1322,7 +1322,7 @@ digraph G {
   #+END_NOTES
 * 机器人的机器学习
 #+CAPTION[robot leanring]: robot learning
-#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 
 #+ATTR_REVEAL: :frag (appear)
 - 机器人农场
@@ -1367,27 +1367,37 @@ digraph G {
 
 ** 用于训练的仿真数据
 #+CAPTION[robot leanring]: training dataset generation
-#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/OAZrBYCLnaA" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/OAZrBYCLnaA" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 #+BEGIN_NOTES
   - 15:24 ~ 16:57
   - ACRONYM Nvidia FLEX
   - 想象一下用模型方式来描述
+  - 应用工程师的技能要求：可能不需要编程
 #+END_NOTES
 
 ** 机器人学习的算法
-#+CAPTION[robot leanring]: robot learning
-#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allowfullscreen></iframe>
 
-#+ATTR_REVEAL: :frag (appear)
-- 数据
-  #+ATTR_REVEAL: :frag (appear)
-  - 来源:在线/离线/(仿真)
-  - 预训练(基础模型GPT)
-  - 数据范式(训练规划/数据/多样性构造)
-- 学习模型
-  #+ATTR_REVEAL: :frag (appear)
-  - 鲁棒性
-  - 多样性
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title  :width 584pix  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION[robot leanring]: robot learning
+        #+NAME: pick
+        #+REVEAL_HTML: <iframe width="584" height="355" src="https://eth-ait.github.io/graspxl/large2.mp4?autoplay=1&loop=1" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_REVEAL: :frag (appear)
+        - 数据
+          #+ATTR_REVEAL: :frag (appear)
+          - 来源:在线/离线/(仿真)
+          - 预训练(基础模型GPT)
+          - 数据范式(训练规划/数据/多样性构造)
+        - 学习模型
+          #+ATTR_REVEAL: :frag (appear)
+          - 鲁棒性
+          - 多样性
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 
 #+BEGIN_NOTES
   - 学习模型:代表学习,神经网络
@@ -1398,6 +1408,7 @@ digraph G {
     - 数据多样化非常重要,多形态的机器人数据更有意义:可训练同一个模型,平均性能改善50%以上
   - 高效学习模型,能学习复杂行为模式(多模态)
 #+END_NOTES
+
 * 理解AlphaGo
 ** AlphaGo系统结构
 :PROPERTIES:
