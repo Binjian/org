@@ -1320,7 +1320,7 @@ digraph G {
   - 实现里从碎片化经验中学习复杂的系统动态
   - 评估复杂价值函数,复杂的策略!
   #+END_NOTES
-** 机器人的机器学习
+* 机器人的机器学习
 #+CAPTION[robot leanring]: robot learning
 #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allowfullscreen></iframe>
 
@@ -1365,7 +1365,7 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-** 机器人的机器学习
+** 用于训练的仿真数据
 #+CAPTION[robot leanring]: training dataset generation
 #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/OAZrBYCLnaA" frameborder="0" allowfullscreen></iframe>
 #+BEGIN_NOTES
@@ -1374,16 +1374,16 @@ digraph G {
   - 想象一下用模型方式来描述
 #+END_NOTES
 
-** 机器人机器学习的算法
+** 机器人学习的算法
 #+CAPTION[robot leanring]: robot learning
 #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allowfullscreen></iframe>
 
 #+ATTR_REVEAL: :frag (appear)
 - 数据
   #+ATTR_REVEAL: :frag (appear)
-  - 在线/离线
+  - 来源:在线/离线/(仿真)
   - 预训练(基础模型GPT)
-  - 数据多样化
+  - 数据范式(训练规划/数据/多样性构造)
 - 学习模型
   #+ATTR_REVEAL: :frag (appear)
   - 鲁棒性
