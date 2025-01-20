@@ -11,12 +11,4 @@ firn-linux-x86_64
 /.orgids
 *.svg
 tes
-*.aux
-*.fdb_latexmk
-*.fls
-*.json
-*.log
-*.out
-*.toc
-*.dbk
-*.man
+/*.html

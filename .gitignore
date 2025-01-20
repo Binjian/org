@@ -18,3 +18,12 @@
 /roam/*.pdf
 /mode/img/drl101/tree2.png
 /mode/exports/
+*.aux
+*.fdb_latexmk
+*.fls
+*.json
+*.log
+*.out
+*.toc
+*.dbk
+*.man
