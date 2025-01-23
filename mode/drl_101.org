@@ -46,10 +46,12 @@
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+attr_org: :width 300px :align left
         #+REVEAL_HTML: <iframe title="PR2" width="600" height="450" src="https://www.youtube.com/embed/gYqfa-YtvW4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>PR2</figcatption>
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+attr_org: :width 300px :align left
         #+REVEAL_HTML: <iframe title="ASIMO" width="600" height="450" src="https://www.youtube.com/embed/xjXUyLAHR1E" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>ASIMO</figcatption>
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
@@ -67,6 +69,7 @@
 ** 最优控制
 
 #+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=12m45s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+#+REVEAL_HTML: <figcaption>John Tsitsiklis(OG)</figcatption>
 #+BEGIN_NOTES
 2019 talk
 - 控制理论早期：PID 反馈控制， 线性控制,前提是线性系统，简洁优美
@@ -76,6 +79,7 @@
   - 主要区别在于强化学习强调与环境互动，基于学习
   - 最优控制（近似动态规划, 自适应控制，鲁棒控制）强调系统辨识,模型近似
   - 浅层神经网络,没有深度学习
+  - Dimitri P. Bertsekas
 - 14m18s~15m57s;
 - 将会简单评论AlphaGO算法
 #+END_NOTES
@@ -1318,63 +1322,76 @@ digraph G {
    - 人类智慧和经验的总结：攻防，布局，死活，官子，联络，形势，手筋，攻防
    - 试图通过特征方法总结人类经验，完全不敌AlphaGo
 #+END_NOTES
-** 双足机器人Cassie控制模型复杂度
-#+CAPTION[AlphaGo]: Cassie
-#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+** 双足机器人控制模型
 
-#+BEGIN_NOTES
-  - 再看一个具身智能的例子：cassie，双足机器人
-  - 5m57s~6m27s, 7m08s~8:45s
-    - 惯性/质量矩阵正定矩阵,高复杂性
-    - 系统状态与动态,策略(控制器);
-    - 目标(收益,控制轨迹),策略评估,(玩家)
-  - 复杂性
-    - 动力学系统, 控制量的长效影响
-    - 部份可观测性/随机性
-    - 非线性
-    - 足式机器人:欠驱动系统,
-      - 有意为之,控制有难度,但是更自然,更节能,自然的步态是最优的控制方案:用尽量少的能量,经济的方式进行运动控制.(控制量影响状态量的方式!)
-#+END_NOTES
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+REVEAL_HTML: <iframe width="600" height="450" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>Cassie模型</figcatption>
+        #+BEGIN_NOTES
+          - 再看一个具身智能的例子：cassie，双足机器人
+          - 5m57s~6m27s, 7m08s~8:45s
+            - 惯性/质量矩阵正定矩阵,高复杂性
+            - 系统状态与动态,策略(控制器);
+            - 目标(收益,控制轨迹),策略评估,(玩家)
+          - 复杂性
+            - 动力学系统, 控制量的长效影响
+            - 部份可观测性/随机性
+            - 非线性
+            - 足式机器人:欠驱动系统,
+              - 有意为之,控制有难度,但是更自然,更节能,自然的步态是最优的控制方案:用尽量少的能量,经济的方式进行运动控制.(控制量影响状态量的方式!)
+        #+END_NOTES
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_REVEAL: :frag (appear)
+        - 复杂对象的控制方式:
+          #+ATTR_REVEAL: :frag (appear)
+          - 最优控制
+            #+BEGIN_NOTES
+            - 拉格朗日力学，力/力矩➡行动/作用action:能量（动能与势能)变化的时间积分;力/能量变化产生运动;
+            - 稳态作用原理(运动遵循能量均衡状态，守恒): 任何系统动态有唯一的路径
+            - 自从1990s以来, 两种方法
+            - 处理复杂现象没有简单有效的魔术方法，必须要消耗计算资源，关键是如何运用：或者用于系统辨识，或者用于分步分片消化经验数据。
+            - 最优控制,近似动态规划 Approximate DP：精确的环境和动力学模型,抓住主要矛盾,缺点是模型的特异性,针对特殊场景和功能(难以泛化),抗干扰能力差(不健壮)
+            #+END_NOTES
+          #+ATTR_REVEAL: :frag (appear)
+          - 强化学习
+            #+BEGIN_NOTES
+            - 随机和概率模型,通过学习的方式(自然和人处理和解决问题的方式)
+            - 系统状态,策略通过学习得到
+            - 强化学习为何能处理复杂问题?
+            #+END_NOTES
+        - 如何学习?
+          #+BEGIN_NOTES
+          - 主要是深度学习的突破
+          - 实现里从碎片化经验中学习复杂的系统动态
+          - 评估复杂价值函数,复杂的策略!
+          #+END_NOTES
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 
-#+ATTR_REVEAL: :frag (appear)
-- 复杂对象的控制方式:
-  #+ATTR_REVEAL: :frag (appear)
-  - 最优控制
-    #+BEGIN_NOTES
-    - 拉格朗日力学，力/力矩➡行动/作用action:能量（动能与势能)变化的时间积分;力/能量变化产生运动;
-    - 稳态作用原理(运动遵循能量均衡状态，守恒): 任何系统动态有唯一的路径
-    - 自从1990s以来, 两种方法
-    - 处理复杂现象没有简单有效的魔术方法，必须要消耗计算资源，关键是如何运用：或者用于系统辨识，或者用于分步分片消化经验数据。
-    - 最优控制,近似动态规划 Approximate DP：精确的环境和动力学模型,抓住主要矛盾,缺点是模型的特异性,针对特殊场景和功能(难以泛化),抗干扰能力差(不健壮)
-    #+END_NOTES
-  #+ATTR_REVEAL: :frag (appear)
-  - 强化学习
-    #+BEGIN_NOTES
-    - 随机和概率模型,通过学习的方式(自然和人处理和解决问题的方式)
-    - 系统状态,策略通过学习得到
-    - 强化学习为何能处理复杂问题?
-    #+END_NOTES
-- 如何学习?
-  #+BEGIN_NOTES
-  - 主要是深度学习的突破
-  - 实现里从碎片化经验中学习复杂的系统动态
-  - 评估复杂价值函数,复杂的策略!
-  #+END_NOTES
+
 * 机器人的机器学习
-#+CAPTION[robot leanring]: robot learning
-#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 
-#+ATTR_REVEAL: :frag (appear)
-- 机器人农场
-- 每次演示是决策树上的一条路径
-- 随机采样的数据密度
-- 成功或失败的经验
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+CAPTION[robot leanring]: robot learning
+        #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>谷歌机械臂农场</figcatption>
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_REVEAL: :frag (appear)
+        - 每次演示是决策树上的一条路径
+        - 随机采样的数据密度
+        - 成功或失败的经验
+        #+BEGIN_NOTES
+          - 强化学习训练
+          - 覆盖特定功能的观测数据分布
+          - 成功或失败的路径
+        #+END_NOTES
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 
-#+BEGIN_NOTES
-  - 强化学习训练
-  - 覆盖特定功能的观测数据分布
-  - 成功或失败的路径
-#+END_NOTES
 
 ** 仿真的作用
 :PROPERTIES:
@@ -1408,6 +1425,7 @@ digraph G {
 ** 用于训练的仿真数据
 #+CAPTION[robot leanring]: training dataset generation
 #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/OAZrBYCLnaA" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+#+REVEAL_HTML: <figcaption>NVidia Isaac Sim</figcatption>
 #+BEGIN_NOTES
   - 15:24 ~ 16:57
   - ACRONYM Nvidia FLEX
@@ -1424,6 +1442,7 @@ digraph G {
         #+CAPTION[robot leanring]: robot learning
         #+NAME: pick
         #+REVEAL_HTML: <iframe width="584" height="355" src="https://eth-ait.github.io/graspxl/large2.mp4?autoplay=1&loop=1" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>ETH GraspXL 58->500K</figcatption>
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+ATTR_REVEAL: :frag (appear)
