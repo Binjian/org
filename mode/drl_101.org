@@ -38,12 +38,40 @@
   - Rip Van Winkel 华盛顿·欧文 1819，黄粱一梦，错过美国独立革命，纽约的民间故事
 #+END_NOTES
 
-* 最优控制
-** 最优控制研究回顾
+* 回顾
+
+** 十年前
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+attr_org: :width 300px :align left
+        #+REVEAL_HTML: <iframe title="PR2" width="600" height="450" src="https://www.youtube.com/embed/gYqfa-YtvW4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+attr_org: :width 300px :align left
+        #+REVEAL_HTML: <iframe title="ASIMO" width="600" height="450" src="https://www.youtube.com/embed/xjXUyLAHR1E" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+#+BEGIN_NOTES
+- PR2
+  - 2010年, willow garage (ROS吴恩达)
+  - 执行器，传感器(深度相机,激光雷达)，本体,关节
+  - 成本下降
+  - 本体更仿生(更复杂)
+- Asimo
+  - 步态控制和现在机器人的区别
+  - 现在: https://www.youtube.com/watch?v=6CjxMPg0pvg
+#+END_NOTES
+
+** 最优控制
 
 #+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=12m45s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 #+BEGIN_NOTES
 2019 talk
+- 控制理论早期：PID 反馈控制， 线性控制,前提是线性系统，简洁优美
+  - 无差别地运用到其他控制对象，导致复杂专家系统，复杂工程和系统,
+  - 反馈控制理论:零极点补偿➡取消系统原有的动态,没有利用原有的系统动态
 - 1990s,12:45, 最优控制（近似动态规划）与强化学习
   - 主要区别在于强化学习强调与环境互动，基于学习
   - 最优控制（近似动态规划, 自适应控制，鲁棒控制）强调系统辨识,模型近似
@@ -346,9 +374,10 @@ digraph G {
 
   #+BEGIN_NOTES
   - 没有优势策略
-  - 当有些问题没有答案的时候，从另一个角度或层次会发现更有趣的现象或问题
-  - 行与列(两个对手)的策略重合，是更有趣问题
-  - 一方选择攻击，另一方退出的状态下，没有任何一方愿意偏离当前的状态，平衡状态。（纳什均衡）
+    - 当有些问题没有答案的时候，从另一个角度或层次会发现更有趣的现象或更重要问题
+    -
+  - 行与列(两个对手)的策略重合，是更重要的问题
+    - 一方选择攻击，另一方退出的状态下，没有任何一方愿意偏离当前的状态，平衡状态。（纳什均衡）
   #+END_NOTES
 
 
@@ -1313,7 +1342,7 @@ digraph G {
   - 最优控制
     #+BEGIN_NOTES
     - 拉格朗日力学，力/力矩➡行动/作用action:能量（动能与势能)变化的时间积分;力/能量变化产生运动;
-    - 最小作用量原理(稳态作用量原则➡均衡策略,能量守恒):运动的路径必须遵循稳态作用的路径，有唯一的路径
+    - 稳态作用原理(运动遵循能量均衡状态，守恒): 任何系统动态有唯一的路径
     - 自从1990s以来, 两种方法
     - 处理复杂现象没有简单有效的魔术方法，必须要消耗计算资源，关键是如何运用：或者用于系统辨识，或者用于分步分片消化经验数据。
     - 最优控制,近似动态规划 Approximate DP：精确的环境和动力学模型,抓住主要矛盾,缺点是模型的特异性,针对特殊场景和功能(难以泛化),抗干扰能力差(不健壮)
