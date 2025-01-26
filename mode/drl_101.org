@@ -38,58 +38,7 @@
   - Rip Van Winkel 华盛顿·欧文 1819，黄粱一梦，错过美国独立革命，纽约的民间故事
 #+END_NOTES
 
-* 回顾
-
-** 十年前
-
-#+REVEAL_HTML: <div class="gridded_frame_with_columns">
-     #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+attr_org: :width 300px :align left
-        #+REVEAL_HTML: <iframe title="PR2" width="600" height="450" src="https://www.youtube.com/embed/gYqfa-YtvW4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
-        #+REVEAL_HTML: <figcaption>PR2</figcatption>
-     #+REVEAL_HTML: </div>
-     #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+attr_org: :width 300px :align left
-        #+REVEAL_HTML: <iframe title="ASIMO" width="600" height="450" src="https://www.youtube.com/embed/xjXUyLAHR1E" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
-        #+REVEAL_HTML: <figcaption>ASIMO</figcatption>
-     #+REVEAL_HTML: </div>
-#+REVEAL_HTML: </div>
-
-#+BEGIN_NOTES
-- PR2
-  - 2010年, willow garage (ROS吴恩达)
-  - 执行器，传感器(深度相机,激光雷达)，本体,关节
-  - 成本下降
-  - 本体更仿生(更复杂)
-- Asimo
-  - 步态控制和现在机器人的区别
-  - 现在: https://www.youtube.com/watch?v=6CjxMPg0pvg
-#+END_NOTES
-
-** 最优控制
-
-#+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=12m45s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
-#+REVEAL_HTML: <figcaption>John Tsitsiklis(OG)</figcatption>
-#+BEGIN_NOTES
-2019 talk
-- 控制理论早期：PID 反馈控制， 线性控制,前提是线性系统，简洁优美
-  - 无差别地运用到其他控制对象，导致复杂专家系统，复杂工程和系统,
-  - 反馈控制理论:零极点补偿➡取消系统原有的动态,没有利用原有的系统动态
-- 1990s,12:45, 最优控制（近似动态规划）与强化学习
-  - 主要区别在于强化学习强调与环境互动，基于学习
-  - 最优控制（近似动态规划, 自适应控制，鲁棒控制）强调系统辨识,模型近似
-  - 浅层神经网络,没有深度学习
-  - Dimitri P. Bertsekas
-- 14m18s~15m57s;
-- 将会简单评论AlphaGO算法
-#+END_NOTES
-
-** 强化学习
-#+attr_html: :alt 'Jim Fan' :title '2025, year of RL' :width 600pix
-#+attr_org: :width 300px
-[[./img/drl101/jim_fan.png]]
-
-** 概述
+* 目标
 #+ATTR_REVEAL: :frag (appear)
 - 理解强化学习的思维方式
   #+ATTR_REVEAL: :frag (appear)
@@ -112,15 +61,24 @@
   - 什么是机器学习？
 #+END_NOTES
 * 寻找最优决策
-** 游戏(博弈)
+** 1.1 对决
+
+#+begin_quote
+游戏(博弈)
 #+ATTR_REVEAL: :frag (appear)
-- 游戏规则:玩家,收益(代价,奖励)策略
+- 游戏的要素:
+  #+ATTR_REVEAL: :frag (appear)
+  - 玩家
+  - 收益(代价,奖励)
+  - 策略
 - 游戏的趣味：复杂，难度，平衡
+
+#+end_quote
 
 #+BEGIN_NOTES
   👉 王者荣耀
 #+END_NOTES
-** 对决
+*** 对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -162,7 +120,7 @@ digraph G {
 - 代价:-1,奖励2
 #+END_NOTES
 
-** 对决
+*** 对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -198,7 +156,7 @@ digraph G {
 #+RESULTS: 对决0
 [[file:img/_generated/dominated_fight0.png]]
 
-** 对决
+*** 对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -234,7 +192,7 @@ digraph G {
 #+RESULTS: 对决1
 [[file:img/_generated/dominated_fight1.png]]
 
-** 优势策略
+*** 优势策略
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -269,11 +227,15 @@ digraph G {
 #+RESULTS: 对决2
 [[file:img/_generated/dominated_fight2.png]]
 
-** 势均力敌
+** 1.2 势均力敌
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
 
+*** 势均力敌
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
 #+CAPTION[技术进步]: 势均力敌
 #+NAME: 势均力敌
 #+ATTR_HTML: :alt  :title 势均力敌 width 800px  :align right
@@ -305,7 +267,7 @@ digraph G {
 #+RESULTS: 势均力敌
 [[file:img/_generated/ne.png]]
 
-** 势均力敌
+*** 势均力敌
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -341,7 +303,7 @@ digraph G {
 #+RESULTS: 势均力敌1
 [[file:img/_generated/ne1.png]]
 
-** 势均力敌
+*** 势均力敌
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -386,8 +348,7 @@ digraph G {
 
 
 
-
-** 策略均衡
+*** 策略均衡
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none-in cube-out'
 :END:
@@ -431,7 +392,7 @@ digraph G {
    - 理性决策优于非理性决策
   #+END_NOTES
 
-** 混合策略
+** 1.4 混合策略
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -484,7 +445,7 @@ digraph G {
    - 对手的任何策略,收益都一样
   #+END_NOTES
 
-** 混合策略
+*** 混合策略
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none-in cube-out'
 :END:
@@ -513,7 +474,7 @@ digraph G {
    - 如何从随机策略中选择一个最优的策略? 对信号的概率分布进行运算,找出符合目标的最优策略.
   #+END_NOTES
 
-** 混合策略
+*** 混合策略
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -525,8 +486,8 @@ digraph G {
 - 多轮持续对决？
 
 
-* 在时间的长河里
-** 决策树
+** 1.5 在时间的长河里
+*** 决策树
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -565,8 +526,7 @@ digraph G {
 - 对理解时间序列至关重要
 #+END_NOTES
 
-
-** 决策树
+*** 决策树
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -584,7 +544,7 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-** 决策树
+*** 决策树
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -633,7 +593,7 @@ digraph G {
 #+REVEAL_HTML: </div>
 
 
-** 决策树
+*** 决策树
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -681,7 +641,7 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-** 持续对决
+** 1.6 持续对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -730,7 +690,7 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-** 持续对决
+*** 持续对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -790,7 +750,7 @@ digraph G {
 #+RESULTS: 决策树21
 [[file:img/_generated/tree21.png]]
 
-** 持续对决
+*** 持续对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -850,7 +810,7 @@ digraph G {
 #+RESULTS: 决策树3
 [[file:img/_generated/tree3.png]]
 
-** 持续对决
+*** 持续对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -913,12 +873,13 @@ digraph G {
 - 时间序列的复杂度指数数增加！
 - 生物演化也是树状
 - 因果序列的分歧演化
-- 复杂性如何应对？-->强化学习
 #+END_NOTES
-** 持续对决
+
+*** 持续对决
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
+
 #+ATTR_HTML: :alt  :title 决策树4 width 800px  :align center
 #+attr_org: :width 600px :align left
 [[file:img/_generated/tree4.png]]
@@ -926,7 +887,69 @@ digraph G {
 #+ATTR_REVEAL: :frag (appear)
 - 逐级倒推: 从最后一轮开始分析
 - 攻击发生概率 $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0$
-* 强化学习
+- 价值函数：当前决策和状态的长期价值
+
+#+BEGIN_NOTES
+- 最优决策需要考虑短期作用的长期后果
+  - 存在一个基本规律(类似物理学的基本定律)，可以很容易地评估短期作用的长期后果
+    - 自然界，经验积累
+    - 最优控制，强化学习
+- 如何评估这个后果？
+  - 经验积累相似的方式，积累“价值函数”
+#+END_NOTES
+
+* 最优控制，强化学习与机器人
+** 2.1 回顾
+*** 十年前
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+attr_org: :width 300px :align left
+        #+REVEAL_HTML: <iframe title="PR2" width="600" height="450" src="https://www.youtube.com/embed/gYqfa-YtvW4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>PR2</figcatption>
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+attr_org: :width 300px :align left
+        #+REVEAL_HTML: <iframe title="ASIMO" width="600" height="450" src="https://www.youtube.com/embed/xjXUyLAHR1E" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>ASIMO</figcatption>
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+#+BEGIN_NOTES
+- PR2
+  - 2010年, willow garage (ROS吴恩达)
+  - 执行器，传感器(深度相机,激光雷达)，本体,关节
+  - 成本下降
+  - 本体更仿生(更复杂)
+- Asimo
+  - 步态控制和现在机器人的区别
+  - 现在: https://www.youtube.com/watch?v=6CjxMPg0pvg
+#+END_NOTES
+
+*** 最优控制
+
+#+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=12m45s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+#+REVEAL_HTML: <figcaption>John Tsitsiklis(OG)</figcatption>
+#+BEGIN_NOTES
+2019 talk
+- 控制理论早期：PID 反馈控制， 线性控制,前提是线性系统，简洁优美
+  - 无差别地运用到其他控制对象，导致复杂专家系统，复杂工程和系统,
+  - 反馈控制理论:零极点补偿➡取消系统原有的动态,没有利用原有的系统动态
+- 1990s,12:45, 最优控制（近似动态规划）与强化学习
+  - 主要区别在于强化学习强调与环境互动，基于学习
+  - 最优控制（近似动态规划, 自适应控制，鲁棒控制）强调系统辨识,模型近似
+  - 浅层神经网络,没有深度学习
+  - Dimitri P. Bertsekas
+- 14m18s~15m57s;
+- 将会简单评论AlphaGO算法
+#+END_NOTES
+
+*** 强化学习
+#+attr_html: :alt 'Jim Fan' :title '2025, year of RL' :width 600pix
+#+attr_org: :width 300px
+[[./img/drl101/jim_fan.png]]
+
+** 2.2 强化学习的模型
 #+ATTR_REVEAL: :frag (appear)
 | **博弈** | 玩家 | 收益@@html:<br>@@(代价) | 策略                   | (状态)                              | (策略评估)                    |
 |------+------+----------------------+------------------------+-------------------------------------+------------------------------|
@@ -999,7 +1022,7 @@ digraph G {
 #+end_comment
 
 
-** 强化学习的基础
+** 2.3 强化学习的方法
 #+ATTR_REVEAL: :frag (appear)
 #+begin_quote
 分步骤解决复杂问题
@@ -1019,7 +1042,7 @@ digraph G {
   - 动态规划是主流的经典概念,也是最优控制的基础
   - 从a走到b的最短路径,可分两个阶段a到c,c到b:假设c到b最短,那么只要解决a到c最短这一个子问题!
 #+END_NOTES
-** 理性决策
+*** 理性决策
 #+ATTR_REVEAL: :frag (appear)
 - 算法是理性决策
 - 理性决策针对非理性决策是优势策略
@@ -1032,8 +1055,10 @@ digraph G {
     - 为何自2016年以来越来成为人工智能，机器人的主流？--> 深度学习。
     - 两者如何结合？采样！从碎片化经验中学习。
 #+END_NOTES
-* 从碎片化经验中学习
-** 随机采样
+
+** 2.4 从碎片化经验中学习
+
+** 2.5 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -1093,7 +1118,8 @@ digraph G {
 #+RESULTS: 决策树采样0
 [[file:img/_generated/tree_sample0.png]]
 
-** 随机采样
+
+*** 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -1152,7 +1178,7 @@ digraph G {
 
 #+RESULTS: 决策树采样
 
-** 随机采样
+*** 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
@@ -1213,7 +1239,7 @@ digraph G {
 
 #+RESULTS: 决策树采样1
 [[file:img/_generated/tree_sample1.png]]
-** 随机采样
+*** 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none-in cube-out'
 :END:
@@ -1274,7 +1300,7 @@ digraph G {
 #+RESULTS: 决策树采样2
 [[file:img/_generated/tree_sample2.png]]
 
-** 随机采样的好处
+*** 随机采样的好处
 #+ATTR_REVEAL: :frag (appear)
 - 真实的数据
   #+ATTR_REVEAL: :frag (appear)
@@ -1290,7 +1316,10 @@ digraph G {
 - 掷色子通常是复杂随机环境最高效的学习方式
 - 数学上的确定性问题用概率方法去求解往往有简洁高效的的方式，（组合数学）
 #+END_NOTES
-** AlphaGo
+
+** 2.6 模型复杂度
+
+*** AlphaGo的状态和决策树
 #+attr_html: :alt :title AlphaGo决策树 :width 800pix :align center
 #+NAME: AlphaGo决策树
 #+attr_org: :width 300px
@@ -1298,12 +1327,12 @@ digraph G {
 
 #+ATTR_REVEAL: :frag (appear)
 - 价值: 可理解为胜率
-** AlphaGo
+*** AlphaGo的状态和决策树
 #+attr_html: :alt :title AlphaGo决策树 :width 800pix :align center
 #+NAME: AlphaGo决策树
 #+attr_org: :width 300px
 [[./img/drl101/alphago_mcts.png]]
-** AlphaGo
+*** AlphaGo的复杂度
 #+CAPTION[AlphaGo]: AlphaGo
 #+REVEAL_HTML: <iframe width="640" height="368" src="./img/drl101/alphago.mp4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 
@@ -1322,7 +1351,7 @@ digraph G {
    - 人类智慧和经验的总结：攻防，布局，死活，官子，联络，形势，手筋，攻防
    - 试图通过特征方法总结人类经验，完全不敌AlphaGo
 #+END_NOTES
-** 双足机器人控制模型
+*** 双足机器人的状态和复杂度
 
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
@@ -1370,9 +1399,7 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-
-* 机器人的机器学习
-
+** 2.7 机器人的机器学习
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+CAPTION[robot leanring]: robot learning
@@ -1392,8 +1419,7 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-
-** 仿真的作用
+*** 仿真的作用
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in cube-cout'
 :END:
@@ -1422,7 +1448,7 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-** 用于训练的仿真数据
+*** 用于训练的仿真数据
 #+CAPTION[robot leanring]: training dataset generation
 #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/OAZrBYCLnaA" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 #+REVEAL_HTML: <figcaption>NVidia Isaac Sim</figcatption>
@@ -1433,8 +1459,7 @@ digraph G {
   - 应用工程师的技能要求：可能不需要编程
 #+END_NOTES
 
-** 机器人学习的算法
-
+*** 机器人学习的算法
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+ATTR_HTML: :alt  :title  :width 584pix  :align center
@@ -1468,8 +1493,10 @@ digraph G {
   - 高效学习模型,能学习复杂行为模式(多模态)
 #+END_NOTES
 
-* 理解AlphaGo
-** AlphaGo系统结构
+
+** 2.8 理解AlphaGo
+
+*** AlphaGo系统结构
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -1494,8 +1521,7 @@ digraph G {
 - 围棋复杂度极高,但是确定性游戏
 #+END_NOTES
 
-
-** 最优策略
+*** 最优策略
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'none-in cube-out'
 :END:
@@ -1528,7 +1554,7 @@ digraph G {
      - 数学上:在合理假设下（收益大于代价$v>c$,理性决策：平衡状态对应收益的一阶导数，平衡状态的二阶导数<0
 #+END_NOTES
 
-** 总结
+* 总结
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
