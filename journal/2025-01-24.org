@@ -1,0 +1,65 @@
+#+TITLE: 周五, 2025-01-24
+* DONE 潘刚面试
+SCHEDULED: <2025-01-24 周五 15:00-16:00>
+- Note taken on [2025-01-24 周五 16:10] \\
+  - 潘刚面试反馈
+    - 有深度学习图像开发工程经验
+      - 在工程中使用过一些启发式的经验方法
+      - 有使用数据增强优化卷积网训练的经验
+    - 有一些较初步的强化学习基础知识，
+    - 对神经网络和机器学习的基础知识掌握一般
+      - 对卷积网,transformer,RNN(LSTM)理解不深
+      - 对数据集在训练和模型性能的影响理解不深
+    - 对工具(git)掌握一般，有缓存概念，但不了解reset,rebase,reflog等基础功能
+    - 了解MuJoCo的一些基本知识
+    - 已经离职
+- Note taken on [2025-01-24 周五 16:10]
+- State "DONE"       from "TODO"       [2025-01-24 周五 16:10]
+- Note taken on [2025-01-24 周五 14:52] \\
+  - 已经离职
+  - 视觉技术给自动化装卸赋能
+  - 深度学习，强化学习，目标检测，
+  - 辅助工具，算法基础，团队
+  - 期望视觉算法，强化学习基础
+  - 要的目标都在，没有的话：
+    技巧，优化，
+    使用掩膜masking数据增强，提升卷积网的性能->错误
+  - transformer vs cnn
+    - 全局特征，注意力机制，先行计算？
+    - 快慢？推理慢？
+  - RL
+    - 时序差分学习，Rt + q'(a,t),
+    - DQN on/off Off policy (on policy)
+  - Git 知道缓存在，但不知道恢复，不了解reset,rebase
+  - 仿真流程
+    - mujoco了解，应用不深
+    - 解决过的难点？
+      - yolo误检率，漏检率高：
+        - 分析原因：数据分布，多模型？emsemble
+        - 瓶颈：1+1>2,
+      - 试探方法
+  - 问题？
+    - 方向，
+- Note taken on [2025-01-24 周五 13:11] \\
+  - Questions:
+    - Yolo: add an Unknown class, what's the impact?
+    - Best way to handle unknown class? say you have 10 classes, but in reality you'll have objects of other classes. Now what? (Softmax Threasholding)
+    - RL
+      - Monte Carlo learning vs Temporal Difference learning? bias-variance tradeoff?
+      - REINFORCE （MC policy gradient)
+      - On/Off policy? DQN On/Off Policy? explain why?
+    - RNN with a very long time sequence? (TBPTT)
+    - ViT vs CNN? efficiency/computational cost? how to improve efficiency? MHSA? what's the causal mask?
+    - Git
+      - merge vs rebase? history?
+      - Git reset hard vs soft vs mixed?
+      - if reverted locally to an earlier version, what to do?
+        - which to use to check reset, rebase, deleted branch?
+        - log vs reflog?
+[[D:/04-HR/recruit_2025.01/潘刚简历.pdf]]
+* 08:40
+* STARTED Learn basic robot dynamics
+:LOGBOOK:
+CLOCK: [2025-01-24 周五 11:14]
+:END:
+- State "STARTED"    from "TODO"       [2025-01-24 周五 11:08]

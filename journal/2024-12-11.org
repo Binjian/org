@@ -1,5 +1,6 @@
 #+TITLE: 周三, 2024-12-11
-* STARTED Diffusion model learning
+* DONE Diffusion model learning
+- State "DONE"       from "TODO"       [2025-01-24 周五 08:47]
 :LOGBOOK:
 CLOCK: [2024-12-23 周一 09:27]--[2024-12-23 周一 09:52] =>  0:25
 CLOCK: [2024-12-12 周四 09:30]--[2024-12-12 周四 09:37] =>  0:07
