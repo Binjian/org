@@ -945,9 +945,20 @@ digraph G {
 #+END_NOTES
 
 *** 强化学习
-#+attr_html: :alt 'Jim Fan' :title '2025, year of RL' :width 600pix
-#+attr_org: :width 300px
-[[./img/drl101/jim_fan.png]]
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title Year_Of_RL width 400px  :align center
+        #+attr_org: :width 300px :align left
+        [[./img/drl101/jim_fan.png]]
+        #+REVEAL_HTML: <figcaption>2025强化学习之年</figcatption>
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title R1 width 400px  :align center
+        #+attr_org: :width 300px :align left
+        [[./img/drl101/deepseek_r1_arxiv.png]]
+        #+REVEAL_HTML: <figcaption>DeepSeek R1</figcatption>
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 
 ** 2.2 强化学习的模型
 #+ATTR_REVEAL: :frag (appear)
