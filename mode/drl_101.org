@@ -1571,22 +1571,14 @@ digraph G {
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
-#+ATTR_REVEAL: :frag (appear)
+
+#+ATTR_REVEAL: :frag (fade-in) :frag_idx (1 2 3)
 - 最优策略
   - 最优决策必须要考虑对手的决策
 - 机器学习
-  - 随机采样是应对复杂问题的高效方法
-- 神经网络
-  - 随机和概率是应对复杂现象的有效模型
-
-
-** 总结
-:PROPERTIES:
-:REVEAL_DATA_TRANSITION: 'none'
-:END:
-- 最优策略
-  - 最优决策必须要考虑对手的决策
-- 机器学习
-  - *{{{color(red,随机采样是应对复杂问题的高效方法)}}}*
+  - @@html:<span class="r-stack">@@
+    @@html:<span class="fragment fade-out"; data-fragment-index="4">@@随机采样是应对复杂问题的高效方法@@html:</span>@@
+    @@html:<span class="fragment fade-in"; style="color:#FF0000; font-weight:bold"; data-fragment-index="4">@@随机采样是应对复杂问题的高效方法@@html:</span>@@
+    @@html:</span>@@
 - 神经网络
   - 随机和概率是应对复杂现象的有效模型
