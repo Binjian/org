@@ -39,28 +39,28 @@
 #+END_NOTES
 
 * 目标
+
 #+ATTR_REVEAL: :frag (appear)
 - 理解强化学习的思维方式
   #+ATTR_REVEAL: :frag (appear)
-  - 复杂决策可以通过编程解决
+  - 通过编程方式求解决策问题
   #+ATTR_REVEAL: :frag (appear)
-  - 了解强化学习的原理
-#+ATTR_REVEAL: :frag (appear)
-- 了解深度强化学习的“暗物质”
-  #+ATTR_REVEAL: :frag (appear)
-  - 逻辑与直觉结合处理复杂现象
+  - 了解强化学习背后的逻辑
+- 了解深度强化学习
 
 #+BEGIN_NOTES
 - 理解强化学习，不需要理解深度学习
 - 可以从强化学习的角度理解深度学习的本质
 - 强化学习的背景，动机，强化学习本身只占较小的一部分
-- 暗物质指基本事实经常会被忽略，或下意识假定，经常是错误的假定，而对理解问题是非常必要的前提。
+- 暗物质
+  - 指基本事实经常会被忽略，或下意识假定，经常是错误的假定，而对理解问题是非常必要的前提。
 - 机器人抓取任务里为何会使用随机决策?违反直觉!
+  - 逻辑与直觉结合处理复杂现象
 - 可以用基本的问题引出
   - 为什么是树结构？
   - 什么是机器学习？
 #+END_NOTES
-* 寻找最优决策
+* 一个简单决策问题
 ** 1.1 对决
 
 #+begin_quote
@@ -1055,8 +1055,10 @@ digraph G {
 #+END_NOTES
 *** 理性决策
 #+ATTR_REVEAL: :frag (appear)
+#+begin_quote
 - 算法是理性决策
 - 理性决策针对非理性决策是优势策略
+#+end_quote
 
 #+BEGIN_NOTES
   - AlphaGo 很难战胜，人很难战胜机器：完美记忆，纯粹理性，高效执行，可复制
@@ -1069,7 +1071,7 @@ digraph G {
 
 ** 2.4 从碎片化经验中学习
 
-** 2.5 随机采样
+*** 随机采样
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
@@ -1328,7 +1330,7 @@ digraph G {
 - 数学上的确定性问题用概率方法去求解往往有简洁高效的的方式，（组合数学）
 #+END_NOTES
 
-** 2.6 模型复杂度
+** 2.5 模型复杂度
 
 *** AlphaGo的状态和决策树
 #+attr_html: :alt :title AlphaGo决策树 :width 800pix :align center
@@ -1410,7 +1412,7 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-** 2.7 机器人的机器学习
+** 2.6 机器人的机器学习
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+CAPTION[robot leanring]: robot learning
@@ -1505,7 +1507,7 @@ digraph G {
 #+END_NOTES
 
 
-** 2.8 理解AlphaGo
+** 2.7 理解AlphaGo
 
 *** AlphaGo系统结构
 :PROPERTIES:
@@ -1551,7 +1553,7 @@ digraph G {
   - 不断提升水平
 #+ATTR_REVEAL: :frag (appear)
 #+begin_quote
-→ 均衡状态(极高水平)
+→ 均衡状态(最优策略)
 #+end_quote
 
 #+BEGIN_NOTES
