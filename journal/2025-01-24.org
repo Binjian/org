@@ -59,7 +59,4 @@ SCHEDULED: <2025-01-24 周五 15:00-16:00>
 [[D:/04-HR/recruit_2025.01/潘刚简历.pdf]]
 * 08:40
 * STARTED Learn basic robot dynamics
-:LOGBOOK:
-CLOCK: [2025-01-24 周五 11:14]
-:END:
 - State "STARTED"    from "TODO"       [2025-01-24 周五 11:08]
