@@ -80,7 +80,7 @@
 #+END_NOTES
 *** 对决
 :PROPERTIES:
-:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:REVEAL_DATA_TRANSITION: 'cube-in cube-out'
 :END:
 
 @@html:<div class="r-stack">@@
@@ -256,7 +256,7 @@ digraph G {
 
 ** 1.2 势均力敌
 :PROPERTIES:
-:REVEAL_DATA_TRANSITION: 'none-in cube-out'
+:REVEAL_DATA_TRANSITION: 'cube-in cube-out'
 :END:
 
 @@html:<div class="r-stack">@@
@@ -495,7 +495,7 @@ digraph G {
 
 *** 混合策略
 :PROPERTIES:
-:REVEAL_DATA_TRANSITION: 'none-in cube-out'
+:REVEAL_DATA_TRANSITION: 'none'
 :END:
 
 #+ATTR_HTML: :alt  :title 混合策略 width 300px  :align center
@@ -524,7 +524,7 @@ digraph G {
 
 *** 混合策略
 :PROPERTIES:
-:REVEAL_DATA_TRANSITION: 'none'
+:REVEAL_DATA_TRANSITION: 'none-in cube-out'
 :END:
 
 #+ATTR_HTML: :alt  :title 混合策略 width 300px  :align center
@@ -764,7 +764,7 @@ digraph G {
 #+end_comment
 ** 1.5 持续对决
 :PROPERTIES:
-:REVEAL_DATA_TRANSITION: 'cube-in cube-out'
+:REVEAL_DATA_TRANSITION: 'none-in cube-out'
 :END:
 
 
