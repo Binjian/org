@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID:       a52aa49d-d9d0-4b3f-ba2b-d5eced50e7c6
 :END:
-#+title: 博弈，最优控制和强化学习
+#+title: 博弈,最优控制和机器学习
 #+AUTHOR: 忻斌健
 #+CREATOR: 忻斌健
 #+DATE:<2025-01-02 周四>
@@ -34,6 +34,8 @@
 #+HTML_HEAD_EXTRA: <style> .figure p {text-align: center;}</style>
 #+HTML_HEAD_EXTRA: <style>*{font-family: "LXGW WenKai Mono" !important}</style>
 #+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: a @@html: <span class="fragment" data-fragment-index="$2">$1</span>@@
+#+HTML_HEAD_EXTRA: <style type="text/css">.noboldheader th {font-weight: normal;}</style>
 #+BEGIN_NOTES
   - Rip Van Winkel 华盛顿·欧文 1819，黄粱一梦，错过美国独立革命，纽约的民间故事
 #+END_NOTES
@@ -41,12 +43,9 @@
 * 目标
 
 #+ATTR_REVEAL: :frag (appear)
-- 理解强化学习的思维方式
-  #+ATTR_REVEAL: :frag (appear)
-  - 通过编程方式求解决策问题
-  #+ATTR_REVEAL: :frag (appear)
-  - 了解强化学习背后的逻辑
-- 了解深度强化学习
+- 最优控制和机器学习的共同基础
+- 决策问题程序化
+- 通过学习的方式获得最优决策
 
 #+BEGIN_NOTES
 - 理解强化学习，不需要理解深度学习
@@ -90,6 +89,38 @@
         @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/dominated_fight2.png" />@@
 @@html:</div>@@
 @@html:<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">@@优势策略@@html:</span>@@
+
+#+begin_comment
+#+CAPTION[混合策略]: 混合策略
+#+NAME: 混合策略
+#+ATTR_HTML: :alt  :title 混合策略 width 800px  :align center
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/mixed.png
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="400" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">攻击</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="1"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100">p<sup>A</sup></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">撤退</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="1"><u><FONT COLOR="darkgreen">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+                <TD WIDTH="100" HEIGHT="100">1-p<sup>A</sup></TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+#+end_comment
 
 #+BEGIN_COMMENT
 
@@ -264,6 +295,7 @@ digraph G {
         @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/ne1.png" />@@
         @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/ne2.png" />@@
         @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/ne3.png" />@@
+        @@html:<img class="fragment" data-fragment-index="4" src="img/drl101/mixed.png" style="height:400px" />@@
 @@html:</div>@@
 @@html:<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">@@策略均衡状态@@html:</span>@@
 @@html:<div class="fragment"; style="color:darkred; font-weight:bold"; data-fragment-index="3">@@?@@html:</div>@@
@@ -444,19 +476,17 @@ digraph G {
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
-
-#+CAPTION[混合策略]: 混合策略
 #+NAME: 混合策略
-#+ATTR_HTML: :alt  :title 混合策略 width 300px  :align right
-#+attr_org: :width 400px :align left
-[[file:img/drl101/mixed.png]]
+#+ATTR_HTML: :alt  :title 混合策略 :width 300px  :align center
+#+attr_org: :width 300px :align left
+[[./img/drl101/mixed1.png]]
 
 #+begin_comment
 #+CAPTION[混合策略]: 混合策略
 #+NAME: 混合策略
-#+ATTR_HTML: :alt  :title 混合策略 width 300px  :align right
-#+attr_org: :width 400px
-#+begin_src dot :file img/_generated/mixed.png :cache yes
+#+ATTR_HTML: :alt  :title 混合策略 width 800px  :align center
+#+attr_org: :width 600px
+#+begin_src dot :file img/drl101/mixed1.png
 digraph G {
     node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
         <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="200" HEIGHT="150">
@@ -481,6 +511,10 @@ digraph G {
     >];
 }
 #+end_src
+
+#+RESULTS: 混合策略
+[[file:img/drl101/mixed1.png]]
+
 #+end_comment
 
 #+ATTR_REVEAL: :frag (appear)
@@ -503,9 +537,9 @@ digraph G {
 :REVEAL_DATA_TRANSITION: 'none'
 :END:
 
-#+ATTR_HTML: :alt  :title 混合策略 width 300px  :align center
-#+attr_org: :width 400px
-[[./img/drl101/mixed.png]]
+#+ATTR_HTML: :alt  :title 混合策略 :width 300px  :align center
+#+attr_org: :width 300px :align left
+[[./img/drl101/mixed1.png]]
 
 #+ATTR_REVEAL: :frag (appear)
 - 我方策略:$\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p^{A}=\frac{2}{1+2}=\frac{2}{3}$
@@ -533,7 +567,7 @@ digraph G {
 :END:
 
 #+ATTR_HTML: :alt  :title 混合策略 width 300px  :align center
-#+attr_org: :width 400px
+#+attr_org: :width 400px :align left
 [[./img/drl101/mixed.png]]
 
 - 多轮持续对决？
@@ -548,7 +582,7 @@ digraph G {
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         @@html:<div class="r-stack">@@
-         @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/mixed.png" />@@
+         @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/mixed1.png" />@@
          @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/flat_tree.png" />@@
          @@html:<img class="fragment" data-fragment-index="1" src="img/drl101/flat_tree2.png" />@@
         @@html:</div>@@
@@ -1076,19 +1110,23 @@ digraph G {
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
-** 2.2 强化学习的模型
-#+ATTR_REVEAL: :frag (appear)
-| **博弈**     | 玩家                    | 收益@@html:<br>@@(代价) | 策略 | (状态) | (策略评估)                     |
-|--------------+-------------------------+-------------------------+------+--------+--------------------------------|
-| **强化学习** | 智能体@@html:<br>@@系统 | 奖励                    | 行动 | 状态   | 状态价值@@html:<br/>@@行动价值 |
+** 2.2 模型
+#+ATTR_HTML: :border 2 :class noboldheader
+| 博弈                                                 | @@html:玩家@@                                              | 收益@@html:<br>@@(代价)                          | 策略                                               | 状态                                             | 策略评估                                                         |
+|------------------------------------------------------+------------------------------------------------------------+--------------------------------------------------+----------------------------------------------------+--------------------------------------------------+------------------------------------------------------------------|
+| {{{a(<font color=darkblue>强化学习</font>,1)}}} | {{{a(<font color=darkblue>智能体/<br>系统</font>,1)}}} | {{{a(<font color=darkblue>奖励</font>,1)}}} | {{{a(<font color=darkblue>作用</font>,1)}}}   | {{{a(<font color=darkblue>状态</font>,1)}}} | {{{a(<font color=darkblue>价值函数</font>,1)}}}          |
+| {{{a(<font color=red>最优控制</font>,2)}}}           | {{{a(<font color=red>控制器/<br>对象</font>,2)}}} | {{{a(<font color=red>误差</font>,2)}}} | {{{a(<font color=red>控制量</font>,2)}}} | {{{a(<font color=red>状态</font>,2)}}} | {{{a(<font color=red>目标函数</font>,2)}}}                     |
+
 #+BEGIN_NOTES
   - 玩家：人类, vs 人类,计算机,自然/物理规律;
   - 计算机 vs. 自然/物理规律
   - 增加观测量和价值估计
+    - 强化学习的价值函数是通过学习得到，是系统状态和作用的函数，考虑系统方程和系统动态
+    - 最优控制的目标函数是专家规则，没有考虑系统动态!
 #+END_NOTES
 
 #+ATTR_REVEAL: :frag (appear)
-#+attr_html: :alt :title 强化学习模型 :width 1000pix :align center
+#+attr_html: :alt :title 强化学习模型 :width 750pix :align center
 #+NAME: 强化学习模型
 #+attr_org: :width 300px :align left
 [[./img/drl101/rl_model.png]]
