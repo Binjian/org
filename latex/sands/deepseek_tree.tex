@@ -1,0 +1,22 @@
+\documentclass[out]{standalone}
+\usepackage{tikz}
+\usepackage{xeCJK}
+\begin{document}
+\tikzstyle{block} = [rectangle, draw,
+    text width=8em, text centered, rounded corners, minimum height=4em]
+
+\tikzstyle{line} = [draw, -latex]
+
+\begin{tikzpicture}[node distance=1.5cm, auto]
+  \node [draw, fill=blue] (A) {数据采集};
+  \node [draw, fill=yellow, right of=A] (B) {预处理};
+  \node [draw, fill=blue, below of=A] (C) {模型训练};
+  \node [draw, fill=yellow, right of=C] (D) {模型优化};
+  \node [draw, fill=blue, below of=C] (E) {应用部署};
+  \draw[->] (A) -- (B) node[midway, above] {F(1)};
+  \draw[->] (B) -- (D) node[midway, above] {Q(1)};
+  \draw[->] (A) -- (C) node[midway, left] {F(2)};
+  \draw[->] (C) -- (D) node[midway, above] {F(3)};
+  \draw[->] (D) -- (E) node[midway, right] {Q(2)};
+\end{tikzpicture}
+\end{document}

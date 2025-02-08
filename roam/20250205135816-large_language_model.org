@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       9ed06758-b561-4a5b-a50a-ac9f3f4f4514
+:END:
+#+title: #+title: Large Language Model
+
+[[id:d7c970fc-8eba-4f62-b8aa-f12d8ad4a2bb][CAD-LLM]]
+
+[[id:d9076c1d-b2fc-4d8b-8eff-2299364241db][DeepSeek]]
