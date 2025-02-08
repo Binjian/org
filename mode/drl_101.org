@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID:       a52aa49d-d9d0-4b3f-ba2b-d5eced50e7c6
 :END:
-#+title: 深度强化学习101
+#+title: 博弈，最优控制和强化学习
 #+AUTHOR: 忻斌健
 #+CREATOR: 忻斌健
 #+DATE:<2025-01-02 周四>
@@ -84,10 +84,10 @@
 :END:
 
 @@html:<div class="r-stack">@@
-        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/_generated/dominated_fight.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/_generated/dominated_fight0.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/_generated/dominated_fight1.png" />@@
-        @@html:<img class="fragment" data-fragment-index="2" src="img/_generated/dominated_fight2.png" />@@
+        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/dominated_fight.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/dominated_fight0.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/dominated_fight1.png" />@@
+        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/dominated_fight2.png" />@@
 @@html:</div>@@
 @@html:<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">@@优势策略@@html:</span>@@
 
@@ -260,10 +260,10 @@ digraph G {
 :END:
 
 @@html:<div class="r-stack">@@
-        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/_generated/ne.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/_generated/ne1.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/_generated/ne2.png" />@@
-        @@html:<img class="fragment" data-fragment-index="2" src="img/_generated/ne3.png" />@@
+        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/ne.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/ne1.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/ne2.png" />@@
+        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/ne3.png" />@@
 @@html:</div>@@
 @@html:<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">@@策略均衡状态@@html:</span>@@
 @@html:<div class="fragment"; style="color:darkred; font-weight:bold"; data-fragment-index="3">@@?@@html:</div>@@
@@ -448,6 +448,13 @@ digraph G {
 #+CAPTION[混合策略]: 混合策略
 #+NAME: 混合策略
 #+ATTR_HTML: :alt  :title 混合策略 width 300px  :align right
+#+attr_org: :width 400px :align left
+[[file:img/drl101/mixed.png]]
+
+#+begin_comment
+#+CAPTION[混合策略]: 混合策略
+#+NAME: 混合策略
+#+ATTR_HTML: :alt  :title 混合策略 width 300px  :align right
 #+attr_org: :width 400px
 #+begin_src dot :file img/_generated/mixed.png :cache yes
 digraph G {
@@ -474,9 +481,7 @@ digraph G {
     >];
 }
 #+end_src
-
-#+RESULTS[bc3db3ba7ebd0d93d65d4b9ff5feb0ae98494047]: 混合策略
-[[file:img/_generated/mixed.png]]
+#+end_comment
 
 #+ATTR_REVEAL: :frag (appear)
 - 对手攻击收益：$\color{red}{PO^{f}=(-1)\times p^{A} + (2)\times (1-p^{A})}$
@@ -500,7 +505,7 @@ digraph G {
 
 #+ATTR_HTML: :alt  :title 混合策略 width 300px  :align center
 #+attr_org: :width 400px
-[[./img/_generated/mixed.png]]
+[[./img/drl101/mixed.png]]
 
 #+ATTR_REVEAL: :frag (appear)
 - 我方策略:$\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p^{A}=\frac{2}{1+2}=\frac{2}{3}$
@@ -529,7 +534,7 @@ digraph G {
 
 #+ATTR_HTML: :alt  :title 混合策略 width 300px  :align center
 #+attr_org: :width 400px
-[[./img/_generated/mixed.png]]
+[[./img/drl101/mixed.png]]
 
 - 多轮持续对决？
 
@@ -543,15 +548,15 @@ digraph G {
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         @@html:<div class="r-stack">@@
-         @@html:<img class="fragment fade-out data-fragment-index="0" src="img/_generated/mixed.png" />@@
-         @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/_generated/flat_tree.png" />@@
-         @@html:<img class="fragment" data-fragment-index="1" src="img/_generated/flat_tree2.png" />@@
+         @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/mixed.png" />@@
+         @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/flat_tree.png" />@@
+         @@html:<img class="fragment" data-fragment-index="1" src="img/drl101/flat_tree2.png" />@@
         @@html:</div>@@
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
         @@html:<div class="r-stack">@@
-         @@html:<img class="fragment fade-out data-fragment-index="2" src="img/_generated/tree.png" />@@
-         @@html:<img class="fragment" data-fragment-index="2" src="img/_generated/flat_tree3.png" />@@
+         @@html:<img class="fragment fade-out data-fragment-index="2" src="img/drl101/tree.png" />@@
+         @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/flat_tree3.png" />@@
         @@html:</div>@@
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
@@ -769,9 +774,9 @@ digraph G {
 
 
 @@html:<div class="r-stack">@@
-        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/_generated/tree21.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/_generated/tree3.png" />@@
-        @@html:<img class="fragment" data-fragment-index="1" src="img/_generated/tree4.png" />@@
+        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/tree21.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/tree3.png" />@@
+        @@html:<img class="fragment" data-fragment-index="1" src="img/drl101/tree4.png" />@@
 @@html:</div>@@
 
 #+ATTR_REVEAL: :frag (appear)
@@ -1073,9 +1078,9 @@ digraph G {
 
 ** 2.2 强化学习的模型
 #+ATTR_REVEAL: :frag (appear)
-| **博弈** | 玩家 | 收益@@html:<br>@@(代价) | 策略                   | (状态)                              | (策略评估)                    |
-|------+------+----------------------+------------------------+-------------------------------------+------------------------------|
-| **强化学习** | 智能体@@html:<br>@@系统    | 奖励                 | 行动 | 状态                       | 状态价值@@html:<br/>@@行动价值 |
+| **博弈**     | 玩家                    | 收益@@html:<br>@@(代价) | 策略 | (状态) | (策略评估)                     |
+|--------------+-------------------------+-------------------------+------+--------+--------------------------------|
+| **强化学习** | 智能体@@html:<br>@@系统 | 奖励                    | 行动 | 状态   | 状态价值@@html:<br/>@@行动价值 |
 #+BEGIN_NOTES
   - 玩家：人类, vs 人类,计算机,自然/物理规律;
   - 计算机 vs. 自然/物理规律
@@ -1188,11 +1193,11 @@ digraph G {
 :END:
 
 @@html:<div class="r-stack">@@
-        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/_generated/tree_sample0.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/_generated/tree_sample.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/_generated/tree_sample1.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="2" src="img/_generated/tree_sample2.png" />@@
-        @@html:<img class="fragment" data-fragment-index="3" src="img/_generated/tree_sample3.png" />@@
+        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/tree_sample0.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/tree_sample.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/tree_sample1.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="2" src="img/drl101/tree_sample2.png" />@@
+        @@html:<img class="fragment" data-fragment-index="3" src="img/drl101/tree_sample3.png" />@@
 @@html:</div>@@
 
 #+begin_comment
@@ -1508,7 +1513,7 @@ digraph G {
 #+attr_html: :alt :title 随机决策采样 :width 500pix :align center
 #+NAME: 随机决策采样
 #+attr_org: :width 300px
-[[./img/_generated/tree_sample1.png]]
+[[./img/drl101/tree_sample1.png]]
 
 #+ATTR_REVEAL: :frag (appear)
 - 真实的数据
