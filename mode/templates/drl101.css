@@ -59,3 +59,11 @@
 			font-weight: bold;
 			margin: 0.03em 0;
 }
+
+.reveal fragment.blur {
+	filter： blur(5px);
+}
+
+.reveal fragment.blur.visible {
+	filter: none;
+}
