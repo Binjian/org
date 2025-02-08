@@ -1584,9 +1584,8 @@ digraph G {
 #+NAME: AlphaGo决策树
 #+attr_org: :width 300px
 [[./img/drl101/alphago_mcts.png]]
+
 *** AlphaGo的复杂度
-#+CAPTION[AlphaGo]: AlphaGo
-#+REVEAL_HTML: <iframe width="640" height="368" src="./img/drl101/alphago.mp4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
 
 #+ATTR_REVEAL: :frag (appear)
 - 所有的位置（观测量） $3^{{19}^2}\approx 1.74\times 10^{172}$, $1.20\%$ 合法
@@ -1594,7 +1593,7 @@ digraph G {
 - 理论最长步数 $10^{48}$, 不同棋局的数量:$[10^{10^{48}},10^{10^{171}}]$
 - 可观测宇宙的原子个数 $10^{80}$
   #+ATTR_REVEAL: :frag (appear)
-  👉 神经网络
+  👉  神经网络
 #+BEGIN_NOTES
  - 原子个数: 爱丁顿数
  - 从完整的部份经验中学习: 从部份棋局中学习,累积学习经验
@@ -1604,6 +1603,7 @@ digraph G {
    - 试图通过特征方法总结人类经验，完全不敌AlphaGo
  - 人工智能的苦涩教训
 #+END_NOTES
+
 *** 双足机器人的状态和复杂度
 
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
@@ -1653,24 +1653,15 @@ digraph G {
 #+REVEAL_HTML: </div>
 
 ** 2.6 机器人的机器学习
-#+REVEAL_HTML: <div class="gridded_frame_with_columns">
-     #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+CAPTION[robot leanring]: robot learning
-        #+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
-        #+REVEAL_HTML: <figcaption>谷歌机械臂农场</figcatption>
-     #+REVEAL_HTML: </div>
-     #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_REVEAL: :frag (appear)
-        - 每次演示是决策树上的一条路径
-        - 随机采样的数据密度
-        - 成功或失败的经验
-        #+BEGIN_NOTES
-          - 强化学习训练
-          - 覆盖特定功能的观测数据分布
-          - 成功或失败的路径
-        #+END_NOTES
-     #+REVEAL_HTML: </div>
-#+REVEAL_HTML: </div>
+#+ATTR_REVEAL: :frag (appear)
+- 每次演示是决策树上的一条路径
+- 随机采样的数据密度
+- 成功或失败的经验
+#+BEGIN_NOTES
+  - 强化学习训练
+  - 覆盖特定功能的观测数据分布
+  - 成功或失败的路径
+#+END_NOTES
 
 *** 仿真的作用
 :PROPERTIES:
@@ -1712,7 +1703,12 @@ digraph G {
   - 应用工程师的技能要求：可能不需要编程
 #+END_NOTES
 
+
+@@html: <section data-background-video="https://eth-ait.github.io/graspxl/large2.mp4"
+          data-background-video-loop data-background-video-muted>@@
+@@html:</section>@@
 *** 机器人学习的算法
+
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+ATTR_HTML: :alt  :title  :width 584pix  :align center
@@ -1735,7 +1731,6 @@ digraph G {
           - 多样性
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
-
 #+BEGIN_NOTES
   - 学习模型:代表学习,神经网络
   - 数据非常重要

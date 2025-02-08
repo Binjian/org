@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>博弈,最优控制和机器学习</title>
+<meta name="author" content="忻斌健"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/dist/reveal.css"/>
+
+<link rel="stylesheet" href="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/dist/theme/sky.css" id="theme"/>
+
+<link rel="stylesheet" href="./templates/drl101.css"/>
+<link rel="stylesheet" href="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/plugin/highlight/zenburn.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style> .figure p {text-align: center;}</style>
+<style>*{font-family: "LXGW WenKai Mono" !important}</style>
+<style type="text/css">.noboldheader th {font-weight: normal;}</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML Elements Reference</title>
+</head>
+<body>
+<h1>寻找最优策略</h1>
+<h2>最优控制,机器学习与机器人</h2>
+<div id="title_image">
+	<img src="./img/drl101/rip-van-winkel.jpg" alt="rip-van-winkel" width="400">
+</div>
+<h4>忻斌健</h4>
+<h4>系统部人工智能组</h4>
+<h4>2024年12月27日</h4>
+<div id="logo">
+	<img src="./img/siasun_blue_logo.png" alt="新松机器人上海研究院" width="300">
+</div>
+</body>
+</html>
+
+<aside class="notes">
+<ul>
+<li>Rip Van Winkel 华盛顿·欧文 1819，黄粱一梦，错过美国独立革命，纽约的民间故事</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="table-of-contents-section">
+<div id="table-of-contents" role="doc-toc">
+<h2>&#30446;&#24405;</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-orgd74477d">目标</a></li>
+<li><a href="#/slide-org108bb13">一个简单的决策问题</a></li>
+<li><a href="#/slide-org88f3ba1">最优控制，强化学习与机器人</a></li>
+<li><a href="#/slide-org5a931ee">总结</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-orgd74477d">
+<h2 id="orgd74477d">目标</h2>
+<ul>
+<li class="fragment appear">最优控制和机器学习的共同基础</li>
+<li class="fragment appear">决策问题程序化</li>
+<li class="fragment appear">通过学习的方式获得最优决策</li>
+
+</ul>
+
+<aside class="notes">
+<ul>
+<li>理解强化学习，不需要理解深度学习</li>
+<li>可以从强化学习的角度理解深度学习的本质</li>
+<li>强化学习的背景，动机，强化学习本身只占较小的一部分</li>
+<li>暗物质
+<ul>
+<li>指基本事实经常会被忽略，或下意识假定，经常是错误的假定，而对理解问题是非常必要的前提。</li>
+
+</ul></li>
+<li>机器人抓取任务里为何会使用随机决策?违反直觉!
+<ul>
+<li>逻辑与直觉结合处理复杂现象</li>
+
+</ul></li>
+<li>可以用基本的问题引出
+<ul>
+<li>为什么是树结构？</li>
+<li>什么是机器学习？</li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org108bb13">
+<h2 id="org108bb13">一个简单的决策问题</h2>
+<div class="outline-text-2" id="text-org108bb13">
+</div>
+</section>
+<section id="slide-org1fe1e59">
+<h3 id="org1fe1e59">1.1 对决</h3>
+<blockquote>
+<p>
+游戏(博弈)
+</p>
+<ul>
+<li class="fragment appear">游戏的要素:
+<ul>
+<li class="fragment appear">玩家</li>
+<li class="fragment appear">收益(代价,奖励)</li>
+<li class="fragment appear">策略</li>
+
+</ul></li>
+<li class="fragment appear">游戏的趣味：复杂，难度，平衡</li>
+
+</ul>
+</blockquote>
+
+<aside class="notes">
+<p>
+👉 王者荣耀
+</p>
+
+</aside>
+</section>
+<section id="slide-orge6818c3" data-transition="'cube-in cube-out'">
+<h4 id="orge6818c3">对决</h4>
+<p>
+<div class="r-stack">
+        <img class="fragment fade-out data-fragment-index="0" src="img/drl101/dominated_fight.png" />
+        <img class="fragment current-visible" data-fragment-index="0" src="img/drl101/dominated_fight0.png" />
+        <img class="fragment current-visible" data-fragment-index="1" src="img/drl101/dominated_fight1.png" />
+        <img class="fragment" data-fragment-index="2" src="img/drl101/dominated_fight2.png" />
+</div>
+<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">优势策略</span>
+</p>
+</section>
+<section id="slide-org1dc55ac" data-transition="'cube-in cube-out'">
+<h3 id="org1dc55ac">1.2 势均力敌</h3>
+<p>
+<div class="r-stack">
+        <img class="fragment fade-out data-fragment-index="0" src="img/drl101/ne.png" />
+        <img class="fragment current-visible" data-fragment-index="0" src="img/drl101/ne1.png" />
+        <img class="fragment current-visible" data-fragment-index="1" src="img/drl101/ne2.png" />
+        <img class="fragment" data-fragment-index="2" src="img/drl101/ne3.png" />
+        <img class="fragment" data-fragment-index="4" src="img/drl101/mixed.png" style="height:400px" />
+</div>
+<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">策略均衡状态</span>
+<div class="fragment"; style="color:darkred; font-weight:bold"; data-fragment-index="3">?</div>
+</p>
+
+<aside class="notes">
+<ul>
+<li>没有优势策略
+<ul>
+<li>当有些问题没有答案的时候，从另一个角度或层次会发现更有趣的现象或更重要问题</li>
+
+</ul></li>
+<li>行与列(两个对手)的策略重合，是更重要的问题
+<ul>
+<li>一方选择攻击，另一方退出的状态下，没有任何一方愿意偏离当前的状态，平衡状态。（纳什均衡）</li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+
+<aside class="notes">
+<ul>
+<li>前提条件是同时决策,不知道对方的策略!</li>
+<li>策略均衡限于稳定的平衡状态</li>
+<li>策略均衡是对双方最合理的最优状态：任何一方偏离均衡状态，而另一方保持理性决策，都会导致偏离方收益受损，所以没有任何一方愿意偏离均衡状态下的最优决策</li>
+<li>A 非理性决策 vs B 理性决策</li>
+<li>理性决策优于非理性决策</li>
+<li>有几个均衡状态？</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-orgcdc66bd" data-transition="'cube-in none-out'">
+<h3 id="orgcdc66bd">1.3 混合策略</h3>
+
+<div id="org1cc0466" class="figure">
+<p><img src="./img/drl101/mixed1.png" title="混合策略" width="300px" align="center" />
+</p>
+</div>
+
+<ul>
+<li class="fragment appear">对手攻击收益：\(\color{red}{PO^{f}=(-1)\times p^{A} + (2)\times (1-p^{A})}\)</li>
+<li class="fragment appear">对手撤退收益：\(\color{blue}{PO^{q}=(0)\times p^{A} + (0)\times (1-p^{A})}\)</li>
+<li class="fragment appear">\(p^{A}=0.5\) ?
+<ul>
+<li class="fragment appear">我方收益 -0.5:1</li>
+<li class="fragment appear">对手收益：0.5:0</li>
+
+</ul></li>
+<li class="fragment appear"><p>
+\(p^A\) 何时最优?
+</p>
+<p class="fragment (appear)">
+👉 让对方失去选择, 对\(\forall\hspace{0.5em}p^{B}\)
+</p>
+<aside class="notes">
+<ul>
+<li>我方的收益取决于对手的决策！</li>
+<li>对手的任何策略,收益都一样</li>
+
+</ul>
+
+</aside></li>
+
+</ul>
+</section>
+<section id="slide-org6c8b6b5" data-transition="'none'">
+<h4 id="org6c8b6b5">混合策略</h4>
+
+<div id="org78fbbb1" class="figure">
+<p><img src="./img/drl101/mixed1.png" title="混合策略" width="300px" align="center" />
+</p>
+</div>
+
+<ul>
+<li class="fragment appear">我方策略:\(\color{red}{PO^{f}}=\color{blue}{PO^{q}}\) 👉 \(p^{A}=\frac{2}{1+2}=\frac{2}{3}\)
+<ul>
+<li class="fragment appear">收益？</li>
+<li class="fragment appear">均衡策略: 我方收益 \(-\frac{2}{3}\times p^{B} + \frac{4}{3}\times (1-p^{B})\)</li>
+<li class="fragment appear">\(p^{A}=1\)?</li>
+
+</ul></li>
+<li class="fragment appear"><p>
+理性决策优于非理性决策
+</p>
+<aside class="notes">
+<ul>
+<li>A 非理性决策 (p=1,0.5) vs B 理性决策 (p=2/3)</li>
+
+</ul>
+
+</aside></li>
+<li class="fragment appear"><p>
+混合策略的均衡是对双方最合理的最优状态
+</p>
+<aside class="notes">
+<ul>
+<li>混合策略的均衡：任何一方偏离均衡状态，而另一方保持理性决策，都会导致偏离方收益受损，所以没有任何一方愿意偏离均衡状态下的最优决策</li>
+
+</ul>
+
+</aside></li>
+<li class="fragment appear"><p>
+随机策略优于确定策略
+</p>
+<aside class="notes">
+<p>
+-随机是应对复杂现象的高效模型
+</p>
+<ul>
+<li>如何从随机策略中选择一个最优的策略? 对信号的概率分布进行运算,找出符合目标的最优策略.</li>
+
+</ul>
+
+</aside></li>
+
+</ul>
+</section>
+<section id="slide-orgf8757e9" data-transition="'none-in cube-out'">
+<h4 id="orgf8757e9">混合策略</h4>
+
+<div id="org50938ae" class="figure">
+<p><img src="./img/drl101/mixed.png" title="混合策略 width 300px" align="center" />
+</p>
+</div>
+
+<ul>
+<li>多轮持续对决？</li>
+
+</ul>
+</section>
+<section id="slide-org0797130">
+<h3 id="org0797130">1.4 在时间的长河里</h3>
+<div class="outline-text-3" id="text-org0797130">
+</div>
+</section>
+<section id="slide-orgbcab473" data-transition="'cube-in none-out'">
+<h4 id="orgbcab473">决策树</h4>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<p>
+<div class="r-stack">
+ <img class="fragment fade-out data-fragment-index="0" src="img/drl101/mixed1.png" />
+ <img class="fragment current-visible" data-fragment-index="0" src="img/drl101/flat_tree.png" />
+ <img class="fragment" data-fragment-index="1" src="img/drl101/flat_tree2.png" />
+</div>
+</p>
+</div>
+<div class="one_of_2_columns">
+<p>
+<div class="r-stack">
+ <img class="fragment fade-out data-fragment-index="2" src="img/drl101/tree.png" />
+ <img class="fragment" data-fragment-index="2" src="img/drl101/flat_tree3.png" />
+</div>
+</p>
+</div>
+</div>
+
+<aside class="notes">
+<ul>
+<li>决策树对决策理论（强化学习）, 几乎是唯一的模型</li>
+<li>对理解时间序列至关重要</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-org732d9ca" data-transition="'none-in cube-out'">
+<h3 id="org732d9ca">1.5 持续对决</h3>
+<p>
+<div class="r-stack">
+        <img class="fragment fade-out data-fragment-index="0" src="img/drl101/tree21.png" />
+        <img class="fragment current-visible" data-fragment-index="0" src="img/drl101/tree3.png" />
+        <img class="fragment" data-fragment-index="1" src="img/drl101/tree4.png" />
+</div>
+</p>
+
+<ul>
+<li class="fragment appear">逐级倒推: 从最后一轮开始分析</li>
+<li class="fragment appear">攻击发生概率 \(\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0, \textrm{if}\quad v: 2\searrow 0\)</li>
+<li class="fragment appear">价值函数：当前决策和状态的长期价值</li>
+
+</ul>
+
+<aside class="notes">
+<ul>
+<li>时间序列的复杂度指数数增加！</li>
+<li>生物演化也是树状</li>
+<li>因果序列的分歧演化</li>
+
+</ul>
+
+</aside>
+
+<aside class="notes">
+<ul>
+<li>最优决策需要考虑短期作用的长期后果
+<ul>
+<li>存在一个基本规律(类似物理学的基本定律)，可以很容易地评估短期作用的长期后果
+<ul>
+<li>自然界，经验积累</li>
+<li>最优控制，强化学习</li>
+
+</ul></li>
+
+</ul></li>
+<li>如何评估这个后果？
+<ul>
+<li>经验积累相似的方式，积累“价值函数”</li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org88f3ba1">
+<h2 id="org88f3ba1">最优控制，强化学习与机器人</h2>
+<div class="outline-text-2" id="text-org88f3ba1">
+</div>
+</section>
+<section id="slide-orgad87425">
+<h3 id="orgad87425">2.1 回顾</h3>
+<div class="outline-text-3" id="text-orgad87425">
+</div>
+</section>
+<section id="slide-org7ed0b39">
+<h4 id="org7ed0b39">十年前</h4>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<iframe title="PR2" width="600" height="450" src="https://www.youtube.com/embed/gYqfa-YtvW4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+<figcaption>PR2</figcatption>
+</div>
+<div class="one_of_2_columns">
+<iframe title="ASIMO" width="600" height="450" src="https://www.youtube.com/embed/xjXUyLAHR1E" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+<figcaption>ASIMO</figcatption>
+</div>
+</div>
+
+<aside class="notes">
+<ul>
+<li>PR2
+<ul>
+<li>2010年, willow garage (ROS吴恩达)</li>
+<li>执行器，传感器(深度相机,激光雷达)，本体,关节</li>
+<li>成本下降</li>
+<li>本体更仿生(更复杂)</li>
+
+</ul></li>
+<li>Asimo
+<ul>
+<li>步态控制和现在机器人的区别</li>
+<li>现在: <a href="https://www.youtube.com/watch?v=6CjxMPg0pvg">https://www.youtube.com/watch?v=6CjxMPg0pvg</a></li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-orgdd5c552">
+<h4 id="orgdd5c552">最优控制</h4>
+<iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=12m45s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+<figcaption>John Tsitsiklis(OG)</figcatption>
+<aside class="notes">
+<p>
+2019 talk
+</p>
+<ul>
+<li>控制理论早期：PID 反馈控制， 线性控制,前提是线性系统，简洁优美
+<ul>
+<li>无差别地运用到其他控制对象，导致复杂专家系统，复杂工程和系统,</li>
+<li>反馈控制理论:零极点补偿➡取消系统原有的动态,没有利用原有的系统动态</li>
+
+</ul></li>
+<li>1990s,12:45, 最优控制（近似动态规划）与强化学习
+<ul>
+<li>主要区别在于强化学习强调与环境互动，基于学习</li>
+<li>最优控制（近似动态规划, 自适应控制，鲁棒控制）强调系统辨识,模型近似</li>
+<li>浅层神经网络,没有深度学习</li>
+<li>Dimitri P. Bertsekas</li>
+
+</ul></li>
+<li>14m18s~15m57s;</li>
+<li>将会简单评论AlphaGO算法</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-orgb44cbcb">
+<h4 id="orgb44cbcb">强化学习</h4>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+<div id="orgaaf97b4" class="figure">
+<p><img src="./img/drl101/jim_fan.png" title="Year_Of_RL width 400px" align="center" />
+</p>
+</div>
+<figcaption>2025强化学习之年</figcatption>
+</div>
+<div class="one_of_2_columns">
+
+<div id="org5836aff" class="figure">
+<p><img src="./img/drl101/deepseek_r1_arxiv.png" title="R1 width 400px" align="center" />
+</p>
+</div>
+<figcaption>DeepSeek R1</figcatption>
+</div>
+</div>
+</section>
+<section id="slide-orgf4ccc84">
+<h3 id="orgf4ccc84">2.2 模型</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" class="noboldheader">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">博弈</th>
+<th scope="col" class="org-left">玩家</th>
+<th scope="col" class="org-left">收益<br>(代价)</th>
+<th scope="col" class="org-left">策略</th>
+<th scope="col" class="org-left">状态</th>
+<th scope="col" class="org-left">策略评估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"> <span class="fragment" data-fragment-index="1"><font color=darkblue>强化学习</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="1"><font color=darkblue>智能体/<br>系统</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="1"><font color=darkblue>奖励</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="1"><font color=darkblue>作用</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="1"><font color=darkblue>状态</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="1"><font color=darkblue>价值函数</font></span></td>
+</tr>
+
+<tr>
+<td class="org-left"> <span class="fragment" data-fragment-index="2"><font color=red>最优控制</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="2"><font color=red>控制器/<br>对象</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="2"><font color=red>误差</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="2"><font color=red>控制量</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="2"><font color=red>状态</font></span></td>
+<td class="org-left"> <span class="fragment" data-fragment-index="2"><font color=red>目标函数</font></span></td>
+</tr>
+</tbody>
+</table>
+
+<aside class="notes">
+<ul>
+<li>玩家：人类, vs 人类,计算机,自然/物理规律;</li>
+<li>计算机 vs. 自然/物理规律</li>
+<li>增加观测量和价值估计
+<ul>
+<li>强化学习的价值函数是通过学习得到，是系统状态和作用的函数，考虑系统方程和系统动态</li>
+<li>最优控制的目标函数是专家规则，没有考虑系统动态!</li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+
+
+<div id="orgecd76ac" class="figure">
+<p><img src="./img/drl101/rl_model.png" title="强化学习模型" width="750pix" align="center" class="fragment (appear)" />
+</p>
+</div>
+</section>
+<section id="slide-org442ef80">
+<h3 id="org442ef80">2.3 强化学习的方法</h3>
+<blockquote class="fragment (appear)">
+<p>
+分步骤解决复杂问题
+</p>
+</blockquote>
+<ul>
+<li class="fragment appear"><p>
+“如给定现在，未来与过去无关”
+</p>
+<p class="fragment (appear)">
+👉 马尔可夫决策过程
+</p></li>
+<li class="fragment appear"><p>
+复杂问题可分解为子问题
+</p>
+<p class="fragment (appear)">
+👉 动态规划
+</p></li>
+<li class="fragment appear"><p>
+从碎片化的经验中估计状态和行动价值
+</p>
+<p class="fragment (appear)">
+👉 贝尔曼方程
+</p></li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>理解概念比记住概念的名称更重要</li>
+<li>动态规划是主流的经典概念,也是最优控制的基础</li>
+<li>从a走到b的最短路径,可分两个阶段a到c,c到b:假设c到b最短,那么只要解决a到c最短这一个子问题!</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-org782a82f">
+<h4 id="org782a82f">理性决策</h4>
+<blockquote class="fragment (appear)">
+<ul>
+<li>算法是理性决策</li>
+<li>理性决策针对非理性决策是优势策略</li>
+
+</ul>
+</blockquote>
+
+<aside class="notes">
+<ul>
+<li>AlphaGo 很难战胜，人很难战胜机器：完美记忆，纯粹理性，高效执行，可复制</li>
+<li>没有目的</li>
+<li>Jeff Hinton的警告</li>
+<li>强化学习本来是人工智能领域里一个比较冷僻的方向,和最优控制最大的差异在于学习的概念.
+<ul>
+<li>为何自2016年以来越来成为人工智能，机器人的主流？&#x2013;&gt; 深度学习。</li>
+<li>两者如何结合？采样！从碎片化经验中学习。</li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-org09d4e46">
+<h3 id="org09d4e46">2.4 从碎片化经验中学习</h3>
+<div class="outline-text-3" id="text-org09d4e46">
+</div>
+</section>
+<section id="slide-orgb7a887f" data-transition="'cube-in cube-out'">
+<h4 id="orgb7a887f">随机采样</h4>
+<p>
+<div class="r-stack">
+        <img class="fragment fade-out data-fragment-index="0" src="img/drl101/tree_sample0.png" />
+        <img class="fragment current-visible" data-fragment-index="0" src="img/drl101/tree_sample.png" />
+        <img class="fragment current-visible" data-fragment-index="1" src="img/drl101/tree_sample1.png" />
+        <img class="fragment current-visible" data-fragment-index="2" src="img/drl101/tree_sample2.png" />
+        <img class="fragment" data-fragment-index="3" src="img/drl101/tree_sample3.png" />
+</div>
+</p>
+</section>
+<section id="slide-org42746e9">
+<h4 id="org42746e9">随机采样的好处</h4>
+
+<div id="org5e16b5e" class="figure">
+<p><img src="./img/drl101/tree_sample1.png" title="随机决策采样" width="500pix" align="center" />
+</p>
+</div>
+
+<ul>
+<li class="fragment appear">真实的数据
+<ul>
+<li class="fragment appear">建模的复杂度过高</li>
+
+</ul></li>
+<li class="fragment appear">复杂函数/分布：
+<ul>
+<li class="fragment appear">非线性</li>
+<li class="fragment appear">时变过程与非平稳过程</li>
+
+</ul></li>
+<li class="fragment appear">自然规律</li>
+<li class="fragment appear">处理复杂问题的高效方式</li>
+<li class="fragment appear">可以从碎片化的经验中学习</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>掷色子通常是复杂随机环境最高效的学习方式</li>
+<li>数学上的确定性问题用概率方法去求解往往有简洁高效的的方式，（组合数学）</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-org2df4ba0">
+<h3 id="org2df4ba0">2.5 模型复杂度</h3>
+<div class="outline-text-3" id="text-org2df4ba0">
+</div>
+</section>
+<section id="slide-orgcc46ffc">
+<h4 id="orgcc46ffc">AlphaGo的状态和决策树</h4>
+
+<div id="org968efe6" class="figure">
+<p><img src="./img/drl101/MCTS-in-AlphaGo.png" title="AlphaGo决策树" width="800pix" align="center" />
+</p>
+</div>
+
+<ul>
+<li class="fragment appear">价值: 可理解为胜率</li>
+
+</ul>
+</section>
+<section id="slide-orgbf4ef82">
+<h4 id="orgbf4ef82">AlphaGo的状态和决策树</h4>
+
+<div id="org5931ec1" class="figure">
+<p><img src="./img/drl101/alphago_mcts.png" title="AlphaGo决策树" width="800pix" align="center" />
+</p>
+</div>
+</section>
+<section id="slide-orge35e87b" data-background-video="./img/drl101/alphago.mp4" data-background-video-loop data-background-video-muted data-background-opacity=0.3>
+<h4 id="orge35e87b">AlphaGo的复杂度</h4>
+<ul>
+<li class="fragment appear">所有的位置（观测量） \(3^{{19}^2}\approx 1.74\times 10^{172}\), \(1.20\%\) 合法</li>
+<li class="fragment appear">平均~200步/局，不同棋局的平均数量 \(~3\times 10^{511}\)</li>
+<li class="fragment appear">理论最长步数 \(10^{48}\), 不同棋局的数量:\([10^{10^{48}},10^{10^{171}}]\)</li>
+<li class="fragment appear"><p>
+可观测宇宙的原子个数 \(10^{80}\)
+</p>
+<p class="fragment (appear)">
+👉  神经网络
+</p></li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>原子个数: 爱丁顿数</li>
+<li>从完整的部份经验中学习: 从部份棋局中学习,累积学习经验</li>
+<li>从不完整的部份经验中学习: 在线学习,不等棋局结束,边干边学</li>
+<li>已经解决，令人惊叹！
+<ul>
+<li>人类智慧和经验的总结：攻防，布局，死活，官子，联络，形势，手筋，攻防</li>
+<li>试图通过特征方法总结人类经验，完全不敌AlphaGo</li>
+
+</ul></li>
+<li>人工智能的苦涩教训</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-orgc3214f0">
+<h4 id="orgc3214f0">双足机器人的状态和复杂度</h4>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<iframe width="600" height="450" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+<figcaption>Cassie模型</figcatption>
+<aside class="notes">
+<ul>
+<li>再看一个具身智能的例子：cassie，双足机器人</li>
+<li>5m57s~6m27s, 7m08s~8:45s
+<ul>
+<li>惯性/质量矩阵正定矩阵,高复杂性</li>
+<li>系统状态与动态,策略(控制器);</li>
+<li>目标(收益,控制轨迹),策略评估,(玩家)</li>
+
+</ul></li>
+<li>复杂性
+<ul>
+<li>动力学系统, 控制量的长效影响</li>
+<li>部份可观测性/随机性</li>
+<li>非线性</li>
+<li>足式机器人:欠驱动系统,
+<ul>
+<li>有意为之,控制有难度,但是更自然,更节能,自然的步态是最优的控制方案:用尽量少的能量,经济的方式进行运动控制.(控制量影响状态量的方式!)</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+</div>
+<div class="one_of_2_columns">
+<ul>
+<li class="fragment appear"><p>
+复杂对象的控制方式:
+</p>
+<ul>
+<li class="fragment appear"><p>
+最优控制
+</p>
+<aside class="notes">
+<ul>
+<li>拉格朗日力学，力/力矩➡行动/作用action:能量（动能与势能)变化的时间积分;力/能量变化产生运动;</li>
+<li>稳态作用原理(运动遵循能量均衡状态，守恒): 任何系统动态有唯一的路径</li>
+<li>自从1990s以来, 两种方法</li>
+<li>处理复杂现象没有简单有效的魔术方法，必须要消耗计算资源，关键是如何运用：或者用于系统辨识，或者用于分步分片消化经验数据。</li>
+<li>最优控制,近似动态规划 Approximate DP：精确的环境和动力学模型,抓住主要矛盾,缺点是模型的特异性,针对特殊场景和功能(难以泛化),抗干扰能力差(不健壮)</li>
+
+</ul>
+
+</aside></li>
+
+</ul>
+<ul>
+<li class="fragment appear"><p>
+强化学习
+</p>
+<aside class="notes">
+<ul>
+<li>随机和概率模型,通过学习的方式(自然和人处理和解决问题的方式)</li>
+<li>系统状态,策略通过学习得到</li>
+<li>强化学习为何能处理复杂问题?</li>
+
+</ul>
+
+</aside></li>
+
+</ul></li>
+<li class="fragment appear"><p>
+如何学习?
+</p>
+<aside class="notes">
+<ul>
+<li>主要是深度学习的突破</li>
+<li>实现里从碎片化经验中学习复杂的系统动态</li>
+<li>评估复杂价值函数,复杂的策略!</li>
+
+</ul>
+
+</aside></li>
+
+</ul>
+</div>
+</div>
+</section>
+<section id="slide-org1a2b5d8">
+<h3 id="org1a2b5d8">2.6 机器人的机器学习</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/ZBFwe1gF0FU" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+<figcaption>谷歌机械臂农场</figcatption>
+</div>
+<div class="one_of_2_columns">
+<ul>
+<li class="fragment appear">每次演示是决策树上的一条路径</li>
+<li class="fragment appear">随机采样的数据密度</li>
+<li class="fragment appear">成功或失败的经验</li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>强化学习训练</li>
+<li>覆盖特定功能的观测数据分布</li>
+<li>成功或失败的路径</li>
+
+</ul>
+
+</aside>
+</div>
+</div>
+</section>
+<section id="slide-orgf6ce035" data-transition="'cube-in cube-cout'">
+<h4 id="orgf6ce035">仿真的作用</h4>
+<div class="gridded_frame_with_columns">
+<div class="one_of_3_columns">
+
+<div id="orgf7c4dec" class="figure">
+<p><img src="https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image16.gif" width="400pix" align="center" />
+</p>
+<p><span class="figure-number">&#22270;1&nbsp; </span>抓取</p>
+</div>
+</div>
+<div class="one_of_3_columns">
+
+<div id="org1739862" class="figure">
+<p><img src="https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image5-1.gif" title="tree" width="400pix" align="center" />
+</p>
+<p><span class="figure-number">&#22270;2&nbsp; </span>定位</p>
+</div>
+</div>
+<div class="one_of_3_columns">
+
+<div id="orgac9607c" class="figure">
+<p><img src="https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image6.gif" title="tree" width="400pix" align="center" />
+</p>
+<p><span class="figure-number">&#22270;3&nbsp; </span>操作</p>
+</div>
+</div>
+</div>
+</section>
+<section id="slide-orgad71607">
+<h4 id="orgad71607">用于训练的仿真数据</h4>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/OAZrBYCLnaA" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+<figcaption>NVidia Isaac Sim</figcatption>
+<aside class="notes">
+<ul>
+<li>15:24 ~ 16:57</li>
+<li>ACRONYM Nvidia FLEX</li>
+<li>想象一下用模型方式来描述</li>
+<li>应用工程师的技能要求：可能不需要编程</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-org56f0fd8" data-background-video="https://eth-ait.github.io/graspxl/large2.mp4" data-background-video-loop data-background-video-muted data-background-opacity=0.3>
+<h4 id="org56f0fd8">机器人学习的算法</h4>
+<ul>
+<li class="fragment appear">数据
+<ul>
+<li class="fragment appear">来源:在线/离线/(仿真)</li>
+<li class="fragment appear">预训练(基础模型GPT)</li>
+<li class="fragment appear">数据范式(训练规划/数据/多样性构造)</li>
+
+</ul></li>
+<li class="fragment appear">学习模型
+<ul>
+<li class="fragment appear">鲁棒性</li>
+<li class="fragment appear">多样性</li>
+
+</ul></li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>学习模型:代表学习,神经网络</li>
+<li>数据非常重要
+<ul>
+<li>在线/离线</li>
+<li>预训练(基础模型GPT)
+-基础模型(常识和基础推理能力)，跨域学习（自动驾驶经验有助于人形机器人的性能）</li>
+<li>数据多样化非常重要,多形态的机器人数据更有意义:可训练同一个模型,平均性能改善50%以上</li>
+
+</ul></li>
+<li>高效学习模型,能学习复杂行为模式(多模态)</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-org760882a">
+<h3 id="org760882a">2.7 理解AlphaGo</h3>
+<div class="outline-text-3" id="text-org760882a">
+</div>
+</section>
+<section id="slide-orgfb1eed6" data-transition="'cube-in none-out'">
+<h4 id="orgfb1eed6">AlphaGo系统结构</h4>
+
+<div id="orge3e8dd5" class="figure">
+<p><img src="./img/drl101/alphago_nn.png" title="AlphaGo神经网络" width="800pix" align="center" />
+</p>
+</div>
+
+<ul>
+<li class="fragment appear">碎片化经验学习
+<ul>
+<li class="fragment appear">部分经验累积 👉 神经网络</li>
+<li class="fragment appear">不完整经验累积 👉 在线学习</li>
+
+</ul></li>
+<li class="fragment appear">随机和概率是应对复杂现象的有效模型
+<ul>
+<li class="fragment appear">价值网络: 可理解为简单的胜率查找表</li>
+
+</ul></li>
+
+</ul>
+<aside class="notes">
+<ul>
+<li>可以下完一局学一局</li>
+<li>可以边下边学(时序差分学习)</li>
+<li>决策网络，</li>
+<li>围棋复杂度极高,但是确定性游戏</li>
+
+</ul>
+
+</aside>
+</section>
+<section id="slide-org33117aa" data-transition="'none-in cube-out'">
+<h4 id="org33117aa">最优策略</h4>
+
+<div id="org003d6e9" class="figure">
+<p><img src="./img/drl101/alphago_nn.png" title="AlphaGo神经网络" width="800pix" align="center" />
+</p>
+</div>
+
+<ul>
+<li class="fragment appear">均衡策略
+<ul>
+<li class="fragment appear">混合策略的均衡是对双方最合理的最优状态</li>
+<li class="fragment appear">理性决策优于非理性决策</li>
+
+</ul></li>
+<li class="fragment appear">自我训练/自我学习
+<ul>
+<li class="fragment appear">不断提升水平</li>
+
+</ul></li>
+
+</ul>
+<blockquote class="fragment (appear)">
+<p>
+→ 均衡状态(最优策略)
+</p>
+</blockquote>
+
+<aside class="notes">
+<ul>
+<li>均衡策略为何是最优的策略?
+<ul>
+<li>混合策略的均衡：任何一方偏离均衡状态，而另一方保持理性决策，都会导致偏离方收益受损，所以没有任何一方愿意偏离均衡状态下的最优决策</li>
+<li>直觉：先立于不败之地(防御)，才能战胜对手</li>
+
+</ul></li>
+<li>A 非理性决策(人类棋手) vs B 理性决策(AlphaGo)</li>
+<li>纳什均衡: 自我博弈，我的决策必须让对手的收益在任何决策下是一样的
+<ul>
+<li>自我训练/自我学习:左右互搏</li>
+<li>自我训练为何能提升水平
+<ul>
+<li>数学上:在合理假设下（收益大于代价\(v>c\),理性决策：平衡状态对应收益的一阶导数，平衡状态的二阶导数&lt;0</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+</section>
+</section>
+<section data-transition="'cube-in none-out'">
+<section id="slide-org5a931ee" data-transition="'cube-in none-out'">
+<h2 id="org5a931ee">总结</h2>
+<ul>
+<li data-fragment-index="1" class="fragment fade-in">最优策略
+<ul>
+<li>最优决策必须要考虑对手的决策</li>
+
+</ul></li>
+<li data-fragment-index="2" class="fragment fade-in">机器学习
+<ul>
+<li><span class="r-stack">
+<span class="fragment fade-out"; data-fragment-index="4">随机采样是应对复杂问题的高效方法</span>
+<span class="fragment fade-in"; style="color:#FF0000; font-weight:bold"; data-fragment-index="4">随机采样是应对复杂问题的高效方法</span>
+</span></li>
+
+</ul></li>
+<li data-fragment-index="3" class="fragment fade-in">神经网络
+<ul>
+<li>随机和概率是应对复杂现象的有效模型</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/dist/reveal.js"></script>
+<script src="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/plugin/highlight/highlight.js"></script>
+<script src="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/plugin/notes/notes.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.01,
+minScale: 0.01,
+maxScale: 2.50,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealHighlight, RevealNotes ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
