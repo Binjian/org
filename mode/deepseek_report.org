@@ -99,6 +99,8 @@
   - MoE:(1/256)/每层
   - 数据路由均衡: _无均衡损失负载均衡_ (MoE近似分偏置参数法) + _补充序列辅助损失_
   - 多令牌预测(*MTP*)
+  - 低精度训练（FP8）
+  - 算法与硬件驱动协同设计(SM数据流驱动PTX )
 ** DeepseekMath~R1 Zero
 #+ATTR_REVEAL: :frag (appear)
 - DeepseekMath
