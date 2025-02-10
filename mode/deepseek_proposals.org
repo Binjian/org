@@ -1,4 +1,4 @@
-#+title: DeepSeek调研报告
+#+title: DeepSeek调研报告及应用展望
 #+AUTHOR: 忻斌健
 #+CREATOR: 忻斌健
 #+DATE:<2025-01-02 周四>
@@ -27,7 +27,7 @@
 #+REVEAL_HLEVEL: 1
 #+REVEAL_EXTRA_CSS: ./templates/drl101.css
 #+REVEAL_PLUGINS: (highlight notes)
-#+REVEAL_TITLE_SLIDE: ./templates/title_deepseek.html
+#+REVEAL_TITLE_SLIDE: ./templates/title_deepseek_proposals.html
 #+REVEAL_TITLE_SLIDE_BACKGROUND: ./img/deepseek/ds_logo.png
 #+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE: 1600px
 #+REVEAL_TITLE_SLIDE_BACKGROUND_OPACITY: 0.5
