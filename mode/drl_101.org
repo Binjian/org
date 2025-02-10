@@ -21,6 +21,7 @@
 #+OPTIONS: reveal_center:t reveal_progress:t reveal_history:t reveal_control:t
 #+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
 #+OPTIONS: reveal_width:1200 reveal_height:800
+#+REVEAL_MATHJAX_URL: https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.js
 #+OPTIONS: toc:1
 #+REVEAL_INIT_OPTIONS: transition: 'cube'
 #+REVEAL_MARGIN: 0.005
@@ -1704,33 +1705,18 @@ digraph G {
 #+END_NOTES
 
 
-@@html: <section data-background-video="https://eth-ait.github.io/graspxl/large2.mp4"
-          data-background-video-loop data-background-video-muted>@@
-@@html:</section>@@
 *** 机器人学习的算法
 
-#+REVEAL_HTML: <div class="gridded_frame_with_columns">
-     #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_HTML: :alt  :title  :width 584pix  :align center
-        #+attr_org: :width 400px :align left
-        #+CAPTION[robot leanring]: robot learning
-        #+NAME: pick
-        #+REVEAL_HTML: <iframe width="584" height="355" src="https://eth-ait.github.io/graspxl/large2.mp4?autoplay=1&loop=1" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
-        #+REVEAL_HTML: <figcaption>ETH GraspXL 58->500K</figcatption>
-     #+REVEAL_HTML: </div>
-     #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_REVEAL: :frag (appear)
-        - 数据
-          #+ATTR_REVEAL: :frag (appear)
-          - 来源:在线/离线/(仿真)
-          - 预训练(基础模型GPT)
-          - 数据范式(训练规划/数据/多样性构造)
-        - 学习模型
-          #+ATTR_REVEAL: :frag (appear)
-          - 鲁棒性
-          - 多样性
-     #+REVEAL_HTML: </div>
-#+REVEAL_HTML: </div>
+#+ATTR_REVEAL: :frag (appear)
+- 数据
+  #+ATTR_REVEAL: :frag (appear)
+  - 来源:在线/离线/(仿真)
+  - 预训练(基础模型GPT)
+  - 数据范式(训练规划/数据/多样性构造)
+- 学习模型
+  #+ATTR_REVEAL: :frag (appear)
+  - 鲁棒性
+  - 多样性
 #+BEGIN_NOTES
   - 学习模型:代表学习,神经网络
   - 数据非常重要
