@@ -98,21 +98,28 @@
     - 蒸馏:基于QWen2.5/Llama3 (优于纯RL)，
 #+end_notes
 
-** R1模型架构和处理流水
+** R1模型架构
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+ATTR_HTML: :alt  :title  :width 600pix  :align center
         #+attr_org: :width 600px :align left
-        #+NAME: pick
+        #+CAPTION: R1网络模型
+        #+NAME: model
         [[./img/deepseek/deepseek_v3.png]]
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_HTML: :alt  :title tree :width 560pix  :align center
+        #+ATTR_HTML: :alt  :title tree :width 600pix  :align center
         #+attr_org: :width 600px :align left
-        #+NAME: position
-        [[./img/deepseek/deepseek_flowchart.png]]
+        #+CAPTION: 强化学习训练引发推理能力提升
+        #+NAME: RL elicits reasoning!
+        [[./img/deepseek/reasoning_increase.png]]
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
+** R1训练流水
+#+ATTR_HTML: :alt  :title tree :width 560pix  :align center
+#+attr_org: :width 800px :align left
+#+NAME: position
+[[./img/deepseek/deepseek_flowchart.png]]
 
 ** 主要特点
 #+ATTR_REVEAL: :frag (appear)
@@ -144,12 +151,12 @@
 
 ** 幻方量化(Deepseek)发展
 #+ATTR_REVEAL: :frag (appear)
-- 2020 2亿人民币超算一代
-- 2021 10亿人民币超算二代（10000 A100) cf 西蒙斯文艺复兴科技
-- 2021 基金产品亏损10%
+- 2020 2亿人民币超算一代 cf 文艺复兴科技
+- 2021 10亿人民币超算二代(10000 A100),基金产品亏损10%
 - 2022 继续收缩基金业务
-- 2023 转向通用人工智能研究，用于股票量化交易-->Deepseek
-- 2024 2月国家打击量化基金扰乱股市，7月声明自辩
+- 2023 转向通用人工智能研究，用于股票量化交易, 成立Deepseek
+- 2024 1月DeepSeekLLM,DeepSeekMoE开源
+- 2024 2月国家打击量化基金扰乱股市,7月发声明自辩
 - 2024 10月因轧空关闭中性基金产品
 - 2025 1月Deepseek R1开源
 * 大模型应用
@@ -163,7 +170,7 @@
   - 机械臂操作:模仿学习
   - 双足/四足机器人行走控制:强化学习
 
-** R1推理模型h和制造与工业自动化:
+** R1推理模型和制造与工业自动化:
 #+begin_quote
 添加图像编解码网络
 #+end_quote
