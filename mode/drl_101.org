@@ -1569,6 +1569,24 @@ digraph G {
 - 掷色子通常是复杂随机环境最高效的学习方式
 - 数学上的确定性问题用概率方法去求解往往有简洁高效的的方式，（组合数学）
 #+END_NOTES
+*** 最优控制 vs. 强化学习
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_REVEAL: :frag (appear)
+        #+ATTR_HTML: :alt  :title Optimal Control :width 600px  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION: 最优控制
+        [[./img/drl101/hiking.jpg]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_REVEAL: :frag (appear)
+        #+ATTR_HTML: :alt  :title Reinforcement Learning :width 600px  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION: 强化学习
+        [[./img/drl101/surfing.jpg]]
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 
 ** 2.5 模型复杂度
 
