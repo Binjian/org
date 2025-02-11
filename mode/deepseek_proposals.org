@@ -60,8 +60,7 @@
   #+ATTR_REVEAL: :frag (appear)
   - 让系统通过数据和计算自动发现问题的最佳解
   - 非在细节上进行过多手工调优
-  - 解除模型学习的限制
-- 数据驱动
+  - 数据驱动,解除模型学习的限制
    #+begin_notes
    - 规模化能力、
      - 短期内利用人工经验可能有帮助，
@@ -76,11 +75,11 @@
 #+ATTR_REVEAL: :frag (appear)
 - 开源最前沿模型(V0)
   - 训练(_SFT,DPO,Flash Attention_, bf16+fp32, _vLLM_, BBPE, _RoPE_, _MTP_, ZeRO)
-  - 网络基本架构 _LLaMA_ + _RMSNorm_ + _SwiGLU_, _GQA_
+  - 网络基本架构  _LLaMA_ (变形金刚模型) + _RMSNorm_ + _SwiGLU_, _GQA_
 - 提取高质量数据集(V0~R1)
   - 高质量数据集(2T), DeepSeekMath,CoT,代码
 - *增量式创新* (V1~Zero)
-  - 细颗粒力度混合专家架构* (MoE): 2+64/4+128/1+256
+  - 细颗粒力度混合专家架构 (MoE): 2+64/4+128/1+256
   - 多头隐注意力 (MLA)
   - 数据路由均衡 (端到端训练)
 - 训练方法上的创新(R1)
@@ -99,12 +98,29 @@
     - 蒸馏:基于QWen2.5/Llama3 (优于纯RL)，
 #+end_notes
 
+** R1模型架构和处理流水
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title  :width 600pix  :align center
+        #+attr_org: :width 600px :align left
+        #+NAME: pick
+        [[./img/deepseek/deepseek_v3.png]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title tree :width 560pix  :align center
+        #+attr_org: :width 600px :align left
+        #+NAME: position
+        [[./img/deepseek/deepseek_flowchart.png]]
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
 ** 主要特点
 #+ATTR_REVEAL: :frag (appear)
 - 开源大模型(权重开放，方法开放，非常宽松的MIT许可)
-  - 已经被多次复现
+  - 容易复制，已经被多次复现(Open R1)改进(S1)
+  - 非视觉多模态模型→ DreamCraft3D, Janus Pro (79.2%@MMBench, 0.8@t2i)
 - 较强的推理能力
-  - 来自数学知识和代码训练样本
+  - 来自强化学习训练和推理数据训练样本
   - 大模型的推理能力可蒸馏到小模型
 - 高效(较低成本)
   - 架构：训练和推理稀疏化(MoE) + 内嵌瓶颈层(MLA) + (MTP）
@@ -113,26 +129,93 @@
 #+begin_notes
   - 国内其他大模型公司:科大讯飞，腾讯云，百度，阿里千问,华为盘古：模型和应用？
   - 24年底，六小龙大模型公司的减法： 商汤日日新,零一万物,百川,智谱GLM,月之暗面Kimi,MiniMax海螺AI？
+  - Demis Hassabis: 过度炒作，没有科学上的进步，已知技术，基于谷歌，Meta和开源的成果）
 #+end_notes
-** 启示
+* 启示
 #+ATTR_REVEAL: :frag (appear)
-- 简单架构
-  - 通用人工智能
+- 开发模式
+  - 采用通用基础大模型
   - SoTA+递增式改进+实验验证
-- 提高学习的效率,重点在数据收集和模型适配训练
-  - 数据
-  - 架构（MLA，编码容量瓶颈)
-  - 通信（适配大数据动态）
-- 推理能力可以蒸馏到较小模型（大模型的推理能力是关键）
-* 应用
+- 提高模型性能的方法
+  - 模型和驱动架构
+  - 高质量数据集
+  - 推理能力可以蒸馏到较小模型
+- 幻方量化:量化基金以AI为核心的量化基金
+
+** 幻方量化(Deepseek)发展
 #+ATTR_REVEAL: :frag (appear)
-- 制造与工业自动化: R1 模型可用于 自动化装配线 和 质量检测。
-  - 精准装配：R1 可以帮助机器人准确地执行装配任务，减少错误和不合格品。
-  - 质量控制：通过视觉系统和传感器数据，R1 能够实时检测产品缺陷，确保生产质量。
-- 数据处理
-  - OA助手
-  - 编程
-- 机器人
-  - X1
-  - 焊接机器人
-  - 移动规划
+- 2020 2亿人民币超算一代
+- 2021 10亿人民币超算二代（10000 A100) cf 西蒙斯文艺复兴科技
+- 2021 基金产品亏损10%
+- 2022 继续收缩基金业务
+- 2023 转向通用人工智能研究，用于股票量化交易-->Deepseek
+- 2024 2月国家打击量化基金扰乱股市，7月声明自辩
+- 2024 10月因轧空关闭中性基金产品
+- 2025 1月Deepseek R1开源
+* 大模型应用
+#+ATTR_REVEAL: :frag (appear)
+- 汽车行业端到端大模型
+  - 车机应用:LLM,对话，感知
+  - 感知大模型:车道,行人,障碍物识别
+  - 车辆控制(VLA,生成式模型):世界大模型
+- 机器人行业
+  - 规模化控制模型(VLA,生成式扩散模型,块变形金刚模型)
+  - 机械臂操作:模仿学习
+  - 双足/四足机器人行走控制:强化学习
+
+** R1推理模型h和制造与工业自动化:
+#+begin_quote
+添加图像编解码网络
+#+end_quote
+#+ATTR_REVEAL: :frag (appear)
+- 工业自动化
+  - 可用于自动化装配线:可以帮助机器人准确地执行装配任务
+  - 质量检测:减少错误和不合格品
+- 质量控制
+  - 通过视觉系实时检测产品缺陷
+  - 建立故障模型预测
+  - 预测性维护(匹配时间序列数据)
+- 移动机器人
+  - 复杂任务调度
+  - 路径规划
+** 数据处理
+#+ATTR_REVEAL: :frag (appear)
+- OA助手
+  - 办公文本生成
+  - 表格数据分析和报告生成
+- 编程助手
+  - 专用领域编程模型
+  - 架构辅助设计
+  - 文档和测试自动化
+** 机器人
+#+begin_quote
+结合R1微调开源VLA基础模型
+#+end_quote
+#+ATTR_REVEAL: :frag (appear)
+- X1
+  - 敏捷步态控制
+  - 复杂机械臂操作
+- 焊接机器人
+  - 复杂路径规划与控制
+  - 零示教自适应多任务控制
+- 移动机器人规划
+  - 路径规划
+** 开发工作
+#+ATTR_REVEAL: :frag (appear)
+- 服务部署
+  - 企业内网后端服务
+  - 前端界面开发和集成
+- 提示工程
+  - 系统化整理提示模板
+  - 监控，维护和更新
+  - 使用培训
+*** 不同应用域的适配开发模式
+#+ATTR_REVEAL: :frag (appear)
+- 数据
+  - 收集，清洗，
+  - 数据集维护和更新
+- 模型微调
+  - 应用域滚动训练
+  - 超参调试
+  - 架构调整
+  - 训练调度测试

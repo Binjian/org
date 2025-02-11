@@ -60,6 +60,7 @@
   - 让系统通过数据和计算自动发现问题的最佳解
   - 比人类预先嵌入的智慧更为持久且具适应性
   - 高质量数据非常重要
+  - 解除模型学习的限制
 
    #+begin_notes
    - 对比专家系统：需要工程团队维护规则算法，随着系统复杂度增加（必然性）不可维护
@@ -100,7 +101,7 @@
   - 数据路由均衡: _无均衡损失负载均衡_ (MoE近似分偏置参数法) + _补充序列辅助损失_
   - 多令牌预测(*MTP*)
   - 低精度训练（FP8）
-  - 算法与硬件驱动协同设计(SM数据流驱动PTX )
+  - 算法与硬件驱动协同设计:匹配通信约束跨节点数据流(PTX)，内存优化，低精度浮点数计算
 ** DeepseekMath~R1 Zero
 #+ATTR_REVEAL: :frag (appear)
 - DeepseekMath
@@ -117,6 +118,25 @@
 - 分阶段训练
 - 微调训练与后训练，附加强化学习训练
 - 蒸馏:基于QWen2.5/Llama3 (优于纯RL)，
+
+** R1模型架构和处理流水
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title  :width 600pix  :align center
+        #+attr_org: :width 600px :align left
+        #+CAPTION: 模型
+        #+NAME: pick
+        [[./img/deepseek/deepseek_v3.png]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title tree :width 500pix  :align center
+        #+attr_org: :width 600px :align left
+        #+CAPTION: 流水
+        #+NAME: position
+        [[./img/deepseek/deepseek_flowchart.png]]
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 * 主要特点
 #+ATTR_REVEAL: :frag (appear)
 - 开源大模型(权重开放，方法开放，非常宽松的MIT许可)
