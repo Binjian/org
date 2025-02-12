@@ -17,6 +17,7 @@
 #+DOWNLOAD_IMAGE_DIR:  '~/.org.d/mode/img'
 #+OPTIONS: reveal_center:t reveal_progress:t reveal_history:t reveal_control:t
 #+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+REVEAL_MATHJAX_URL: https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.js
 #+OPTIONS: reveal_width:1280 reveal_height:800
 #+OPTIONS: toc:1
 #+REVEAL_INIT_OPTIONS: transition: 'cube'
@@ -74,20 +75,22 @@
 * 模型的演变
 #+ATTR_REVEAL: :frag (appear)
 - 开源最前沿模型(V0)
-  - 训练(_SFT,DPO,Flash Attention_, bf16+fp32, _vLLM_, BBPE, _RoPE_, _MTP_, ZeRO)
-  - 网络基本架构  _LLaMA_ (变形金刚模型) + _RMSNorm_ + _SwiGLU_, _GQA_
-- 提取高质量数据集(V0~R1)
+  - 网络基本架构
+    - _LLaMA_ (变形金刚模型)+ _RMSNorm+SwiGLU_, _GQA_, _RoPE_
+  - 训练
+    - _SFT,DPO,Flash Attention_,bf16+fp32, _vLLM_,BBPE, _MTP_,ZeRO
+- 提取高质量数据集(V0~$\mathcal{R}1$)
   - 高质量数据集(2T), DeepSeekMath,CoT,代码
-- *增量式创新* (V1~Zero)
-  - 细颗粒力度混合专家架构 (MoE): 2+64/4+128/1+256
-  - 多头隐注意力 (MLA)
-  - 数据路由均衡 (端到端训练)
-- 训练方法上的创新(R1)
-  - 纯强化学习训练: *GRPO*
+- *增量式创新* (V1~$\mathcal{R}1_{0}$)
+  - 细颗粒力度混合专家架构 (*DeepseekMoE*): 2+64/4+128/1+256
+  - 多头隐注意力 (*MLA*)
+  - *数据路由均衡* (端到端训练)
+- 训练方法上的创新($\mathcal{R}1$)
+  - *纯强化学习训练*: *GRPO*
 
 #+begin_notes
 - 历史
-  - LLM->MoE->V2->V3->Math->Zero->R1
+  - LLM->MoE->V2->V3->Math->Zero->$\mathcal{R}1$
   - 2024.01~2025.01
   - _GPT4时代还没有_
   - Mixtral 0/8 ➡GPT4➡DeepSeekMoE➡V3
@@ -98,12 +101,12 @@
     - 蒸馏:基于QWen2.5/Llama3 (优于纯RL)，
 #+end_notes
 
-** R1模型架构
+** $\mathcal{R}1$($\mathcal{R}1_0$)模型架构
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+ATTR_HTML: :alt  :title  :width 600pix  :align center
         #+attr_org: :width 600px :align left
-        #+CAPTION: R1网络模型
+        #+CAPTION: $\mathcal{R}1_0$ 网络模型
         #+NAME: model
         [[./img/deepseek/deepseek_v3.png]]
      #+REVEAL_HTML: </div>
@@ -115,16 +118,16 @@
         [[./img/deepseek/reasoning_increase.png]]
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
-** R1训练流水
-#+ATTR_HTML: :alt  :title tree :width 560pix  :align center
+** $\mathcal{R}1$ 训练流水
+#+ATTR_HTML: :alt  :title tree :width 1000pix  :align center
 #+attr_org: :width 800px :align left
 #+NAME: position
-[[./img/deepseek/deepseek_flowchart.png]]
+[[./img/deepseek/the-real-deepseek-r1-schematic-v0.gif]]
 
 ** 主要特点
 #+ATTR_REVEAL: :frag (appear)
 - 开源大模型(权重开放，方法开放，非常宽松的MIT许可)
-  - 容易复制，已经被多次复现(Open R1)改进(S1)
+  - 容易复制，已经被多次复现(Open$\mathcal{R}1$)改进(S1)
   - 非视觉多模态模型→ DreamCraft3D, Janus Pro (79.2%@MMBench, 0.8@t2i)
 - 较强的推理能力
   - 来自强化学习训练和推理数据训练样本
@@ -149,16 +152,20 @@
   - 推理能力可以蒸馏到较小模型
 - 幻方量化:量化基金以AI为核心的量化基金
 
-** 幻方量化(Deepseek)发展
+** 幻方量化(High-Flyer)发展
 #+ATTR_REVEAL: :frag (appear)
-- 2020 2亿人民币超算一代 cf 文艺复兴科技
-- 2021 10亿人民币超算二代(10000 A100),基金产品亏损10%
-- 2022 继续收缩基金业务
-- 2023 转向通用人工智能研究，用于股票量化交易, 成立Deepseek
+- 2020 2亿人民币超算一代
+  - 参照美国“文艺复兴科技”
+- 2021 10亿人民币超算二代(10000 A100)
+  - 旗下100支基金产品亏损超10%
+  - 总体回报率20%~50%
+- 2022 建议客户回撤资金
+- 2023 4月成立Deepseek,专注通用人工智能研究
 - 2024 1月DeepSeekLLM,DeepSeekMoE开源
-- 2024 2月国家打击量化基金扰乱股市,7月发声明自辩
+- 2024 2月国家打击量化基金扰乱股市
+  - 业绩落后综合指数4%
 - 2024 10月因轧空关闭中性基金产品
-- 2025 1月Deepseek R1开源
+- 2025 1月Deepseek $\mathcal{R}1$ 开源
 * 大模型应用
 #+ATTR_REVEAL: :frag (appear)
 - 汽车行业端到端大模型
@@ -170,7 +177,7 @@
   - 机械臂操作:模仿学习
   - 双足/四足机器人行走控制:强化学习
 
-** R1推理模型和制造与工业自动化:
+** $\mathcal{R}1$ 推理模型和制造与工业自动化:
 #+begin_quote
 添加图像编解码网络
 #+end_quote
@@ -196,7 +203,7 @@
   - 文档和测试自动化
 ** 机器人
 #+begin_quote
-结合R1微调开源VLA基础模型
+结合$\mathcal{R}1$ 微调开源VLA基础模型
 #+end_quote
 #+ATTR_REVEAL: :frag (appear)
 - X1
