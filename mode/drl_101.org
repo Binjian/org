@@ -20,8 +20,8 @@
 #+DOWNLOAD_IMAGE_DIR:  '~/.org.d/mode/img'
 #+OPTIONS: reveal_center:t reveal_progress:t reveal_history:t reveal_control:t
 #+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
-#+OPTIONS: reveal_width:1200 reveal_height:800
 #+REVEAL_MATHJAX_URL: https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.js
+#+OPTIONS: reveal_width:1200 reveal_height:800
 #+OPTIONS: toc:1
 #+REVEAL_INIT_OPTIONS: transition: 'cube'
 #+REVEAL_MARGIN: 0.005
@@ -84,7 +84,7 @@
 :END:
 
 @@html:<div class="r-stack">@@
-        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/dominated_fight.png" />@@
+        @@html:<img class="fragment fade-out" data-fragment-index="0" src="img/drl101/dominated_fight.png" />@@
         @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/dominated_fight0.png" />@@
         @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/dominated_fight1.png" />@@
         @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/dominated_fight2.png" />@@
@@ -1573,18 +1573,22 @@ digraph G {
 
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_REVEAL: :frag (appear)
-        #+ATTR_HTML: :alt  :title Optimal Control :width 600px  :align center
-        #+attr_org: :width 400px :align left
-        #+CAPTION: 最优控制
-        [[./img/drl101/hiking.jpg]]
+     @@html:<div class="r-stack">@@
+        @@html:<img class="fragment" data-fragment-index="0" src="img/drl101/hiking.jpg" height="400px"/>@@
+     @@html:</div>@@
+     @@html:<div class="r-stack">@@
+        @@html:<div class="centered"><span class="fragment" data-fragment-index="0">@@最优控制@@html:</span></div>@@
+     @@html:</div>@@
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_REVEAL: :frag (appear)
-        #+ATTR_HTML: :alt  :title Reinforcement Learning :width 600px  :align center
-        #+attr_org: :width 400px :align left
-        #+CAPTION: 强化学习
-        [[./img/drl101/surfing.jpg]]
+     @@html:<div class="r-stack">@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/surfing.jpg" height="400px"/>@@
+        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/skateboarding.jpg" height="400px"/>@@
+     @@html:</div>@@
+     @@html:<div class="r-stack">@@
+        @@html:<div class="centered"><span class="fragment current-visible" data-fragment-index="1">@@强化学习@@html:</span></div>@@
+        @@html:<div class="centered"><span class="fragment" data-fragment-index="2">@@机器人强化学习@@html:</span></div>@@
+     @@html:</div>@@
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
