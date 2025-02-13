@@ -9,7 +9,7 @@
 #+LATEX_HEADER: \usepackage{svg}
 #+LATEX_HEADER: \usepackage{tikz}
 #+LATEX_HEADER: \usetikzlibrary{positioning,shapes.symbols, calc}
-#+LATEX_HEADER: \usepackage{tikzmark}
+# #+LATEX_HEADER: \usepackage{tikzmark}
 #+LANGUAGE: zh-CN
 #+OPTIONS: tex:t
 #+OPTIONS: ^:{}
