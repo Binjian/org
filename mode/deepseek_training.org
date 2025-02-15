@@ -71,7 +71,7 @@
 - 学习算法的优势(规模化能力)
   #+ATTR_REVEAL: :frag (appear)
   - 专门设计的系统不利于规模化部署
-  - 长期来看依赖计算和数据得来的策略更加稳健和高效 b
+  - 长期来看依赖计算和数据得来的策略更加稳健和高效
   - 通用算法能随着算力增加而不断提升表现
 - 自动发现的重要性
   #+ATTR_REVEAL: :frag (appear)
@@ -89,7 +89,7 @@
    - 数据驱动：高质量数据非常重要
    #+end_notes
 ** $\mathcal{R}1$ 的认知模型
-#+ATTR_HTML: :alt  :title 技术进步 width 300px  :align center
+#+ATTR_HTML: :alt  :title 技术进步 :width 600px  :align center
 #+attr_org: :width 300px :align left
 [[./img/deepseek/autoregressive.png]]
 
