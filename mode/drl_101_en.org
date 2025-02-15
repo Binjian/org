@@ -1,0 +1,656 @@
+:PROPERTIES:
+:ID:       a52aa49d-d9d0-4b3f-ba2b-d5eced50e7c6
+:END:
+#+title: Game Theory, Optimal Control, and Machine Learning
+#+AUTHOR: Xin Binjian
+#+CREATOR: Xin Binjian
+#+DATE:<2025-01-02 Thu>
+#+STARTUP: latexpreview
+#+OPTIONS: tex:t
+#+OPTIONS: ^:{}
+#+bind: org-export-publishing-directory "./exports"
+#+DOWNLOAD_IMAGE_DIR:  '~/.org.d/mode/img'
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:t reveal_control:t
+#+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+REVEAL_MATHJAX_URL: https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.js
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+REVEAL_INIT_OPTIONS: transition: 'cube'
+#+REVEAL_MARGIN: 0.005
+#+REVEAL_MIN_SCALE: 0.01
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_THEME: sky
+#+REVEAL_HLEVEL: 1
+#+REVEAL_EXTRA_CSS: ./templates/drl101.css
+#+REVEAL_PLUGINS: (highlight notes)
+#+REVEAL_TITLE_SLIDE: ./templates/title_drl101_en.html
+#+HTML_HEAD_EXTRA: <style> .figure p {text-align: center;}</style>
+#+HTML_HEAD_EXTRA: <style>*{font-family: "LXGW WenKai Mono" !important}</style>
+#+macro: color @@html:<font color="$1">$2</font>@@
+#+MACRO: a @@html: <span class="fragment" data-fragment-index="$2">$1</span>@@
+#+BEGIN_NOTES
+  - Rip Van Winkle, Washington Irving, 1819. Like a fleeting dream, missing the American Revolutionary War, a folk story from New York.
+#+END_NOTES
+
+* Objectives
+
+#+ATTR_REVEAL: :frag (appear)
+- Common foundation of optimal control and machine learning
+- Programmatic approach to decision-making
+- Attaining optimal decisions through learning
+
+#+BEGIN_NOTES
+- Understanding reinforcement learning does not require understanding deep learning.
+- You can grasp the essence of deep learning from a reinforcement learning perspective.
+- The background and motivation of reinforcement learning itself occupy only a small portion.
+- Dark matter:
+  - Refers to basic facts often overlooked or subconsciously assumed—frequently incorrect assumptions—yet crucial for understanding issues.
+- Why does a robot grasping task use random decision-making? It’s counterintuitive!
+  - Combining logic and intuition to handle complex phenomena.
+- Fundamental questions can lead into the topic:
+  - Why use a tree structure?
+  - What is machine learning?
+#+END_NOTES
+
+* A Simple Decision Problem
+** 1.1 Duel
+
+#+begin_quote
+Game (Conflict)
+#+ATTR_REVEAL: :frag (appear)
+- Elements of a game:
+  #+ATTR_REVEAL: :frag (appear)
+  - Players
+  - Payoff (Cost, Reward)
+  - Strategy
+- The fun of the game: complexity, difficulty, balance
+
+#+end_quote
+
+#+BEGIN_NOTES
+  👉 Honor of Kings
+#+END_NOTES
+
+*** Duel
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in cube-out'
+:END:
+
+@@html:<div class="r-stack">@@
+        @@html:<img class="fragment fade-out" data-fragment-index="0" src="img/drl101/dominated_fight.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/dominated_fight0.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/dominated_fight1.png" />@@
+        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/dominated_fight2.png" />@@
+@@html:</div>@@
+@@html:<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">@@Dominant Strategy@@html:</span>@@
+
+** 1.2 Evenly Matched
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in cube-out'
+:END:
+
+@@html:<div class="r-stack">@@
+        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/ne.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/ne1.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/ne2.png" />@@
+        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/ne3.png" />@@
+        @@html:<img class="fragment" data-fragment-index="4" src="img/drl101/mixed.png" style="height:400px" />@@
+@@html:</div>@@
+@@html:<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">@@Strategy Equilibrium State@@html:</span>@@
+@@html:<div class="fragment"; style="color:darkred; font-weight:bold"; data-fragment-index="3">@@?@@html:</div>@@
+
+#+BEGIN_NOTES
+- No dominant strategy.
+  - When certain problems have no answer, approaching them from another angle or level can reveal more intriguing phenomena or more important issues.
+- The overlap of strategies between rows and columns (two opponents) is the more crucial question.
+  - If one side chooses to attack while the other side retreats, neither side wants to deviate from this state—this is the equilibrium (Nash equilibrium).
+#+END_NOTES
+
+#+BEGIN_NOTES
+- The premise is that both sides decide simultaneously and do not know each other’s strategy!
+- Strategy equilibrium is bounded by a stable, balanced state.
+- A strategy equilibrium is most reasonable and optimal for both sides: if any party deviates from the equilibrium and the other side keeps rational decisions, the deviating side’s payoff suffers, so no one wants to deviate from the optimal decision within this equilibrium.
+- A’s irrational decision vs. B’s rational decision.
+- Rational decisions are better than irrational ones.
+- How many equilibrium states are there?
+#+END_NOTES
+
+** 1.3 Mixed Strategy
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:END:
+#+NAME: Mixed Strategy
+#+ATTR_HTML: :alt  :title Mixed Strategy :width 300px  :align center
+#+attr_org: :width 300px :align left
+[[./img/drl101/mixed1.png]]
+
+#+ATTR_REVEAL: :frag (appear)
+- Opponent’s Attack Payoff: $\color{red}{PO^{f}=(-1)\times p^{A} + (2)\times (1-p^{A})}$
+- Opponent’s Retreat Payoff: $\color{blue}{PO^{q}=(0)\times p^{A} + (0)\times (1-p^{A})}$
+- $p^{A}=0.5$ ?
+  #+ATTR_REVEAL: :frag (appear)
+  - Our payoff is -0.5 : 1
+  - Opponent’s payoff is 0.5 : 0
+- When is $p^A$ optimal?
+  #+ATTR_REVEAL: :frag (appear)
+  👉 Force the opponent into no choice, valid for $\forall\hspace{0.5em}p^{B}$
+  #+BEGIN_NOTES
+   - Our payoff depends on the opponent’s decision!
+   - Regardless of the opponent’s strategy, the payoff is the same.
+  #+END_NOTES
+
+*** Mixed Strategy
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+#+ATTR_HTML: :alt  :title Mixed Strategy :width 300px  :align center
+#+attr_org: :width 300px :align left
+[[./img/drl101/mixed1.png]]
+
+#+ATTR_REVEAL: :frag (appear)
+- Our strategy: $\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p^{A}=\frac{2}{1+2}=\frac{2}{3}$
+  #+ATTR_REVEAL: :frag (appear)
+  - Payoff?
+  - Equilibrium strategy: our payoff is $-\frac{2}{3}\times p^{B} + \frac{4}{3}\times (1-p^{B})$
+  - $p^{A}=1$?
+- Rational decisions are better than irrational decisions
+  #+BEGIN_NOTES
+   - A’s irrational decision (p=1,0.5) vs. B’s rational decision (p=2/3)
+  #+END_NOTES
+- The equilibrium of a mixed strategy is the most reasonable and optimal state for both sides
+  #+BEGIN_NOTES
+   - In a mixed-strategy equilibrium, if either side deviates while the other side remains rational, the deviating side’s payoff decreases. Hence no one wants to deviate from the equilibrium’s optimal decision.
+  #+END_NOTES
+- A random strategy is superior to a deterministic one
+  #+BEGIN_NOTES
+   - Randomness is an efficient model for dealing with complex phenomena.
+   - How do we choose an optimal strategy from random strategies? We compute the probability distribution of signals to find the optimal strategy matching our goals.
+  #+END_NOTES
+
+*** Mixed Strategy
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none-in cube-out'
+:END:
+
+#+ATTR_HTML: :alt  :title Mixed Strategy width 300px  :align center
+#+attr_org: :width 400px :align left
+[[./img/drl101/mixed.png]]
+
+- Ongoing repeated showdown?
+
+** 1.4 Over the River of Time
+
+*** Decision Tree
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:END:
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        @@html:<div class="r-stack">@@
+         @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/mixed1.png" />@@
+         @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/flat_tree.png" />@@
+         @@html:<img class="fragment" data-fragment-index="1" src="img/drl101/flat_tree2.png" />@@
+        @@html:</div>@@
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        @@html:<div class="r-stack">@@
+         @@html:<img class="fragment fade-out data-fragment-index="2" src="img/drl101/tree.png" />@@
+         @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/flat_tree3.png" />@@
+        @@html:</div>@@
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+#+BEGIN_NOTES
+- Decision trees are almost the only model for decision theory (reinforcement learning).
+- Crucial for understanding time-series.
+#+END_NOTES
+
+** 1.5 Continuous Showdown
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none-in cube-out'
+:END:
+
+@@html:<div class="r-stack">@@
+        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/tree21.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/tree3.png" />@@
+        @@html:<img class="fragment" data-fragment-index="1" src="img/drl101/tree4.png" />@@
+@@html:</div>@@
+
+#+ATTR_REVEAL: :frag (appear)
+- Work backward step by step: analyze starting from the last round
+- Probability of attack $\mathcal{P}=\frac{v}{v+c}: \frac{2}{3}\searrow 0,\ \textrm{if}\ v:2\searrow 0$
+- Value function: the long-term value of the current decision and state
+
+#+BEGIN_NOTES
+- The complexity of time series increases exponentially!
+- Biological evolution is also tree-structured.
+- The branching evolution of cause-and-effect sequences.
+#+END_NOTES
+
+#+BEGIN_NOTES
+- Optimal decisions must account for the long-term consequences of short-term actions.
+  - There is a fundamental principle (akin to basic physical laws) allowing quick assessment of the long-term consequences of short-term actions:
+    - Natural world, accumulated experience.
+    - Optimal control, reinforcement learning.
+- How do we evaluate these consequences?
+  - Approach it like accumulated experience, building up a “value function.”
+#+END_NOTES
+
+
+* Optimal Control, Reinforcement Learning, and Robotics
+** 2.1 Review
+*** Ten Years Ago
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+attr_org: :width 300px :align left
+        #+REVEAL_HTML: <iframe title="PR2" width="600" height="450" src="https://www.youtube.com/embed/gYqfa-YtvW4" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>PR2</figcatption>
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+attr_org: :width 300px :align left
+        #+REVEAL_HTML: <iframe title="ASIMO" width="600" height="450" src="https://www.youtube.com/embed/xjXUyLAHR1E" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>ASIMO</figcatption>
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+#+BEGIN_NOTES
+- PR2
+  - In 2010, Willow Garage (ROS, Andrew Ng)
+  - Actuators, sensors (depth camera, lidar), body, joints
+  - Costs are going down
+  - Body is more bionic (more complex)
+- Asimo
+  - Difference between gait control and modern robots
+  - Current reference: https://www.youtube.com/watch?v=6CjxMPg0pvg
+#+END_NOTES
+
+*** Optimal Control
+
+#+REVEAL_HTML: <iframe width="1024" height="576" src="https://www.youtube.com/embed/OmpzeWym7HQ#t=12m45s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+#+REVEAL_HTML: <figcaption>John Tsitsiklis (OG)</figcatption>
+#+BEGIN_NOTES
+2019 talk
+- Early control theory: PID feedback control, linear control; assumes linear systems, simple and elegant
+  - Unspecific application to other control targets led to complex expert systems and complicated engineering projects
+  - Feedback control theory: zero-pole compensation → cancels the system’s original dynamics, not using the system’s own dynamics
+- 1990s, 12:45: Optimal control (approximate dynamic programming) vs. reinforcement learning
+  - The main difference is that RL emphasizes interaction with the environment, learning-based
+  - Optimal control (approximate dynamic programming, adaptive control, robust control) focuses on system identification and model approximations
+  - Shallow neural networks, no deep learning
+  - Dimitri P. Bertsekas
+- 14m18s~15m57s;
+- Will briefly comment on AlphaGo’s algorithm
+#+END_NOTES
+
+*** Reinforcement Learning
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title Year_Of_RL width 400px  :align center
+        #+attr_org: :width 300px :align left
+        [[./img/drl101/jim_fan.png]]
+        #+REVEAL_HTML: <figcaption>2025: The Year of Reinforcement Learning</figcatption>
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title R1 width 400px  :align center
+        #+attr_org: :width 300px :align left
+        [[./img/drl101/deepseek_r1_arxiv.png]]
+        #+REVEAL_HTML: <figcaption>DeepSeek R1</figcatption>
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** 2.2 Model
+#+ATTR_HTML: :border 2 :class noboldheader
+| Game/Conflict                                       | @@html:Players@@                                          | Payoff @@html:<br>@@(Cost)                           | Strategy                                          | State                                            | Strategy Evaluation                                                      |
+|-----------------------------------------------------|-----------------------------------------------------------|------------------------------------------------------|----------------------------------------------------|--------------------------------------------------|-------------------------------------------------------------------------|
+| {{{a(<font color=darkblue>Reinforcement Learning</font>,1)}}} | {{{a(<font color=darkblue>Agent/<br>System</font>,1)}}} | {{{a(<font color=darkblue>Reward</font>,1)}}} | {{{a(<font color=darkblue>Action</font>,1)}}}     | {{{a(<font color=darkblue>State</font>,1)}}}     | {{{a(<font color=darkblue>Value Function</font>,1)}}}          |
+| {{{a(<font color=red>Optimal Control</font>,2)}}}             | {{{a(<font color=red>Controller/<br>Object</font>,2)}}}  | {{{a(<font color=red>Error</font>,2)}}}    | {{{a(<font color=red>Control Variable</font>,2)}}} | {{{a(<font color=red>State</font>,2)}}}          | {{{a(<font color=red>Objective Function</font>,2)}}}                  |
+
+#+BEGIN_NOTES
+  - Players: humans vs. humans, computers, nature/physical laws;
+  - Computer vs. nature/physical laws
+  - Adding observations and value estimates
+    - In reinforcement learning, the value function is learned and depends on the system state and actions, taking into account system equations and dynamics
+    - In optimal control, the objective function is based on expert rules and doesn’t consider system dynamics!
+#+END_NOTES
+
+#+ATTR_REVEAL: :frag (appear)
+#+attr_html: :alt :title Reinforcement Learning Model :width 750pix :align center
+#+NAME: Reinforcement Learning Model
+#+attr_org: :width 300px :align left
+[[./img/drl101/rl_model.png]]
+
+** 2.3 Methods in Reinforcement Learning
+#+ATTR_REVEAL: :frag (appear)
+#+begin_quote
+Solve complex problems step by step
+#+end_quote
+  #+ATTR_REVEAL: :frag (appear)
+  - "Given the present, the future is independent of the past"
+    #+ATTR_REVEAL: :frag (appear)
+    👉 Markov Decision Process
+  - Complex problems can be decomposed into subproblems
+    #+ATTR_REVEAL: :frag (appear)
+    👉 Dynamic Programming
+  - Estimate the values of states and actions from fragmented experiences
+    #+ATTR_REVEAL: :frag (appear)
+    👉 Bellman Equation
+#+BEGIN_NOTES
+  - Understanding the concept is more important than memorizing its name
+  - Dynamic programming is the mainstream classical concept and the foundation of optimal control
+  - The shortest path from A to B can be divided into two stages, A to C and C to B: if the path from C to B is shortest, then you only need to solve the subproblem from A to C!
+#+END_NOTES
+
+*** Rational Decision Making
+#+ATTR_REVEAL: :frag (appear)
+#+begin_quote
+- Algorithms embody rational decision making
+- Rational decisions serve as a counterstrategy against irrational decisions
+#+end_quote
+
+#+BEGIN_NOTES
+  - AlphaGo is very hard to beat; humans are hard to beat by machines: perfect memory, pure rationality, efficient execution, and replicable behavior
+  - There is no predetermined purpose
+  - Jeff Hinton’s warning
+  - Originally, reinforcement learning was a relatively obscure area in AI; its biggest difference from optimal control is the incorporation of learning.
+    - Why has it become mainstream in AI and robotics since 2016? --> Deep Learning.
+    - How to combine the two? Sampling! Learning from fragmented experiences.
+#+END_NOTES
+
+** 2.4 Learning from Fragmented Experiences
+
+*** Random Sampling
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in cube-out'
+:END:
+
+@@html:<div class="r-stack">@@
+        @@html:<img class="fragment fade-out" data-fragment-index="0" src="img/drl101/tree_sample0.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/tree_sample.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/tree_sample1.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="2" src="img/drl101/tree_sample2.png" />@@
+        @@html:<img class="fragment" data-fragment-index="3" src="img/drl101/tree_sample3.png" />@@
+@@html:</div>@@
+
+*** Advantages of Random Sampling
+
+#+attr_html: :alt :title Random Decision Sampling :width 500pix :align center
+#+NAME: Random Decision Sampling
+#+attr_org: :width 300px
+[[./img/drl101/tree_sample1.png]]
+
+#+ATTR_REVEAL: :frag (appear)
+- Real data
+  #+ATTR_REVEAL: :frag (appear)
+  - Modeling complexity is too high
+- Complex functions/distributions:
+  #+ATTR_REVEAL: :frag (appear)
+  - Nonlinear
+  - Time-varying and non-stationary processes
+- Natural laws
+- An efficient way to tackle complex problems
+- Allows learning from fragmented experiences
+#+BEGIN_NOTES
+- Rolling dice is often the most efficient learning method in complex, random environments
+- Deterministic mathematical problems can often be solved in an elegant and efficient way using probabilistic methods (combinatorics)
+#+END_NOTES
+
+*** Optimal Control vs. Reinforcement Learning
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+     @@html:<div class="r-stack">@@
+        @@html:<img class="fragment" data-fragment-index="0" src="img/drl101/hiking.jpg" height="400px"/>@@
+     @@html:</div>@@
+     @@html:<div class="r-stack">@@
+        @@html:<div class="centered"><span class="fragment" data-fragment-index="0">@@Optimal Control@@html:</span></div>@@
+     @@html:</div>@@
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+     @@html:<div class="r-stack">@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/surfing.jpg" height="400px"/>@@
+        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/skateboarding.jpg" height="400px"/>@@
+     @@html:</div>@@
+     @@html:<div class="r-stack">@@
+        @@html:<div class="centered"><span class="fragment current-visible" data-fragment-index="1">@@Reinforcement Learning@@html:</span></div>@@
+        @@html:<div class="centered"><span class="fragment" data-fragment-index="2">@@Robot Reinforcement Learning@@html:</span></div>@@
+     @@html:</div>@@
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** 2.5 Model Complexity
+
+*** AlphaGo’s State and Decision Tree
+#+attr_html: :alt :title AlphaGo Decision Tree :width 800pix :align center
+#+NAME: AlphaGo Decision Tree
+#+attr_org: :width 300px
+[[./img/drl101/MCTS-in-AlphaGo.png]]
+
+#+ATTR_REVEAL: :frag (appear)
+- Value: can be interpreted as the win rate
+*** AlphaGo’s State and Decision Tree
+#+attr_html: :alt :title AlphaGo Decision Tree :width 800pix :align center
+#+NAME: AlphaGo Decision Tree
+#+attr_org: :width 300px
+[[./img/drl101/alphago_mcts.png]]
+
+*** AlphaGo’s Complexity
+
+#+ATTR_REVEAL: :frag (appear)
+- All positions (observations): $3^{{19}^2}\approx 1.74\times 10^{172}$, with $1.20\%$ legal moves
+- Approximately ~200 moves per game, with an average of ~$3\times 10^{511}$ different games
+- Theoretically, the maximum number of moves is $10^{48}$, with the number of different games ranging from $10^{10^{48}}$ to $10^{10^{171}}$
+- Number of atoms in the observable universe: $10^{80}$
+  #+ATTR_REVEAL: :frag (appear)
+  👉  Neural Networks
+#+BEGIN_NOTES
+ - Number of atoms: Eddington number
+ - Learning from complete but partial experience: learning from fragments of games and accumulating experience
+ - Learning from incomplete experience: online learning, where learning happens concurrently with gameplay
+ - It has been solved—a truly awe-inspiring achievement!
+   - A summary of human wisdom and experience: offense and defense, formations, life-and-death, endgame, coordination, overall situation, techniques, and tactics
+   - Efforts to summarize human experience using feature methods cannot compete with AlphaGo
+ - The bitter lessons of artificial intelligence
+#+END_NOTES
+
+*** The State and Complexity of a Bipedal Robot
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+REVEAL_HTML: <iframe width="600" height="450" src="https://www.youtube.com/embed/0OUavEtbt2E#t=6m03s" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+        #+REVEAL_HTML: <figcaption>Cassie Model</figcatption>
+        #+BEGIN_NOTES
+          - Another example of embodied intelligence: Cassie, a bipedal robot
+          - 5m57s~6m27s, 7m08s~8:45s:
+            - Inertia/mass matrix is positive definite, exhibiting high complexity
+            - The system’s state and dynamics, and the policy (controller)
+            - Objectives (payoff, control trajectory) and strategy evaluation (player)
+          - Complexity:
+            - Dynamic systems with long-term influence of control variables
+            - Partial observability/randomness
+            - Nonlinearity
+            - Legged robots are underactuated systems,
+              - Deliberately so; they are harder to control but more natural and energy-efficient. A natural gait is the optimal control solution—moving with minimal energy in an economical manner (the way control variables affect state variables)!
+        #+END_NOTES
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_REVEAL: :frag (appear)
+        - Methods for controlling complex objects:
+          #+ATTR_REVEAL: :frag (appear)
+          - Optimal control
+            #+BEGIN_NOTES
+            - Lagrangian mechanics: force/torque → action; the time integral of energy (kinetic and potential) changes; force/energy variations produce motion
+            - Principle of steady-state action (motion follows energy equilibrium, conservation): every system’s dynamics follows a unique path
+            - Since the 1990s, two approaches have emerged
+            - There is no simple, magical method for handling complex phenomena—it requires significant computational resources and the key is how to apply them: either for system identification or for stepwise digestion of fragmented experience data
+            - Optimal control, via approximate dynamic programming (Approximate DP): it uses precise environmental and dynamic models to capture the primary contradictions; however, its drawbacks include specificity to the model, being tailored for particular scenarios (difficult to generalize), and poor robustness against disturbances
+            #+END_NOTES
+          #+ATTR_REVEAL: :frag (appear)
+          - Reinforcement learning
+            #+BEGIN_NOTES
+            - Uses random and probabilistic models to learn in a manner similar to how nature and humans solve problems
+            - The system’s state and policy are obtained through learning
+            - Why is reinforcement learning effective in handling complex problems?
+            #+END_NOTES
+        - How to learn?
+          #+BEGIN_NOTES
+          - Primarily due to breakthroughs in deep learning
+          - In practice, complex system dynamics are learned from fragmented experiences
+          - Evaluation of complex value functions and policies is achieved!
+          #+END_NOTES
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** 2.6 Machine Learning for Robotics
+#+ATTR_REVEAL: :frag (appear)
+- Each demonstration is a path on the decision tree
+- Data density obtained through random sampling
+- Experiences of success and failure
+#+BEGIN_NOTES
+  - Reinforcement learning training
+  - Covering observation data distributions specific to functionalities
+  - Paths representing success or failure
+#+END_NOTES
+
+*** The Role of Simulation
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in cube-cout'
+:END:
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+        #+ATTR_HTML: :alt  :title  :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION: Grasp
+        #+NAME: pick
+        [[https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image16.gif]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+        #+ATTR_HTML: :alt  :title tree :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION: Position
+        #+NAME: position
+        [[https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image5-1.gif]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+        #+ATTR_HTML: :alt  :title tree :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        #+CAPTION: Operation
+        #+NAME: operation
+        [[https://developer-blogs.nvidia.com/wp-content/uploads/2022/07/image6.gif]]
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+*** Simulation Data for Training
+#+CAPTION[robot learning]: training dataset generation
+#+REVEAL_HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/OAZrBYCLnaA" frameborder="0" allow="fullscreen; autoplay" allowfullscreen muted></iframe>
+#+REVEAL_HTML: <figcaption>Nvidia Isaac Sim</figcatption>
+#+BEGIN_NOTES
+  - 15:24 ~ 16:57
+  - ACRONYM: Nvidia FLEX
+  - Imagine describing it in a modeling framework
+  - Skill requirements for application engineers: may not necessarily include programming
+#+END_NOTES
+
+*** Algorithms for Robot Learning
+
+#+ATTR_REVEAL: :frag (appear)
+- Data
+  #+ATTR_REVEAL: :frag (appear)
+  - Sources: online/offline/(simulation)
+  - Pre-training (foundation models such as GPT)
+  - Data paradigms (training planning/data/diversity construction)
+- Learning Models
+  #+ATTR_REVEAL: :frag (appear)
+  - Robustness
+  - Diversity
+#+BEGIN_NOTES
+  - Learning models: representational learning, neural networks
+  - Data is extremely important
+    - Online/offline
+    - Pre-training (foundation models like GPT)
+      - The foundation model provides common sense and fundamental reasoning ability; cross-domain learning (e.g., autonomous driving experience can benefit humanoid robotics performance)
+    - Data diversity is crucial; multimodal robot data is more significant: training the same model can improve average performance by over 50%
+  - Efficient learning models can capture complex behavioral patterns (multimodal)
+#+END_NOTES
+
+** 2.7 Understanding AlphaGo
+
+*** AlphaGo System Architecture
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:END:
+
+#+attr_html: :alt :title AlphaGo Neural Network :width 800pix :align center
+#+NAME: AlphaGo Neural Network
+#+attr_org: :width 300px
+[[./img/drl101/alphago_nn.png]]
+
+#+ATTR_REVEAL: :frag (appear)
+- Learning from fragmented experiences
+  #+ATTR_REVEAL: :frag (appear)
+  - Accumulation of partial experiences 👉 Neural Networks
+  - Aggregation of incomplete experiences 👉 Online Learning
+- Randomness and probability are effective models for addressing complex phenomena
+  #+ATTR_REVEAL: :frag (appear)
+  - Value network: can be seen as a simple win-rate lookup table
+#+BEGIN_NOTES
+- One can complete a game and then learn from it
+- It is possible to learn while playing (temporal difference learning)
+- Decision network,
+- Although the complexity of Go is extremely high, it is a deterministic game
+#+END_NOTES
+
+*** Optimal Strategy
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none-in cube-out'
+:END:
+#+attr_html: :alt :title AlphaGo Neural Network :width 800pix :align center
+#+NAME: AlphaGo Neural Network
+#+attr_org: :width 300px
+[[./img/drl101/alphago_nn.png]]
+
+#+ATTR_REVEAL: :frag (appear)
+- Equilibrium Strategy
+  #+ATTR_REVEAL: :frag (appear)
+  - The equilibrium of mixed strategies represents the most optimal and reasonable state for both sides
+  - Rational decision making outperforms irrational decision making
+- Self-training / Self-learning
+  #+ATTR_REVEAL: :frag (appear)
+  - Continuous improvement in levels
+#+ATTR_REVEAL: :frag (appear)
+#+begin_quote
+→ Equilibrium State (Optimal Strategy)
+#+end_quote
+
+#+BEGIN_NOTES
+ - Why is the equilibrium strategy optimal?
+   - In a mixed-strategy equilibrium, if one side deviates while the other maintains rationality, the deviating side’s payoff will decrease—thus, no side has an incentive to deviate from the optimal decision under equilibrium.
+   - Intuition: Establishing an invincible defense before attacking the opponent
+ - A’s irrational decision (human players) vs. B’s rational decision (AlphaGo)
+ - Nash Equilibrium: In self-play, my decision must render the opponent’s payoff identical regardless of their choice
+   - Self-training / self-learning: a dual-combat process
+   - Why self-training leads to improvement:
+     - Mathematically: under reasonable assumptions (payoff > cost, v > c), a rational decision implies that at equilibrium, the first derivative of the payoff is zero and the second derivative is negative.
+#+END_NOTES
+
+* Summary
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in none-out'
+:END:
+
+#+ATTR_REVEAL: :frag (fade-in) :frag_idx (1 2 3)
+- Optimal Strategy
+  - Optimal decision making must consider the opponent's decisions
+- Machine Learning
+  - @@html:<span class="r-stack">@@
+    @@html:<span class="fragment fade-out"; data-fragment-index="4">@@Random sampling is an efficient method for tackling complex problems@@html:</span>@@
+    @@html:<span class="fragment fade-in"; style="color:#FF0000; font-weight:bold"; data-fragment-index="4">@@Random sampling is an efficient method for tackling complex problems@@html:</span>@@
+    @@html:</span>@@
+- Neural Networks
+  - Randomness and probability are effective models for addressing complex phenomena
+
+
+
+#+end_comment
