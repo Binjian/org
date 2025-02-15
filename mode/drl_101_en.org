@@ -77,12 +77,176 @@ Game (Conflict)
 :END:
 
 @@html:<div class="r-stack">@@
-        @@html:<img class="fragment fade-out" data-fragment-index="0" src="img/drl101/dominated_fight.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/dominated_fight0.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/dominated_fight1.png" />@@
-        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/dominated_fight2.png" />@@
+        @@html:<img class="fragment fade-out" data-fragment-index="0" src="img/drl101/dominated_fight_en.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/dominated_fight0_en.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/dominated_fight1_en.png" />@@
+        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/dominated_fight2_en.png" />@@
 @@html:</div>@@
 @@html:<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">@@Dominant Strategy@@html:</span>@@
+
+#+BEGIN_COMMENT
+
+@@html:<div style="text-align: center;">@@
+@@html:<span class+"fragment fade-in"; data-fragment-index="3">@@
+@@html:<span style="color:darkgreen;font-weight:bold;">优势策略</span>@@
+@@html:</span>@@
+@@html:</div>@@
+
+@@html:<span class="fragment fade-in“; style="color:#0000FF; font-weight:bold"; data-fragment-index="2">@@优势策略@@html:</span>@@
+
+ *** 对决
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'cube-in cube-out'
+:END:
+#+CAPTION[对决]:
+#+NAME: 对决
+#+ATTR_HTML: :alt  :title 对决 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/dominated_fight_en.png
+digraph G {
+    node1l [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">2,0</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+ATTR_REVEAL: :frag (appear)V
+#+RESULTS[2449c2a972a9cacdd64c521f3637d10264d15bf1]: 对决
+[[file:img/_generated/dominated_fight_en.png]]
+
+#+BEGIN_NOTES
+- 玩家:我方-横向-A;对手-纵向-B
+- 策略:fight,quit
+- 收益:左侧我方,右侧对手
+- 代价:-1,奖励2
+#+END_NOTES
+
+ *** 对决
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+
+#+CAPTION[对决0]:
+#+NAME: 对决0
+#+ATTR_HTML: :alt  :title 对决0 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/dominated_fight0_en.png
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">2,<u><FONT COLOR="red">0</FONT></u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u><FONT COLOR="red">1</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS: 对决0
+[[file:img/_generated/dominated_fight0.png]]
+
+
+ *** 对决
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+#+CAPTION[对决1]:
+#+NAME: 对决1
+#+ATTR_HTML: :alt  :title 对决1 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/dominated_fight1_en.png
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="darkgreen">1</FONT></u>,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u><FONT COLOR="red">1</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS: 对决1
+[[file:img/_generated/dominated_fight1_en.png]]
+
+ *** 优势策略
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+#+CAPTION[对决2]:
+#+NAME: 对决2
+#+ATTR_HTML: :alt  :title 对决2 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/dominated_fight2_en.png :cache yes
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"><u><font color="darkgreen">fight</font></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="1"><u><FONT COLOR="darkgreen">1</FONT></u>,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="1"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u><FONT COLOR="red">1</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+#+RESULTS[addb2dfd97f146f2402e5e559581020c7d5b3d18]: 对决2
+[[file:img/_generated/dominated_fight2_en.png]]
+
+#+end_comment
 
 ** 1.2 Evenly Matched
 :PROPERTIES:
@@ -90,11 +254,11 @@ Game (Conflict)
 :END:
 
 @@html:<div class="r-stack">@@
-        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/ne.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/ne1.png" />@@
-        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/ne2.png" />@@
-        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/ne3.png" />@@
-        @@html:<img class="fragment" data-fragment-index="4" src="img/drl101/mixed.png" style="height:400px" />@@
+        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/ne_en.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/ne1_en.png" />@@
+        @@html:<img class="fragment current-visible" data-fragment-index="1" src="img/drl101/ne2_en.png" />@@
+        @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/ne3_en.png" />@@
+        @@html:<img class="fragment" data-fragment-index="4" src="img/drl101/mixed1_en.png" style="height:400px" />@@
 @@html:</div>@@
 @@html:<span class="fragment"; style="color:darkgreen; font-weight:bold"; data-fragment-index="2">@@Strategy Equilibrium State@@html:</span>@@
 @@html:<div class="fragment"; style="color:darkred; font-weight:bold"; data-fragment-index="3">@@?@@html:</div>@@
@@ -115,6 +279,167 @@ Game (Conflict)
 - How many equilibrium states are there?
 #+END_NOTES
 
+#+begin_comment
+
+ *** 势均力敌
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+#+CAPTION[技术进步]: 势均力敌
+#+NAME: 势均力敌
+#+ATTR_HTML: :alt  :title 势均力敌 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/ne_en.png :cache yes
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>:w;
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">2,0</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,2</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS[7b778aa5c69ed2026c2fd7acecfcb3a9d1bc5063]: 势均力敌
+[[file:img/_generated/ne_en.png]]
+
+ *** 势均力敌
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+#+CAPTION[技术进步]: 势均力敌1
+#+NAME: 势均力敌1
+#+ATTR_HTML: :alt  :title 势均力敌1 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/ne1_en.png :cache yes
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">2,<u><FONT COLOR="red">0</FONT></u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS[7626c04c7f9bd1a2a8499bc9b74bcdf6b33b866a]: 势均力敌1
+[[file:img/_generated/ne1_en.png]]
+
+ *** 势均力敌
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none'
+:END:
+
+#+CAPTION[技术进步]: 势均力敌2
+#+NAME: 势均力敌2
+#+ATTR_HTML: :alt  :title 势均力敌2 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/ne2_en.png :cache yes
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1"><u><FONT COLOR="darkgreen">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS[f9aa49ca8e5f6d979f3912aa1940b9545020661e]: 势均力敌2
+[[file:img/_generated/ne2_en.png]]
+
+
+
+
+
+ *** 策略均衡
+:PROPERTIES:
+:REVEAL_DATA_TRANSITION: 'none-in cube-out'
+:END:
+
+#+CAPTION[纳什均衡]: 纳什均衡
+#+NAME: 势均力敌3
+#+ATTR_HTML: :alt  :title 势均力敌3 width 800px  :align right
+#+attr_org: :width 600px
+#+begin_src dot :file img/_generated/ne3_en.png :cache yes
+digraph G {
+    node1 [shape=none, margin=0, fontname="LXGW WenKai Mono", label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="300" HEIGHT="300">
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None"></TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">fight</TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">-1,-1</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="1"><u><FONT COLOR="darkgreen">2</FONT></u>,<u><FONT COLOR="red">0</FONT></u></TD>
+            </TR>
+            <TR>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="None">quit</TD>
+                <TD WIDTH="100" HEIGHT="100" BGCOLOR="lightgreen" BORDER="1"><u><FONT COLOR="darkgreen">0</FONT></u>,<u><FONT COLOR="red">2</FONT></u></TD>
+                <TD WIDTH="100" HEIGHT="100" BORDER="1">0,0</TD>
+            </TR>
+        </TABLE>
+    >];
+}
+#+end_src
+
+#+RESULTS[287fa2d2d9ce888e387cae9c6914f0a138e0ede9]: 势均力敌3
+[[file:img/_generated/ne3_en.png]]
+
+  #+BEGIN_NOTES
+   - 前提条件是同时决策,不知道对方的策略!
+   - 策略均衡限于稳定的平衡状态
+   - 策略均衡是对双方最合理的最优状态：任何一方偏离均衡状态，而另一方保持理性决策，都会导致偏离方收益受损，所以没有任何一方愿意偏离均衡状态下的最优决策
+   - A 非理性决策 vs B 理性决策
+   - 理性决策优于非理性决策
+  #+END_NOTES
+
+#+end_comment
+
+
+
 ** 1.3 Mixed Strategy
 :PROPERTIES:
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
@@ -122,21 +447,21 @@ Game (Conflict)
 #+NAME: Mixed Strategy
 #+ATTR_HTML: :alt  :title Mixed Strategy :width 300px  :align center
 #+attr_org: :width 300px :align left
-[[./img/drl101/mixed1.png]]
+[[./img/drl101/mixed1_en.png]]
 
 #+ATTR_REVEAL: :frag (appear)
 - Opponent’s Attack Payoff: $\color{red}{PO^{f}=(-1)\times p^{A} + (2)\times (1-p^{A})}$
 - Opponent’s Retreat Payoff: $\color{blue}{PO^{q}=(0)\times p^{A} + (0)\times (1-p^{A})}$
 - $p^{A}=0.5$ ?
-  #+ATTR_REVEAL: :frag (appear)
-  - Our payoff is -0.5 : 1
-  - Opponent’s payoff is 0.5 : 0
 - When is $p^A$ optimal?
   #+ATTR_REVEAL: :frag (appear)
   👉 Force the opponent into no choice, valid for $\forall\hspace{0.5em}p^{B}$
+
   #+BEGIN_NOTES
-   - Our payoff depends on the opponent’s decision!
-   - Regardless of the opponent’s strategy, the payoff is the same.
+  - Our payoff is -0.5 : 1
+  - Opponent’s payoff is 0.5 : 0
+  - Our payoff depends on the opponent’s decision!
+  - Regardless of the opponent’s strategy, the payoff is the same.
   #+END_NOTES
 
 *** Mixed Strategy
@@ -146,19 +471,19 @@ Game (Conflict)
 
 #+ATTR_HTML: :alt  :title Mixed Strategy :width 300px  :align center
 #+attr_org: :width 300px :align left
-[[./img/drl101/mixed1.png]]
+[[./img/drl101/mixed1_en.png]]
 
 #+ATTR_REVEAL: :frag (appear)
 - Our strategy: $\color{red}{PO^{f}}=\color{blue}{PO^{q}}$ 👉 $p^{A}=\frac{2}{1+2}=\frac{2}{3}$
   #+ATTR_REVEAL: :frag (appear)
   - Payoff?
-  - Equilibrium strategy: our payoff is $-\frac{2}{3}\times p^{B} + \frac{4}{3}\times (1-p^{B})$
   - $p^{A}=1$?
 - Rational decisions are better than irrational decisions
   #+BEGIN_NOTES
-   - A’s irrational decision (p=1,0.5) vs. B’s rational decision (p=2/3)
+  - Equilibrium strategy: our payoff is $-\frac{2}{3}\times p^{B} + \frac{4}{3}\times (1-p^{B})$
+  - A’s irrational decision (p=1,0.5) vs. B’s rational decision (p=2/3)
   #+END_NOTES
-- The equilibrium of a mixed strategy is the most reasonable and optimal state for both sides
+- The equilibrium of a mixed strategy most reasonable and optimal
   #+BEGIN_NOTES
    - In a mixed-strategy equilibrium, if either side deviates while the other side remains rational, the deviating side’s payoff decreases. Hence no one wants to deviate from the equilibrium’s optimal decision.
   #+END_NOTES
@@ -175,7 +500,7 @@ Game (Conflict)
 
 #+ATTR_HTML: :alt  :title Mixed Strategy width 300px  :align center
 #+attr_org: :width 400px :align left
-[[./img/drl101/mixed.png]]
+[[./img/drl101/mixed1_en.png]]
 
 - Ongoing repeated showdown?
 
@@ -188,7 +513,7 @@ Game (Conflict)
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         @@html:<div class="r-stack">@@
-         @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/mixed1.png" />@@
+         @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/mixed1_en.png" />@@
          @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/flat_tree.png" />@@
          @@html:<img class="fragment" data-fragment-index="1" src="img/drl101/flat_tree2.png" />@@
         @@html:</div>@@
@@ -319,7 +644,7 @@ Game (Conflict)
 #+attr_html: :alt :title Reinforcement Learning Model :width 750pix :align center
 #+NAME: Reinforcement Learning Model
 #+attr_org: :width 300px :align left
-[[./img/drl101/rl_model.png]]
+[[./img/drl101/rl_model_en.png]]
 
 ** 2.3 Methods in Reinforcement Learning
 #+ATTR_REVEAL: :frag (appear)
@@ -582,7 +907,7 @@ Solve complex problems step by step
 :REVEAL_DATA_TRANSITION: 'cube-in none-out'
 :END:
 
-#+attr_html: :alt :title AlphaGo Neural Network :width 800pix :align center
+#+attr_html: :alt :title AlphaGo Neural Network :width 600pix :align center
 #+NAME: AlphaGo Neural Network
 #+attr_org: :width 300px
 [[./img/drl101/alphago_nn.png]]
@@ -590,11 +915,13 @@ Solve complex problems step by step
 #+ATTR_REVEAL: :frag (appear)
 - Learning from fragmented experiences
   #+ATTR_REVEAL: :frag (appear)
-  - Accumulation of partial experiences 👉 Neural Networks
-  - Aggregation of incomplete experiences 👉 Online Learning
-- Randomness and probability are effective models for addressing complex phenomena
+  - Accumulation of partial experiences
+    - 👉 Neural Networks
+  - Aggregation of incomplete experiences
+    - 👉 Online Learning
+- Randomness and probability are effective models for addressing complexity
   #+ATTR_REVEAL: :frag (appear)
-  - Value network: can be seen as a simple win-rate lookup table
+  - Value network: a simple win-rate lookup table
 #+BEGIN_NOTES
 - One can complete a game and then learn from it
 - It is possible to learn while playing (temporal difference learning)
@@ -618,11 +945,7 @@ Solve complex problems step by step
   - Rational decision making outperforms irrational decision making
 - Self-training / Self-learning
   #+ATTR_REVEAL: :frag (appear)
-  - Continuous improvement in levels
-#+ATTR_REVEAL: :frag (appear)
-#+begin_quote
-→ Equilibrium State (Optimal Strategy)
-#+end_quote
+  - Equilibrium State (Optimal Strategy)
 
 #+BEGIN_NOTES
  - Why is the equilibrium strategy optimal?
@@ -650,7 +973,3 @@ Solve complex problems step by step
     @@html:</span>@@
 - Neural Networks
   - Randomness and probability are effective models for addressing complex phenomena
-
-
-
-#+end_comment
