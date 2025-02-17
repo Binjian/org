@@ -72,6 +72,35 @@
      - 推动了深度学习及强化学习等领域的革命性进步
    - 数据驱动：高质量数据非常重要
    #+end_notes
+** 深度神经网络的发展历史
+
+#+NAME: dl_history
+#+ATTR_HTML: :alt  :title  :width 800px  :align center
+#+attr_org: :width 400px
+[[./img/deepseek/dl_histroy.png]]
+# #+begin_src mermaid :file ./img/deepseek/dl_histroy.png
+# block-beta
+#     columns 4
+#     id1(("AlexNet<br/>2014")) id2(("ResNets<br/>2015")) id3(("Transformer<br/>2017")) id4(("GPT,BERT<br/>2018"))
+#     id8(("GPT4<br/>2023")) id7(("ChatGPT<br/>Chinchilla<br/>2022")) id6(("GPT3<br/>2020")) id5(("GPT2<br/>2019"))
+#     id9(("Llama2<br/>2023")) id10(("o1<br/>2024")) id11(("r1<br/>2024")) id12(("s1<br/>o3 mini<br/>2024"))
+#     id1-->id2
+#     id2-->id3
+#     id3-->id4
+#     id4-->id5
+#     id5-->id6
+#     id6-->id7
+#     id7-->id8
+#     id8-->id9
+#     id9-->id10
+#     id10-->id11
+#     id11-->id12
+#
+#
+#     classDef fill fill:#696
+#     class id11 fill
+# #+end_src
+
 * 模型的演变
 #+ATTR_REVEAL: :frag (appear)
 - 开源最前沿模型(V0)

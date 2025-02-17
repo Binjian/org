@@ -63,6 +63,7 @@
 - 强化学习：
   - 数据饥渴
   - 可以从复杂系统的碎片化经验中学习
+
 ** 苦涩的教训(Rich Sutton)
 #+begin_quote
 大部分人工智能和强化学习领域的进步来源于利用大量计算资源和通用学习算法，而不是依赖领域专家手工设计的特定知识。
@@ -88,6 +89,37 @@
      - 推动了深度学习及强化学习等领域的革命性进步
    - 数据驱动：高质量数据非常重要
    #+end_notes
+
+** 深度神经网络的发展历史
+
+#+NAME: dl_history
+#+ATTR_HTML: :alt  :title  :width 800px  :align center
+#+attr_org: :width 400px
+[[./img/deepseek/dl_histroy.png]]
+# #+begin_src mermaid :file ./img/deepseek/dl_histroy.png
+# block-beta
+#     columns 4
+#     id1(("AlexNet<br/>2014")) id2(("ResNets<br/>2015")) id3(("Transformer<br/>2017")) id4(("GPT,BERT<br/>2018"))
+#     id8(("GPT4<br/>2023")) id7(("ChatGPT<br/>Chinchilla<br/>2022")) id6(("GPT3<br/>2020")) id5(("GPT2<br/>2019"))
+#     id9(("Llama2<br/>2023")) id10(("o1<br/>2024")) id11(("r1<br/>2024")) id12(("s1<br/>o3 mini<br/>2024"))
+#     id1-->id2
+#     id2-->id3
+#     id3-->id4
+#     id4-->id5
+#     id5-->id6
+#     id6-->id7
+#     id7-->id8
+#     id8-->id9
+#     id9-->id10
+#     id10-->id11
+#     id11-->id12
+#
+#
+#     classDef fill fill:#696
+#     class id11 fill
+# #+end_src
+
+
 ** $\mathcal{R}1$ 的认知模型
 #+ATTR_HTML: :alt  :title 技术进步 :width 600px  :align center
 #+attr_org: :width 300px :align left
@@ -163,7 +195,7 @@
 ** 主要特点
 #+ATTR_REVEAL: :frag (appear)
 - 开源大模型(权重开放，方法开放，非常宽松的MIT许可)
-  - 容易复制，已经被多次复现(Open$\mathcal{R}1$)改进(S1)
+  - 容易复制，已经被多次复现(TinyZero, Open$\mathcal{R}1$)改进(S1,o3 mini)
   - 非视觉多模态模型→ DreamCraft3D, Janus Pro (79.2%@MMBench, 0.8@t2i)
 - 较强的推理能力
   - 来自强化学习训练和推理数据训练样本
@@ -202,6 +234,8 @@
   - 业绩落后综合指数4%
 - 2024 10月因轧空关闭中性基金产品
 - 2025 1月Deepseek $\mathcal{R}1$ 开源
+** 优化使用需要训练模型
+:
 * 大模型应用
 #+ATTR_REVEAL: :frag (appear)
 - 汽车行业端到端大模型
