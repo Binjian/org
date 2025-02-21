@@ -1,0 +1,72 @@
+#+TITLE: 周三, 2025-02-12
+* DONE 08:38 DeepSeek Report (applications)
+- State "DONE"       from "TODO"       [2025-02-12 周三 17:00]
+- State "DONE"       from "TODO"       [2025-02-11 周二 10:46]
+* DONE 面试 [[D:/04-HR/recruit_2025.02/程方正-具身智能.pdf]]
+SCHEDULED: <2025-02-12 周三 14:00-15:00>
+- Note taken on [2025-02-12 周三 17:06] \\
+  - 程方正面试反馈
+    - 主要经验：
+      - 运动规划(自动驾驶)开发经验
+      - 比较深入的数值优化计算分析和开发,
+      - 有一定的具身智能经验
+      - VLA模型开发,适配,
+        - 开源模型的初步应用
+        - 数据规模较小
+        - 主要是模仿学习,非强化学习方法
+        - 有一定的深度学习底层经验
+      - 深度学习中小数据集处理经验
+      - C++和Python开发经验
+      - 欠缺机器人方面的经验，无强化学习经验
+      - 初步的Git知识
+- State "DONE"       from "TODO"       [2025-02-12 周三 17:00]
+- Note taken on [2025-02-12 周三 13:55] \\
+  - 车辆规划，离散优化，连续优化
+  - 自驾->VLA
+    - 调研,选定vla,octo,rt-1, 200ep，10s, 50, 500frame
+    - rlds, 轨迹，
+    - 测试，用数据集，没有仿真，没有真机，
+    - 双臂协同
+    - DeepSeek, 无
+    - Aloha? ACT:
+    - 松弛
+      - jerk,
+      - 不等式约束松弛->等式
+- Note taken on [2025-02-10 周一 15:19] \\
+  Questions：
+  - VL A
+    - CoT how?
+    - trained?
+    - applied?
+    - overfitting checking?
+    - architecture?
+      - encoder: dinov2+SigLip, why?
+      - how to fine-tune for specific tasks?
+        - 单臂，收集图像，单臂+夹爪，
+        - 松灵，主从采集数据，Aloha：颜色，障碍物干扰，RLDS：episode,frame:
+    - RL/VLA/Diffusion,ACT? which?
+  - 曾经训练过的深度学习模型/强化学习模型/VLA? 无
+    - R1_0? GRPO:
+  - 哪一种？
+    - Monte Carlo learning vs TD learning?
+  - 网络架构？
+    - Diffusion?
+    - ACT? why chunk?
+    - ViT vs CNN? MHSA/GQA/MLA(RoPE)
+    - DeepSeek (MoE?), S1?
+  - 大数据经验？
+    - pandas/db?
+  - Git?
+    - merge vs rebase? history?
+    - hard/soft/mixed?
+    - log/reflog?
+  - Python, DB?
+- Note taken on [2025-02-10 周一 15:12] \\
+  [[https://meeting.tencent.com/dm/9xAQT1sMQf71][腾讯会议]]
+* DONE 系统2025Q1 OKR
+SCHEDULED: <2025-02-12 周三 15:00-16:00>
+- State "DONE"       from "TODO"       [2025-02-12 周三 17:00]
+* DONE improve deepseek report
+- State "DONE"       from "TODO"       [2025-02-12 周三 10:40]
+* DONE improve drl101 report
+- State "DONE"       from "TODO"       [2025-02-12 周三 17:00]
