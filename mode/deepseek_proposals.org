@@ -101,6 +101,41 @@
 #     class id11 fill
 # #+end_src
 
+** $\mathcal{R}1$ 的认知模型
+#+ATTR_HTML: :alt  :title 技术进步 :width 600px  :align center
+#+attr_org: :width 300px :align left
+[[./img/deepseek/autoregressive.png]]
+
+#+ATTR_REVEAL: :frag (appear)
+- 所有大语言模型是自回归模型
+- 标记(token)
+- 回答是通过随机抽样得到
+- 低概率,高精度
+
+#+begin_notes
+- 采样和统计模型
+- 提问是条件，回答是条件概率
+- 温度参数: 可以调节随机性
+- fp32 单精度浮点数精度：可以表示的最小标称正数 $1.18\times 10^{-38}$
+- fp16： $5.96\times 10^{-8}$
+- fp8 1.4.3: 0.0156
+#+end_notes
+
+** 幻觉
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title  :width 400pix  :align center
+        #+attr_org: :width 400px :align left
+        [[./img/deepseek/hallucination.jpg]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_REVEAL: :frag (appear)
+        - 大语言模型是自回归模型采样
+        - 优化使用需要训练模型
+          - 应用域数据收集整理
+          - 模型微调/强化学习训练
+     #+REVEAL_HTML: </div>
+
 * 模型的演变
 #+ATTR_REVEAL: :frag (appear)
 - 开源最前沿模型(V0)
@@ -195,6 +230,7 @@
   - 业绩落后综合指数4%
 - 2024 10月因轧空关闭中性基金产品
 - 2025 1月Deepseek $\mathcal{R}1$ 开源
+
 * 大模型应用
 #+ATTR_REVEAL: :frag (appear)
 - 汽车行业端到端大模型
@@ -205,6 +241,21 @@
   - 规模化控制模型(VLA,生成式扩散模型,块变形金刚模型)
   - 机械臂操作:模仿学习
   - 双足/四足机器人行走控制:强化学习
+
+** 大模型的应用模式
+#+ATTR_HTML: :alt  :title  :width 800pix  :align center
+#+attr_org: :width 600px :align left
+#+NAME: model deployment
+[[./img/deepseek/llm_mentalmodel.jpg]]
+
+#+ATTR_REVEAL: :frag (appear)
+- 人机接口(HMI,前端)
+- 大语言模型($\mathcal{R}1$,后端)
+- 应用域数据源(问题适配,中台)
+
+#+BEGIN_NOTES
+https://medium.com/towards-data-science/building-ai-products-with-a-holistic-mental-model-33f8729e3ad9
+#+END_NOTES
 
 ** $\mathcal{R}1$ 推理模型和制造与工业自动化:
 #+begin_quote
@@ -262,3 +313,46 @@
   - 超参调试
   - 架构调整
   - 训练调度测试
+*** 计算资源
+#+ATTR_REVEAL: :frag (appear)
+- 行为克隆训练
+  - Diffusion Policy (TRI)
+    - 单场景:50~100演示,12小时
+      - ~3随机种子x50
+      - 网络尺寸
+    - 决策网训练(CNN/VIiT)
+      - 8*A100/H100
+      - 3.34百万次仿真/每个操作任务
+      - 权重数据：650MB~4GB/每个操作任务
+    - 任务微调
+    - 泛化到多场景，互联网级别视频（GPT）
+- 训练
+  - 预训练
+    - 比较，评估不同架构，超参，策略
+  - 强化学习训练
+  - 微调监督训练
+- 推理
+- 仿真：英伟达IsaacSim配置建议
+  - 8*A100@80GB,H800/H100/B100
+  - 8*A6000@48GB
+  - 8*4090
+*** [[https://towardsai.net/p/artificial-intelligence/guide-to-hardware-requirements-for-training-and-fine-tuning-large-language-models][训练基础大模型的资源]]
+- 70亿参数模型预训练
+  - 4*4090(24GB)/A100(40GB) ~ 4*A100(80GB)
+  - 1万亿字符训练集，一个月@4*A100(40GB),11万元~22万元
+  - 数据集：1~5万亿
+  - 权重数据：500GB
+  - 微调: 1*A6000(24~48GB)/4090(24GB)~2*4090
+- 700亿参数模型预训练
+  - 16*A100(40GB)~32A100(40GB)
+  - 10万亿字符训练集，一个月@32*A100(40GB),360万元~720万元
+  - 数据集：10~20万亿
+  - 权重数据：2TB
+  - 微调: 8*A100(40~80GB)/H100(80GB)/4090(24GB)
+*** 机器人项目(机器学习)
+- [[https://agile.human2humanoid.com/][ASAP]]
+- [[https://easypapersniper.github.io/projects/robotMover/robotMover.html][RobotMover]]
+- [[https://dex-vla.github.io/][DexVLA]]
+- [[https://dextrah-rgb.github.io/][DextrAH-RGB]]
+- [[https://sam2act.github.io/][SAM2ACT]]
+- 训练：编码器，策略，

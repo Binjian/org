@@ -119,6 +119,20 @@
 #     class id11 fill
 # #+end_src
 
+** 幻觉
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title  :width 600pix  :align center
+        #+attr_org: :width 400px :align left
+        [[./img/deepseek/hallucination.jpg]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_REVEAL: :frag (appear)
+        - 大语言模型是自回归模型采样
+        - 优化使用需要训练模型
+          - 应用域数据收集整理
+          - 模型微调/强化学习训练
+     #+REVEAL_HTML: </div>
 
 ** $\mathcal{R}1$ 的认知模型
 #+ATTR_HTML: :alt  :title 技术进步 :width 600px  :align center
@@ -234,8 +248,6 @@
   - 业绩落后综合指数4%
 - 2024 10月因轧空关闭中性基金产品
 - 2025 1月Deepseek $\mathcal{R}1$ 开源
-** 优化使用需要训练模型
-:
 * 大模型应用
 #+ATTR_REVEAL: :frag (appear)
 - 汽车行业端到端大模型
