@@ -289,13 +289,13 @@
 *** 强化学习
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_HTML: :alt  :title Year_Of_RL width 400px  :align center
+        #+ATTR_HTML: :alt  :title Year_Of_RL :width 400px  :align center
         #+attr_org: :width 300px :align left
         [[./img/drl101/jim_fan.png]]
         #+REVEAL_HTML: <figcaption>2025强化学习之年</figcatption>
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_HTML: :alt  :title R1 width 400px  :align center
+        #+ATTR_HTML: :alt  :title R1 :width 400px  :align center
         #+attr_org: :width 300px :align left
         [[./img/drl101/deepseek_r1_arxiv.png]]
         #+REVEAL_HTML: <figcaption>DeepSeek R1</figcatption>
