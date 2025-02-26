@@ -3,4 +3,5 @@
 *.fls
 *.log
 *.pdf
-.auctex-auto/
+.auctex-auto
+*.synctex.gz
