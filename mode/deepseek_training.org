@@ -30,9 +30,12 @@
 #+REVEAL_EXTRA_CSS: ./templates/drl101.css
 #+REVEAL_PLUGINS: (highlight notes)
 #+REVEAL_TITLE_SLIDE: ./templates/title_deepseek_training.html
-#+REVEAL_TITLE_SLIDE_BACKGROUND: ./img/deepseek/ds_logo.png
-#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE: 1600px
-#+REVEAL_TITLE_SLIDE_BACKGROUND_OPACITY: 0.5
+#+REVEAL_TITLE_SLIDE_BACKGROUND: https://images.axios.com/2JlZLKEUJZjpMJrBJY29T5AUV9k=/0x0:1920x1080/1920x1080/2025/01/27/1738017918969.jpg
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE: 2000px
+#+REVEAL_TITLE_SLIDE_BACKGROUND_OPACITY: 0.3
+#+REVEAL_TOC_SLIDE_BACKGROUND: https://images.axios.com/2JlZLKEUJZjpMJrBJY29T5AUV9k=/0x0:1920x1080/1920x1080/2025/01/27/1738017918969.jpg
+#+REVEAL_TOC_SLIDE_BACKGROUND_SIZE: 2000px
+#+REVEAL_TOC_SLIDE_BACKGROUND_OPACITY: 0.1
 #+HTML_HEAD_EXTRA: <style> .figure p {text-align: center;}</style>
 #+HTML_HEAD_EXTRA: <style>*{font-family: "LXGW WenKai Mono" !important}</style>
 #+MACRO: color @@html:<font color="$1">$2</font>@@
@@ -325,6 +328,11 @@ https://openai.com/index/swe-lancer/
 #+end_notes
 
 * DeepSeek模型
+# :PROPERTIES:
+# :reveal_background: https://images.axios.com/2JlZLKEUJZjpMJrBJY29T5AUV9k=/0x0:1920x1080/1920x1080/2025/01/27/1738017918969.jpg
+# :reveal_background_trans: slide
+# :reveal_background_opacity: 0.2
+# :END:
 #+ATTR_REVEAL: :frag (fade-in) :frag_idx (1 2 3 5)
 - 开源最前沿模型(V0，2024.01.05)
   - 网络基本架构: _LLaMA_ (变形金刚模型)+ _RMSNorm+SwiGLU_, _GQA_, _RoPE_
@@ -450,7 +458,7 @@ https://openai.com/index/swe-lancer/
         #+ATTR_REVEAL: :frag (appear)
         - 稀疏化架构：训练和推理稀疏化(MoE) + 内嵌瓶颈层(MLA) + (MTP）
         - 数据并发的驱动: 匹配通信约束跨节点数据流
-          - *整个集群是一个巨大一体的GPU*
+          - *整个集群是巨大一体的GPU*
         - 混合精度浮点数计算
         - 5.5 Mio是V3是一次训练的成本
      #+REVEAL_HTML: </div>
@@ -631,6 +639,12 @@ https://medium.com/towards-data-science/building-ai-products-with-a-holistic-men
 #+end_notes
 
 ** $\mathcal{R}1$ 推理模型和制造与工业自动化:
+:PROPERTIES:
+:reveal_background: ./img/deepseek/industry_4_icon.png
+:reveal_background_trans: slide
+:reveal_background_size: 1200px
+:reveal_background_opacity: 0.2
+:END:
 #+begin_quote
 添加图像编解码网络
 #+end_quote
@@ -646,6 +660,12 @@ https://medium.com/towards-data-science/building-ai-products-with-a-holistic-men
   - 复杂任务调度
   - 路径规划
 ** 数据处理
+:PROPERTIES:
+:reveal_background: ./img/deepseek/domain_knowledge.png
+:reveal_background_trans: slide
+:reveal_background_size: 1200px
+:reveal_background_opacity: 0.2
+:END:
 #+ATTR_REVEAL: :frag (appear)
 - OA助手
   - 办公文本生成
@@ -654,8 +674,13 @@ https://medium.com/towards-data-science/building-ai-products-with-a-holistic-men
   - 专用领域编程模型
   - 架构辅助设计
   - 文档和测试自动化
-  - 数据bu
 ** 机器人
+:PROPERTIES:
+:reveal_background: ./img/deepseek/robot.png
+:reveal_background_trans: slide
+:reveal_background_size: 1000px
+:reveal_background_opacity: 0.2
+:END:
 #+begin_quote
 结合$\mathcal{R}1$ 微调开源VLA基础模型
 #+end_quote
