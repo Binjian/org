@@ -31,10 +31,10 @@
 #+REVEAL_PLUGINS: (highlight notes)
 #+REVEAL_TITLE_SLIDE: ./templates/title_deepseek_training.html
 #+REVEAL_TITLE_SLIDE_BACKGROUND: https://images.axios.com/2JlZLKEUJZjpMJrBJY29T5AUV9k=/0x0:1920x1080/1920x1080/2025/01/27/1738017918969.jpg
-#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE: 2000px
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE: 1920px
 #+REVEAL_TITLE_SLIDE_BACKGROUND_OPACITY: 0.3
 #+REVEAL_TOC_SLIDE_BACKGROUND: https://images.axios.com/2JlZLKEUJZjpMJrBJY29T5AUV9k=/0x0:1920x1080/1920x1080/2025/01/27/1738017918969.jpg
-#+REVEAL_TOC_SLIDE_BACKGROUND_SIZE: 2000px
+#+REVEAL_TOC_SLIDE_BACKGROUND_SIZE: 1920px
 #+REVEAL_TOC_SLIDE_BACKGROUND_OPACITY: 0.1
 #+HTML_HEAD_EXTRA: <style> .figure p {text-align: center;}</style>
 #+HTML_HEAD_EXTRA: <style>*{font-family: "LXGW WenKai Mono" !important}</style>
@@ -156,6 +156,13 @@
   - 企业部署开发工作会集成特定应用场景下的提示文本
 #+END_NOTES
 ** 大模型与工作结合
+:PROPERTIES:
+:reveal_background: https://hai.stanford.edu/sites/default/files/styles/media/public/2023-02/Neural%20net.jpg?itok=uGAKlVqn
+:reveal_background_trans: slide
+:reveal_background_size: 1920px
+:reveal_background_opacity: 0.2
+:END:
+
 #+ATTR_REVEAL: :frag (appear)
 - 人工智能是一个乘数
   #+ATTR_REVEAL: :frag (appear)
@@ -231,6 +238,13 @@ https://openai.com/index/swe-lancer/
 - 来源，模型开发的历史，如何开发，功能特点
 #+END_NOTES
 * 深度学习与神经网络
+:PROPERTIES:
+:reveal_background: https://www.mathworks.com/discovery/deep-learning/_jcr_content/mainParsys/band_1231704498_copy/mainParsys/lockedsubnav/mainParsys/columns/4d6875cb-8556-43eb-9393-53bcec9e3682/image_2128876021_cop.adapt.full.medium.svg/1737960734619.svg
+:reveal_background_trans: slide
+:reveal_background_size: 1920px
+:reveal_background_opacity: 0.2
+:END:
+
 #+ATTR_REVEAL: :frag (appear)
 - 基于机器学习
 - 神经网络
@@ -241,7 +255,13 @@ https://openai.com/index/swe-lancer/
   - 数据饥渴
   - 可以从复杂系统的碎片化经验中学习
 
-** 苦涩的教训(Rich Sutton)
+** 苦涩的教训
+:PROPERTIES:
+:reveal_background: ./img/deepseek/bitter_lesson.jpg
+:reveal_background_trans: slide
+:reveal_background_size: 1920px
+:reveal_background_opacity: 0.2
+:END:
 #+begin_quote
 大部分人工智能和强化学习领域的进步来源于利用大量计算资源和通用学习算法，而不是依赖领域专家手工设计的特定知识。
 #+end_quote
@@ -268,17 +288,24 @@ https://openai.com/index/swe-lancer/
    #+end_notes
 
 ** 深度神经网络的发展历史
+:PROPERTIES:
+:reveal_background: https://deeprevision.github.io/posts/001-transformer/transformer.png
+:reveal_background_trans: slide
+:reveal_background_size: 1280px
+:reveal_background_opacity: 0.1
+:END:
 
+#+ATTR_REVEAL: :frag (appear)
 #+NAME: dl_history
 #+ATTR_HTML: :alt  :title  :width 800px  :align center
 #+attr_org: :width 400px
-[[./img/deepseek/dl_histroy.png]]
+[[./img/deepseek/dl_history.png]]
 
 
 #+begin_notes
 - 变形金刚架构第8年，deepseek的目标是变革这个架构
 #+end_notes
-# #+begin_src mermaid :file ./img/deepseek/dl_histroy.png
+# #+begin_src mermaid :file ./img/deepseek/dl_history.png
 # block-beta
 #     columns 4
 #     id1(("AlexNet<br/>2014")) id2(("ResNets<br/>2015")) id3(("Transformer<br/>2017")) id4(("GPT,BERT<br/>2018"))
@@ -302,6 +329,13 @@ https://openai.com/index/swe-lancer/
 # #+end_src
 
 ** 幻觉
+:PROPERTIES:
+:reveal_background: https://www.sfn.org/-/media/Brainfacts2/Thinking-Sensing-and-Behaving/Thinking-and-Awareness/Article-Images/Hallucinations.png
+:reveal_background_trans: slide
+:reveal_background_size: 1920px
+:reveal_background_opacity: 0.1
+:END:
+
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+ATTR_HTML: :alt  :title  :width 450pix  :align center
@@ -368,22 +402,6 @@ https://openai.com/index/swe-lancer/
   - 如果只选一个创新：GRPO
 #+end_notes
 
-** $\mathcal{R}1$ 的推理能力
-#+ATTR_REVEAL: :frag (appear)
-- 来源
-  - 深度神经网络高容量
-  - 长链路训练数据诱导
-  - 强化学习训练
-- 下一步: 大语言模型的AlphaGo
-  - 自我训练到达超人类智能水平
-- 人工智能的二型系统
-  - 复杂系统的评价
-
-#+begin_notes
-- $\mathcal{R}1$ 中的$\mathcal{R}$
-- 二型系统：逻辑思考，推理能力，Kahnemann
-  - 复杂工程问题的智能工具长链路思考：对思考过程和结果的评估
-#+end_notes
 ** $\mathcal{R}1$($\mathcal{R}1_0$)模型架构
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
@@ -402,6 +420,36 @@ https://openai.com/index/swe-lancer/
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
+** 混合精度计算
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+        #+ATTR_HTML: :alt  :title  :width 1200px  :align center
+        #+attr_org: :width 300px :align left
+        [[./img/deepseek/mixed_precision.png]]
+        # #+attr_org: :width 300px :align left
+        # #+REVEAL_HTML: <iframe width="500" height="800" src="https://huggingface.co/chat/" frameborder="0" allow="fullscreen;" allowfullscreen></iframe>
+        # #+REVEAL_HTML: <figcaption><a href="https://huggingface.co/chat/">问答助手</a></figcatption>
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns" style="margin: 0;">
+        #+ATTR_REVEAL: :frag (appear)
+        #+begin_quote
+        为何高效？
+        #+end_quote
+        #+ATTR_REVEAL: :frag (appear)
+        - 稀疏化架构：训练和推理稀疏化(MoE) + 内嵌瓶颈层(MLA) + (MTP）
+        - 数据并发的驱动: 匹配通信约束跨节点数据流
+          - *整个集群是巨大一体的GPU*
+        - 混合精度浮点数计算
+        - 5.5 Mio是V3是一次训练的成本
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+#+begin_notes
+  - *QA1 Deepseek相对其他AI模型的优势和为什么可以降低对高性能芯片的依赖*:高效和低成本
+    - FP8混合计算通常MPU@34.2%
+    - 2.788M GPU小时，2k@H800, ~2个月; 10k@H100,<11天
+#+end_notes
 ** $\mathcal{R}1$ 训练流水
 #+ATTR_HTML: :alt  :title tree :width 1000pix  :align center
 #+attr_org: :width 800px :align left
@@ -412,7 +460,22 @@ https://openai.com/index/swe-lancer/
 - 后期训练
 - 创新在数据，网络模型，训练方法：还有很多空间
 #+end_notes
+** $\mathcal{R}1$ 的推理能力
+#+ATTR_REVEAL: :frag (appear)
+- 来源
+  - 深度神经网络高容量
+  - 长链路训练数据诱导
+  - 强化学习训练
+- 下一步: 大语言模型的AlphaGo
+  - 自我训练到达超人类智能水平
+- 人工智能的二型系统
+  - 复杂系统的评价
 
+#+begin_notes
+- $\mathcal{R}1$ 中的$\mathcal{R}$
+- 二型系统：逻辑思考，推理能力，Kahnemann
+  - 复杂工程问题的智能工具长链路思考：对思考过程和结果的评估
+#+end_notes
 ** 主要特点
 #+ATTR_REVEAL: :frag (appear)
 - 开源大模型
@@ -442,32 +505,6 @@ https://openai.com/index/swe-lancer/
     - deepseek的应用：deepseek会很快被超越，闭源&开源
       - 大语言模型的应用部署，智能提高，提示工程变得简单，输入序列长度增加，粘合层
     - Demis Hassabis: 过度炒作，没有科学上的进步，已知技术，基于谷歌，Meta和开源的成果）
-#+end_notes
-*** 高效
-
-#+REVEAL_HTML: <div class="gridded_frame_with_columns">
-     #+REVEAL_HTML: <div class="one_of_2_columns">
-        #+ATTR_HTML: :alt  :title  :width 1200px  :align center
-        #+attr_org: :width 300px :align left
-        [[./img/deepseek/mixed_precision.png]]
-        # #+attr_org: :width 300px :align left
-        # #+REVEAL_HTML: <iframe width="500" height="800" src="https://huggingface.co/chat/" frameborder="0" allow="fullscreen;" allowfullscreen></iframe>
-        # #+REVEAL_HTML: <figcaption><a href="https://huggingface.co/chat/">问答助手</a></figcatption>
-     #+REVEAL_HTML: </div>
-     #+REVEAL_HTML: <div class="one_of_2_columns" style="margin: 0;">
-        #+ATTR_REVEAL: :frag (appear)
-        - 稀疏化架构：训练和推理稀疏化(MoE) + 内嵌瓶颈层(MLA) + (MTP）
-        - 数据并发的驱动: 匹配通信约束跨节点数据流
-          - *整个集群是巨大一体的GPU*
-        - 混合精度浮点数计算
-        - 5.5 Mio是V3是一次训练的成本
-     #+REVEAL_HTML: </div>
-#+REVEAL_HTML: </div>
-
-#+begin_notes
-  - *QA1 Deepseek相对其他AI模型的优势和为什么可以降低对高性能芯片的依赖*:高效和低成本
-    - FP8混合计算通常MPU@34.2%
-    - 2.788M GPU小时，2k@H800, ~2个月; 10k@H100,<11天
 #+end_notes
 ** 启示
 #+ATTR_REVEAL: :frag (appear)
