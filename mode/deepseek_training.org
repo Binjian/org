@@ -402,7 +402,7 @@ https://openai.com/index/swe-lancer/
   - 如果只选一个创新：GRPO
 #+end_notes
 
-** $\mathcal{R}1$($\mathcal{R}1_0$)模型架构
+** $\mathcal{R}1$($\mathcal{R}1_0$,V3)模型架构
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         #+ATTR_HTML: :alt  :title  :width 600pix  :align center
@@ -451,7 +451,7 @@ https://openai.com/index/swe-lancer/
     - 2.788M GPU小时，2k@H800, ~2个月; 10k@H100,<11天
 #+end_notes
 ** $\mathcal{R}1$ 训练流水
-#+ATTR_HTML: :alt  :title tree :width 1000pix  :align center
+#+ATTR_HTML: :alt  :title tree :width 800pix  :align center
 #+attr_org: :width 800px :align left
 #+NAME: position
 [[./img/deepseek/the-real-deepseek-r1-schematic-v0.gif]]
@@ -460,21 +460,42 @@ https://openai.com/index/swe-lancer/
 - 后期训练
 - 创新在数据，网络模型，训练方法：还有很多空间
 #+end_notes
-** $\mathcal{R}1$ 的推理能力
-#+ATTR_REVEAL: :frag (appear)
-- 来源
-  - 深度神经网络高容量
-  - 长链路训练数据诱导
-  - 强化学习训练
-- 下一步: 大语言模型的AlphaGo
-  - 自我训练到达超人类智能水平
-- 人工智能的二型系统
-  - 复杂系统的评价
-
+**  $\mathcal{R}1_{0}$ 推理能力产生
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+         #+ATTR_HTML: :alt  :title tree :width 1000pix  :align center
+         #+attr_org: :width 800px :align left
+         #+CAPTION:  $\mathcal{R}1_0$ 的训练
+         [[./img/deepseek/r1_0_reasoning_training.png]]
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+         #+ATTR_REVEAL: :frag (appear)
+         - 二型系统和推理能力
+         - 来源
+           - 深度神经网络高容量
+           - 长链路训练数据诱导
+           - 强化学习训练
+         - *苦涩的教训*
+     #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 #+begin_notes
+- 历史如何实现推理？
+  - o1 推理能力从增加推理侧计算,(q*),草莓模型
+  - II型系统
+  - Noam Brown，增加思维规划能力，AlphaGO MCTS
+  - OpenAI：特殊的训练
+    - 特殊的提示数据预训练？
+    - 复杂的奖励模型？
+    - 巧妙的规划算法？
+- 苦涩的教训：
+  - 简单的纯强化学习实现
+  - 前提是基础模型(V3)够大够强，本身具备了推理能力，如何引发推理思考能力，
+  -
 - $\mathcal{R}1$ 中的$\mathcal{R}$
 - 二型系统：逻辑思考，推理能力，Kahnemann
   - 复杂工程问题的智能工具长链路思考：对思考过程和结果的评估
+- 下一步: 大语言模型的AlphaGo
+  - 自我训练到达超人类智能水平
 #+end_notes
 ** 主要特点
 #+ATTR_REVEAL: :frag (appear)
