@@ -59,11 +59,13 @@
 #+begin_notes
 《大般涅槃经》卷三十二载：“其触牙者，即言象形如莱茯根（萝卜）；其触耳者，言象如箕；其触头者，言象如石；其触鼻者，言象如杵；其触脚者，言象如木臼；其触脊者，言象如床；其触腹者，言象如瓮；其触尾者，言象如绳。”
 - 大语言模型是什么，我们讨论的内容：
-  - 人工智能
-  - 深度神经网络
-  - 推理，训练，部署
-  - 算法,训练,数据,gpu
-  - 提示工程,心理学
+  - 开源/闭源
+  - 突破性/没有创新
+  - 内容：
+    - 人工智能,强化学习,深度神经网络
+    - 推理，训练，部署
+    - 算法,训练,数据,gpu
+    - 提示工程,心理学
 - 某种角度精确描述了大语言模型的行为
   - 大语言模型也是盲人摸象！
 #+end_notes
@@ -130,10 +132,14 @@
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         @@html:<div class="r-stack">@@
-           @@html:<img class="fragment" data-fragment-index="0" src="./img/deepseek/ds_no_system_prompt.png" height="400px"/>@@
+           @@html:<img class="fragment fade-out" data-fragment-index="2" src="./img/deepseek/ds_no_system_prompt.png" height="400px"/>@@
+           @@html:<img class="fragment" data-fragment-index="2" src="./img/deepseek/optimal_prompt.png" width="500px"/>@@
         @@html:</div>@@
         @@html:<div class="r-stack">@@
-           @@html:<div class="centered"><span class="fragment" data-fragment-index="0">@@DeepSeek官方建议@@html:</span></div>@@
+           @@html:<div class="centered"><span class="fragment fade-out" data-fragment-index="2">@@DeepSeek官方建议@@html:</span></div>@@
+           @@html:<div class="centered"><span class="fragment current-visible" data-fragment-index="2">@@最优提示文本@@html:</span></div>@@
+           @@html:<div class="centered"><span class="fragment" data-fragment-index="3"><a href="https://huggingface.co/chat/conversation">HuggingChat</a>@@@@html:</span></div>@@
+
         @@html:</div>@@
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
@@ -476,26 +482,29 @@ https://openai.com/index/swe-lancer/
            - 长链路训练数据诱导
            - 强化学习训练
          - *苦涩的教训*
+         - 大语言模型的AlphaGo时刻
      #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 #+begin_notes
+- 二型系统：逻辑思考，推理能力，Kahnemann
+  - 复杂工程问题的智能工具长链路思考：对思考过程和结果的评估
 - 历史如何实现推理？
+  - 人类思维的II型系统
   - o1 推理能力从增加推理侧计算,(q*),草莓模型
-  - II型系统
   - Noam Brown，增加思维规划能力，AlphaGO MCTS
-  - OpenAI：特殊的训练
+  - OpenAI：特殊的训练？
     - 特殊的提示数据预训练？
     - 复杂的奖励模型？
     - 巧妙的规划算法？
 - 苦涩的教训：
   - 简单的纯强化学习实现
   - 前提是基础模型(V3)够大够强，本身具备了推理能力，如何引发推理思考能力，
-  -
 - $\mathcal{R}1$ 中的$\mathcal{R}$
-- 二型系统：逻辑思考，推理能力，Kahnemann
-  - 复杂工程问题的智能工具长链路思考：对思考过程和结果的评估
-- 下一步: 大语言模型的AlphaGo
+- 下一步:
   - 自我训练到达超人类智能水平
+  - A.Karpathy 创造大语言模型RL训练环境， Dario Amodei,
+  - 预训练盲目规模化的结束，强化学习算法重新占据主导地位
+  - Meta,OpenAI,...复现这个算法
 #+end_notes
 ** 主要特点
 #+ATTR_REVEAL: :frag (appear)
@@ -539,7 +548,7 @@ https://openai.com/index/swe-lancer/
   - 推理能力可以蒸馏到较小模型
 - 人工智能还有很大的创新空间！
   - 幻方量化:量化基金以AI为核心的量化基金
-** 幻方量化(High-Flyer)发展
+** [[https://thechinaacademy.org/interview-with-deepseek-founder-were-done-following-its-time-to-lead/][幻方量化(High-Flyer)]]
 #+ATTR_REVEAL: :frag (appear)
 - 2020 2亿人民币超算一代
   - 参照美国“文艺复兴科技”

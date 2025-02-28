@@ -189,14 +189,14 @@
 #+REVEAL_HTML: <div class="gridded_frame_with_columns">
      #+REVEAL_HTML: <div class="one_of_2_columns">
         @@html:<div class="r-stack">@@
-         @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/mixed1.png" />@@
+         @@html:<img class="fragment fade-out" data-fragment-index="0" src="img/drl101/mixed1.png" />@@
          @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/flat_tree.png" />@@
          @@html:<img class="fragment" data-fragment-index="1" src="img/drl101/flat_tree2.png" />@@
         @@html:</div>@@
      #+REVEAL_HTML: </div>
      #+REVEAL_HTML: <div class="one_of_2_columns">
         @@html:<div class="r-stack">@@
-         @@html:<img class="fragment fade-out data-fragment-index="2" src="img/drl101/tree.png" />@@
+         @@html:<img class="fragment fade-out" data-fragment-index="2" src="img/drl101/tree.png" />@@
          @@html:<img class="fragment" data-fragment-index="2" src="img/drl101/flat_tree3.png" />@@
         @@html:</div>@@
      #+REVEAL_HTML: </div>
@@ -214,7 +214,7 @@
 
 
 @@html:<div class="r-stack">@@
-        @@html:<img class="fragment fade-out data-fragment-index="0" src="img/drl101/tree21.png" />@@
+        @@html:<img class="fragment fade-out" data-fragment-index="0" src="img/drl101/tree21.png" />@@
         @@html:<img class="fragment current-visible" data-fragment-index="0" src="img/drl101/tree3.png" />@@
         @@html:<img class="fragment" data-fragment-index="1" src="img/drl101/tree4.png" />@@
 @@html:</div>@@
