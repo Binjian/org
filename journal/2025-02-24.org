@@ -137,18 +137,22 @@ CLOCK: [2025-01-27 周一 09:40]--[2025-01-27 周一 10:08] =>  0:28
 CLOCK: [2025-01-24 周五 09:24]--[2025-01-24 周五 11:14] =>  1:50
 CLOCK: [2025-01-24 周五 08:53]--[2025-01-24 周五 09:24] =>  0:31
 :END:
-* TODO update drl_101
+* DONE update drl_101
+- State "DONE"       from "TODO"       [2025-03-10 周一 09:13]
 * TODO read mujoco
 * 09:08 deepseek slides improvement
-** TODO graph improvment and embedding into ppt
+** DONE graph improvment and embedding into ppt
+- State "DONE"       from "TODO"       [2025-03-10 周一 09:13]
 :LOGBOOK:
 CLOCK: [2025-02-20 周四 10:44]--[2025-02-21 周五 17:37] => 30:53
 CLOCK: [2025-02-20 周四 10:19]--[2025-02-20 周四 10:44] =>  0:25
 CLOCK: [2025-02-20 周四 09:51]--[2025-02-20 周四 10:19] =>  0:28
 CLOCK: [2025-02-20 周四 09:21]--[2025-02-20 周四 09:51] =>  0:30
 :END:
-** TODO agenda for deployment, summarization
-** TODO graph animation and slide optimization
+** DONE agenda for deployment, summarization
+- State "DONE"       from "TODO"       [2025-03-10 周一 09:13]
+** DONE graph animation and slide optimization
+- State "DONE"       from "TODO"       [2025-03-10 周一 09:13]
 * <2025-02-24 周一> ai_weekly
 - 具身先研究
 - 大模型优先？
