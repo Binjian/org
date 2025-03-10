@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       da048ff5-47f7-4872-bd7b-9131e3206270
+:END:
+#+title: Agibot
+* BSW
+- AimRT
+  - CMake, FetchConent

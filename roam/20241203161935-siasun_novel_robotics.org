@@ -46,3 +46,84 @@
 *** 2022: *Dynamic Bipedal Maneuvers* through Sim-to-Real Reinforcement Learning (training paradigm)
 *** 2022: Learning Dynamic Bipedal Walking Across Stepping Stones 2205.01807v1.pdf (e2e, sim2real for dynamic locomotion over stepping stone)
 ** Manipulating
+* Competitor
+[[id:bc045c18-8fec-408c-82bc-b5ec5c8c6283][EFort]]
+[[id:da048ff5-47f7-4872-bd7b-9131e3206270][Agibot]]
+* dynamics
+[[id:a63369bb-12e7-4c8b-92e9-3a689cb8eabd][robot dynamics]]
+* Navigation
+- open navigation [[https://docs.nav2.org/][NAV2]]
+- localization/slam
+- fuser
+- behavior tree
+* ROS2-Mujoco
+- [[https://github.com/MindSpaceInc/Digit-MuJoCo-ROS2][Digit-MuJoCo-ROS2]]
+- [[https://github.com/peterdavidfagan/mujoco_robot_environments][mujoco_robot_environment]]
+- [[https://github.com/MindSpaceInc/Spot-MuJoCo-ROS2][spot_mujoco_ros2]]
+- [[https://github.com/HoangGiang93/mujoco_sim][mujoco_sim]] ros interface for mujoco simulator
+- https://github.com/google-deepmind/mujoco/discussions/990
+- https://moveit.ai/moveit/gsoc/2024/08/22/GSoC-2024-mujoco-support-for-ros2-moveit.html
+- [[https://github.com/moveit/mujoco_ros2_control][mujoco_ros2_control]] moveit mujoco_ros2_control
+* architecture
+- navigation, control and simulation
+#+attr_html: :width 500px
+#+attr_org: :width 800px :align left
+#+begin_src  mermaid :file robot_navigation.png :width 1200px
+graph LR
+  subgraph navigation ["导航定位"]
+    slam(SLAM)--"定位</br>深度图"-->nav(Nav2)
+    nav-->slam
+    nav-->behavior(行为规划)-->motion(移动规划)
+  end
+  subgraph simulation ["仿真"]
+    sim-->sensor(传感器模型)-->fuse(数据融合)-->detection(目标识别)-->nav
+    sim-->vis("可视化</br>(RViz)")
+    slam-->sim("SIM</br>(Gazebo/Mujoco)")
+  end
+  subgraph robotics ["机器人动力学控制"]
+    motion--"重心轨迹"-->inv_kinetics(逆向运动学)-->joint_control(关节控制器)-->sim
+    sensor-->rl(强化学习)-->sim
+  end
+
+#+end_src
+
+#+RESULTS:
+[[file:robot_navigation.png]]
+
+- Reinforcement learning
+#+attr_html: :width 500px
+#+attr_org: :width 800px :align left
+#+begin_src  mermaid :file robot_rl.png :width 1200px
+graph LR
+    motion(移动规划)--"重心轨迹"-->inv_kinetics(逆向运动学)--"步态目标"-->gait_control(步态控制)
+    gait_control-->joint_control("关节控制$$K_P,K_D$$")-->sim("MuJoCo/<br>IsaacGym")
+    gait_control-->StanceMPC(站姿控制)-->sim
+    gait_control-->SwingMPC(摆腿控制)-->sim
+    inv_kinetics--"步态目标"-->nn_joint_control("关节控制策略")-->sim
+    sim-->state_estimate(运动状态估计)-->gait_control
+    state_estimate(运动状态估计)-->nn_joint_control
+
+    classDef green fill:#12ff12;
+    classDef blue fill:#33afff;
+    class gait_control green
+    class nn_joint_control green
+    class StanceMPC blue
+    class SwingMPC blue
+    class joint_control blue
+#+end_src
+
+#+RESULTS:
+[[file:robot_rl.png]]
+
+- mujoco ROS pkgs ubi + nav2 + digit-mujoco-ros2
+- nav2
+  - [[https://github.com/cra-ros-pkg/robot_localization][localization]] robot localization
+  - [[https://github.com/SteveMacenski/slam_toolbox][slam]] ros2
+  - navigation
+  - behavior tree
+- control
+  - mujoco ros pkgs biele
+  - digit model
+- reinforcement learning
+  - gymnasium
+- model: digit-mujoco-ros2

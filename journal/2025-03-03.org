@@ -1,0 +1,47 @@
+#+TITLE: 周一, 2025-03-03
+* DONE 09:08 deepseek slides improvement
+- State "DONE"       from "TODO"       [2025-03-03 周一 13:31]
+** DONE graph improvment and embedding into ppt
+- State "DONE"       from "TODO"       [2025-03-03 周一 13:31]
+:LOGBOOK:
+CLOCK: [2025-02-20 周四 10:44]--[2025-02-21 周五 17:37] => 30:53
+CLOCK: [2025-02-20 周四 10:19]--[2025-02-20 周四 10:44] =>  0:25
+CLOCK: [2025-02-20 周四 09:51]--[2025-02-20 周四 10:19] =>  0:28
+CLOCK: [2025-02-20 周四 09:21]--[2025-02-20 周四 09:51] =>  0:30
+:END:
+** DONE agenda for deployment, summarization
+- State "DONE"       from "DONE"       [2025-03-03 周一 13:31]
+** DONE graph animation and slide optimization
+- State "DONE"       from "TODO"       [2025-03-03 周一 13:31]
+* DONE 10:31 DeepSeek RAG investigation
+- State "DONE"       from "STARTED"    [2025-03-03 周一 13:31]
+- State "STARTED"    from "TODO"       [2025-03-03 周一 10:35]
+
+* 16:31 AI+机器人weekly
+- State "DONE"       from "TODO"       [2025-03-04 周二 08:36]
+- 立项
+  - AI+机器人
+    - SE: 负责落地，产品经理，保障系统需求，
+    - 推动立项，路线，可行性确认
+  - 视觉
+- AI+机器人项目梳理
+  - 价值链赋能
+  - 具身最后一页需要补充，较远，需要新型机器人结合具身工业机器人
+  - 埃夫特：工业机器人跨平台操作系统？数据库？
+    - 墨斗IDE
+  - 宏观，顾文灏与高层谈
+  - 接口是否过多？
+  - 资源层：传感器模块，多可处理器，下一代控制平台，iOT平台（可视  化，预测性维护），无线通信模块
+  - 模型算力平台：硬件需求由算法软件需求方定
+  - 路线图
+    - 宏观
+    - 具体技术实现
+    - 具身平台
+      - ioT,
+      - 多模态工业机器人大模型训练平台：英伟达/垂直场景
+      - 垂直场景：类似ue5,数字化编程,机器人离线编程
+  - 拟立项内容：智能说明书，智能售后诊断；编程助手较难
+  - 埃夫特调研
+  - 3月15日，依托企业知识库，demo，
+  - charter: 落地的次序，今年两个app，明年，后年？项目组搭建
+  - 新型机器人：数字化仿真,场景展示，3月~4月借硬件准备

@@ -2,7 +2,8 @@
 :ID:       d9076c1d-b2fc-4d8b-8eff-2299364241db
 :END:
 #+title: DeepSeek
-
+* RAG invesitiagtion
+[[id:15ba6cf8-dbf0-4acc-97bd-c7e47aac7a00][RAG]]
 * DeepSeekMath
 ** DeepSeek V3
 *** 671B MoE

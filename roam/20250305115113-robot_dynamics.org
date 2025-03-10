@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       a63369bb-12e7-4c8b-92e9-3a689cb8eabd
+:END:
+#+title: robot dynamics
+
+
+- [[https://github.com/ayonga/frost-dev][frost]] matlab, Fast Robot Optimization and Simulation Toolkit
+- [[https://github.com/UMich-BipedLab/C-Frost][c-frost]] c,
+- [[https://github.com/rbdl/rbdl][rbdl]] rigid body dynamics library
+- [[https://github.com/UMich-BipedLab/cassie_alip_mpc][cassie_alip_mpc]] Terrain Adaptive, ALIP based Bipedal Locomotion Controller via MPC and Virtual Constrains

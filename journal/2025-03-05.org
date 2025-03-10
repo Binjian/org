@@ -1,0 +1,35 @@
+#+TITLE: 周三, 2025-03-05
+* DONE 13:55 OKR 季度评估
+- State "DONE"       from "TODO"       [2025-03-05 周三 17:05]
+- State "DEFERRED"   from "STARTED"    [2025-01-24 周五 08:40]
+- State "STARTED"    from "TODO"       [2025-01-23 周四 17:15]
+* DONE 08:34 Meeting Chores
+- State "DONE"       from "TODO"       [2025-03-05 周三 17:05]
+- Note taken on [2025-03-04 周二 08:37] \\
+** DONE 埃夫特：工业机器人跨平台操作系统？数据库？
+- State "DONE"       from "STARTED"    [2025-03-04 周二 17:18]
+- State "STARTED"    from "TODO"       [2025-03-04 周二 08:41]
+** DONE embodied intelligence slide for charter
+- State "DONE"       from "STARTED"    [2025-03-05 周三 17:04]
+- State "STARTED"    from "TODO"       [2025-03-04 周二 17:18]
+    - locomotion
+    - manipulation
+    - WBC
+* 14:24 X1 weekly
+** slam module调试
+** 智源开源sdk学习
+*** 软件，硬件
+*** BOM
+*** rock提供最佳实践，review
+* 14:03 Deepseek discussion meeting
+** Rock
+- 智能说明书，智能售后诊断
+- 多可用云端，现在私域部署
+- 编程自动化，
+- 预测性维护，iOT未来
+** 张书生
+- 400客服，智能助手，有数据源
+- 编程自动化，自然语言编程
+- 离线编程自动化：电流，速度增加，自动编写代码，有模板，
+- 更重要工艺参数优化：工艺数据库，工艺专家库，
+- IoT数据分析，实时诊断监控，预测性维护重要，减速器摩擦，震动

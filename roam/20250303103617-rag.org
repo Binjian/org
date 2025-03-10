@@ -1,0 +1,106 @@
+:PROPERTIES:
+:ID:       15ba6cf8-dbf0-4acc-97bd-c7e47aac7a00
+:END:
+#+title: RAG
+
+3 optimal RAG frameworks
+- Haystack
+- Langchain
+- LlamaIndex
+
+Goal: More Performance
+- alleviate the limitations of LLMs: outdated training data, unseen private data, hallucination
+- integrating extgernal knowledge bases
+
+Keywords:
+- RAG framewors
+- popular
+
+
+* criteria
+ - scalability
+ - integration capabilities
+ - community support w
+<script src="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/dist/reveal.js"></script>
+<script src="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/plugin/highlight/highlight.js"></script>
+<script src="file://c:/msys64/home/xinbinjian.sh/.config/emacs/.local/straight/build-31.0.50/revealjs/plugin/notes/notes.js"></script>
+ - production readiness
+
+* Haystack
+- features
+  - opensource
+  - focus on rag pipelines, advanced search
+  - pros
+    - modular and flexible, tailorable for specific use cases
+    - wide range integration
+    - production-ready reatures: k8s workflows, logging, monitoring, cloud & on-premises
+  - cons:
+    - learning curve
+    - complexity for simple usse cases
+- application cases
+  - complex RAG pipelines, question answering, summarization, document retrieval
+  - enterprise-level applications with scalability, reliability
+  - advanced search and retrieval, sota NLP models with vector search engine ElasticSearch FAISS
+- deployment
+  - cloud
+  - serialization for k8s
+  - integration
+* LangChain
+ - features
+   - opensource python/typescript
+   - chain of calls
+   - pros
+     - ease of use
+     - various data sources, integration of vector databases, APIs,
+     - community
+   - cons
+     - not optimized
+     - less flexible for customization
+ - application cases
+   - conversational AI
+   - simple to moderately complex, ease of development
+ - deployment details
+   - cloud, python applications
+   - scalable with docker containerization, flexbile
+   - integration with data tools and llm providers
+* LlamaIndex
+ - features
+   - opensource
+   - data ingestion, indexing and retrieval
+   - pros
+     - data handling efficiency
+     - high-level abstractions
+     - opensource and community-driven
+   - cons
+     - less LLM support
+     - less documentation
+ - deployment
+   - python applicaiton, local and cloud-based
+   - integrates with popular vector databases and llms
+   - scalable
+* Dify
+- features
+  - all in one paltform, low-code, e2e solution
+  - ease and speed
+  - less granular control, newer ecosystem
+  - less flexible
+  - backend as a service
+* DSPy
+* Guardrails
+* Instructor
+* Guidance
+* adalflow
+ -
+* Tool
+- mitmproxy
+  - monintoring tokens flow for cost analysis
+- *retrieval model* (question to prompt) in-context learning, guiding the LLM
+  - embedding model with Q&A pairs --> extra context (few-shot learning)
+  - find examples on the fly from a database
+  - gain equal to 2,3x larger models
+  - reasoning model R1 benefit from retrieval (more efficient: intelligence decoupled from knowledge)
+* RAG mindset
+- RAG actions: *Wrapping*
+  - interleaving code and LLMs
+  - Re-writing and constructing prompts
+- intercept the prompt with HTTPS proxy!
