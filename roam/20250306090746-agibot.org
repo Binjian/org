@@ -5,12 +5,12 @@
 * BSW
 - AimRT
   - CMake, FetchConent
-* Go1 and AgiBot World dataset
+* [[https://agibot-world.com/][智源 Go1 and AgiBot World dataset]]
 - opensource, rich information sharing
 - Vision-Language-Action model VLA
   - VLA history
-    - RT1 (FiLM EfficientNet-B3+Transformer,19+16 Mio., 130k Traj), RT2 (Pali-X,Pali-3b,Palm-E,22+32B,2+3B,12+4B), OpenVLA(7+0.6, SigLip, DinoV2, Llamma), RT-X, Octo(T5+Transformer:27M,93M),
-    - [[https://rdt-robotics.github.io/rdt-robotics/][RDT-1B]]: diffusion foundation model for Bimanual Manipulation, unified action space ➡ TRI(closed)
+    - Previous SoTA [[https://rdt-robotics.github.io/rdt-robotics/][RDT-1B]]: diffusion foundation model for Bimanual Manipulation, unified action space ➡ TRI(closed)
+    - RT1 (FiLM EfficientNet-B3+Transformer,19+16 Mio., 130k Traj), RT2 (Pali-X,Pali-3b,Palm-E,22+32B,2+3B,12+4B), [[https://openvla.github.io/][OpenVLA]] (7+0.6, SigLip, DinoV2, Llamma), RT-X, [[https://octo-models.github.io/][Octo]](T5+Transformer:27M,93M),
     - general architecture: LLM/Smaller transformer/diffusion
     - as Robot GPT
   - General consensus:
@@ -18,17 +18,12 @@
     - larger dataset
     - diverse scenarios
     - diverse objects
-  - open datasets
-    - Data scaling law (90% success rate fro one afternoon in novel environments with unseen objects)
-      - 32 obj*120 demo=3840, (after slam filtering, 3765/3820): 12.5% (15 demos) suffices success rate to 90%
-      - 32 env*120 demo: 25% (30 demos) suffices success rate to 90%
-      - 50% 100% small difference
-    - Open X-Embodiment(22 embodiments, 2.4Mio Traj): RT-X
+    - [[https://robotics-transformer-x.github.io/][Open X-Embodiment]] (22 embodiments, 2.4Mio Traj): RT-X
     - Droid (Manipulation) (diffusion policy, octo, aloha, robomimic, 76k traj)
     - [[https://robot-colosseum.readthedocs.io/en/latest/overview.html][Robot Colusseum 2024]] simulation benchmark, 14 axes (colr, textore, size, backgournds, ...)
     - Robomimic (BC & Diffusion, 7.2k traj, 2021), Roboturk (manipulation, 2.1k traj, 2018)
     - older: Rh20t, Bridgedata V1, V2
-- Agibot World dataset
+- [[https://agibot-world.com/][Agibot World dataset]]
   - 1M trajectories
   - 100 real robots
   - over 100 real-world scenarios
@@ -38,6 +33,11 @@
   - bimanual manipulation
   - 30% improvment over OXE in average
   - CC BY-NC-SA 4.0 license (Non-Open source, not for commercial usage)
+  - open datasets
+    - Data scaling law (90% success rate fro one afternoon in novel environments with unseen objects)
+      - 32 obj*120 demo=3840, (after slam filtering, 3765/3820): 12.5% (15 demos) suffices success rate to 90%
+      - 32 env*120 demo: 25% (30 demos) suffices success rate to 90%
+      - 50% 100% small difference
 - Genie Operator-1 (GO-1)
   - latent action representationsg (complicated GNN)
     - LAM trained on internet scale data (very large)
@@ -49,7 +49,7 @@
     - diffusion objective
     - share the same architecture as latent planner
   - Comment: complicated, highly structured, not generic architecture
-  - No weights!
+  - No weight matrices!
 - Performance
   - AgiBot World dataset vs. OXE: 20%~30% improvement (smaller but longer training samples)
   - GO1 vs. RDT-1B: 30 trials per task (10 seen + 20 with distractions)
