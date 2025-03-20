@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       438b840d-ba22-4a8e-8c50-335939c76f65
+:END:
+#+title: Fourier
+
+* [[https://mp.weixin.qq.com/s/OUnrU8UTjlaBsvVUYFtyag][Fourier ActionNet 数据集]]
+- 多任务，多模态
+- 采用开箱即用的开源开发框架[[https://huggingface.co/lerobot][huggingface LeRobot]]
+  - 数据集
+    - Berkeley-RPT,Stanford-Robocook,宇树unitreeh1-warehouse,stanford-Kuka, Aloha
+  - 本体[[https://raw.githubusercontent.com/huggingface/lerobot/refs/heads/main/media/so100/leader_follower.webp][SO100]],单臂，双臂，人形，轮式
+  - 算法
+    - ACT (Aloha), $\pi_{0}$, 扩散策略，[[https://sjlee.cc/vq-bet/][VQ-BeT]], [[https://github.com/nicklashansen/tdmpc][TD-MPC]]
+  - 工具：训练，仿真，评估
+    - 仿真（Gymnasium, 环境aloha,xarm,pusht）
+    - 有预训练模型
+- 采集算法，训练算法，数据部署
+  - VLM标注
+  - 扩散策略, ACT,iDP#
+- 机器人具身
+  - 任务：开柜门，抓柠檬，倒豆子
+- [[https://action-net.org/][数据集Fourier ActionNet]]：
+  - 多模态,多任务
+    - 开柜门，抓柠檬，倒豆子
+    - 场景包括家用，办公，
+  - 机器人本体: 傅里叶[[https://www.fftai.cn/grx][GRx]] : GR1-T1,GR1-T2,GR2
+    - 上半身
+  - 数据手机基于Vision Pro的上半身遥操作系统
+    - 标注借助VLA大模型
+    - 140小时
+    - 30k轨迹
+  - VLA算法：扩散策略,ACT,iDP3
+  - iDP3 (改进3d扩散策略，Standford,SFU, Upenn, UIUC,CMU)
+    - DP基于2d图像->DP3基于3d点云，全局视角->iDP3基于3d点云,自身视角
+    - 基于GR1,上半身，25DoF,腰部旋转自由度，高度手动可调（可调视角，操作灵活度）
+    - VLA模型（3d感知->灵巧手操作)，控制@15Hz
+    - *高精度固态激光雷达* (RealSense L515),优于深度相机RealSense D435和 Livox Mid-360
+    - 遥操作系统VisionPro（头部，手部，腕部运动）: 示教数据->Relaxed IK->机械臂关节运动规划
+    - 自身视角3d数据，延长的预测地平线

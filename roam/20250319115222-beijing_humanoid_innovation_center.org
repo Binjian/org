@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       0eee5abf-7f44-46fe-8075-1c37d7ac61c7
+:END:
+#+title: 北京人工智能创新中心
+
+* 通用具身智能平台[[https://mp.weixin.qq.com/s/ZddsbS8odvLRDpoqK3GSnA][慧思开物]]
+[[https://x-humanoid-robomind.github.io/][RoboMIND github (2024.12)]]
+
+- 多任务
+- 机器人具身(轮式，人形，单臂，双臂，灵巧手)
+  - [[https://www.stdaily.com/web/gdxw/2025-03/13/content_309136.html][优必选“天工行者”]]
+  - [[https://mmbiz.qpic.cn/sz_mmbiz_jpg/ZIoQFXiba7gKWSIslicW1lQlllIfBgytMiaMraMRibBPHCoIeU6UwHfxIAx3iaIN4DIs6ESOwxneiaZgHegYF2QRBbEA/640?wx_fmt=jpeg&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1][双臂机器人UR-e5]]，通过手机APP，自然语言交互
+  - [[https://franka.de/][Franka Robotics]]
+  - [[https://global.agilex.ai/][AgileX]]
+- 具身智能数据集 RoboMIND 10万多条（github,huggingface）
+  - 场景：家用，工业，厨房，办公室，零售
+  - 107k轨迹
+  - 479任务
+    - 工业分拣，积木搭建，桌面清理，物流打包
+  - 96目标
+  - 相对较短
+- 神经网络：
+  - 闭源优必选“群脑智能(BrainNet)”
+    - 大脑:任务规划(神经网络)
+    - 小脑:底层控制,具身操作+具身运控；元技能+全身控制(神经网络+)
+  - 开源VLA: ACT, [[https://rdt-robotics.github.io/rdt-robotics/][RDT-1B]], OpenVLA，扩散策略,...

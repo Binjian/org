@@ -49,6 +49,8 @@
 * Competitor
 [[id:bc045c18-8fec-408c-82bc-b5ec5c8c6283][EFort]]
 [[id:da048ff5-47f7-4872-bd7b-9131e3206270][Agibot]]
+[[id:438b840d-ba22-4a8e-8c50-335939c76f65][Fourier]]
+[[id:0eee5abf-7f44-46fe-8075-1c37d7ac61c7][Beijing Humanoid Innovation Center]]
 * dynamics
 [[id:a63369bb-12e7-4c8b-92e9-3a689cb8eabd][robot dynamics]]
 * Navigation
@@ -115,6 +117,8 @@ graph LR
 #+RESULTS:
 [[file:robot_rl.png]]
 
+
+
 - mujoco ROS pkgs ubi + nav2 + digit-mujoco-ros2
 - nav2
   - [[https://github.com/cra-ros-pkg/robot_localization][localization]] robot localization
@@ -127,3 +131,5 @@ graph LR
 - reinforcement learning
   - gymnasium
 - model: digit-mujoco-ros2
+
+  
