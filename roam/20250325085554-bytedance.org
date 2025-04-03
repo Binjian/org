@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       cb98abcd-bb1d-44c9-88ea-95eb96346219
+:END:
+#+title: ByteDance
+
+* [[https://gr2-manipulation.github.io/][GR2]]
+- Large Foundation Model, backbone VQ-GAN
+- Data
+  - *38Mio Clips (50B tokens)*
+  - two tasks: multi-task learning & e2e bin picking
+    - Multiask Manipulation dataset (own collection): 40,000 trajectories, 400 traj/task
+    - Pick-and-Place: 94000 trajectories, 55 objects.
+  - average success rate 97.7% across 105 tasks for simple settings (multitasking@80%, e2e bin-picking@75%, CALVIN benchmark@85%~98.6%)
+  - Not opensource: node code, no dataset, only paper
+- Algorithm features
+  - pre-training on video generation with human activities
+  - fine-tuning: prediction of action trajectories and videos
+  - WBC
+  - interpretable via video generation
+  - action trajectory inference after the video trajectory generation: the predicted action tries to replay the trajectory in the predicted video: improving video generation to improve the action prediction
+  - scaling up model size: GR-2-S 30M,-M 95M,-L 312M, -XL 719M (XL model, real robot success rate@<60%)
+- Algorithm Core
+  - autoregressive policy $\mathbf{a}_{t:t+k}=\pi(l,\mathbf{o}_{t-h:t},\mathbf{s}_{t-h:t})$
+- Body
+  - [[https://www.kinovarobotics.com/product/gen3-robots][Kinova Gen3 7DoF]]
+  - [[https://robotiq.com/products/adaptive-grippers][Robotiq 2F-85 Gripper]] (Force-Torque sensor)
+  - 2 Cameras： static head camera + end-effector
+  - WBC@200Hz with visual force imitation learning ([[https://visual-force-imitation.github.io][MOMA-Force]],2023,closed)

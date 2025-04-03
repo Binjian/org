@@ -2,7 +2,7 @@
 :ID:       09f3242c-3571-4658-b139-0e2ba626f391
 :END:
 #+title: Siasun Novel Robotics
-
+[[id:fc022f72-316e-476e-b9f1-53dde7f291d9][Siasun VLA]]
 
 * Simulation
 ** Mujoco
@@ -51,6 +51,7 @@
 [[id:da048ff5-47f7-4872-bd7b-9131e3206270][Agibot]]
 [[id:438b840d-ba22-4a8e-8c50-335939c76f65][Fourier]]
 [[id:0eee5abf-7f44-46fe-8075-1c37d7ac61c7][Beijing Humanoid Innovation Center]]
+[[id:cb98abcd-bb1d-44c9-88ea-95eb96346219][ByteDance]]
 * dynamics
 [[id:a63369bb-12e7-4c8b-92e9-3a689cb8eabd][robot dynamics]]
 * Navigation
@@ -133,3 +134,4 @@ graph LR
 - model: digit-mujoco-ros2
 
   
+

@@ -27,3 +27,4 @@
 *.toc
 *.dbk
 *.man
+.tool-versions
