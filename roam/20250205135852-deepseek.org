@@ -61,8 +61,16 @@
 - 算法，大量算法，预测性维护，实时故障维护（诊断数据控制器端上传），本地/云端/控制器内部npu，控制机器人
 - 实时，准确，自己算法
 - 新算法
+** 当前架构
+- HMI: gradio, streamlit, fasthtml,
+  - 语音接口 （whisper + elevenlabs)
+- 应用：智能问答，RAG
+- 数据：新松QA（技术，服务），售后问答（数据库/excel），工业机器人产品中心（文件系统）
+  - pdf: 文字/图片
+  - MCP
+- 内嵌模型(多语言模型)，大语言模型（DeepSeek,纯语言模型 👉 多模态模型qwen,gemini,llama4？)
 * 讨论
-** 2025-02-19 08：31 多可
+**2025-02-19 08：31 多可
 *** 问答
 *** 编程脚本
 *** 故障排查
@@ -129,6 +137,30 @@
   - 那鹏,工业机器人,结合业务,案例
 - 冯工
   - 理解图纸,需要专家知识
+** <2025-04-09 Wed>Kickoff
+- account management
+- pdf, graph, table,
+- simple function, rst, pdf, markdown, parser,
+- graph: corr. text, table (diagram), OCR local, mulitmodal is expensive
+- RAG: index, toc, doc structure, context, ~400k,big chunk
+- top 20, error message disturbance
+- keyword extraction. long logic
+- hallucination
+- assessment, force to assess?
+- test, error specific prompt,
+- ragflow+defy+ollama
+- Project
+  - server sharing?
+  - task
+  - bi-weekly meeting
+  - tasks
+    - doc embedding _SRI_, _duco_, test docs by _duco_
+    - RAG flow _duco_, _SRI_
+    - no database development
+    - local deployment _SRI_
+    - may design done, july test start
+    - requirements? test?
+      -
 * DeepSeek R1
 ** 量化，基金
 ** 应用：焊接机器人，故障模型，
