@@ -70,7 +70,7 @@
   - MCP
 - 内嵌模型(多语言模型)，大语言模型（DeepSeek,纯语言模型 👉 多模态模型qwen,gemini,llama4？)
 * 讨论
-**2025-02-19 08：31 多可
+** 2025-02-19 08：31 多可
 *** 问答
 *** 编程脚本
 *** 故障排查
@@ -160,7 +160,30 @@
     - local deployment _SRI_
     - may design done, july test start
     - requirements? test?
-      -
+**<2025-04-23 Wed 9:00> AI+Weekly
+**** 进展
+- Ollama部署和接口测试,内网(以太网)测试
+- DeepSeek本地部署
+- DeepSeek模型测试1.5b,7b,14b,32b,70b
+  - <7b性能不稳定(简单问题无法回答)
+  - 70b太慢,输出单词~@1Hz
+  - 支持并发查询 (OLLAMA_NUM_PARALLEL, OLLAMA_MAX_LOADED_MODELS)[[https://github.com/ollama/ollama/pull/4218][github ollama issue#4218]] [[https://github.com/ollama/ollama/issues/358][github ollama issue#358]]
+- 多模态模型(Gemma)本地部署测试➡(QWen2.5VL)
+- 工业机器人技术文档属性调研和结果
+  - 图形解析:位图+向量标注
+  - 表格解析
+  - 检索算法?
+- 本地部署的RAG(检索增强生成,本地大语言模型,本地数据库)
+
+#+ATTR_HTML: :alt  :title Local RAG :width 400px  :align center
+#+attr_org: :width 300px :align left
+[[https://media.datacamp.com/cms/ad_4nxctld-wmkkq_6imxqkksk6r2whmhktfjxxsknm4gcveqysk3qt9u6ahv65wlr05ecakhn5nag9of0gf1z_wsnmpytgppa4ygwjl1udt-g1vrwzctmd0yicrzeme1sgusbvizf-wew.png]]
+
+[[][demo]]
+
+- 对话模式?
+- Agentic RAG with MCP
+
 * DeepSeek R1
 ** 量化，基金
 ** 应用：焊接机器人，故障模型，
