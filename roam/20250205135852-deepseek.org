@@ -161,7 +161,7 @@
     - may design done, july test start
     - requirements? test?
 **<2025-04-23 Wed 9:00> AI+Weekly
-**** 进展
+**** TODO 进展
 - Ollama部署和接口测试,内网(以太网)测试
 - DeepSeek本地部署
 - DeepSeek模型测试1.5b,7b,14b,32b,70b
@@ -179,10 +179,14 @@
 #+attr_org: :width 300px :align left
 [[https://media.datacamp.com/cms/ad_4nxctld-wmkkq_6imxqkksk6r2whmhktfjxxsknm4gcveqysk3qt9u6ahv65wlr05ecakhn5nag9of0gf1z_wsnmpytgppa4ygwjl1udt-g1vrwzctmd0yicrzeme1sgusbvizf-wew.png]]
 
-[[][demo]]
+[[http://172.27.74.15:7860/][demo]]
 
 - 对话模式?
 - Agentic RAG with MCP
+** TODO RagFlow with MCP
+** TODO markdown conversion
+** TODO 文档化格式冻结
+** TODO benchmarking数据
 
 * DeepSeek R1
 ** 量化，基金
