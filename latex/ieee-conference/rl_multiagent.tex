@@ -1,0 +1,28 @@
+
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\begin{document}
+
+\tikzstyle{block} = [rectangle, draw,
+    text width=8em, text centered, rounded corners, minimum height=4em]
+
+\tikzstyle{line} = [draw, -latex]
+
+\begin{tikzpicture}[node distance = 6em, auto, thick]
+    \node [block] (Agent1) {Agent$_1$};
+    \node [block, below of=Agent1] (Agent2) {Agent$_2$};
+    \node [below of=Agent2] (Dots) {\vdots};
+    \node [block, below of=Dots] (Agent3) {Agent$_n$};
+    \node [block, below of=Agent3] (Environment) {Environment};
+
+     \path [line] (Agent1.0) --++ (10em,0em) |- node [near start]{$a_{1,t}$} (Environment.-15);
+     \path [line] (Agent2.0) --++ (6em,0em) |- node [near start]{$a_{2,t}$} (Environment.0);
+     \path [line] (Agent3.0) --++ (2em,0em) |- node [near start]{$a_{n,t}$} (Environment.15);
+
+
+     \path [line] (Environment.195) --++ (-18em,0em) |- node [near start] {$s_{1,t+1}, r_{1,t+1}$} (Agent1.180);
+     \path [line] (Environment.180) --++ (-10em,0em) |- node [near start] {$s_{2,t+1}, r_{2,t+1}$} (Agent2.180);
+     \path [line] (Environment.165) --++ (-2em,0em) |- node [near start] {$s_{n,t+1}, r_{n,t+1}$} (Agent3.180);
+\end{tikzpicture}
+\end{document}

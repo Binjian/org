@@ -1,0 +1,142 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{xargs}
+\usetikzlibrary{positioning,fit,calc}
+\begin{document}
+
+\tikzset{%
+	neuron missing/.style={
+			draw=none,
+			scale=2,
+			text height=0.333cm,
+			execute at begin node=\color{black}$\vdots$
+		},
+}
+
+% The command \DrawNeuronalNetwork has a list as argument, each entry is a
+% layer. each entry has the form
+%  Layer name/number of nodes/color/missing node/label/symbolic number
+% where
+% * layer name is, well,  the name of the layer
+% * number of nodes is the number of neurons in that layer (including the missing neuron)
+% * color is the color of the layer
+% * missing node denotes the index of the missing neuron
+% * label denotes the label of the layer
+% * symbolic number denotes the symbol that indicates how many neurons there are
+% * node content
+\newcommandx{\DrawNeuronalNetwork}[5][1=0,2=0,3=0,4=State]{
+	\xdef\nn{#1}
+	\xdef\Xoff{#2}
+	\xdef\Yoff{#3}
+	\xdef\Inp{#4}
+	\xdef\Xmax{0}
+	\foreach \Layer/\X/\Col/\Miss/\Lab/\Count/\Content [count=\Y] in {#5}
+		{\pgfmathsetmacro{\Xmax}{max(\X,\Xmax)}
+			\xdef\Xmax{\Xmax}
+			\xdef\Ymax{\Y}
+		}
+	\ifnum\pdfstrcmp{\Inp}{concat}=0
+	\else
+	\node (\nn-state) at (\Yoff,\Xoff) [draw,minimum width=6em,minimum height=4em] {\Inp};
+	\fi
+	\foreach \Layer/\X/\Col/\Miss/\Lab/\Count/\Content [count=\Y] in {#5}
+		{ \node[anchor=south] at ({2*\Y+\Yoff},{\Xmax/2-0.5+\Xoff}) {\Layer};
+			\foreach \m in {1,...,\X}
+				{
+					\ifnum\m=\Miss
+						\node [neuron missing] (nn-\nn--\Y-\m) at ({2*\Y+\Yoff},{\X/2-\m+\Xoff}) {};
+					\else
+						\ifnum\m=\X
+							\node [circle,fill=\Col!50,minimum size=1cm] (nn-\nn-\Y-\m) at ({2*\Y+\Yoff},{\X/2-\m+\Xoff}) {\Content};
+						\else
+							\node [circle,fill=\Col!50,minimum size=1cm] (nn-\nn-\Y-\m) at ({2*\Y+\Yoff},{\X/2-\m+\Xoff}) {\m};
+						\fi
+						\ifnum\Y=1
+						\else
+							\pgfmathtruncatemacro{\LastY}{\Y-1}
+							\foreach \Z in {1,...,\LastX}
+								{
+									\ifnum\Z=\LastMiss
+									\else
+										\draw[->] (nn-\nn-\LastY-\Z) -- (nn-\nn-\Y-\m);
+									\fi
+								}
+						\fi
+					\fi
+					\ifnum\pdfstrcmp{\Inp}{concat}=0
+					\ifnum\Y=1
+						\ifnum\m=\X
+							\foreach \Z in {1,...,5}
+								{
+									\ifnum\Z=4
+									\else
+										\draw[->] [overlay] (nn-1-3-\Z) -- (nn-\nn-\Y-\m);
+										\draw[->] [overlay] (nn-2-2-\Z) -- (nn-\nn-\Y-\m);
+									\fi
+								}
+						\else
+							\ifnum\m=\Miss
+							\else
+								\foreach \Z in {1,...,5}
+									{
+										\ifnum\Z=4
+										\else
+											\draw[->] [overlay] (nn-1-3-\Z) -- (nn-\nn-\Y-\m);
+											\draw[->] [overlay] (nn-2-2-\Z) -- (nn-\nn-\Y-\m);
+										\fi
+									}
+							\fi
+						\fi
+					\else
+					\fi
+					\else
+					\ifnum\Y=1
+						\ifnum\m=\X
+							\draw [overlay] (nn-\nn-\Y-\m) -- (\nn-state);
+						\else
+							\ifnum\m=\Miss
+							\else
+								\draw [overlay] (nn-\nn-\Y-\m) -- (\nn-state);
+							\fi
+						\fi
+					\else
+					\fi
+					\fi
+				}
+			\xdef\LastMiss{\Miss}
+			\xdef\LastX{\X}
+		}
+}
+\begin{tikzpicture}[x=1.5cm, y=1.5cm, >=stealth,font=\sffamily,nodes={align=center}]
+	\begin{scope}[local bounding box=T]
+		\begin{scope}[local bounding box=NN]
+			\DrawNeuronalNetwork[1][6][0][state]{State Input/5/green/4/inp1//90,
+				Hidden 1/5/blue/4/h1//16,
+				Hidden 2/5/cyan/4/h2//32}
+			\DrawNeuronalNetwork[2][0][2][action]{Action Input/5/green/4/inp2//68,
+				Hidden 3/5/yellow/4/out//32}
+			\DrawNeuronalNetwork[3][3][8][concat]{Hidden 4/5/orange/4/out//64,
+				Hidden 5/5/blue/4/h1//64,
+				Output/1/green/0/output//1}
+		\end{scope}
+		\path (NN.south) node[below]{Estimated parameter\\ $\theta$};
+		\path (nn-3-3-1.east) -- node[above]{Action value\\ $q_{\pi_{\theta}}(s,a)$}++ (4em,0);
+	\end{scope}
+	\node[fit=(T),label={[anchor=north west]north west:Critic},inner sep=1em,draw]
+	(TF){};
+	\node[below=3em of TF,draw,inner sep=1em] (Env) {Environment};
+	\node[below=3em of TF,draw,inner sep=1em, right = 3 of Env] (Actor) {Actor};
+	%\node[circle, fill, inner sep=2pt] at (Env.170) (rt) {};
+	%\node[circle, fill, inner sep=2pt] at (Env.190) (st) {};
+	\node[left=3em of Env.190, circle, fill, inner sep=2pt] (st4a) {};
+	\draw[<-] (TF.200) -- ++ (-2em,0) |- (Env.170) node[pos=0.45,right]{$r_t$};
+	\draw[<-] (1-state) -- ++ (-8em,0) |- (Env.190) node[pos=0.45,left]{$s_t$};
+	\draw[->] (nn-3-3-1.east) -- ++ (7em,0) |- node [above, pos=0.85]{} (Actor.20);
+	\draw[->] (Actor) -- node[pos=0.5, circle, fill, inner sep=2pt] (Action) {} node[above,pos=0.4]{{$a_t$}} (Env);
+	\coordinate (A) at ($ (Action) + (0, 0.5) $);
+	%\coordinate let \p1=(Env.180), \p2=(Env.160) in (A) at ($ (Action) + (0, 0.5) $);
+	\draw[<-] let \p1=(Env.180), \p2=(Env.160) in (2-state) -- ++ (-8em,0) |- ($(Action) + (0, \y2-\y1) + (0, \y2-\y1)$) node[pos=0.2,left]{$a_t$} -- (Action);
+	\coordinate (s2a) at ($ (Env) + (0, -0.5) $);
+	\coordinate (actor_input) at ($ (Actor.340) + (0.5, 0) $);
+	\draw[->] (st4a) |- (s2a) -| (actor_input) node[pos=0.2,above]{$s_{t}$} -- (Actor.340);
+\end{tikzpicture}
+\end{document}

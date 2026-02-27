@@ -1,0 +1,91 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{positioning,fit}
+\begin{document}
+
+\tikzset{%
+	neuron missing/.style={
+			draw=none,
+			scale=2,
+			text height=0.333cm,
+			execute at begin node=\color{black}$\vdots$
+		},
+}
+
+% The command \DrawNeuronalNetwork has a list as argument, each entry is a
+% layer. each entry has the form
+%  Layer name/number of nodes/color/missing node/label/symbolic number
+% where
+% * layer name is, well,  the name of the layer
+% * number of nodes is the number of neurons in that layer (including the missing neuron)
+% * color is the color of the layer
+% * missing node denotes the index of the missing neuron
+% * label denotes the label of the layer
+% * symbolic number denotes the symbol that indicates how many neurons there are
+% * node content
+\newcommand{\DrawNeuronalNetwork}[2][]{
+	\xdef\Xmax{0}
+	\foreach \Layer/\X/\Col/\Miss/\Lab/\Count/\Content [count=\Y] in {#2}
+		{\pgfmathsetmacro{\Xmax}{max(\X,\Xmax)}
+			\xdef\Xmax{\Xmax}
+			\xdef\Ymax{\Y}
+		}
+	\foreach \Layer/\X/\Col/\Miss/\Lab/\Count/\Content [count=\Y] in {#2}
+		{\node[anchor=south] at ({2*\Y},{\Xmax/2+0.1}) {\Layer};
+			\foreach \m in {1,...,\X}
+				{
+					\ifnum\m=\Miss
+						\node [neuron missing] (neuron-\Y-\m) at ({2*\Y},{\X/2-\m}) {};
+					\else
+						\ifnum\m=\X
+							\node [circle,fill=\Col!50,minimum size=1cm] (neuron-\Y-\m) at ({2*\Y},{\X/2-\m}) {\Content};
+						\else
+							\node [circle,fill=\Col!50,minimum size=1cm] (neuron-\Y-\m) at ({2*\Y},{\X/2-\m}) {\m};
+						\fi
+						\ifnum\Y=1
+						\else
+							\pgfmathtruncatemacro{\LastY}{\Y-1}
+							\foreach \Z in {1,...,\LastX}
+								{
+									\ifnum\Z=\LastMiss
+									\else
+										\draw[->] (neuron-\LastY-\Z) -- (neuron-\Y-\m);
+									\fi
+								}
+						\fi
+					\fi
+					\ifnum\Y=1
+						\ifnum\m=\X
+							\draw [overlay] (neuron-\Y-\m) -- (state);
+						\else
+							\ifnum\m=\Miss
+							\else
+								\draw [overlay] (neuron-\Y-\m) -- (state);
+							\fi
+						\fi
+					\else
+					\fi
+				}
+			\xdef\LastMiss{\Miss}
+			\xdef\LastX{\X}
+		}
+}
+\begin{tikzpicture}[x=1.5cm, y=1.5cm, >=stealth,font=\sffamily,nodes={align=center}]
+	\begin{scope}[local bounding box=T]
+		\path  node[draw,minimum width=6em,minimum height=4em] (state) {State};
+		\begin{scope}[local bounding box=NN]
+			\DrawNeuronalNetwork{Input Layer/5/green/4/inp//90,
+				Hidden Layer 1/5/blue/4/h1//256,
+				Hidden Layer 2/5/cyan/4/h2//256,
+				Output Layer/4/red/3/out//68}
+		\end{scope}
+		\path (NN.south) node[below]{Estimated parameter\\ $\theta$};
+		\path (NN.east) -- node[above]{Policy\\ $\Pi(\theta,a)$}++ (4em,0);
+	\end{scope}
+	\node[fit=(T),label={[anchor=north west]north west:Actor},inner sep=1em,draw]
+	(TF){};
+	\node[below=3em of TF,draw,inner sep=1em] (Env) {Environment};
+	\draw[<-] (TF.200) -- ++ (-1em,0) |- (Env.160) node[pos=0.45,right]{$r_t$};
+	\draw[<-] (TF.180) -- ++ (-2em,0) |- (Env.180) node[pos=0.45,left]{$s_t$};
+	\draw[->] (NN.east) -- ++ (7em,0)node[right]{$a_t$} |- (Env);
+\end{tikzpicture}
+\end{document}

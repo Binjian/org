@@ -1,0 +1,9 @@
+
+
+1. run pdflatex to get pdf file
+
+2. run following shell script
+#+begin_src shell
+pdf2svg actor-critic.pdf actor-critic.svg
+inkscape -D actor-critic.svg -o actor-critic.pdf --export-latex
+#+end_src

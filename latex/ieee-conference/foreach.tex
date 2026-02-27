@@ -1,0 +1,9 @@
+
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{positioning,fit}
+\begin{document}
+\begin{tikzpicture}
+  \foreach \x/\xtext in {0,1,...,13,2.72 / e}
+    \draw (\x,0) node{$\xtext$};
+\end{tikzpicture}
+\end{document}

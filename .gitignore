@@ -28,3 +28,8 @@
 *.dbk
 *.man
 .tool-versions
+*.bbl
+*.*-SAVE-ERROR
+*.bcf
+*.blg
+*.run.xml

@@ -1,0 +1,43 @@
+\documentclass[tikz,border=10pt]{standalone}
+
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+
+%\tikzstyle{block} = [draw, fill=white, rectangle,
+%    minimum height=3em, minimum width=6em]
+%\tikzstyle{input} = [coordinate]
+\tikzset{block/.style = {draw, fill=white, rectangle, minimum height=3em, minimum width=6em},
+            input/.style = {coordinate},
+            signal/.style = {circle, fill, inner sep=1pt},
+            coord/.style = {coordinate},
+            pinstyle/.style = {pin edge={<-,thin,black}}}
+
+\begin{tikzpicture}[auto, node distance=3cm,>=latex']
+
+    \node [input, name=input] {};
+    \node [block, right = 1cm of input] (driver) {Driver};
+    \node [block, right of=driver, align=center] (pedals) {Accelerate \& \\ Brake Pedal};
+    \node [signal, right=0.5cm of pedals] (psensor) {};
+    \node [block, right= 0.5cm of psensor, align=center] (vcu) {Powertrain \\ Controller};
+    \node [block, right of=vcu] (pt) {Powertrain};
+    \node [signal, right=0.5cm of pt] (vasensor) {};
+    \node [block, right= 0.5cm of vasensor] (vehicle) {vehicle};
+    \node [signal, right of=vehicle] (output) {};
+    \node [block, above = 1cm of vcu] (agent) {Agent};
+    \node [coord, below = 1cm of vcu] (feedback) {feedback};
+
+    \draw [->] (input) -- (driver);
+    \draw [->] (driver) -- (pedals);
+    \draw [-] (pedals) -- (psensor);
+    \draw [->] (psensor) -- (vcu);
+    \draw [->] (vcu) -- (pt);
+    \draw [->] (pt) -- (vehicle);
+    \draw [->] (vehicle) -- (output);
+    \draw [->,thick] (output) |- node [above, pos=0.95] {$V$} (agent.20);
+    \draw [->,thick] (vasensor) |- node [above, pos=0.85] {$U$, $I$} (agent.340);
+    \draw [-] (output) |- (feedback);
+    \draw [->,thick] (psensor) |- node [above, pos=0.6]{$A$,$B$} (agent);
+    \draw [-] (feedback) -|  (input);
+    \draw [->,thick] (agent) -- node [right, pos=0.6] {$\Delta T$}(vcu);
+\end{tikzpicture}
+\end{document}

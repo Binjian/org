@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[
+    % Define the style for the subgraph
+    mysubgraph/.pic={
+        \node[draw] (a) at (0,0) {\tikzpictext};
+        \node[draw] (b) at (1,1) {B};
+        \draw (a) -- (b);
+    }
+]
+    % Draw the subgraph with different labels
+    \pic[text=A] at (0,0) {mysubgraph};
+    \pic[text=C] at (2,2) {mysubgraph};
+
+
+\end{tikzpicture}
+\end{document}
