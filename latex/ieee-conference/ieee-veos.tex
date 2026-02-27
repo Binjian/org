@@ -27,9 +27,7 @@
 % \usepackage{multicol}
 \usepackage{subcaption}
 
-\usepackage[backend=biber,style=numeric,uniquelist=false]{biblatex}
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage[backend=biber,style=numeric-comp, sorting=none]{biblatex}
 \usepackage{doi}
 % \usepackage[toc,page]{appendix}
 %\usepackage{import}
@@ -38,7 +36,7 @@
 \usepackage{algorithmic}
 \usepackage{textcomp}
 
-\title{Energy optimization system of electric vehicles --- A case study for applications of deep reinforcement learning in the real world*\\
+\title{Energy optimization system of electric vehicles \\--- A case study for applications of deep reinforcement learning in the real world*\\
 \thanks{This work was done while the author was working with Shanghai Newrizon Automotive Technology Inc.}
 }
 
@@ -50,10 +48,11 @@
 
 \author{\IEEEauthorblockN{Binjian Xin}
 \IEEEauthorblockA{\textit{Research Institute of Insdustrial Robot BU} \\
-\textit{Siasun Robotics}\\
+\textit{Siasun Robot \& Automation Co., Ltd}\\
 Shanghai, China \\
 xinbinjian.in@siasun.com}
 }
+
 
 \maketitle
 
@@ -278,13 +277,13 @@ As can be seen in Fig.\@\ref{fig:Agent_Powertrain}, the environment of the reinf
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/no-ai-driving-style.png}
 		\caption{Baseline style without agent}\label{fig:driving style without agent}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/ai-driving-style.png}
 		\caption{Distribution with agent switched on}\label{fig:driving style with agent}
@@ -295,14 +294,14 @@ For each episode we can calculate the distribution of the pedal openings and den
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[t]{0.45\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/kld.png}
 		\caption{Without agent}
 		\label{fig:kld episodic style}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[t]{0.45\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/kld-c2.png}
 		\caption{With agent}\label{fig:style deviation with agent}
@@ -318,7 +317,7 @@ The test drives are conducted in a proving ground with a fixed vehicle, driver a
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.6\textwidth]{images/ddpg-training1.png}
+	\includegraphics[width=0.5\textwidth]{images/ddpg-training1.png}
 	\caption{Energy consumption reduction during training}\label{fig:consumption reduction ddpg}
 \end{figure}
 
@@ -338,7 +337,7 @@ The map of the first route is shown in Fig.\@\ref{fig:1st route}. The vehicle fo
 		\caption{The 1st. route}\label{fig:1st route}
 	\end{subfigure}
 	\quad\quad
-	\begin{subfigure}[t]{0.4\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_a_velocity.png}
 		\caption{Speed of the episodes}\label{fig:openroad a speed}
@@ -350,34 +349,32 @@ The test drive on the 1st.\@ route takes 9 days over 3 weeks and the result is d
 
 In Fig.\@\ref{fig:openroad a style}, the orange and the blue curve correspond to the KL divergence of the episodic driving style with and without the agent respectively. A drift in driving style while training can be seen over around 600 episodes. In the long run, the driving style will be impacted by the agent changing the powertrain behavior, if the driver is exploring a cooperative driving strategy. The agent is adaptive to this change.
 
-\begin{figure}[hbtp]
-	\begin{minipage}[b]{0.3\linewidth}
+\begin{figure*}[hbtp]
+	\begin{minipage}[b]{0.5\linewidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_a_consumption.png}
 		\caption{Energy consumption}\label{fig:openroad a consumption}
 	\end{minipage}
 	\hfill
-	\begin{minipage}[b]{0.3\linewidth}
+	\begin{minipage}[b]{0.5\linewidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_a_style.png}
 		\caption{Driving style drift}\label{fig:openroad a style}
 	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.3\linewidth}
-		\centering
-		\begin{tabular}{c c c c}
-			\toprule
-			     & Week 1 & Week 2 & Week 3 \\
-			\midrule
-			base & 256.9  & 265.7  & 256.0  \\
-			Agt. & 245.0  & 251.9  & 243.7  \\
-			Red. & 8.16\% & 7.56\% & 7.03\% \\
-			\bottomrule
-		\end{tabular}
-		\captionof{table}{\label{tab:openroad a result}Results of training on the first route}
-	\end{minipage}\hfill
-\end{figure}
+\end{figure*}
 
+\begin{center}
+	\captionof{table}{\label{tab:openroad a result}Results of training on the first route}
+	\begin{tabular}{c c c c}
+		\toprule
+		     & Week 1 & Week 2 & Week 3 \\
+		\midrule
+		base & 256.9  & 265.7  & 256.0  \\
+		Agt. & 245.0  & 251.9  & 243.7  \\
+		Red. & 8.16\% & 7.56\% & 7.03\% \\
+		\bottomrule
+	\end{tabular}
+\end{center}
 %\begin{figure}[htbp]
 %	\centering
 %	\begin{subfigure}[t]{0.45\textwidth}
@@ -401,7 +398,7 @@ In order to verify the transferablility, the frozen model trained from the 1st.\
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[t]{0.45\textwidth}
+	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_b_map.png}
 		\caption{The 2nd. Route}\label{fig:2nd route}
@@ -441,19 +438,19 @@ In order to test the multimodality, we test on the first route but treat halting
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[t]{0.3\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_mm_000_velocity.png}
 		\caption{Target speed profile and the test speed}\label{fig:openroad mm 000 velocity}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[t]{0.3\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_mm_000_consumption.png}
 		\caption{Energy consumption. The reduction is 9.5\% in average.}\label{fig:openroad mm 000 consumption}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[t]{0.3\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_mm_000_style.png}
 		\caption{Driving style drift}\label{fig:openroad mm 000 style}
@@ -464,19 +461,19 @@ In order to test the multimodality, we test on the first route but treat halting
 
 \begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[t]{0.3\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_mm_111_velocity.png}
 		\caption{Target speed profile and the test speed}\label{fig:openroad mm 111 velocity}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[t]{0.3\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_mm_111_consumption.png}
 		\caption{Energy consumption. The reduction is 4.3\% in average.}\label{fig:openroad mm 111 consumption}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[t]{0.3\textwidth}
+	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{images/openroad_mm_111_style.png}
 		\caption{Driving style drift}\label{fig:openroad mm 111 style}
@@ -487,6 +484,31 @@ In order to test the multimodality, we test on the first route but treat halting
 We can see from the results that the agent can learn multimodal policies to deal with different scenarios. This indicates a generalized training on real roads without specific handling of the observation data.
 
 
+
+\section{Discussion}
+\label{sec:discussion}
+
+%If we regard the pedal map as the policy, then the the action we choose is actually is the score function of the policy.
+
+Unlike in the games or robotics, we cannot leverage simulation to provide large amount to training data and cannot do sim2real techniques to accelerate the learning, because there's no available efficient simulation for electric powertrain and complex road condition. Part of the reason is that modeling the real road condition and electric motor is very difficult or expensive, which is the normal case for most of the real world applications. We have to learn from the real world. Surprisingly,  our experiment shows that the application of deep reinforcement learning is quite sample efficient in the energy optimization system. We only need hundreds of episodes to see a clear improvement trend in the result. We believe it's due to the careful design choice of state, action, reward and the data processing that evade much noise in the state and reward.
+
+An practical advantage of the applicaiton is that system safety and task persistency are not issues like in the robotics \parencite{DBLP:journals_ijrr_IbarzTFKPL21}, since the optimiztion of improving energy efficiency is almost not safety relevant. The agent is free to explore diverse strategies with the safeguard of powertrain controlller unit. Failing to reduce the energy consumption will never interrupt the episode, thus the training is reliable, stable and efficient.
+
+In the exeperiment the DDPG policy is short-term with only several seconds of observation. The results match the experience that good human drivers usually don't need long-term strategy to make the right decision for acceleration or braking. However, long-term observations benefit the right decision. For ramps or diffrent topographies of road surfaces which take more than 3 seconds to pass through, the DDPG agent with the current short attention span will not be able to have an optimal policy. To deal with this partial observability, an RDPG agent \parencite{heess15:_memor} is implemented with the LSTM networks \parencite{Hochreiter_1997}. With truncated BPTT \parencite{sutskever2013training} and the stateful feature of LSTM cell \parencite{chollet2015keras}, we can handle arbitrary ragged episode lengths and do inference efficiently with long and short term policies.
+
+The result of transferablitiy in Sec.\@\ref{sec:transferable} with frozen model indicates that while the training must be episodic in order to have meaningful reward signals, the inference-only mode doesn't need to be episodic. A trained frozen model can be deployed for non-episodic situations in inference-only mode in a wide range of applicaitions without the episodic constraint.
+
+The data in Tab.\@\ref{tab:quadruple} has a low density and is light-weight for collection and storage. In order to leverage the large volume of offline data with ongoing training, an offline reinforcement learning is implemented with IDQL \parencite{hansen-estruch23:_idql}. With the offline data, training can occur in the cloud with uploaded observation data from vehicles. The updated local model can be dispatched onto the vehicle through OTA communication. In this framework, the training and inference can be done flexibly either locally or in the cloud, see Fig.\@\ref{fig:Software overview}. Training and inference locally are fast, have better realtime performance and signal quality, but need extra compute resources on the vehicle. The DDPG agent has a size of less than 1MB as exported tflite models which can be easily stored on the embedded system and used in inference, while it's still difficult to accommodate the RDPG agent with its nearly 100 MB on most of the current embedded system in production.\ On the cloud it's more scalable, doesn't need much compute locally but OTA communication with less realtime performance, larger signal latency and lower signal quality. In large scale deployment, training and inferrence on the cloud also provide an opportunity for utilization of parallel training of asynchronous poclicy gradient methods \parencite{mnih16:_async_method_deep_reinf_learn} or federated learning \parencite{konečný15:_feder_optim}.
+
+Diffusion models have been studied actively in recent offine RL researches, in particular in behavior cloning for policy learning \parencite{janner22:_plann_diffus_flexib_behav_synth} \parencite{wang22:_diffus_polic_expres_polic_class} and \parencite{hansen-estruch23:_idql} \parencite{psenka23:_learn_diffus_model_polic_rewar}. Besides utilized by the offline reinforcement learning, the diffusion models can be used to recover complex and multimodal behavior data. With the diffusion model to fit the behavior policy, the drift of the driving style in Fig.\@\ref{fig:openroad a style} is expected to be better tracked by the implicit actor with policy extraction \parencite{hansen-estruch23:_idql}. However, the training and sampling in diffusion models require extra noising and denoising time steps, which reduce its realtime performance and constrains their application. All these improvements require more compute resources and need further verification with large scale deployment.
+
+\section{Conclusion}\label{sec:conclusion}
+
+We present the application of deep reinforcement learning in the optimization of energy efficiency of driving an electric vehicle. We demonstrate that the design choice of the state, reward and action is crucial. If the reward is rich and dense, the application in real world should be sample efficient. If the observation data are of low density and generally accessible like vehicle speed, acceleration and braking pedal opening but contain complex behaviors or system models, we could harvest a large volume of offline data leverage the offline reinforcement learning to improve the optimization process. As reward-driven learning methods are machine learning method which requires no supervision or labeling, but learns from large amount of raw data, they are appealing to the industrial applications. Our experiment is still far from being scaled up. With deployment with large amount of vehicles in the future, we hope to track complex system dynamics, road scenarios and driving behaviors by more efficient RL methods.
+
+The purpose of our work is twofold. On the engineering side, we hope to advocate in the industry to leverage abundant available online or offline domain data and interfaces to achieve continuous and dynamic optimization in complex industrial processes which require the large capacity of deep neural networks and have the potential to help reshaping the industry into the data-driven paradigm.
+
+For research, we intend to provide an application of deep reinforcement learning in the real world that provides interesting and challenging optimization goals. Unlike games or robotics, we cannot always leverage simulation in the real world, but we can have abundant data and achieve sample efficiency with prudent design choice of state, action and reward and by careful implementation which maintains the signal causality and avoids adding noise to state and reward signal. Furthermore, system and task persistency are sometimes guaranteed. More importantly, with large scale deployment of data-driven method and the improvement of the industrial process optimization, a virtuous cycle would contribute to providing abundant data, applying new research results and finding new interesting research challenges.
 \section*{Acknowledgment}
 
 The preferred spelling of the word ``acknowledgment'' in America is without 
@@ -494,27 +516,32 @@ an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B.
 G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
 acknowledgments in the unnumbered footnote on the first page.
 
-\section*{References}
-
-Please number citations consecutively within brackets \cite{b1}. The 
-sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
-number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
-the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
-
-Number footnotes separately in superscripts. Place the actual footnote at 
-the bottom of the column in which it was cited. Do not put footnotes in the 
-abstract or reference list. Use letters for table footnotes.
-
-Unless there are six authors or more give all authors' names; do not use 
-``et al.''. Papers that have not been published, even if they have been 
-submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
-that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
-Capitalize only the first word in a paper title, except for proper nouns and 
-element symbols.
-
-For papers published in translation journals, please give the English 
-citation first, followed by the original foreign-language citation \cite{b6}.
-
 \printbibliography
+
+\begin{appendices}
+
+	\section{System design of EOSEV}\label{sec:system design}
+
+	The EOSEV system consists of four components. Fig.\@\ref{fig:EOSEV system} depict the mode where both training and inference are in the cloud. The environment include the real road and the driver. The environment has an impact on the vehicle which change the vehicle speed, acceleration, brake pedal. The powertrain controller (ECU) collects the energy consumption data synchronously. Then the state and reward are uploaded with timestamps in realtime through telematics box (TBox) and OTA to the database in the cloud, where the agent weights are updated and the action $\Delta\tau$ (parameter optimization) is send back through OTA and TBox to reach the ECU. The ECU updates the pedal map and flashes it into its persistent memory.
+
+	If the ECU or TBox has compute resource, the inference could also happen in the vehicle. In this case, the agent is located in ECU or TBox. The cloud server will send the updated weights of the agent instead of the action, if the training is still in the cloud.
+
+	\begin{figure}[ht]
+		\centering
+		\def\svgwidth{\columnwidth}
+		\input{images/veos_system.pdf_tex}
+		\caption{\label{fig:veos} EOSEV system}\label{fig:EOSEV system}
+	\end{figure}
+
+	\section{dataflow}\label{sec:dataflow}
+
+	The implementation for the EOSEV is contained in \textbf{tspace} \parencite{github:tspace}. It is an data pipleline framework for deep reinforcement learning with IO interface, processing and configuration. The current code base depicts an automotive implementation. The goal of the system is to increase the energy efficiency (reward) of a BEV by imposing modification on parameters (action) of powertrain controller, the VCU, based on observations of the vehicle (state), i.e.\ speed, acceleration, electric engine current, voltage etc. The following diagram shows the basic pipelines of the data flow.
+	\begin{figure}[ht]
+		\centering
+		\def\svgwidth{\columnwidth}
+		\input{images/tspace_overview.pdf_tex}
+		\caption{\label{fig:Software overview} The dataflow of the pipelines}
+	\end{figure}
+\end{appendices}
 
 \end{document}
