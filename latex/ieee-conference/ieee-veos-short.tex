@@ -149,7 +149,7 @@ When the agent is connected to the regular system as depicted, it will get the v
 	\caption{\label{fig:pedal map} A pedal map is a 2d mapping table which outputs the torque request given a pedal opening under a certain vehicle speed. (a) The ``Economic'' pedal map is used as initial pedal map by the agent. (b) The pedal map is dynamically modified by the agent during driving conditioned on the vehicle speed and driver operation.}
 \end{figure}
 
-The pedal map is a two-dimensional table which outputs the torque request to the electric motor for a given acceleration pedal opening and a certain vehicle speed. It's a static map for a regular powertrain controller, as depicted in Fig.\@\ref{fig:initial pedal map}. The requested torque, once exerted by the electric motor, is proportional to teh vehicle acceleration. It's usually acquired by vehicle calibration during the pre-development of the EV model. A calibration engineer will generate different pedal maps by testing drives on proving ground or real road and determine table items empirically and by experimental validation. The different pedal maps will correspond to different driving styles which are provided as features to the customers, such as ``Normal'', ``Sport'' or ``Economic''. The customers will choose a pedal map through a vehicle HMI to match their driving style requirements. We select the ``Economic'' pedal map as the default initial pedal map for the agent and check how much the agent can further improve the energy efficiency. The pedal map increases monotonically with the acceleration pedal opening, while decreasing monotonically with the vehicle speed. The maximal torque request occurs when the vehicle starts off and the drive steps on the pedal with full throttle. The map region with low speed ($\leq10kmph$) and negligible pedal openings has the largest the negative torque request, which corresponds to motor in reverse, i.e.\ strong regenerative braking. These are all by design.
+The pedal map is a two-dimensional table which outputs the torque request to the electric motor for a given acceleration pedal opening and a certain vehicle speed. It's a static map for a regular powertrain controller, as depicted in Fig.\@\ref{fig:initial pedal map}. The requested torque, once exerted by the electric motor, is proportional to the vehicle acceleration. It's usually acquired by vehicle calibration during the pre-development of the EV model. A calibration engineer will generate different pedal maps by testing drives on proving ground or real road and determine table items empirically and by experimental validation. The different pedal maps will correspond to different driving styles which are provided as features to the customers, such as ``Normal'', ``Sport'' or ``Economic''. The customers will choose a pedal map through a vehicle HMI to match their driving style requirements. We select the ``Economic'' pedal map as the default initial pedal map for the agent and check how much the agent can further improve the energy efficiency. The pedal map increases monotonically with the acceleration pedal opening, while decreasing monotonically with the vehicle speed. The maximal torque request occurs when the vehicle starts off and the drive steps on the pedal with full throttle. The map region with low speed ($\leq10kmph$) and negligible pedal openings has the largest the negative torque request, which corresponds to motor in reverse, i.e.\ strong regenerative braking. These are all by design.
 
 When the agent change the torque request for a given range of vehicle speeds under a give pedal opening, the corresponding region of the pedal map will be changed by $\Delta\tau$. If the training occurs on a urban road, we can see the low speed region under 60 kmph is changed as depicted in Fig.\ref{fig:dynamic pedal map}. The resulting pedal map is the sum of the initial map and integration of the action up to the current moment. In our experiment the agent is allowed to change the items all over the map region, which allows implicitly the exploitation of the regenerative braking.
 
@@ -230,6 +230,19 @@ The training setup is important for the agent to learn a good policy. As a basic
 \end{tabular}
 \end{center}
 
+\subsection{System Design and Dataflow}\label{system}
+
+The EOSEV system is a dual-pipeline framework that supports both training and inference of the deep reinforcement learning model — either locally on the on-board computing units via CAN or Ethernet, or in the cloud via OTA updates, as illustrated in Fig.~\ref{fig:EOSEV_system}. Since the pedal map is only updated when traffic conditions change, the control action Δτ does not require hard real-time guarantees.
+
+An Avatar orchestrates the configuration and scheduling of the states of the dataflow in the CAN/UDP through a KvaserCAN server or via a cloud endpoint. The Cruncher acts as the data hub receiving pipeline data in JSON/DataFrame format from the ECU or the cloud OSS and feeds observations as DataFrames to an Agent, which produces actions back to the Cruncher and exchanges batches, episodes, and DataFrames with a Model that is trained using data from Storage.
+
+\begin{figure}[ht]
+	\centering
+	\def\svgwidth{0.8\columnwidth}
+	\input{images/tspace_overview.pdf_tex}
+	\caption{\label{fig:Software overview} System Overview}\label{fig:EOSEV_system}
+\end{figure}
+\end{appendices}
 
 \subsection{Training}\label{sec:training}
 
