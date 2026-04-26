@@ -1,0 +1,21 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296 127" width="296" height="127">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    <style class="style-fonts">
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://excalidraw.com/Virgil.woff2");
+      }
+      @font-face {
+        font-family: "Cascadia";
+        src: url("https://excalidraw.com/Cascadia.woff2");
+      }
+      @font-face {
+        font-family: "Assistant";
+        src: url("https://excalidraw.com/Assistant-Regular.woff2");
+      }
+    </style>
+    
+  </defs>
+  <rect x="0" y="0" width="296" height="127" fill="#ffffff"></rect><g stroke-linecap="round" transform="translate(10 16) rotate(0 44.5 48.5)"><path d="M22.25 0 C34.7 -0.83, 45.68 -0.09, 66.75 0 M22.25 0 C38.42 -0.45, 52.79 0.62, 66.75 0 M66.75 0 C83.08 0.72, 90.11 7.94, 89 22.25 M66.75 0 C83.28 -0.24, 91.21 6.41, 89 22.25 M89 22.25 C88.68 32.43, 88.53 45.3, 89 74.75 M89 22.25 C89.45 37, 88.01 53.02, 89 74.75 M89 74.75 C90.11 88.1, 81.68 95.95, 66.75 97 M89 74.75 C88.9 87.75, 83.86 95.46, 66.75 97 M66.75 97 C50.44 97.79, 32.85 97.19, 22.25 97 M66.75 97 C49.67 96.66, 34.45 97.67, 22.25 97 M22.25 97 C8.05 98.27, 1.78 88, 0 74.75 M22.25 97 C8.82 97.61, -1.23 87.36, 0 74.75 M0 74.75 C1.28 65.04, -1.56 53.09, 0 22.25 M0 74.75 C-0.36 55.61, -0.29 38.5, 0 22.25 M0 22.25 C0.15 6.27, 8.13 -0.4, 22.25 0 M0 22.25 C-0.14 7.58, 8.23 -1.01, 22.25 0" stroke="#1e1e1e" stroke-width="2" fill="none"></path></g><g transform="translate(16.140625 53) rotate(0 38.359375 11.5)"><text x="38.359375" y="18.400390625" font-family="Helvetica, Segoe UI Emoji" font-size="20px" fill="#1e1e1e" text-anchor="middle" style="white-space: pre;" direction="ltr" dominant-baseline="alphabetic">\[\alpha\]</text></g><g stroke-linecap="round" transform="translate(184 10) rotate(0 51 53.5)"><path d="M25.5 0 C41.5 0.04, 52.15 0.4, 76.5 0 M25.5 0 C44.96 0.87, 63.84 0.36, 76.5 0 M76.5 0 C92.45 -0.09, 100.41 10.48, 102 25.5 M76.5 0 C91.96 1.67, 103.73 8.16, 102 25.5 M102 25.5 C102.49 44.35, 103.24 59.88, 102 81.5 M102 25.5 C102.72 38.13, 102.53 51.02, 102 81.5 M102 81.5 C100.42 99.72, 94.03 105.93, 76.5 107 M102 81.5 C99.78 96.37, 93.49 109.11, 76.5 107 M76.5 107 C58.07 107.58, 39.22 105.54, 25.5 107 M76.5 107 C63.66 106.91, 49.45 107.19, 25.5 107 M25.5 107 C8.1 106.88, 0.14 99.21, 0 81.5 M25.5 107 C7.49 105.87, 0.18 98.3, 0 81.5 M0 81.5 C-2.22 67.14, 0.22 52.47, 0 25.5 M0 81.5 C-0.14 64.74, 0.74 47.47, 0 25.5 M0 25.5 C-1.07 9.37, 6.98 -1.76, 25.5 0 M0 25.5 C-1.9 6.68, 8.91 1.16, 25.5 0" stroke="#1e1e1e" stroke-width="2" fill="none"></path></g><g stroke-linecap="round"><g transform="translate(101 65.41159714721942) rotate(0 41 0.0711224847925962)"><path d="M-0.1 -0.34 C13.86 -0.23, 69.64 0.63, 83.16 0.8 M-1.62 -1.57 C12.34 -1.81, 68.65 -1.01, 82.82 -0.98" stroke="#1e1e1e" stroke-width="2" fill="none"></path></g><g transform="translate(101 65.41159714721942) rotate(0 41 0.0711224847925962)"><path d="M59.26 7.37 C64.58 7.23, 72.15 1.53, 82.82 -0.98 M59.26 7.37 C67.38 4.3, 75.01 1.33, 82.82 -0.98" stroke="#1e1e1e" stroke-width="2" fill="none"></path></g><g transform="translate(101 65.41159714721942) rotate(0 41 0.0711224847925962)"><path d="M59.4 -9.73 C64.7 -5.59, 72.24 -7, 82.82 -0.98 M59.4 -9.73 C67.53 -6.95, 75.12 -4.08, 82.82 -0.98" stroke="#1e1e1e" stroke-width="2" fill="none"></path></g></g><mask></mask></svg>
