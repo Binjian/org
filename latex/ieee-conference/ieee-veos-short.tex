@@ -232,9 +232,9 @@ The training setup is important for the agent to learn a good policy. As a basic
 
 \subsection{System Design and Dataflow}\label{system}
 
-The EOSEV system is a dual-pipeline framework that supports both training and inference of the deep reinforcement learning model — either locally on the on-board computing units via CAN or Ethernet, or in the cloud via OTA updates, as illustrated in Fig.~\ref{fig:EOSEV_system}. Since the pedal map is only updated when traffic conditions change, the control action Δτ does not require hard real-time guarantees.
+The EOSEV system is a dual-pipeline framework that supports both training and inference for the deep reinforcement learning model, either locally on the on-board computing units via CAN or Ethernet, or in the cloud through OTA updates, as illustrated in Fig.~\ref{fig:EOSEV_system}. Because the pedal map is updated only when traffic conditions change, the control action $\Delta \tau$ does not require hard real-time guarantees. We therefore run training and inference in the cloud to preserve the current vehicle E/E architecture and share the solution across the product line.
 
-An Avatar orchestrates the configuration and scheduling of the states of the dataflow in the CAN/UDP through a KvaserCAN server or via a cloud endpoint. The Cruncher acts as the data hub receiving pipeline data in JSON/DataFrame format from the ECU or the cloud OSS and feeds observations as DataFrames to an Agent, which produces actions back to the Cruncher and exchanges batches, episodes, and DataFrames with a Model that is trained using data from Storage.
+A Scheduler configures and schedules the dataflow states over CAN/UDP, either through a local CAN server (KvaserCAN) or through a cloud endpoint (CloudOSS). The Cruncher acts as the data hub: it receives observations from the ECU or the cloud, forwards them to the Agent, and sends the updated pedal map back to the ECU. The Agent returns the updated pedal map, i.e., the action, to the Cruncher, which stores the observations and actions in Storage and provides observation batches to the Model for training and action generation.
 
 \begin{figure}[ht]
 	\centering
@@ -242,13 +242,12 @@ An Avatar orchestrates the configuration and scheduling of the states of the dat
 	\input{images/tspace_overview.pdf_tex}
 	\caption{\label{fig:Software overview} System Overview}\label{fig:EOSEV_system}
 \end{figure}
-\end{appendices}
 
 \subsection{Training}\label{sec:training}
 
-When an episode starts, only inference will be done while collecting the states, actions and rewards until the episode ends. Then only after that, the actor and critic are updated with batch sampling from the replay buffer.
+When an episode starts, the system performs inference while collecting states, actions, and rewards until the episode ends. The actor and critic are then updated using batches sampled from the replay buffer.
 
-As can be seen in Fig.\@\ref{fig:Agent_Powertrain}, the environment of the reinforcement learning model include both the vehicle on the road and the driver. If we fix the same vehicle and test drive on the same site, we expect both to be stationary. We fix the driver for the test as well, since each driver is expected to have fixed driving style. Therefore we assume the driving style also to be stationary. However, since each driver has his own driving style, we monitor the driving style of the driver for analysis of its impact on the overall EOSEV system.
+As shown in Fig.\@\ref{fig:Agent_Powertrain}, the reinforcement learning environment includes both the vehicle on the road and the driver. When the vehicle and test route are fixed, we expect the vehicle-road interaction to be stationary. We also keep the driver fixed during testing, since each driver is expected to have a consistent driving style; therefore, we assume the driving style is stationary as well. However, because driving style varies across drivers, we monitor it to analyze its impact on the overall EOSEV system.
 
 \subsubsection{Driving style}\label{sec:driving style}
 
@@ -258,7 +257,7 @@ As can be seen in Fig.\@\ref{fig:Agent_Powertrain}, the environment of the reinf
 	\caption{Baseline style without agent}\label{fig:driving style without agent}
 \end{figure}
 
-For each episode we can calculate the distribution of the pedal openings and denote it as driving style. As the baseline we calculate the average distribution of over 70 episdoes with the same driver, vehicle and configurations with the agent switched off. Fig.\@\ref{fig:driving style without agent} shows the baseline distribution. Note that the distributions is skewed toward smaller pedal openings as most drivers operate in the less acceleration regime.
+For each episode, we calculate the distribution of pedal openings and use it to characterize driving style. As the baseline, we compute the average distribution over more than 70 episodes using the same driver, vehicle, and configuration with the agent switched off. Fig.\@\ref{fig:driving style without agent} shows the baseline distribution. The distribution is skewed toward smaller pedal openings because most drivers operate primarily in the low-acceleration regime.
 
 \begin{figure}[htbp]
 	\centering
