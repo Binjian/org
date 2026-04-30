@@ -157,13 +157,13 @@ Given a series of $(V,A,B)$ for a short period of time, an experienced human dri
 	\centering
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/table_init.png}
+		\includegraphics[width=\textwidth]{images/optimized/table_init.png}
 		\caption{The ``Economic'' pedal map as the initial map}\label{fig:initial pedal map}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/table_final.png}
+		\includegraphics[width=\textwidth]{images/optimized/table_final.png}
 		\caption{The dynamic pedal map}\label{fig:dynamic pedal map}
 	\end{subfigure}
 	\caption{\label{fig:pedal map} A pedal map is a 2d mapping table which outputs the torque request given a pedal opening under a certain vehicle speed. (a) The ``Economic'' pedal map is used as initial pedal map by the agent. (b) The pedal map is dynamically modified by the agent during driving conditioned on the vehicle speed and driver operation.}
@@ -231,7 +231,7 @@ The training setup is important for the agent to learn a good policy. As a basic
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.6]{images/speed_profile.png}
+	\includegraphics[width=0.6\columnwidth]{images/optimized/speed_profile.png}
 	\captionof{figure}{\label{fig:speed profile for training} Speed profile of the episode used for training}
 \end{figure}
 
@@ -277,7 +277,7 @@ As shown in Fig.\@\ref{fig:Agent_Powertrain}, the reinforcement learning environ
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.5]{images/no-ai-driving-style.png}
+	\includegraphics[width=0.5\columnwidth]{images/optimized/no-ai-driving-style.png}
 	\caption{Baseline style without agent}\label{fig:driving style without agent}
 \end{figure}
 
@@ -287,14 +287,14 @@ For each episode, we calculate the distribution of pedal openings and use it to 
 	\centering
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/kld.png}
+		\includegraphics[width=\textwidth]{images/optimized/kld.png}
 		\caption{Without agent}
 		\label{fig:kld episodic style}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/kld-c2.png}
+		\includegraphics[width=\textwidth]{images/optimized/kld-c2.png}
 		\caption{With agent}\label{fig:style deviation with agent}
 	\end{subfigure}
 	\caption{\label{fig:driving styles} Kullback-Leibler (KL) divergence of episodic style from baseline.}
@@ -308,7 +308,7 @@ The test drives are conducted in a proving ground with a fixed vehicle, driver a
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.5\textwidth]{images/ddpg-training.png}
+	\includegraphics[width=0.5\textwidth]{images/optimized/ddpg-training.png}
 	\caption{Energy consumption reduction during training}\label{fig:consumption reduction ddpg}
 \end{figure}
 
@@ -324,13 +324,13 @@ The map of the first route is shown in Fig.\@\ref{fig:1st route}. The vehicle fo
 	\centering
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_a_map.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_a_map.jpg}
 		\caption{The 1st. route}\label{fig:1st route}
 	\end{subfigure}
 	\quad\quad
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_a_velocity.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_a_velocity.jpg}
 		\caption{Speed of the episodes}\label{fig:openroad a speed}
 	\end{subfigure}
 	\caption{Test drive on the 1st. route\label{fig:open road a}}
@@ -345,13 +345,13 @@ In Fig.\@\ref{fig:openroad a style}, the orange and the blue curve correspond to
 \begin{figure*}[hbtp]
 	\begin{minipage}[b]{0.5\linewidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_a_consumption.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_a_consumption.png}
 		\caption{Energy consumption}\label{fig:openroad a consumption}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.5\linewidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_a_style.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_a_style.png}
 		\caption{Driving style drift}\label{fig:openroad a style}
 	\end{minipage}
 \end{figure*}
@@ -393,13 +393,13 @@ In order to verify the transferability, the frozen model trained from the 1st.\@
 	\centering
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_b_map.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_b_map.jpg}
 		\caption{The 2nd. Route}\label{fig:2nd route}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_b_velocity.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_b_velocity.jpg}
 		\caption{Speed of the episodes}\label{fig:openroad b speed}
 	\end{subfigure}
 	\caption{Test drive on the 2nd. route\label{fig:open road b}}
@@ -411,13 +411,13 @@ In Fig.\@\ref{fig:openroad b style} we can see the KL divergence is smaller than
 	\centering
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_b_consumption.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_b_consumption.png}
 		\caption{Energy consumption. The reduction is around 4\%}\label{fig:openroad b consumption}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_b_style.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_b_style.png}
 		\caption{Driving style drift}\label{fig:openroad b style}
 	\end{subfigure}
 	\caption{Result on the second route\label{fig:openroad b result}}
@@ -433,19 +433,19 @@ In order to test the multimodality, we test on the first route but treat halting
 	\centering
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_mm_000_velocity.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_mm_000_velocity.png}
 		\caption{Target speed profile and the test speed}\label{fig:openroad mm 000 velocity}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_mm_000_consumption.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_mm_000_consumption.png}
 		\caption{Energy consumption. The reduction is 9.5\% in average.}\label{fig:openroad mm 000 consumption}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_mm_000_style.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_mm_000_style.png}
 		\caption{Driving style drift}\label{fig:openroad mm 000 style}
 	\end{subfigure}
 	\caption{Scenarios for not halting at all turns\label{fig:open road mm 000}}
@@ -456,19 +456,19 @@ In order to test the multimodality, we test on the first route but treat halting
 	\centering
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_mm_111_velocity.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_mm_111_velocity.png}
 		\caption{Target speed profile and the test speed}\label{fig:openroad mm 111 velocity}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_mm_111_consumption.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_mm_111_consumption.png}
 		\caption{Energy consumption. The reduction is 4.3\% in average.}\label{fig:openroad mm 111 consumption}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{images/openroad_mm_111_style.png}
+		\includegraphics[width=\textwidth]{images/optimized/openroad_mm_111_style.png}
 		\caption{Driving style drift}\label{fig:openroad mm 111 style}
 	\end{subfigure}
 	\caption{Scenarios for halting at all turns\label{fig:open road mm 111}}
