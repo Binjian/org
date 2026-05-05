@@ -1,6 +1,7 @@
 [submodule "latex/arxiv-style"]
 	path = latex/arxiv-style
 	url = https://github.com/Binjian/arxiv-style.git
+	branch = veos
 [submodule "mooerslab-org"]
 	path = snippets/mooerslab-org
 	url = https://github.com/MooersLab/snippet-org-mode.git
