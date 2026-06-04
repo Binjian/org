@@ -1,0 +1,201 @@
+% Created 2026-06-04 Thu 10:10
+% Intended LaTeX compiler: pdflatex
+\documentclass[final,professionalfonts]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[size=a0,orientation=landscape,scale=0.97]{beamerposter}
+\usetheme{default}
+\usecolortheme{default}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{xcolor}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+\definecolor{veosblue}{RGB}{28,76,128}
+\definecolor{veosgreen}{RGB}{28,120,96}
+\definecolor{veosgray}{RGB}{245,247,250}
+\setbeamercolor{headline}{fg=white,bg=veosblue}
+\setbeamercolor{block title}{fg=white,bg=veosblue}
+\setbeamercolor{block body}{fg=black,bg=veosgray}
+\setbeamercolor{alerted text}{fg=veosgreen}
+\setbeamertemplate{block begin}{\vskip.75ex\begin{beamercolorbox}[rounded=true,shadow=false,leftskip=1.2em,colsep*=.75ex]{block title}\usebeamerfont*{block title}\insertblocktitle\end{beamercolorbox}\begin{beamercolorbox}[rounded=true,shadow=false,leftskip=1.2em,rightskip=1.2em,vmode]{block body}\usebeamerfont{block body}\vskip1ex}
+\setbeamertemplate{block end}{\vskip1ex\end{beamercolorbox}\vskip1ex}
+\newcommand{\metric}[2]{\begin{center}{\usebeamercolor[fg]{alerted text}\fontsize{54}{58}\selectfont\bfseries #1}\\[0.25em]{\Large #2}\end{center}}
+\newcommand{\posterfig}[2]{\begin{center}\includegraphics[width=#1]{#2}\end{center}}
+\usetheme{default}
+\author{Binjian Xin}
+\date{\today}
+\title{Energy Optimization System of Electric Vehicles for Real-World Deep Reinforcement Learning}
+\hypersetup{
+ pdfauthor={Binjian Xin},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={},
+ pdflang={English}}
+\begin{document}
+
+\begin{frame}[t]
+\begin{beamercolorbox}[wd=\paperwidth,sep=1.4em,center]{headline}
+  {\fontsize{54}{60}\selectfont\bfseries Energy Optimization System of Electric Vehicles}\\[0.25em]
+  {\fontsize{34}{38}\selectfont Real-world deep reinforcement learning with driver-in-the-loop pedal-map adaptation}\\[0.45em]
+  {\Large Binjian Xin \quad | \quad Siasun Robot \& Automation Co., Ltd \quad | \quad xinbinjian.in@siasun.com}
+\end{beamercolorbox}
+
+\vspace{0.2em}
+\begin{columns}[t,totalwidth=0.97\paperwidth]
+
+\begin{column}{0.24\paperwidth}
+\begin{block}{Problem}
+\justifying
+Electric vehicles operate in noisy, partially observed, and non-repeatable road environments. Drivers can consume different energy on the same route because acceleration and braking dominate short-horizon energy demand.
+
+\vspace{0.6em}
+\begin{itemize}
+\item Simulation-only eco-driving often assumes connected traffic, perfect preview, or autonomous speed control.
+\item Shaped rewards and soft constraints are fragile under route, weather, and driving-style drift.
+\item Production deployment needs bounded actions, fallback behavior, and compatibility with the vehicle control unit.
+\end{itemize}
+\end{block}
+
+\begin{block}{EOSEV Design Principle}
+\begin{itemize}
+\item Learn from directly measurable vehicle signals.
+\item Use measured electric work as the reward.
+\item Adapt the VCU pedal map through bounded torque increments.
+\item Preserve driver-in-the-loop production control.
+\end{itemize}
+\end{block}
+
+\begin{block}{MDP Formulation}
+\[
+s_t=(V_t,A_t,B_t), \qquad a_t=\Delta\tau_t
+\]
+\[
+r_t=-U_t I_t T_s
+\]
+\begin{itemize}
+\item \(V\): vehicle speed
+\item \(A,B\): accelerator and brake openings
+\item \(U,I\): battery voltage and current
+\item \(\Delta\tau\): bounded torque-request update
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.24\paperwidth}
+\begin{block}{Pedal-Map Adaptation}
+\begin{columns}[T,totalwidth=\linewidth]
+\begin{column}{0.49\linewidth}
+\posterfig{0.98\linewidth}{images/optimized/table_init.png}
+\centering Initial Economic map
+\end{column}
+\begin{column}{0.49\linewidth}
+\posterfig{0.98\linewidth}{images/optimized/table_final.png}
+\centering Learned dynamic map
+\end{column}
+\end{columns}
+\vspace{0.5em}
+\justifying
+The learned map requests stronger negative torque at low speed and small pedal opening, so regenerative braking behavior emerges from measured-energy reward optimization rather than from hand-coded rules.
+\end{block}
+
+\begin{block}{Learning and Deployment}
+\begin{itemize}
+\item Customized DDPG actor-critic training.
+\item Replay buffer stores \((s_t,a_t,r_t,s'_t)\) time-series records.
+\item Actor-only inference is suitable for a small TFLite deployment.
+\item Cloud training can distribute validated model and map updates by OTA.
+\end{itemize}
+\vspace{0.5em}
+\begin{center}
+\def\svgwidth{0.42\linewidth}
+\input{tspace_overview.pdf_tex}
+\end{center}
+\end{block}
+\end{column}
+
+\begin{column}{0.24\paperwidth}
+\begin{block}{Proving-Ground Training}
+\begin{itemize}
+\item Fixed vehicle, driver, route, and speed profile.
+\item About 60 episodes per three-hour run.
+\item Previous model weights and pedal map are reloaded for continuous training.
+\item Driving-style drift is monitored using KL divergence from baseline pedal-opening distribution.
+\end{itemize}
+\posterfig{0.70\linewidth}{images/optimized/speed_profile.png}
+\posterfig{0.82\linewidth}{images/optimized/ddpg-training.png}
+\end{block}
+
+\begin{block}{Public-Road Route 1}
+\begin{columns}[T,totalwidth=\linewidth]
+\begin{column}{0.42\linewidth}
+\posterfig{0.98\linewidth}{images/optimized/openroad_a_map.jpg}
+\end{column}
+\begin{column}{0.56\linewidth}
+\posterfig{0.98\linewidth}{images/optimized/openroad_a_velocity.jpg}
+\end{column}
+\end{columns}
+\posterfig{0.86\linewidth}{images/optimized/openroad_a_consumption.png}
+\end{block}
+\end{column}
+
+\begin{column}{0.24\paperwidth}
+\begin{block}{Real-Road Results}
+\begin{columns}[T,totalwidth=\linewidth]
+\begin{column}{0.31\linewidth}
+\metric{8.16\%}{Week 1 reduction}
+\end{column}
+\begin{column}{0.31\linewidth}
+\metric{7.56\%}{Week 2 reduction}
+\end{column}
+\begin{column}{0.31\linewidth}
+\metric{7.03\%}{Week 3 reduction}
+\end{column}
+\end{columns}
+\vspace{0.8em}
+\metric{7.58\%\(\pm\)0.57\%}{mean weekly block-level reduction on public-road route 1}
+\end{block}
+
+\begin{block}{Transferability and Multimodality}
+\begin{itemize}
+\item Frozen route-1 model reduces consumption by about \(4\%\) on a second route without fine-tuning.
+\item Traffic-light and pedestrian halts are handled as multimodal road scenarios.
+\item Shown modes reduce energy by \(9.5\%\) without halts and \(4.3\%\) with halts at all turns.
+\end{itemize}
+\begin{columns}[T,totalwidth=\linewidth]
+\begin{column}{0.49\linewidth}
+\posterfig{0.98\linewidth}{images/optimized/openroad_mm_000_consumption.png}
+\centering No halts
+\end{column}
+\begin{column}{0.49\linewidth}
+\posterfig{0.98\linewidth}{images/optimized/openroad_mm_111_consumption.png}
+\centering Halts at all turns
+\end{column}
+\end{columns}
+\end{block}
+
+\begin{block}{Takeaways}
+\begin{itemize}
+\item Real-world DRL can be sample efficient when state, action, reward, and deployment are tightly scoped.
+\item Bounded pedal-map updates provide a practical automotive action interface.
+\item Scaling requires drift monitoring, frozen-transfer validation, and fleet-data learning.
+\end{itemize}
+\end{block}
+\end{column}
+
+\end{columns}
+\end{frame}
+\end{document}
