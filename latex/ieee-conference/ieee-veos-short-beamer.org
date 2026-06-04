@@ -203,19 +203,28 @@ s_t=(V_t,A_t,B_t), \quad r_t=-U_tI_tT_s
 
 ** Deployment dataflow
 
-EOSEV supports cloud training, local training, and on-board inference.
+*** Data path :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.38
+:END:
 
-- Scheduler configures dataflow states
-- Cruncher receives observations and forwards them to the Agent
-- Storage writes synchronized time-series records
-- Agent returns updated pedal maps or actor outputs
-- OTA can distribute validated model and map updates
+- Capture vehicle and driver signals
+- Synchronize records into storage
+- Run actor inference for map updates
+- Train from replay-buffer samples
+- Distribute validated updates by OTA
 
-\vspace{0.8em}
+*** System diagram :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.58
+:END:
 
-| Vehicle/ECU | -> | Cruncher | -> | Agent |
-| Storage | <- | synchronized records | <- | Replay buffer |
-| OTA update | <- | validated model/map | <- | Cloud training |
+#+BEGIN_EXPORT latex
+\begin{center}
+\def\svgwidth{0.52\linewidth}
+\input{tspace_overview.pdf_tex}
+\end{center}
+#+END_EXPORT
 
 
 * Experiments

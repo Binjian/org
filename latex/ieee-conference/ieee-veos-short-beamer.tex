@@ -1,4 +1,4 @@
-% Created 2026-06-04 Thu 09:23
+% Created 2026-06-04 Thu 09:46
 % Intended LaTeX compiler: pdflatex
 \documentclass[aspectratio=169,professionalfonts]{beamer}
 
@@ -37,9 +37,9 @@
 
 \maketitle
 \section*{Talk Map}
-\label{sec:org79938a7}
+\label{sec:org2d917f1}
 
-\begin{frame}[label={sec:orgf491457}]{Thirty-minute structure}
+\begin{frame}[label={sec:org8201221}]{Thirty-minute structure}
 \begin{center}
 \begin{tabular}{rll}
 Part & Topic & Time\\
@@ -51,7 +51,7 @@ Part & Topic & Time\\
 \end{tabular}
 \end{center}
 \end{frame}
-\begin{frame}[label={sec:orgf67fe36}]{Main claim}
+\begin{frame}[label={sec:orgbc1a835}]{Main claim}
 EOSEV improves battery electric vehicle energy efficiency by learning
 bounded pedal-map updates from real driving data.
 
@@ -66,9 +66,9 @@ public-road route
 \end{itemize}
 \end{frame}
 \section*{Motivation}
-\label{sec:org4594a55}
+\label{sec:orgf2ec68b}
 
-\begin{frame}[label={sec:org8cd0f66}]{Why energy optimization is still hard}
+\begin{frame}[label={sec:org9dc4b69}]{Why energy optimization is still hard}
 \begin{itemize}
 \item Same vehicle and route can have different energy consumption
 \item Longitudinal behavior dominates short-horizon energy demand
@@ -88,7 +88,7 @@ At \(50\,\mathrm{km/h}\), a representative \(2500\,\mathrm{kg}\) EV needs:
 before drivetrain losses
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:orgf853691}]{Gap in existing DRL eco-driving work}
+\begin{frame}[label={sec:org3735b46}]{Gap in existing DRL eco-driving work}
 \begin{itemize}
 \item Many studies rely on simulation, connected traffic assumptions, or
 autonomous speed planning
@@ -109,9 +109,9 @@ available from the vehicle?
 \end{quote}
 \end{frame}
 \section*{EOSEV Formulation}
-\label{sec:orgf39bcd6}
+\label{sec:org2ceaf4b}
 
-\begin{frame}[label={sec:orgc749b66}]{Driver-in-the-loop control}
+\begin{frame}[label={sec:orgf6cedb0}]{Driver-in-the-loop control}
 Without the agent, the driver controls speed through accelerator and
 brake pedals, and the VCU maps pedal opening and speed to torque.
 
@@ -129,7 +129,7 @@ With EOSEV:
 \Delta\tau = \pi_\theta(V, A, B)
 \]
 \end{frame}
-\begin{frame}[label={sec:org80e1aac}]{Markov decision process}
+\begin{frame}[label={sec:org4957e06}]{Markov decision process}
 \begin{center}
 \begin{tabular}{ll}
 Element & EOSEV design\\
@@ -147,7 +147,7 @@ Policy & Actor network used online\\
 Measured voltage and current make the reward directly tied to consumed
 electric work.
 \end{frame}
-\begin{frame}[label={sec:org52c30e0}]{Action: modify the pedal map}
+\begin{frame}[label={sec:org5b60792}]{Action: modify the pedal map}
 \begin{columns}
 \begin{column}{0.48\columnwidth}
 \begin{center}
@@ -161,7 +161,7 @@ electric work.
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org0717b75}]{Why this action is practical}
+\begin{frame}[label={sec:orge45c463}]{Why this action is practical}
 \begin{itemize}
 \item Uses a production control interface: pedal map update
 \item Supports range checks before deployment
@@ -172,9 +172,9 @@ drivability safeguards
 \end{itemize}
 \end{frame}
 \section*{Algorithm and System}
-\label{sec:orgef8edeb}
+\label{sec:org1341b02}
 
-\begin{frame}[label={sec:orge1dca4c}]{DDPG training loop}
+\begin{frame}[label={sec:orge567191}]{DDPG training loop}
 EOSEV uses a customized Deep Deterministic Policy Gradient setup.
 
 \begin{itemize}
@@ -189,7 +189,7 @@ EOSEV uses a customized Deep Deterministic Policy Gradient setup.
 \includegraphics[width=0.38\textwidth]{images/optimized/ddpg-training.png}
 \end{center}
 \end{frame}
-\begin{frame}[label={sec:orgc1f9303}]{Network role separation}
+\begin{frame}[label={sec:org0c1d403}]{Network role separation}
 \begin{columns}
 \begin{column}{0.52\columnwidth}
 \begin{center}
@@ -203,7 +203,7 @@ EOSEV uses a customized Deep Deterministic Policy Gradient setup.
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orgee7ee46}]{Data record and replay buffer}
+\begin{frame}[label={sec:org4f65fc0}]{Data record and replay buffer}
 Each timestamped record stores an experience tuple:
 
 \[
@@ -221,31 +221,29 @@ s_t=(V_t,A_t,B_t), \quad r_t=-U_tI_tT_s
 offline learning
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:orgfb1be74}]{Deployment dataflow}
-EOSEV supports cloud training, local training, and on-board inference.
-
+\begin{frame}[label={sec:org0784da7}]{Deployment dataflow}
+\begin{columns}
+\begin{column}{0.38\columnwidth}
 \begin{itemize}
-\item Scheduler configures dataflow states
-\item Cruncher receives observations and forwards them to the Agent
-\item Storage writes synchronized time-series records
-\item Agent returns updated pedal maps or actor outputs
-\item OTA can distribute validated model and map updates
+\item Capture vehicle and driver signals
+\item Synchronize records into storage
+\item Run actor inference for map updates
+\item Train from replay-buffer samples
+\item Distribute validated updates by OTA
 \end{itemize}
-
-\vspace{0.8em}
-
+\end{column}
+\begin{column}{0.58\columnwidth}
 \begin{center}
-\begin{tabular}{lllll}
-Vehicle/ECU & -> & Cruncher & -> & Agent\\
-Storage & <- & synchronized records & <- & Replay buffer\\
-OTA update & <- & validated model/map & <- & Cloud training\\
-\end{tabular}
+\def\svgwidth{0.52\linewidth}
+\input{tspace_overview.pdf_tex}
 \end{center}
+\end{column}
+\end{columns}
 \end{frame}
 \section*{Experiments}
-\label{sec:org3ec4b7f}
+\label{sec:org295db98}
 
-\begin{frame}[label={sec:orgb81984f}]{Proving-ground training setup}
+\begin{frame}[label={sec:orgf2f59d7}]{Proving-ground training setup}
 \begin{itemize}
 \item Fixed vehicle, driver, route, and speed profile
 \item Vehicle accelerates from standstill to about \(17\,\mathrm{km/h}\) and
@@ -260,7 +258,7 @@ more than three seconds
 \includegraphics[width=0.40\textwidth]{images/optimized/speed_profile.png}
 \end{center}
 \end{frame}
-\begin{frame}[label={sec:org11d58f6}]{Driving-style monitoring}
+\begin{frame}[label={sec:org415915f}]{Driving-style monitoring}
 Driving style is represented by the pedal-opening distribution.
 \begin{columns}
 \begin{column}{0.42\columnwidth}
@@ -275,7 +273,7 @@ Driving style is represented by the pedal-opening distribution.
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org6d83ca9}]{Proving-ground result}
+\begin{frame}[label={sec:orgd534836}]{Proving-ground result}
 \begin{itemize}
 \item Energy consumption decreases within and across runs
 \item Learned map requests larger negative torque at low speed and small
@@ -288,7 +286,7 @@ map updates
 \includegraphics[width=0.55\textwidth]{images/optimized/ddpg-training.png}
 \end{center}
 \end{frame}
-\begin{frame}[label={sec:orga64c9d1}]{Public-road route 1}
+\begin{frame}[label={sec:orgb554e99}]{Public-road route 1}
 \begin{columns}
 \begin{column}{0.44\columnwidth}
 \begin{center}
@@ -302,7 +300,7 @@ map updates
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org187d3e4}]{Public-road route 1 result}
+\begin{frame}[label={sec:org025bb6f}]{Public-road route 1 result}
 \begin{columns}
 \begin{column}{0.52\columnwidth}
 \begin{center}
@@ -319,7 +317,7 @@ map updates
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orgfc2d28e}]{Route 1 driving-style drift}
+\begin{frame}[label={sec:orgced2074}]{Route 1 driving-style drift}
 The public-road run spans about 600 episodes, so style drift becomes
 visible.
 
@@ -334,7 +332,7 @@ visible.
 heating effects
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:org6f62933}]{Transfer to route 2}
+\begin{frame}[label={sec:org141054c}]{Transfer to route 2}
 \begin{columns}
 \begin{column}{0.52\columnwidth}
 \begin{center}
@@ -354,7 +352,7 @@ heating effects
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orgee77a4d}]{Multimodal road scenarios}
+\begin{frame}[label={sec:org0275cb4}]{Multimodal road scenarios}
 Traffic lights and pedestrians create multiple modes. The experiment
 tags halt/non-halt states at three right turns, yielding eight modes.
 \begin{columns}
@@ -374,7 +372,7 @@ Average reduction: 4.3\%
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org82e9616}]{What the experiments show}
+\begin{frame}[label={sec:org5e0556a}]{What the experiments show}
 \begin{itemize}
 \item Real reward-driven learning can be sample efficient when the MDP is
 tightly scoped
@@ -387,9 +385,9 @@ policies
 \end{itemize}
 \end{frame}
 \section*{Discussion}
-\label{sec:org3eaf9bf}
+\label{sec:org5f30d7a}
 
-\begin{frame}[label={sec:org5d1fb42}]{Deployment constraints}
+\begin{frame}[label={sec:org4d973ac}]{Deployment constraints}
 Production deployment should include:
 
 \begin{itemize}
@@ -406,7 +404,7 @@ Production deployment should include:
 Cloud training is useful for fleet-scale updates; on-board inference is
 preferred under strict latency requirements.
 \end{frame}
-\begin{frame}[label={sec:orge61a1df}]{Limitations and future work}
+\begin{frame}[label={sec:org2978c63}]{Limitations and future work}
 \begin{itemize}
 \item Current observation window is too short for ramps and topographic
 changes
@@ -418,7 +416,7 @@ data and memory
 are challenging for real-time control
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:org911a39e}]{Takeaways}
+\begin{frame}[label={sec:orgda8fca8}]{Takeaways}
 \begin{enumerate}
 \item EOSEV keeps the production driver-in-the-loop architecture.
 \item The reward is measured electric work, not a fragile shaped proxy.
