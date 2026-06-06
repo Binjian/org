@@ -21,7 +21,7 @@
 
 * Talk Map
 
-** Thirty-minute structure
+** Agenda
 
 | Part | Topic | Time |
 |---+---+---|
