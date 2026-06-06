@@ -165,7 +165,7 @@ EOSEV uses a customized Deep Deterministic Policy Gradient setup.
 [[file:images/optimized/ddpg-training.png]]
 
 
-** Network role separation
+** Critic and Actor network
 
 *** Critic in training :BMCOL:
 :PROPERTIES:
@@ -186,20 +186,45 @@ EOSEV uses a customized Deep Deterministic Policy Gradient setup.
 
 ** Data record and replay buffer
 
+*** Record format :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.42
+:END:
+
 Each timestamped record stores an experience tuple:
-
-\[
-(t, s_t, a_t, r_t, s'_t)
-\]
-
-\[
-s_t=(V_t,A_t,B_t), \quad r_t=-U_tI_tT_s
-\]
 
 - Sensor streams must be synchronized before training
 - Episodes provide a meaningful energy-consumption comparison unit
-- Low-density records are suitable for cloud upload and fleet-scale
-  offline learning
+- Low-density records support cloud upload and fleet-scale offline
+  learning
+
+*** Timestamped samples :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+
+#+BEGIN_EXPORT latex
+\begin{center}
+\tiny
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c c c c c}
+\toprule
+$t$ & $s_{t}$ & $a_t$ & $r_t$ & $s'_t$ \\
+\cmidrule(r){1-1} \cmidrule(r){2-4} \cmidrule{5-5}
+$T$ & $V_1$, $A_1$, $B_1$ & & $U_{1}$, $I_{1}$ & $V'_1$, $A'_1$, $B'_1$ \\
+& \ldots & & \ldots & \ldots \\
+& $V_{i_{1}}$, $A_{i_{1}}$, $B_{i_{1}}$ & & $U_{i_{1}}$, $I_{i_{1}}$ & $V'_{i_{1}}$, $A'_{i_{1}}$, $B'_{i_{1}}$ \\
+& \ldots & & \ldots & \ldots \\
+& $V_{i_{l}}$, $A_{i_l}$, $B_{i_l}$ & & $U_{i_{l}}$, $I_{i_{l}}$ & $V'_{i_{l}}$, $A'_{i_{l}}$, $B'_{i_{l}}$ \\
+& \ldots & & \ldots & \ldots \\
+& $V_K$, $A_K$, $B_K$ & $\Delta \tau$ & $U_K$, $I_K$ & $V'_K$, $A'_K$, $B'_K$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{center}
+#+END_EXPORT
 
 ** Deployment dataflow
 
@@ -221,7 +246,7 @@ s_t=(V_t,A_t,B_t), \quad r_t=-U_tI_tT_s
 
 #+BEGIN_EXPORT latex
 \begin{center}
-\def\svgwidth{0.52\linewidth}
+\def\svgwidth{0.7\linewidth}
 \input{tspace_overview.pdf_tex}
 \end{center}
 #+END_EXPORT
@@ -423,5 +448,3 @@ preferred under strict latency requirements.
 4. Real-road tests show about $7\%\sim8\%$ weekly block-level reduction.
 5. Scaling requires drift monitoring, transfer validation, and fleet-data
    learning.
-
-
